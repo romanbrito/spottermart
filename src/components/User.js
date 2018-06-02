@@ -44,8 +44,9 @@ const Image = styled.img.attrs({
   className: "ba b--black-10 db br-100 w2 w3-ns h2 h3-ns mr2",
 })``
 const Title = styled.h1.attrs({
-  className: "f6 f5-ns fw6 lh-title black mv0",
-})``
+  className: "f6 f5-ns fw6 lh-title mv0",
+})` color: orange`
+// example////
 const SubTitle = styled.h2.attrs({
   className: "f6 fw4 mt0 mb0 black-60",
 })``

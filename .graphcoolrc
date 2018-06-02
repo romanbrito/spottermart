@@ -1,0 +1,3 @@
+targets:
+  spottermartV2: shared-us-west-2/cjhxzlwte7bby01794qlgp76a
+  default: spottermartV2
