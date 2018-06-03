@@ -32,7 +32,7 @@ export function User({ name, username, imageURL }) {
 User.defaultProps = {
   name: "Alena Sanders",
   username: "@alenasanders",
-  imageURL: "https://randomuser.me/api/portraits/women/58.jpg",
+  imageURL: "https://randomuser.me/api/portraits/women/57.jpg",
 }
 const Main = styled.main.attrs({
   className: "center w-50 sans-serif",
