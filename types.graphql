@@ -2,14 +2,17 @@
 # based on which the GraphQL API is generated
 
 type User @model {
-  id: ID! @isUnique
-  name: String
-  dateOfBirth: DateTime
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
+    id: ID! @isUnique
+    email: String! @isUnique
+    password: String!
+    name: String
+    dateOfBirth: DateTime
 }
+
+# Uncomment below - you can declare relations between models like this
+
+# posts: [Post!]! @relation(name: "UserPosts")
+
 
 
 # Uncomment the model below as well

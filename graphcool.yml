@@ -17,8 +17,27 @@
 # In the types.graphql you define your data schema
 types: ./types.graphql
 
-
+# email-password functions
 functions:
+  signup:
+    type: resolver
+    schema: src/signup.graphql
+    handler:
+      code: src/signup.ts
+
+  authenticate:
+    type: resolver
+    schema: src/authenticate.graphql
+    handler:
+      code: src/authenticate.ts
+
+  loggedInUser:
+    type: resolver
+    schema: src/loggedInUser.graphql
+    handler:
+      code: src/loggedInUser.ts
+
+# Other functions
   hello:
     handler:
       code: src/hello.js
