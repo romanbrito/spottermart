@@ -21,7 +21,7 @@ export const Navigation = () =>
   </Header>
 
 const Header = styled.header.attrs({
-  className: "fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l",
+  className: "fixed w-100 ph2 pv2 pv3-ns ph3-m ph4-l",
 })`background-color: #f09859`
 const Nav = styled.nav.attrs({
   className: "flex items-center justify-between f6 fw6 ttu tracked",
