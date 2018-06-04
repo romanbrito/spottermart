@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import User from './User'
+import {Navigation} from './Navigation'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <User/>
+        <Navigation/>
       </div>
     );
   }
