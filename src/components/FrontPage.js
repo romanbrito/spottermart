@@ -1,8 +1,9 @@
 import React from 'react'
+import Hero from './Hero'
 
 const FrontPage = () =>
-  <article>
-    Frontpage
-  </article>
+  <div>
+    <Hero/>
+  </div>
 
 export default FrontPage

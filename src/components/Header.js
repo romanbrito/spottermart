@@ -2,10 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import '../sass/Navigation.css'
 import {Image} from 'cloudinary-react'
-import Hero from './Hero'
 
 const Header = () =>
-  <div>
     <Heading>
       <Nav>
         <div className="Logo1 dtc v-mid">
@@ -30,8 +28,6 @@ const Header = () =>
       </Nav>
     </Heading>
 
-    <Hero/>
-  </div>
 
 const Heading = styled.header.attrs({
   className: "w-100 ph2 pv2 pv3-ns ph3-m ph4-l",

@@ -1,7 +1,7 @@
 import React from 'react'
-
+import Search from './Search'
 const styleCover = {
-  backgroundImage:'url(http://res.cloudinary.com/spottermart/image/upload/MainBGlong_dwkqvv.jpg)'
+  backgroundImage: 'url(http://res.cloudinary.com/spottermart/image/upload/MainBGlong_dwkqvv.jpg)'
 }
 
 const Hero = () =>
@@ -14,13 +14,11 @@ const Hero = () =>
           </div>
         </div>
         <div className="tc-l mt4 mt5-m mt6-l ph3">
-          <h1 className="f2 f1-l fw2 dark-blue mb0 lh-title">This is your super impressive headline</h1>
-          <h2 className="fw1 f3 purple mt3 mb4">Now a subheadline where explain your wonderful new startup even
-            more</h2>
-          <a className="f6 no-underline grow dib v-mid bg-blue white ba b--blue ph3 pv2 mb3" href="/">Call to Action</a>
-          <span className="dib v-mid ph3 white-70 mb3">or</span>
-          <a className="f6 no-underline grow dib v-mid white ba b--white ph3 pv2 mb3" href="">Secondary call to
-            action</a>
+          <h1 className="f2 f1-l fw2 dark-blue mb0 lh-title">Buy or Sell</h1>
+          <h2 className="fw1 f3 blue mt3 mb4">Sign up to start selling</h2>
+
+          <Search/>
+
         </div>
       </div>
     </div>
