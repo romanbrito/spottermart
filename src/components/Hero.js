@@ -4,15 +4,15 @@ const styleCover = {
   backgroundImage:'url(http://res.cloudinary.com/spottermart/image/upload/MainBGlong_dwkqvv.jpg)'
 }
 
-const Header = () =>
-  <header className="sans-serif">
+const Hero = () =>
+  <div className="sans-serif">
     <div className="cover bg-left bg-center-l" style={styleCover}>
       <div className="bg-black-05 pb5 pb6-m pb7-l">
-        <nav className="dt w-100 mw8 center">
+        <div className="dt w-100 mw8 center">
           <div className="dtc w2 v-mid pa3">
 
           </div>
-        </nav>
+        </div>
         <div className="tc-l mt4 mt5-m mt6-l ph3">
           <h1 className="f2 f1-l fw2 dark-blue mb0 lh-title">This is your super impressive headline</h1>
           <h2 className="fw1 f3 purple mt3 mb4">Now a subheadline where explain your wonderful new startup even
@@ -24,6 +24,6 @@ const Header = () =>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
-export default Header
+export default Hero

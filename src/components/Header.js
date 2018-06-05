@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import '../sass/Navigation.css'
 import {Image} from 'cloudinary-react'
-import HeaderExample from './HeaderExample'
+import Hero from './Hero'
 
 const Header = () =>
   <div>
@@ -30,7 +30,7 @@ const Header = () =>
       </Nav>
     </Heading>
 
-    <HeaderExample/>
+    <Hero/>
   </div>
 
 const Heading = styled.header.attrs({
