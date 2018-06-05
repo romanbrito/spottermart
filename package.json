@@ -33,6 +33,7 @@
     "graphql-request": "^1.4.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "node-sass-chokidar": "^1.3.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -56,15 +57,17 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@types/node": "^8.0.44",
     "babel-plugin-relay": "^1.6.0",
-    "relay-compiler": "^1.6.0",
-    "@types/node": "^8.0.44"
+    "relay-compiler": "^1.6.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "css": "tachyons src/css/app.css > src/index.css --minify",
+    "build-sass": "node-sass-chokidar src/ -o src/",
+    "watch-sass": "npm run build-sass && node-sass-chokidar src/ -o src/ --watch --recursive",
     "prestart": "npm run css",
     "prebuild": "npm run css"
   },

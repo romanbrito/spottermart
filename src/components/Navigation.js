@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import '../sass/Navigation.css'
 import {Image} from 'cloudinary-react'
 
 export const Navigation = () =>
