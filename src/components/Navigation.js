@@ -5,16 +5,17 @@ import {Image} from 'cloudinary-react'
 
 export const Navigation = () =>
   <Header>
-    {/*responsive nav with only css*/}
-    <input type="checkbox" id="nav" className="hidden"/>
-    <label htmlFor="nav" className="nav-open"><i></i><i></i><i></i></label>
+
     <Nav>
-      <div className="dtc v-mid">
+      <div className="Logo1 dtc v-mid">
         <Image cloudName="spottermart" publicId="Logo_zk4at5"/>
       </div>
 
+      {/*responsive nav with only css*/}
+      <input type="checkbox" id="nav" className="hidden"/>
+      <label htmlFor="nav" className="nav-open"><i></i><i></i><i></i></label>
 
-      <div className="dtc v-mid pl3">
+      <div className="nav-container dtc v-mid pl3">
         <ul>
           <li><NavLink href="#" title="Home">Home</NavLink></li>
           <li><NavLink href="#" title="About">About</NavLink></li>

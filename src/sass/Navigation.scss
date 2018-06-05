@@ -5,12 +5,13 @@
 
   .nav-open {
     position: fixed;
-    display: block;
     right: 10px;
     top: 10px;
+    display: block;
     width: 48px;
     height: 48px;
     cursor: pointer;
+    z-index: 9999;
     border-radius: 50%;
     i {
       display: block;
@@ -28,6 +29,56 @@
       &:nth-child(3){
         margin-top: 4px;
       }
+    }
+  }
+
+  .nav-container {
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: all .2s ease;
+    ul {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      li {
+        display: block;
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        a {
+          padding: 10px 25px;
+          opacity: 0;
+          color: black;
+          font-size: 24px;
+          font-weight: 600;
+          transform: translateY(-20px);
+          transition: all 0.2s ease;
+        }
+      }
+    }
+  }
+
+}
+
+#nav:checked + .nav-open {
+  i {
+
+  }
+}
+#nav:checked ~ .nav-container{
+  z-index: 9990;
+  opacity: 1;
+  ul li {
+    a {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
