@@ -15,7 +15,7 @@ export const Navigation = () =>
       <input type="checkbox" id="nav" className="hidden"/>
       <label htmlFor="nav" className="nav-open"><i></i><i></i><i></i></label>
 
-      <div className="nav-container dtc v-mid pl3">
+      <div className="nav-container dtc v-mid">
         <ul>
           <li><NavLink href="#" title="Home">Home</NavLink></li>
           <li><NavLink href="#" title="About">About</NavLink></li>
