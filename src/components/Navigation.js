@@ -10,12 +10,14 @@ export const Navigation = () =>
         <Image cloudName="spottermart" publicId="Logo_zk4at5"/>
       </div>
       <div className="dtc v-mid pl3">
-        <NavLink href="#" title="Home">Home</NavLink>
-        <NavLink href="#" title="About">About</NavLink>
-        <NavLink href="#" title="Store">Store</NavLink>
-        <NavLink href="#" title="Contact">Contact</NavLink>
+        <ul>
+          <li><NavLink href="#" title="Home">Home</NavLink></li>
+          <li><NavLink href="#" title="About">About</NavLink></li>
+          <li><NavLink href="#" title="Store">Store</NavLink></li>
+          <li><NavLink href="#" title="Contact">Contact</NavLink></li>
+        </ul>
       </div>
-      <div className="dtc v-mid">
+      <div className="dtc v-mid logo2">
         <Image cloudName="spottermart" publicId="Logo2_qpq49e"/>
       </div>
     </Nav>

@@ -1,3 +1,16 @@
+@media screen and (max-width: 560px) {
+ .logo2 {
+   display: none;
+ }
+}
+
+nav ul {
+  padding: 0;
+  li {
+    display: inline-block;
+  }
+}
+
 .hidden {
   display: none;
 }
