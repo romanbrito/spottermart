@@ -1,9 +1,8 @@
 import React from 'react'
-import {Image} from 'cloudinary-react'
 
 const FrontPage = () =>
   <article>
-    <Image cloudName="spottermart" publicId="MainBGlong_dwkqvv.jpg"/>
+    Frontpage
   </article>
 
 export default FrontPage
