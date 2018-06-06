@@ -9,6 +9,7 @@ const mutation = graphql`
   mutation AuthenticateUserMutation($email: String!,$password: String!) {
     authenticateUser(email: $email, password: $password){
       token
+      id
       }  
     }
 `
@@ -25,7 +26,9 @@ export default (email, password, callback) => {
       mutation,
       variables,
       onCompleted: response => {
-        console.log(response)
+        const id = response.authenticateUser.id
+        const token = response.authenticateUser.token
+        callback(id, token)
       },
       onError: err => console.error(err),
     },

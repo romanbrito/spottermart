@@ -27,12 +27,12 @@ const Login = (props) =>
         <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>
       </fieldset>
       <div className="ph3">
-        <a
-          className="f6 link dim ph3 pv2 mb2 dib white bg-black"
+        <p
+          className="f6 link dim ph3 pv2 mb2 dib white bg-black pointer"
           onClick={() => props.confirm()}
         >
           Submit
-        </a>
+        </p>
       </div>
       <div className="lh-copy mt3">
         <a href="#0" className="f6 link dim black db">Sign up</a>

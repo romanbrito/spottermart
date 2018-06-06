@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d5db732e7cfd6b0c974e440829dcf4ee
+ * @relayHash ba1207801c14ee9a057536f1b08421dd
  */
 
 /* eslint-disable */
@@ -15,7 +15,8 @@ export type AuthenticateUserMutationVariables = {|
 |};
 export type AuthenticateUserMutationResponse = {|
   +authenticateUser: ?{|
-    +token: string
+    +token: string,
+    +id: string,
   |}
 |};
 */
@@ -50,25 +51,44 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "Variable",
-    "name": "email",
-    "variableName": "email",
-    "type": "String!"
-  },
-  {
-    "kind": "Variable",
-    "name": "password",
-    "variableName": "password",
-    "type": "String!"
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "authenticateUser",
+    "storageKey": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "email",
+        "variableName": "email",
+        "type": "String!"
+      },
+      {
+        "kind": "Variable",
+        "name": "password",
+        "variableName": "password",
+        "type": "String!"
+      }
+    ],
+    "concreteType": "AuthenticateUserPayload",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "token",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "id",
+        "args": null,
+        "storageKey": null
+      }
+    ]
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "token",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
   "operationKind": "mutation",
@@ -82,49 +102,16 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "authenticateUser",
-        "storageKey": null,
-        "args": v1,
-        "concreteType": "AuthenticateUserPayload",
-        "plural": false,
-        "selections": [
-          v2
-        ]
-      }
-    ]
+    "selections": v1
   },
   "operation": {
     "kind": "Operation",
     "name": "AuthenticateUserMutation",
     "argumentDefinitions": v0,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "authenticateUser",
-        "storageKey": null,
-        "args": v1,
-        "concreteType": "AuthenticateUserPayload",
-        "plural": false,
-        "selections": [
-          v2,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "selections": v1
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '5c4493066dc3b4b6acd2c6070b925b13';
+(node/*: any*/).hash = 'af35cd8928c0d8f14fcdec30ebb2a9b0';
 module.exports = node;

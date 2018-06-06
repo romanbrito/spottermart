@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import LoginUi from '../ui/Login'
 import AuthenticateUserMutation from '../../mutations/AuthenticateUserMutation'
+import {GC_USER_ID, GC_AUTH_TOKEN} from '../../constants'
+import LoginUi from '../ui/Login'
 
 class Login extends Component{
 
@@ -26,8 +27,15 @@ class Login extends Component{
 
   _confirm = () => {
     const {email, password} = this.state
-    AuthenticateUserMutation(email, password, () => console.log('mutation returned'))
-    // mutation
+    AuthenticateUserMutation(email, password, (id, token) => {
+      this._saveUserData(id, token)
+      this.props.history.push(`/`)
+    })
+  }
+
+  _saveUserData = (id, token) => {
+    localStorage.setItem(GC_USER_ID, id)
+    localStorage.setItem(GC_AUTH_TOKEN, token)
   }
 
 }
