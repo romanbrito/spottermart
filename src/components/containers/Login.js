@@ -11,9 +11,7 @@ class Login extends Component{
   render () {
     return (
       <div>
-        <LoginUi onChange={this._onChange}/>
-        <h1>My email is {this.state.email}</h1>
-        <h1>My password is {this.state.password}</h1>
+        <LoginUi onChange={this._onChange} confirm={this._confirm}/>
       </div>
     )
 
@@ -23,6 +21,11 @@ class Login extends Component{
     const {name, value} = event.target
     name === 'email' && this.setState({email: value})
     name === 'password' && this.setState({password: value})
+  }
+
+  _confirm = () => {
+    // mutation
+    console.log('mutation')
   }
 
 }

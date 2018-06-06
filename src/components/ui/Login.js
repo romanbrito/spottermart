@@ -26,9 +26,13 @@ const Login = (props) =>
         </div>
         <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>
       </fieldset>
-      <div className="">
-        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit"
-               value="Sign in"/>
+      <div className="ph3">
+        <a
+          className="f6 link dim ph3 pv2 mb2 dib white bg-black"
+          onClick={() => props.confirm()}
+        >
+          Submit
+        </a>
       </div>
       <div className="lh-copy mt3">
         <a href="#0" className="f6 link dim black db">Sign up</a>
