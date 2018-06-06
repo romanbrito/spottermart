@@ -1,7 +1,7 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import FrontPage from './FrontPage'
-import Login from './Login'
+import Login from './containers/Login'
 
 const Main  = () =>
     <Switch>

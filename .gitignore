@@ -22,3 +22,7 @@ yarn-error.log*
 
 # IDE
 .idea
+
+# Relay Environment
+/src/Environment.js
+/src/constants.js

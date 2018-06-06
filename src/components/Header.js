@@ -36,7 +36,7 @@ const Heading = styled.header.attrs({
 const Nav = styled.nav.attrs({
   className: "flex items-center justify-between f6 fw6 ttu tracked",
 })``
-const NavLink = styled.a.attrs({
+const NavLink = styled.p.attrs({
   className: "link dim white dib mr3 ml3",
 })``
 
