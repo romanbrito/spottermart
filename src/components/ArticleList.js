@@ -16,7 +16,7 @@ const ArticleList = () =>
         </div>
         <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
           <img src="http://mrmrs.github.io/photos/cpu.jpg" className="db"
-               alt="Photo of a dimly lit room with a computer interface terminal."/>
+               alt="dimly lit room with a computer interface terminal."/>
         </div>
       </div>
       <p className="f6 lh-copy gray mv0">By <span className="ttu">Robin Darnell</span></p>
@@ -34,7 +34,7 @@ const ArticleList = () =>
         </div>
         <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
           <img src="http://mrmrs.github.io/photos/whale.jpg" className="db"
-               alt="Photo of a whale's tale coming crashing out of the water."/>
+               alt="whale's tale coming crashing out of the water."/>
         </div>
       </div>
       <p className="f6 lh-copy gray mv0">By <span className="ttu">Katherine Grant</span></p>
@@ -54,7 +54,7 @@ const ArticleList = () =>
         </div>
         <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
           <img src="http://mrmrs.github.io/photos/warehouse.jpg" className="db"
-               alt="Photo of a warehouse with stacked shelves."/>
+               alt="warehouse with stacked shelves."/>
         </div>
       </div>
       <p className="f6 lh-copy gray mv0">By <span className="ttu">Imelda Clancy</span></p>
