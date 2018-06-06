@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import LoginUi from '../ui/Login'
+import AuthenticateUserMutation from '../../mutations/AuthenticateUserMutation'
 
 class Login extends Component{
 
@@ -24,8 +25,9 @@ class Login extends Component{
   }
 
   _confirm = () => {
+    const {email, password} = this.state
+    AuthenticateUserMutation(email, password, () => console.log('mutation returned'))
     // mutation
-    console.log('mutation')
   }
 
 }
