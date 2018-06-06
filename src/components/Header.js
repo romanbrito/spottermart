@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import '../sass/Navigation.css'
 import {Image} from 'cloudinary-react'
@@ -7,7 +8,7 @@ const Header = () =>
     <Heading>
       <Nav>
         <div className="Logo1 dtc v-mid">
-          <Image cloudName="spottermart" publicId="Logo_zk4at5"/>
+          <Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link>
         </div>
 
         {/*responsive nav with only css*/}
@@ -19,7 +20,7 @@ const Header = () =>
             <li><NavLink href="#" title="Home">How it Works</NavLink></li>
             <li><NavLink href="#" title="About">Pricing</NavLink></li>
             <li><NavLink href="#" title="Store">About</NavLink></li>
-            <li><NavLink href="#" title="Contact">Sign Up</NavLink></li>
+            <li><Link to='login'><NavLink href="#" title="Contact">Login</NavLink></Link></li>
           </ul>
         </div>
         <div className="dtc v-mid logo2">
