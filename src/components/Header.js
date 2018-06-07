@@ -20,7 +20,7 @@ const Header = () =>
             <li><NavLink href="#" title="Home">How it Works</NavLink></li>
             <li><NavLink href="#" title="About">Pricing</NavLink></li>
             <li><NavLink href="#" title="Store">About</NavLink></li>
-            <li><Link to='login'><NavLink href="#" title="Contact">Login</NavLink></Link></li>
+            <li><Link to='/login'><NavLink href="#" title="Contact">Login</NavLink></Link></li>
           </ul>
         </div>
         <div className="dtc v-mid logo2">

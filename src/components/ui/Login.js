@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Login = (props) =>
   <main className="pa4 black-80">
@@ -35,7 +36,7 @@ const Login = (props) =>
         </p>
       </div>
       <div className="lh-copy mt3">
-        <a href="#0" className="f6 link dim black db">Sign up</a>
+        <Link to='/signup'><p className="f6 link dim black db pointer">Sign up</p></Link>
         <a href="#0" className="f6 link dim black db">Forgot your password?</a>
       </div>
     </form>
