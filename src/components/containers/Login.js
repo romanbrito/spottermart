@@ -12,9 +12,7 @@ class Login extends Component{
 
   render () {
     return (
-      <div>
         <LoginUi onChange={this._onChange} confirm={this._confirm}/>
-      </div>
     )
 
   }

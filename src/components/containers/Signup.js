@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import SignupUi from '../ui/Signup'
-import {GC_AUTH_TOKEN, GC_USER_ID} from "../../constants";
+import {GC_AUTH_TOKEN, GC_USER_ID} from "../../constants"
 import SignupUserMutation from '../../mutations/SignupUserMutation'
+import UpdateUserMutation from '../../mutations/UpdateUserMutation'
 
 class Signup extends Component {
 
@@ -31,8 +32,12 @@ class Signup extends Component {
     const {email, password, name} = this.state
 
     SignupUserMutation(email, password, (id, token) => {
-      this._saveUserData(id, token)
-      this.props.history.push(`/`)
+
+      UpdateUserMutation(id, name, (id) => {
+        this._saveUserData(id, token)
+        this.props.history.push(`/`)
+      })
+
     })
   }
 
