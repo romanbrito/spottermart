@@ -9,18 +9,26 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.setState({
-      userId: localStorage.getItem(GC_USER_ID)
-    })
+    this._getId()
   }
 
   render() {
     return (
       <div className="App">
-        <Header userId={this.state.userId}/>
+        <Header userId={this.state.userId} removeId={this._removeId}/>
         <Main/>
       </div>
     );
+  }
+
+  _getId = () => {
+    this.setState({
+      userId: localStorage.getItem(GC_USER_ID)
+    })
+  }
+
+  _removeId = () => {
+    this.setState({userId: ''})
   }
 }
 

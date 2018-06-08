@@ -28,7 +28,8 @@ const Header = withRouter((props) => (
             onClick={() => {
               localStorage.removeItem(GC_USER_ID)
               localStorage.removeItem(GC_AUTH_TOKEN)
-              props.history.push('/')
+              props.removeId()
+              // props.history.push('/')
             }
             }>
             Logout</NavLink></li>}
