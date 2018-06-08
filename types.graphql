@@ -6,21 +6,65 @@ type User @model {
     email: String! @isUnique
     password: String!
     name: String
-    dateOfBirth: DateTime
+    assets: [Asset!]! @relation(name: "UsersAssets")
 }
 
-# Uncomment below - you can declare relations between models like this
+type Asset @model {
+    createdAt: DateTime!
+    id: ID! @isUnique
+    updatedAt: DateTime!
+    businessName: String! @isUnique
+    description: String!
+    price: String
+    postedBy: User @relation(name: "UsersAssets")
+    pictures: [Json!]
+    businessType: String
+    address: String
+    city: String!
+    state: String!
+    zipCode: String!
+    structure: String
+    franchiseBool: Boolean
+    franchiseYearsRemaining: String
+    franchiseRoyalties: String
+    franchiseMarketingFee: String
+    franchiseTransferFee: String
+    franchiseTraining: String
+    website: String
+    fullTimeEmployees: String
+    partTimeEmployees: String
+    rentNNN: String
+    alcoholLicense: Boolean
+    ownerFinance: String
+    netIncome: String
+    grossIncome: String
+    status: String
+    equipment: [Json!]
+    socialMedia: [Json!]
+    socialMediaRating: [Json!]
+    owned: Boolean
+    termOfLease: String
+    howLongInOperation: String
+    howManySeats: String
+    whySelling: String
+    hoursOfOperation: String
+    requirementsToQualify: String
+    notes: String
+    insideSqFeet: String
+    specialFeatures: String
+}
 
-# posts: [Post!]! @relation(name: "UserPosts")
-
-
-
-# Uncomment the model below as well
-
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
+# added by email-password template: (please uncomment)
+# type User @model {
+#   # Required system field:
+#   id: ID! @isUnique # read-only (managed by Graphcool)
+# 
+#   # Optional system fields (remove if not needed):
+#   createdAt: DateTime! # read-only (managed by Graphcool)
+#   updatedAt: DateTime! # read-only (managed by Graphcool)
+# 
+#   email: String! @isUnique
+#   password: String!
 # }
+# 
+

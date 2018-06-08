@@ -1,14 +1,1621 @@
+type AddToUsersAssetsPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  postedByUser: User
+  assetsAsset: Asset
+  postedByUserEdge: UserEdge
+  assetsAssetEdge: AssetEdge
+}
+
+input AddToUsersAssetsUserInput {
+  assetsAssetId: ID!
+  postedByUserId: ID!
+  clientMutationId: String!
+}
+
+type Asset implements Node {
+  address: String
+  alcoholLicense: Boolean
+  businessName: String!
+  businessType: String
+  city: String!
+  createdAt: DateTime!
+  description: String!
+  equipment: [Json!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  id: ID!
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  postedBy(filter: UserFilter): User
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [Json!]
+  socialMediaRating: [Json!]
+  specialFeatures: String
+  state: String!
+  status: String
+  structure: String
+  termOfLease: String
+  updatedAt: DateTime!
+  website: String
+  whySelling: String
+  zipCode: String!
+}
+
+# A connection to a list of items.
+type AssetConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [AssetEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type AssetEdge {
+  # The item at the end of the edge.
+  node: Asset!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input AssetFilter {
+  # Logical AND on all given filters.
+  AND: [AssetFilter!]
+
+  # Logical OR on all given filters.
+  OR: [AssetFilter!]
+  address: String
+
+  # All values that are not equal to given value.
+  address_not: String
+
+  # All values that are contained in given list.
+  address_in: [String!]
+
+  # All values that are not contained in given list.
+  address_not_in: [String!]
+
+  # All values less than the given value.
+  address_lt: String
+
+  # All values less than or equal the given value.
+  address_lte: String
+
+  # All values greater than the given value.
+  address_gt: String
+
+  # All values greater than or equal the given value.
+  address_gte: String
+
+  # All values containing the given string.
+  address_contains: String
+
+  # All values not containing the given string.
+  address_not_contains: String
+
+  # All values starting with the given string.
+  address_starts_with: String
+
+  # All values not starting with the given string.
+  address_not_starts_with: String
+
+  # All values ending with the given string.
+  address_ends_with: String
+
+  # All values not ending with the given string.
+  address_not_ends_with: String
+  alcoholLicense: Boolean
+
+  # All values that are not equal to given value.
+  alcoholLicense_not: Boolean
+  businessName: String
+
+  # All values that are not equal to given value.
+  businessName_not: String
+
+  # All values that are contained in given list.
+  businessName_in: [String!]
+
+  # All values that are not contained in given list.
+  businessName_not_in: [String!]
+
+  # All values less than the given value.
+  businessName_lt: String
+
+  # All values less than or equal the given value.
+  businessName_lte: String
+
+  # All values greater than the given value.
+  businessName_gt: String
+
+  # All values greater than or equal the given value.
+  businessName_gte: String
+
+  # All values containing the given string.
+  businessName_contains: String
+
+  # All values not containing the given string.
+  businessName_not_contains: String
+
+  # All values starting with the given string.
+  businessName_starts_with: String
+
+  # All values not starting with the given string.
+  businessName_not_starts_with: String
+
+  # All values ending with the given string.
+  businessName_ends_with: String
+
+  # All values not ending with the given string.
+  businessName_not_ends_with: String
+  businessType: String
+
+  # All values that are not equal to given value.
+  businessType_not: String
+
+  # All values that are contained in given list.
+  businessType_in: [String!]
+
+  # All values that are not contained in given list.
+  businessType_not_in: [String!]
+
+  # All values less than the given value.
+  businessType_lt: String
+
+  # All values less than or equal the given value.
+  businessType_lte: String
+
+  # All values greater than the given value.
+  businessType_gt: String
+
+  # All values greater than or equal the given value.
+  businessType_gte: String
+
+  # All values containing the given string.
+  businessType_contains: String
+
+  # All values not containing the given string.
+  businessType_not_contains: String
+
+  # All values starting with the given string.
+  businessType_starts_with: String
+
+  # All values not starting with the given string.
+  businessType_not_starts_with: String
+
+  # All values ending with the given string.
+  businessType_ends_with: String
+
+  # All values not ending with the given string.
+  businessType_not_ends_with: String
+  city: String
+
+  # All values that are not equal to given value.
+  city_not: String
+
+  # All values that are contained in given list.
+  city_in: [String!]
+
+  # All values that are not contained in given list.
+  city_not_in: [String!]
+
+  # All values less than the given value.
+  city_lt: String
+
+  # All values less than or equal the given value.
+  city_lte: String
+
+  # All values greater than the given value.
+  city_gt: String
+
+  # All values greater than or equal the given value.
+  city_gte: String
+
+  # All values containing the given string.
+  city_contains: String
+
+  # All values not containing the given string.
+  city_not_contains: String
+
+  # All values starting with the given string.
+  city_starts_with: String
+
+  # All values not starting with the given string.
+  city_not_starts_with: String
+
+  # All values ending with the given string.
+  city_ends_with: String
+
+  # All values not ending with the given string.
+  city_not_ends_with: String
+  createdAt: DateTime
+
+  # All values that are not equal to given value.
+  createdAt_not: DateTime
+
+  # All values that are contained in given list.
+  createdAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  createdAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  createdAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  createdAt_lte: DateTime
+
+  # All values greater than the given value.
+  createdAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  createdAt_gte: DateTime
+  description: String
+
+  # All values that are not equal to given value.
+  description_not: String
+
+  # All values that are contained in given list.
+  description_in: [String!]
+
+  # All values that are not contained in given list.
+  description_not_in: [String!]
+
+  # All values less than the given value.
+  description_lt: String
+
+  # All values less than or equal the given value.
+  description_lte: String
+
+  # All values greater than the given value.
+  description_gt: String
+
+  # All values greater than or equal the given value.
+  description_gte: String
+
+  # All values containing the given string.
+  description_contains: String
+
+  # All values not containing the given string.
+  description_not_contains: String
+
+  # All values starting with the given string.
+  description_starts_with: String
+
+  # All values not starting with the given string.
+  description_not_starts_with: String
+
+  # All values ending with the given string.
+  description_ends_with: String
+
+  # All values not ending with the given string.
+  description_not_ends_with: String
+  franchiseBool: Boolean
+
+  # All values that are not equal to given value.
+  franchiseBool_not: Boolean
+  franchiseMarketingFee: String
+
+  # All values that are not equal to given value.
+  franchiseMarketingFee_not: String
+
+  # All values that are contained in given list.
+  franchiseMarketingFee_in: [String!]
+
+  # All values that are not contained in given list.
+  franchiseMarketingFee_not_in: [String!]
+
+  # All values less than the given value.
+  franchiseMarketingFee_lt: String
+
+  # All values less than or equal the given value.
+  franchiseMarketingFee_lte: String
+
+  # All values greater than the given value.
+  franchiseMarketingFee_gt: String
+
+  # All values greater than or equal the given value.
+  franchiseMarketingFee_gte: String
+
+  # All values containing the given string.
+  franchiseMarketingFee_contains: String
+
+  # All values not containing the given string.
+  franchiseMarketingFee_not_contains: String
+
+  # All values starting with the given string.
+  franchiseMarketingFee_starts_with: String
+
+  # All values not starting with the given string.
+  franchiseMarketingFee_not_starts_with: String
+
+  # All values ending with the given string.
+  franchiseMarketingFee_ends_with: String
+
+  # All values not ending with the given string.
+  franchiseMarketingFee_not_ends_with: String
+  franchiseRoyalties: String
+
+  # All values that are not equal to given value.
+  franchiseRoyalties_not: String
+
+  # All values that are contained in given list.
+  franchiseRoyalties_in: [String!]
+
+  # All values that are not contained in given list.
+  franchiseRoyalties_not_in: [String!]
+
+  # All values less than the given value.
+  franchiseRoyalties_lt: String
+
+  # All values less than or equal the given value.
+  franchiseRoyalties_lte: String
+
+  # All values greater than the given value.
+  franchiseRoyalties_gt: String
+
+  # All values greater than or equal the given value.
+  franchiseRoyalties_gte: String
+
+  # All values containing the given string.
+  franchiseRoyalties_contains: String
+
+  # All values not containing the given string.
+  franchiseRoyalties_not_contains: String
+
+  # All values starting with the given string.
+  franchiseRoyalties_starts_with: String
+
+  # All values not starting with the given string.
+  franchiseRoyalties_not_starts_with: String
+
+  # All values ending with the given string.
+  franchiseRoyalties_ends_with: String
+
+  # All values not ending with the given string.
+  franchiseRoyalties_not_ends_with: String
+  franchiseTraining: String
+
+  # All values that are not equal to given value.
+  franchiseTraining_not: String
+
+  # All values that are contained in given list.
+  franchiseTraining_in: [String!]
+
+  # All values that are not contained in given list.
+  franchiseTraining_not_in: [String!]
+
+  # All values less than the given value.
+  franchiseTraining_lt: String
+
+  # All values less than or equal the given value.
+  franchiseTraining_lte: String
+
+  # All values greater than the given value.
+  franchiseTraining_gt: String
+
+  # All values greater than or equal the given value.
+  franchiseTraining_gte: String
+
+  # All values containing the given string.
+  franchiseTraining_contains: String
+
+  # All values not containing the given string.
+  franchiseTraining_not_contains: String
+
+  # All values starting with the given string.
+  franchiseTraining_starts_with: String
+
+  # All values not starting with the given string.
+  franchiseTraining_not_starts_with: String
+
+  # All values ending with the given string.
+  franchiseTraining_ends_with: String
+
+  # All values not ending with the given string.
+  franchiseTraining_not_ends_with: String
+  franchiseTransferFee: String
+
+  # All values that are not equal to given value.
+  franchiseTransferFee_not: String
+
+  # All values that are contained in given list.
+  franchiseTransferFee_in: [String!]
+
+  # All values that are not contained in given list.
+  franchiseTransferFee_not_in: [String!]
+
+  # All values less than the given value.
+  franchiseTransferFee_lt: String
+
+  # All values less than or equal the given value.
+  franchiseTransferFee_lte: String
+
+  # All values greater than the given value.
+  franchiseTransferFee_gt: String
+
+  # All values greater than or equal the given value.
+  franchiseTransferFee_gte: String
+
+  # All values containing the given string.
+  franchiseTransferFee_contains: String
+
+  # All values not containing the given string.
+  franchiseTransferFee_not_contains: String
+
+  # All values starting with the given string.
+  franchiseTransferFee_starts_with: String
+
+  # All values not starting with the given string.
+  franchiseTransferFee_not_starts_with: String
+
+  # All values ending with the given string.
+  franchiseTransferFee_ends_with: String
+
+  # All values not ending with the given string.
+  franchiseTransferFee_not_ends_with: String
+  franchiseYearsRemaining: String
+
+  # All values that are not equal to given value.
+  franchiseYearsRemaining_not: String
+
+  # All values that are contained in given list.
+  franchiseYearsRemaining_in: [String!]
+
+  # All values that are not contained in given list.
+  franchiseYearsRemaining_not_in: [String!]
+
+  # All values less than the given value.
+  franchiseYearsRemaining_lt: String
+
+  # All values less than or equal the given value.
+  franchiseYearsRemaining_lte: String
+
+  # All values greater than the given value.
+  franchiseYearsRemaining_gt: String
+
+  # All values greater than or equal the given value.
+  franchiseYearsRemaining_gte: String
+
+  # All values containing the given string.
+  franchiseYearsRemaining_contains: String
+
+  # All values not containing the given string.
+  franchiseYearsRemaining_not_contains: String
+
+  # All values starting with the given string.
+  franchiseYearsRemaining_starts_with: String
+
+  # All values not starting with the given string.
+  franchiseYearsRemaining_not_starts_with: String
+
+  # All values ending with the given string.
+  franchiseYearsRemaining_ends_with: String
+
+  # All values not ending with the given string.
+  franchiseYearsRemaining_not_ends_with: String
+  fullTimeEmployees: String
+
+  # All values that are not equal to given value.
+  fullTimeEmployees_not: String
+
+  # All values that are contained in given list.
+  fullTimeEmployees_in: [String!]
+
+  # All values that are not contained in given list.
+  fullTimeEmployees_not_in: [String!]
+
+  # All values less than the given value.
+  fullTimeEmployees_lt: String
+
+  # All values less than or equal the given value.
+  fullTimeEmployees_lte: String
+
+  # All values greater than the given value.
+  fullTimeEmployees_gt: String
+
+  # All values greater than or equal the given value.
+  fullTimeEmployees_gte: String
+
+  # All values containing the given string.
+  fullTimeEmployees_contains: String
+
+  # All values not containing the given string.
+  fullTimeEmployees_not_contains: String
+
+  # All values starting with the given string.
+  fullTimeEmployees_starts_with: String
+
+  # All values not starting with the given string.
+  fullTimeEmployees_not_starts_with: String
+
+  # All values ending with the given string.
+  fullTimeEmployees_ends_with: String
+
+  # All values not ending with the given string.
+  fullTimeEmployees_not_ends_with: String
+  grossIncome: String
+
+  # All values that are not equal to given value.
+  grossIncome_not: String
+
+  # All values that are contained in given list.
+  grossIncome_in: [String!]
+
+  # All values that are not contained in given list.
+  grossIncome_not_in: [String!]
+
+  # All values less than the given value.
+  grossIncome_lt: String
+
+  # All values less than or equal the given value.
+  grossIncome_lte: String
+
+  # All values greater than the given value.
+  grossIncome_gt: String
+
+  # All values greater than or equal the given value.
+  grossIncome_gte: String
+
+  # All values containing the given string.
+  grossIncome_contains: String
+
+  # All values not containing the given string.
+  grossIncome_not_contains: String
+
+  # All values starting with the given string.
+  grossIncome_starts_with: String
+
+  # All values not starting with the given string.
+  grossIncome_not_starts_with: String
+
+  # All values ending with the given string.
+  grossIncome_ends_with: String
+
+  # All values not ending with the given string.
+  grossIncome_not_ends_with: String
+  hoursOfOperation: String
+
+  # All values that are not equal to given value.
+  hoursOfOperation_not: String
+
+  # All values that are contained in given list.
+  hoursOfOperation_in: [String!]
+
+  # All values that are not contained in given list.
+  hoursOfOperation_not_in: [String!]
+
+  # All values less than the given value.
+  hoursOfOperation_lt: String
+
+  # All values less than or equal the given value.
+  hoursOfOperation_lte: String
+
+  # All values greater than the given value.
+  hoursOfOperation_gt: String
+
+  # All values greater than or equal the given value.
+  hoursOfOperation_gte: String
+
+  # All values containing the given string.
+  hoursOfOperation_contains: String
+
+  # All values not containing the given string.
+  hoursOfOperation_not_contains: String
+
+  # All values starting with the given string.
+  hoursOfOperation_starts_with: String
+
+  # All values not starting with the given string.
+  hoursOfOperation_not_starts_with: String
+
+  # All values ending with the given string.
+  hoursOfOperation_ends_with: String
+
+  # All values not ending with the given string.
+  hoursOfOperation_not_ends_with: String
+  howLongInOperation: String
+
+  # All values that are not equal to given value.
+  howLongInOperation_not: String
+
+  # All values that are contained in given list.
+  howLongInOperation_in: [String!]
+
+  # All values that are not contained in given list.
+  howLongInOperation_not_in: [String!]
+
+  # All values less than the given value.
+  howLongInOperation_lt: String
+
+  # All values less than or equal the given value.
+  howLongInOperation_lte: String
+
+  # All values greater than the given value.
+  howLongInOperation_gt: String
+
+  # All values greater than or equal the given value.
+  howLongInOperation_gte: String
+
+  # All values containing the given string.
+  howLongInOperation_contains: String
+
+  # All values not containing the given string.
+  howLongInOperation_not_contains: String
+
+  # All values starting with the given string.
+  howLongInOperation_starts_with: String
+
+  # All values not starting with the given string.
+  howLongInOperation_not_starts_with: String
+
+  # All values ending with the given string.
+  howLongInOperation_ends_with: String
+
+  # All values not ending with the given string.
+  howLongInOperation_not_ends_with: String
+  howManySeats: String
+
+  # All values that are not equal to given value.
+  howManySeats_not: String
+
+  # All values that are contained in given list.
+  howManySeats_in: [String!]
+
+  # All values that are not contained in given list.
+  howManySeats_not_in: [String!]
+
+  # All values less than the given value.
+  howManySeats_lt: String
+
+  # All values less than or equal the given value.
+  howManySeats_lte: String
+
+  # All values greater than the given value.
+  howManySeats_gt: String
+
+  # All values greater than or equal the given value.
+  howManySeats_gte: String
+
+  # All values containing the given string.
+  howManySeats_contains: String
+
+  # All values not containing the given string.
+  howManySeats_not_contains: String
+
+  # All values starting with the given string.
+  howManySeats_starts_with: String
+
+  # All values not starting with the given string.
+  howManySeats_not_starts_with: String
+
+  # All values ending with the given string.
+  howManySeats_ends_with: String
+
+  # All values not ending with the given string.
+  howManySeats_not_ends_with: String
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  insideSqFeet: String
+
+  # All values that are not equal to given value.
+  insideSqFeet_not: String
+
+  # All values that are contained in given list.
+  insideSqFeet_in: [String!]
+
+  # All values that are not contained in given list.
+  insideSqFeet_not_in: [String!]
+
+  # All values less than the given value.
+  insideSqFeet_lt: String
+
+  # All values less than or equal the given value.
+  insideSqFeet_lte: String
+
+  # All values greater than the given value.
+  insideSqFeet_gt: String
+
+  # All values greater than or equal the given value.
+  insideSqFeet_gte: String
+
+  # All values containing the given string.
+  insideSqFeet_contains: String
+
+  # All values not containing the given string.
+  insideSqFeet_not_contains: String
+
+  # All values starting with the given string.
+  insideSqFeet_starts_with: String
+
+  # All values not starting with the given string.
+  insideSqFeet_not_starts_with: String
+
+  # All values ending with the given string.
+  insideSqFeet_ends_with: String
+
+  # All values not ending with the given string.
+  insideSqFeet_not_ends_with: String
+  netIncome: String
+
+  # All values that are not equal to given value.
+  netIncome_not: String
+
+  # All values that are contained in given list.
+  netIncome_in: [String!]
+
+  # All values that are not contained in given list.
+  netIncome_not_in: [String!]
+
+  # All values less than the given value.
+  netIncome_lt: String
+
+  # All values less than or equal the given value.
+  netIncome_lte: String
+
+  # All values greater than the given value.
+  netIncome_gt: String
+
+  # All values greater than or equal the given value.
+  netIncome_gte: String
+
+  # All values containing the given string.
+  netIncome_contains: String
+
+  # All values not containing the given string.
+  netIncome_not_contains: String
+
+  # All values starting with the given string.
+  netIncome_starts_with: String
+
+  # All values not starting with the given string.
+  netIncome_not_starts_with: String
+
+  # All values ending with the given string.
+  netIncome_ends_with: String
+
+  # All values not ending with the given string.
+  netIncome_not_ends_with: String
+  notes: String
+
+  # All values that are not equal to given value.
+  notes_not: String
+
+  # All values that are contained in given list.
+  notes_in: [String!]
+
+  # All values that are not contained in given list.
+  notes_not_in: [String!]
+
+  # All values less than the given value.
+  notes_lt: String
+
+  # All values less than or equal the given value.
+  notes_lte: String
+
+  # All values greater than the given value.
+  notes_gt: String
+
+  # All values greater than or equal the given value.
+  notes_gte: String
+
+  # All values containing the given string.
+  notes_contains: String
+
+  # All values not containing the given string.
+  notes_not_contains: String
+
+  # All values starting with the given string.
+  notes_starts_with: String
+
+  # All values not starting with the given string.
+  notes_not_starts_with: String
+
+  # All values ending with the given string.
+  notes_ends_with: String
+
+  # All values not ending with the given string.
+  notes_not_ends_with: String
+  owned: Boolean
+
+  # All values that are not equal to given value.
+  owned_not: Boolean
+  ownerFinance: String
+
+  # All values that are not equal to given value.
+  ownerFinance_not: String
+
+  # All values that are contained in given list.
+  ownerFinance_in: [String!]
+
+  # All values that are not contained in given list.
+  ownerFinance_not_in: [String!]
+
+  # All values less than the given value.
+  ownerFinance_lt: String
+
+  # All values less than or equal the given value.
+  ownerFinance_lte: String
+
+  # All values greater than the given value.
+  ownerFinance_gt: String
+
+  # All values greater than or equal the given value.
+  ownerFinance_gte: String
+
+  # All values containing the given string.
+  ownerFinance_contains: String
+
+  # All values not containing the given string.
+  ownerFinance_not_contains: String
+
+  # All values starting with the given string.
+  ownerFinance_starts_with: String
+
+  # All values not starting with the given string.
+  ownerFinance_not_starts_with: String
+
+  # All values ending with the given string.
+  ownerFinance_ends_with: String
+
+  # All values not ending with the given string.
+  ownerFinance_not_ends_with: String
+  partTimeEmployees: String
+
+  # All values that are not equal to given value.
+  partTimeEmployees_not: String
+
+  # All values that are contained in given list.
+  partTimeEmployees_in: [String!]
+
+  # All values that are not contained in given list.
+  partTimeEmployees_not_in: [String!]
+
+  # All values less than the given value.
+  partTimeEmployees_lt: String
+
+  # All values less than or equal the given value.
+  partTimeEmployees_lte: String
+
+  # All values greater than the given value.
+  partTimeEmployees_gt: String
+
+  # All values greater than or equal the given value.
+  partTimeEmployees_gte: String
+
+  # All values containing the given string.
+  partTimeEmployees_contains: String
+
+  # All values not containing the given string.
+  partTimeEmployees_not_contains: String
+
+  # All values starting with the given string.
+  partTimeEmployees_starts_with: String
+
+  # All values not starting with the given string.
+  partTimeEmployees_not_starts_with: String
+
+  # All values ending with the given string.
+  partTimeEmployees_ends_with: String
+
+  # All values not ending with the given string.
+  partTimeEmployees_not_ends_with: String
+  price: String
+
+  # All values that are not equal to given value.
+  price_not: String
+
+  # All values that are contained in given list.
+  price_in: [String!]
+
+  # All values that are not contained in given list.
+  price_not_in: [String!]
+
+  # All values less than the given value.
+  price_lt: String
+
+  # All values less than or equal the given value.
+  price_lte: String
+
+  # All values greater than the given value.
+  price_gt: String
+
+  # All values greater than or equal the given value.
+  price_gte: String
+
+  # All values containing the given string.
+  price_contains: String
+
+  # All values not containing the given string.
+  price_not_contains: String
+
+  # All values starting with the given string.
+  price_starts_with: String
+
+  # All values not starting with the given string.
+  price_not_starts_with: String
+
+  # All values ending with the given string.
+  price_ends_with: String
+
+  # All values not ending with the given string.
+  price_not_ends_with: String
+  rentNNN: String
+
+  # All values that are not equal to given value.
+  rentNNN_not: String
+
+  # All values that are contained in given list.
+  rentNNN_in: [String!]
+
+  # All values that are not contained in given list.
+  rentNNN_not_in: [String!]
+
+  # All values less than the given value.
+  rentNNN_lt: String
+
+  # All values less than or equal the given value.
+  rentNNN_lte: String
+
+  # All values greater than the given value.
+  rentNNN_gt: String
+
+  # All values greater than or equal the given value.
+  rentNNN_gte: String
+
+  # All values containing the given string.
+  rentNNN_contains: String
+
+  # All values not containing the given string.
+  rentNNN_not_contains: String
+
+  # All values starting with the given string.
+  rentNNN_starts_with: String
+
+  # All values not starting with the given string.
+  rentNNN_not_starts_with: String
+
+  # All values ending with the given string.
+  rentNNN_ends_with: String
+
+  # All values not ending with the given string.
+  rentNNN_not_ends_with: String
+  requirementsToQualify: String
+
+  # All values that are not equal to given value.
+  requirementsToQualify_not: String
+
+  # All values that are contained in given list.
+  requirementsToQualify_in: [String!]
+
+  # All values that are not contained in given list.
+  requirementsToQualify_not_in: [String!]
+
+  # All values less than the given value.
+  requirementsToQualify_lt: String
+
+  # All values less than or equal the given value.
+  requirementsToQualify_lte: String
+
+  # All values greater than the given value.
+  requirementsToQualify_gt: String
+
+  # All values greater than or equal the given value.
+  requirementsToQualify_gte: String
+
+  # All values containing the given string.
+  requirementsToQualify_contains: String
+
+  # All values not containing the given string.
+  requirementsToQualify_not_contains: String
+
+  # All values starting with the given string.
+  requirementsToQualify_starts_with: String
+
+  # All values not starting with the given string.
+  requirementsToQualify_not_starts_with: String
+
+  # All values ending with the given string.
+  requirementsToQualify_ends_with: String
+
+  # All values not ending with the given string.
+  requirementsToQualify_not_ends_with: String
+  specialFeatures: String
+
+  # All values that are not equal to given value.
+  specialFeatures_not: String
+
+  # All values that are contained in given list.
+  specialFeatures_in: [String!]
+
+  # All values that are not contained in given list.
+  specialFeatures_not_in: [String!]
+
+  # All values less than the given value.
+  specialFeatures_lt: String
+
+  # All values less than or equal the given value.
+  specialFeatures_lte: String
+
+  # All values greater than the given value.
+  specialFeatures_gt: String
+
+  # All values greater than or equal the given value.
+  specialFeatures_gte: String
+
+  # All values containing the given string.
+  specialFeatures_contains: String
+
+  # All values not containing the given string.
+  specialFeatures_not_contains: String
+
+  # All values starting with the given string.
+  specialFeatures_starts_with: String
+
+  # All values not starting with the given string.
+  specialFeatures_not_starts_with: String
+
+  # All values ending with the given string.
+  specialFeatures_ends_with: String
+
+  # All values not ending with the given string.
+  specialFeatures_not_ends_with: String
+  state: String
+
+  # All values that are not equal to given value.
+  state_not: String
+
+  # All values that are contained in given list.
+  state_in: [String!]
+
+  # All values that are not contained in given list.
+  state_not_in: [String!]
+
+  # All values less than the given value.
+  state_lt: String
+
+  # All values less than or equal the given value.
+  state_lte: String
+
+  # All values greater than the given value.
+  state_gt: String
+
+  # All values greater than or equal the given value.
+  state_gte: String
+
+  # All values containing the given string.
+  state_contains: String
+
+  # All values not containing the given string.
+  state_not_contains: String
+
+  # All values starting with the given string.
+  state_starts_with: String
+
+  # All values not starting with the given string.
+  state_not_starts_with: String
+
+  # All values ending with the given string.
+  state_ends_with: String
+
+  # All values not ending with the given string.
+  state_not_ends_with: String
+  status: String
+
+  # All values that are not equal to given value.
+  status_not: String
+
+  # All values that are contained in given list.
+  status_in: [String!]
+
+  # All values that are not contained in given list.
+  status_not_in: [String!]
+
+  # All values less than the given value.
+  status_lt: String
+
+  # All values less than or equal the given value.
+  status_lte: String
+
+  # All values greater than the given value.
+  status_gt: String
+
+  # All values greater than or equal the given value.
+  status_gte: String
+
+  # All values containing the given string.
+  status_contains: String
+
+  # All values not containing the given string.
+  status_not_contains: String
+
+  # All values starting with the given string.
+  status_starts_with: String
+
+  # All values not starting with the given string.
+  status_not_starts_with: String
+
+  # All values ending with the given string.
+  status_ends_with: String
+
+  # All values not ending with the given string.
+  status_not_ends_with: String
+  structure: String
+
+  # All values that are not equal to given value.
+  structure_not: String
+
+  # All values that are contained in given list.
+  structure_in: [String!]
+
+  # All values that are not contained in given list.
+  structure_not_in: [String!]
+
+  # All values less than the given value.
+  structure_lt: String
+
+  # All values less than or equal the given value.
+  structure_lte: String
+
+  # All values greater than the given value.
+  structure_gt: String
+
+  # All values greater than or equal the given value.
+  structure_gte: String
+
+  # All values containing the given string.
+  structure_contains: String
+
+  # All values not containing the given string.
+  structure_not_contains: String
+
+  # All values starting with the given string.
+  structure_starts_with: String
+
+  # All values not starting with the given string.
+  structure_not_starts_with: String
+
+  # All values ending with the given string.
+  structure_ends_with: String
+
+  # All values not ending with the given string.
+  structure_not_ends_with: String
+  termOfLease: String
+
+  # All values that are not equal to given value.
+  termOfLease_not: String
+
+  # All values that are contained in given list.
+  termOfLease_in: [String!]
+
+  # All values that are not contained in given list.
+  termOfLease_not_in: [String!]
+
+  # All values less than the given value.
+  termOfLease_lt: String
+
+  # All values less than or equal the given value.
+  termOfLease_lte: String
+
+  # All values greater than the given value.
+  termOfLease_gt: String
+
+  # All values greater than or equal the given value.
+  termOfLease_gte: String
+
+  # All values containing the given string.
+  termOfLease_contains: String
+
+  # All values not containing the given string.
+  termOfLease_not_contains: String
+
+  # All values starting with the given string.
+  termOfLease_starts_with: String
+
+  # All values not starting with the given string.
+  termOfLease_not_starts_with: String
+
+  # All values ending with the given string.
+  termOfLease_ends_with: String
+
+  # All values not ending with the given string.
+  termOfLease_not_ends_with: String
+  updatedAt: DateTime
+
+  # All values that are not equal to given value.
+  updatedAt_not: DateTime
+
+  # All values that are contained in given list.
+  updatedAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  updatedAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  updatedAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  updatedAt_lte: DateTime
+
+  # All values greater than the given value.
+  updatedAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  updatedAt_gte: DateTime
+  website: String
+
+  # All values that are not equal to given value.
+  website_not: String
+
+  # All values that are contained in given list.
+  website_in: [String!]
+
+  # All values that are not contained in given list.
+  website_not_in: [String!]
+
+  # All values less than the given value.
+  website_lt: String
+
+  # All values less than or equal the given value.
+  website_lte: String
+
+  # All values greater than the given value.
+  website_gt: String
+
+  # All values greater than or equal the given value.
+  website_gte: String
+
+  # All values containing the given string.
+  website_contains: String
+
+  # All values not containing the given string.
+  website_not_contains: String
+
+  # All values starting with the given string.
+  website_starts_with: String
+
+  # All values not starting with the given string.
+  website_not_starts_with: String
+
+  # All values ending with the given string.
+  website_ends_with: String
+
+  # All values not ending with the given string.
+  website_not_ends_with: String
+  whySelling: String
+
+  # All values that are not equal to given value.
+  whySelling_not: String
+
+  # All values that are contained in given list.
+  whySelling_in: [String!]
+
+  # All values that are not contained in given list.
+  whySelling_not_in: [String!]
+
+  # All values less than the given value.
+  whySelling_lt: String
+
+  # All values less than or equal the given value.
+  whySelling_lte: String
+
+  # All values greater than the given value.
+  whySelling_gt: String
+
+  # All values greater than or equal the given value.
+  whySelling_gte: String
+
+  # All values containing the given string.
+  whySelling_contains: String
+
+  # All values not containing the given string.
+  whySelling_not_contains: String
+
+  # All values starting with the given string.
+  whySelling_starts_with: String
+
+  # All values not starting with the given string.
+  whySelling_not_starts_with: String
+
+  # All values ending with the given string.
+  whySelling_ends_with: String
+
+  # All values not ending with the given string.
+  whySelling_not_ends_with: String
+  zipCode: String
+
+  # All values that are not equal to given value.
+  zipCode_not: String
+
+  # All values that are contained in given list.
+  zipCode_in: [String!]
+
+  # All values that are not contained in given list.
+  zipCode_not_in: [String!]
+
+  # All values less than the given value.
+  zipCode_lt: String
+
+  # All values less than or equal the given value.
+  zipCode_lte: String
+
+  # All values greater than the given value.
+  zipCode_gt: String
+
+  # All values greater than or equal the given value.
+  zipCode_gte: String
+
+  # All values containing the given string.
+  zipCode_contains: String
+
+  # All values not containing the given string.
+  zipCode_not_contains: String
+
+  # All values starting with the given string.
+  zipCode_starts_with: String
+
+  # All values not starting with the given string.
+  zipCode_not_starts_with: String
+
+  # All values ending with the given string.
+  zipCode_ends_with: String
+
+  # All values not ending with the given string.
+  zipCode_not_ends_with: String
+  postedBy: UserFilter
+}
+
+enum AssetOrderBy {
+  address_ASC
+  address_DESC
+  alcoholLicense_ASC
+  alcoholLicense_DESC
+  businessName_ASC
+  businessName_DESC
+  businessType_ASC
+  businessType_DESC
+  city_ASC
+  city_DESC
+  createdAt_ASC
+  createdAt_DESC
+  description_ASC
+  description_DESC
+  franchiseBool_ASC
+  franchiseBool_DESC
+  franchiseMarketingFee_ASC
+  franchiseMarketingFee_DESC
+  franchiseRoyalties_ASC
+  franchiseRoyalties_DESC
+  franchiseTraining_ASC
+  franchiseTraining_DESC
+  franchiseTransferFee_ASC
+  franchiseTransferFee_DESC
+  franchiseYearsRemaining_ASC
+  franchiseYearsRemaining_DESC
+  fullTimeEmployees_ASC
+  fullTimeEmployees_DESC
+  grossIncome_ASC
+  grossIncome_DESC
+  hoursOfOperation_ASC
+  hoursOfOperation_DESC
+  howLongInOperation_ASC
+  howLongInOperation_DESC
+  howManySeats_ASC
+  howManySeats_DESC
+  id_ASC
+  id_DESC
+  insideSqFeet_ASC
+  insideSqFeet_DESC
+  netIncome_ASC
+  netIncome_DESC
+  notes_ASC
+  notes_DESC
+  owned_ASC
+  owned_DESC
+  ownerFinance_ASC
+  ownerFinance_DESC
+  partTimeEmployees_ASC
+  partTimeEmployees_DESC
+  price_ASC
+  price_DESC
+  rentNNN_ASC
+  rentNNN_DESC
+  requirementsToQualify_ASC
+  requirementsToQualify_DESC
+  specialFeatures_ASC
+  specialFeatures_DESC
+  state_ASC
+  state_DESC
+  status_ASC
+  status_DESC
+  structure_ASC
+  structure_DESC
+  termOfLease_ASC
+  termOfLease_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  website_ASC
+  website_DESC
+  whySelling_ASC
+  whySelling_DESC
+  zipCode_ASC
+  zipCode_DESC
+}
+
+input AssetpostedByUser {
+  email: String!
+  name: String
+  password: String!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
+}
+
 # AuthenticateUserPayload
 type AuthenticateUserPayload {
   id: ID!
   token: String!
 }
 
+input CreateAsset {
+  address: String
+  alcoholLicense: Boolean
+  businessName: String!
+  businessType: String
+  city: String!
+  description: String!
+  equipment: [Json!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [Json!]
+  socialMediaRating: [Json!]
+  specialFeatures: String
+  state: String!
+  status: String
+  structure: String
+  termOfLease: String
+  website: String
+  whySelling: String
+  zipCode: String!
+  postedById: ID
+  postedBy: AssetpostedByUser
+}
+
+input CreateAssetInput {
+  address: String
+  alcoholLicense: Boolean
+  businessName: String!
+  businessType: String
+  city: String!
+  description: String!
+  equipment: [Json!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [Json!]
+  socialMediaRating: [Json!]
+  specialFeatures: String
+  state: String!
+  status: String
+  structure: String
+  termOfLease: String
+  website: String
+  whySelling: String
+  zipCode: String!
+  postedById: ID
+  postedBy: AssetpostedByUser
+  clientMutationId: String!
+}
+
+type CreateAssetPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  asset: Asset
+  edge: AssetEdge
+  postedBy: User
+}
+
 input CreateUser {
-  dateOfBirth: DateTime
   email: String!
   name: String
   password: String!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
 }
 
 # If authentication was successful the payload contains the user and a token. If unsuccessful this payload is null.
@@ -19,6 +1626,20 @@ type CreateUserPayload {
 }
 
 scalar DateTime
+
+input DeleteAssetInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteAssetPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  asset: Asset
+  edge: AssetEdge
+  postedBy: User
+  deletedId: ID
+}
 
 input DeleteUserInput {
   id: ID!
@@ -33,10 +1654,8 @@ type DeleteUserPayload {
   deletedId: ID
 }
 
-# HelloPayload
-type HelloPayload {
-  message: String!
-}
+# Raw JSON value
+scalar Json
 
 # LoggedInUserPayload
 type LoggedInUserPayload {
@@ -44,9 +1663,15 @@ type LoggedInUserPayload {
 }
 
 type Mutation {
+  createAsset(input: CreateAssetInput!): CreateAssetPayload
+  updateAsset(input: UpdateAssetInput!): UpdateAssetPayload
   updateUser(input: UpdateUserInput!): UpdateUserPayload
+  updateOrCreateAsset(input: UpdateOrCreateAssetInput!): UpdateOrCreateAssetPayload
   updateOrCreateUser(input: UpdateOrCreateUserInput!): UpdateOrCreateUserPayload
+  deleteAsset(input: DeleteAssetInput!): DeleteAssetPayload
   deleteUser(input: DeleteUserInput!): DeleteUserPayload
+  addToUsersAssets(input: AddToUsersAssetsUserInput!): AddToUsersAssetsPayload
+  removeFromUsersAssets(input: RemoveFromUsersAssetsUserInput!): RemoveFromUsersAssetsPayload
   createUser(input: SignupUserInput!): CreateUserPayload!
 
   # authenticate
@@ -87,11 +1712,27 @@ type Query {
   ): Node
 }
 
+type RemoveFromUsersAssetsPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  postedByUser: User
+  assetsAsset: Asset
+  postedByUserEdge: UserEdge
+  assetsAssetEdge: AssetEdge
+}
+
+input RemoveFromUsersAssetsUserInput {
+  assetsAssetId: ID!
+  postedByUserId: ID!
+  clientMutationId: String!
+}
+
 input SignupUserInput {
-  dateOfBirth: DateTime
   email: String!
   name: String
   password: String!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
   clientMutationId: String!
 }
 
@@ -99,6 +1740,117 @@ input SignupUserInput {
 type SignupUserPayload {
   id: ID!
   token: String!
+}
+
+input UpdateAsset {
+  address: String
+  alcoholLicense: Boolean
+  businessName: String
+  businessType: String
+  city: String
+  description: String
+  equipment: [Json!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  id: ID!
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [Json!]
+  socialMediaRating: [Json!]
+  specialFeatures: String
+  state: String
+  status: String
+  structure: String
+  termOfLease: String
+  website: String
+  whySelling: String
+  zipCode: String
+  postedById: ID
+  postedBy: AssetpostedByUser
+}
+
+input UpdateAssetInput {
+  address: String
+  alcoholLicense: Boolean
+  businessName: String
+  businessType: String
+  city: String
+  description: String
+  equipment: [Json!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  id: ID!
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [Json!]
+  socialMediaRating: [Json!]
+  specialFeatures: String
+  state: String
+  status: String
+  structure: String
+  termOfLease: String
+  website: String
+  whySelling: String
+  zipCode: String
+  postedById: ID
+  postedBy: AssetpostedByUser
+  clientMutationId: String!
+}
+
+type UpdateAssetPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  asset: Asset
+  edge: AssetEdge
+  postedBy: User
+}
+
+input UpdateOrCreateAssetInput {
+  update: UpdateAsset!
+  create: CreateAsset!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateAssetPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  asset: Asset
+  edge: AssetEdge
+  postedBy: User
 }
 
 input UpdateOrCreateUserInput {
@@ -115,19 +1867,21 @@ type UpdateOrCreateUserPayload {
 }
 
 input UpdateUser {
-  dateOfBirth: DateTime
   email: String
   id: ID!
   name: String
   password: String
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
 }
 
 input UpdateUserInput {
-  dateOfBirth: DateTime
   email: String
   id: ID!
   name: String
   password: String
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
   clientMutationId: String!
 }
 
@@ -139,11 +1893,52 @@ type UpdateUserPayload {
 }
 
 type User implements Node {
-  dateOfBirth: DateTime
+  assets(filter: AssetFilter, orderBy: AssetOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): AssetConnection
   email: String!
   id: ID!
   name: String
   password: String!
+}
+
+input UserassetsAsset {
+  address: String
+  alcoholLicense: Boolean
+  businessName: String!
+  businessType: String
+  city: String!
+  description: String!
+  equipment: [Json!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [Json!]
+  socialMediaRating: [Json!]
+  specialFeatures: String
+  state: String!
+  status: String
+  structure: String
+  termOfLease: String
+  website: String
+  whySelling: String
+  zipCode: String!
 }
 
 # A connection to a list of items.
@@ -173,28 +1968,6 @@ input UserFilter {
 
   # Logical OR on all given filters.
   OR: [UserFilter!]
-  dateOfBirth: DateTime
-
-  # All values that are not equal to given value.
-  dateOfBirth_not: DateTime
-
-  # All values that are contained in given list.
-  dateOfBirth_in: [DateTime!]
-
-  # All values that are not contained in given list.
-  dateOfBirth_not_in: [DateTime!]
-
-  # All values less than the given value.
-  dateOfBirth_lt: DateTime
-
-  # All values less than or equal the given value.
-  dateOfBirth_lte: DateTime
-
-  # All values greater than the given value.
-  dateOfBirth_gt: DateTime
-
-  # All values greater than or equal the given value.
-  dateOfBirth_gte: DateTime
   email: String
 
   # All values that are not equal to given value.
@@ -355,11 +2128,12 @@ input UserFilter {
 
   # All values not ending with the given string.
   password_not_ends_with: String
+  assets_every: AssetFilter
+  assets_some: AssetFilter
+  assets_none: AssetFilter
 }
 
 enum UserOrderBy {
-  dateOfBirth_ASC
-  dateOfBirth_DESC
   email_ASC
   email_DESC
   id_ASC
@@ -372,12 +2146,11 @@ enum UserOrderBy {
 
 # This is the famous Relay viewer object
 type Viewer {
+  allAssets(filter: AssetFilter, orderBy: AssetOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): AssetConnection!
   allUsers(filter: UserFilter, orderBy: UserOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   user: User
+  Asset(businessName: String, id: ID): Asset
   User(email: String, id: ID): User
-
-  # hello
-  hello(name: String): HelloPayload
 
   # loggedInUser
   loggedInUser: LoggedInUserPayload

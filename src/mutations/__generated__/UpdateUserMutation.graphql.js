@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f7cb434df86cd1e710bb4485891723ea
+ * @relayHash 6e4a17301e95970c87b9cedff787bb7f
  */
 
 /* eslint-disable */
@@ -10,12 +10,53 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 export type UpdateUserInput = {
-  dateOfBirth?: ?any,
   email?: ?string,
   id: string,
   name?: ?string,
   password?: ?string,
+  assetsIds?: ?$ReadOnlyArray<string>,
+  assets?: ?$ReadOnlyArray<UserassetsAsset>,
   clientMutationId: string,
+};
+export type UserassetsAsset = {
+  address?: ?string,
+  alcoholLicense?: ?boolean,
+  businessName: string,
+  businessType?: ?string,
+  city: string,
+  description: string,
+  equipment?: ?$ReadOnlyArray<any>,
+  franchiseBool?: ?boolean,
+  franchiseMarketingFee?: ?string,
+  franchiseRoyalties?: ?string,
+  franchiseTraining?: ?string,
+  franchiseTransferFee?: ?string,
+  franchiseYearsRemaining?: ?string,
+  fullTimeEmployees?: ?string,
+  grossIncome?: ?string,
+  hoursOfOperation?: ?string,
+  howLongInOperation?: ?string,
+  howManySeats?: ?string,
+  insideSqFeet?: ?string,
+  netIncome?: ?string,
+  notes?: ?string,
+  owned?: ?boolean,
+  ownerFinance?: ?string,
+  partTimeEmployees?: ?string,
+  pictures?: ?$ReadOnlyArray<any>,
+  price?: ?string,
+  rentNNN?: ?string,
+  requirementsToQualify?: ?string,
+  socialMedia?: ?$ReadOnlyArray<any>,
+  socialMediaRating?: ?$ReadOnlyArray<any>,
+  specialFeatures?: ?string,
+  state: string,
+  status?: ?string,
+  structure?: ?string,
+  termOfLease?: ?string,
+  website?: ?string,
+  whySelling?: ?string,
+  zipCode: string,
 };
 export type UpdateUserMutationVariables = {|
   input: UpdateUserInput

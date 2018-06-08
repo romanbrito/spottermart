@@ -29,7 +29,7 @@ export default (id, name, callback) => {
       mutation,
       variables,
       onCompleted: response => {
-        const id = response.updateUser.id
+        const id = response.updateUser.user.id
         callback(id)
       },
       onError: err => console.error(err)
