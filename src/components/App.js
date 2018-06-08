@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header userId={this.state.userId} removeId={this._removeId}/>
-        <Main/>
+        <Main getId={this._getId}/>
       </div>
     );
   }

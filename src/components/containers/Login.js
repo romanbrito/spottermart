@@ -27,6 +27,7 @@ class Login extends Component{
     const {email, password} = this.state
     AuthenticateUserMutation(email, password, (id, token) => {
       this._saveUserData(id, token)
+      this.props.getId()
       this.props.history.push(`/`)
     })
   }
