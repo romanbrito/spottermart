@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import FrontPage from './FrontPage'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
+import CreateAsset from './ui/CreateAsset'
 
 const Main = (props) => {
   const extraProps = props
@@ -14,6 +15,7 @@ const Main = (props) => {
         <Login {...props} getId={extraProps.getId}/>
       }/>
       <Route exact path='/signup' component={Signup}/>
+      <Route exact path='/create' component={CreateAsset}/>
     </Switch>
   )
 }
