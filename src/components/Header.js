@@ -29,13 +29,13 @@ const Header = withRouter((props) => (
               localStorage.removeItem(GC_USER_ID)
               localStorage.removeItem(GC_AUTH_TOKEN)
               props.removeId()
-              // props.history.push('/')
+              props.history.push('/')
             }
             }>
             Logout</NavLink></li>}
 
-          {!props.userId &&
-          <li><Link to='/login'><NavLink title="Login">Login</NavLink></Link></li>}
+          {!props.userId && props.location.pathname !== '/login' ?
+          <li><Link to='/login'><NavLink title="Login">Login</NavLink></Link></li>:''}
         </ul>
       </div>
       <div className="dtc v-mid logo2">
