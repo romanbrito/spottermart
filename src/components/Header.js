@@ -9,8 +9,8 @@ import {Image} from 'cloudinary-react'
 const Header = withRouter((props) => (
   <Heading>
     <MenuIcon/>
-    <div id="main-nav" className="dn">
-      <div className="dn"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
+    <div id="main-nav" className="dn flex-l">
+      <div className="dn db-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
       <nav>
         <Ul>
           <li><NavLink dest='/' menuItem="Home"/></li>
@@ -23,7 +23,7 @@ const Header = withRouter((props) => (
           <li><NavLink dest='/login' menuItem="Login"/></li>:''}
         </Ul>
       </nav>
-      <div className="dn"><Image cloudName="spottermart" publicId="Logo2_qpq49e"/></div>
+      <div className="dn db-l"><Image cloudName="spottermart" publicId="Logo2_qpq49e"/></div>
     </div>
   </Heading>
 ))
@@ -47,7 +47,7 @@ const NavLink = (props) => (
 
 const MenuIcon = () => (
   <div
-    className="menu-icon ml1 pointer"
+    className="menu-icon ml1 pointer dn-l"
     onClick={showMenu}>
     <div/>
     <div/>
@@ -56,7 +56,7 @@ const MenuIcon = () => (
 )
 
 const Ul = styled.ul.attrs({
-  className: "list pa0 ma0",
+  className: "list pa0 ma0 flex-l",
 })`background-color: #f09859`
 
 const Heading = styled.header.attrs({
@@ -66,7 +66,7 @@ const Heading = styled.header.attrs({
 // toggle menu on small screens
 const showMenu = () => {
   const element = document.getElementById("main-nav");
-  (element.className === "dn") ? element.className += " db": element.className = "dn"
+  (element.className === "dn flex-l") ? element.className += " db": element.className = "dn flex-l"
 }
 
 export default Header
