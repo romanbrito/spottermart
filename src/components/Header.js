@@ -9,6 +9,7 @@ import {Image} from 'cloudinary-react'
 const Header = withRouter((props) => (
   <Heading>
     <MenuIcon/>
+    <div className="dib fr dn-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
     <div id="main-nav" className="dn flex-l">
       <div className="dn db-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
       <nav>
@@ -47,7 +48,7 @@ const NavLink = (props) => (
 
 const MenuIcon = () => (
   <div
-    className="menu-icon ml1 pointer dn-l"
+    className="menu-icon ml1 pointer dib dn-l"
     onClick={showMenu}>
     <div/>
     <div/>
