@@ -1,59 +1,72 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {GC_USER_ID, GC_AUTH_TOKEN} from '../constants'
+import '../sass/Header.css'
 import styled from 'styled-components'
-import '../sass/Navigation.css'
 import {Image} from 'cloudinary-react'
 
 // withRouter to get access to history
 const Header = withRouter((props) => (
   <Heading>
-    <Nav>
-      <div className="Logo1 dtc v-mid">
-        <Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link>
-      </div>
-
-      {/*responsive nav with only css*/}
-      <input type="checkbox" id="nav" className="hidden"/>
-      <label htmlFor="nav" className="nav-open"><i></i><i></i><i></i></label>
-
-      <div className="nav-container dtc v-mid">
-        <ul>
-          <li><NavLink href="#" title="How it Works">How it Works</NavLink></li>
-          <li><NavLink href="#" title="Pricing">Pricing</NavLink></li>
-          <li><NavLink href="#" title="About">About</NavLink></li>
+    <MenuIcon/>
+    <div id="main-nav" className="dn">
+      <div className="dn"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
+      <nav>
+        <Ul>
+          <li><NavLink dest='/' menuItem="Home"/></li>
+          <li><NavLink dest='/' menuItem="How it Works"/></li>
+          <li><NavLink dest='/' menuItem="Pricing"/></li>
+          <li><NavLink dest='/' menuItem="About"/></li>
           {props.userId &&
-          <li><NavLink
-            title="Logout"
-            onClick={() => {
-              localStorage.removeItem(GC_USER_ID)
-              localStorage.removeItem(GC_AUTH_TOKEN)
-              props.removeId()
-              props.history.push('/')
-            }
-            }>
-            Logout</NavLink></li>}
-
+          <li><NavLink dest='/' menuItem="Logout"/></li>}
           {!props.userId && props.location.pathname !== '/login' ?
-          <li><Link to='/login'><NavLink title="Login">Login</NavLink></Link></li>:''}
-        </ul>
-      </div>
-      <div className="dtc v-mid logo2">
-        <Image cloudName="spottermart" publicId="Logo2_qpq49e"/>
-      </div>
-    </Nav>
+          <li><NavLink dest='/login' menuItem="Login"/></li>:''}
+        </Ul>
+      </nav>
+      <div className="dn"><Image cloudName="spottermart" publicId="Logo2_qpq49e"/></div>
+    </div>
   </Heading>
 ))
 
+const NavLink = (props) => (
+  <Link className="db pv3 ph3 f3 white link" to={props.dest}
+  onClick={ () => {
+    // toggle menu
+    showMenu()
+    // logout
+    if (props.menuItem === 'Logout') {
+      localStorage.removeItem(GC_USER_ID)
+      localStorage.removeItem(GC_AUTH_TOKEN)
+      props.removeId()
+      props.history.push('/')
+    }}
+  }>
+    {props.menuItem}
+    </Link>
+)
+
+const MenuIcon = () => (
+  <div
+    className="menu-icon ml1 pointer"
+    onClick={showMenu}>
+    <div/>
+    <div/>
+    <div/>
+  </div>
+)
+
+const Ul = styled.ul.attrs({
+  className: "list pa0 ma0",
+})`background-color: #f09859`
 
 const Heading = styled.header.attrs({
-  className: "w-100 ph2 pv2 pv3-ns ph3-m ph4-l",
+  className: "w-100 ph2 pv2",
 })`background-color: #f09859`
-const Nav = styled.nav.attrs({
-  className: "flex items-center justify-between f6 fw6 ttu tracked",
-})``
-const NavLink = styled.p.attrs({
-  className: "link dim white dib mr3 ml3 pointer",
-})``
+
+// toggle menu on small screens
+const showMenu = () => {
+  const element = document.getElementById("main-nav");
+  (element.className === "dn") ? element.className += " db": element.className = "dn"
+}
 
 export default Header
