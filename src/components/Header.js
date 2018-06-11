@@ -10,7 +10,7 @@ const Header = withRouter((props) => (
   <Heading>
     <MenuIcon/>
     <div className="dib fr dn-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
-    <div id="main-nav" className="dn flex-l">
+    <div id="main-nav" className="dn flex-l items-center justify-between-l">
       <div className="dn db-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
       <nav>
         <Ul>
@@ -67,7 +67,7 @@ const Heading = styled.header.attrs({
 // toggle menu on small screens
 const showMenu = () => {
   const element = document.getElementById("main-nav");
-  (element.className === "dn flex-l") ? element.className += " db": element.className = "dn flex-l"
+  (element.className === "dn flex-l items-center justify-between-l") ? element.className += " db": element.className = "dn flex-l items-center justify-between-l"
 }
 
 export default Header
