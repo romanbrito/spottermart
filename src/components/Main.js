@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import FrontPage from './FrontPage'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
-import CreateAsset from './ui/CreateAsset'
+import CreateAsset from './containers/CreateAsset'
 
 const Main = (props) => {
   const extraProps = props
