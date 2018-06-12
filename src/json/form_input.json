@@ -1,0 +1,132 @@
+{
+  "section1": [
+    {
+      "id":"business-name",
+      "labelFor":"business-name",
+      "name": "business-name",
+      "type": "text",
+      "label":"Business Name"
+    },
+    {
+      "id":"description",
+      "labelFor":"description",
+      "name": "description",
+      "type": "text",
+      "label": "Description"
+    },
+    {
+      "id":"price",
+      "labelFor":"price",
+      "name": "price",
+      "type": "text",
+      "label": "Price"
+    },
+    {
+      "id":"business-type",
+      "labelFor":"business_type",
+      "name": "business_type",
+      "type": "text",
+      "label": "Business Type"
+    },
+    {
+      "id":"address",
+      "labelFor":"address",
+      "name": "address",
+      "type": "text",
+      "label": "Address"
+    },
+    {
+      "id":"city",
+      "labelFor":"city",
+      "name": "city",
+      "type": "text",
+      "label": "City"
+    },
+    {
+      "id":"state",
+      "labelFor":"state",
+      "name": "state",
+      "type": "text",
+      "label": "State"
+    },
+    {
+      "id":"zip-code",
+      "labelFor":"zip-code",
+      "name": "zip-code",
+      "type": "text",
+      "label": "Zip Code"
+    }
+  ],
+  "section2": [
+    {
+      "id":"structure",
+      "labelFor":"structure",
+      "name": "structure",
+      "type": "text",
+      "label": "Structure"
+    },
+    {
+      "id":"franchise-bool",
+      "labelFor":"franchise-bool",
+      "name": "franchise-bool",
+      "type": "checkbox",
+      "label": "Franchise"
+    },
+    {
+      "id":"franchise-years",
+      "labelFor":"franchise-years",
+      "name": "franchise-years",
+      "type": "text",
+      "label": "Franchise Years Remaining"
+    },
+    {
+      "id":"franchise-royalties",
+      "labelFor":"franchise-royalties",
+      "name": "franchise-royalties",
+      "type": "text",
+      "label": "Franchise Royalties"
+    },
+    {
+      "id":"franchise-marketing-fee",
+      "labelFor":"franchise-marketing-fee",
+      "name": "franchise-marketing-fee",
+      "type": "text",
+      "label": "Franchise Marketing Fee"
+    },
+    {
+      "id":"franchise-transfer-fee",
+      "labelFor":"franchise-transfer-fee",
+      "name": "franchise-transfer-fee",
+      "type": "text",
+      "label": "Franchise Transfer Fee"
+    },
+    {
+      "id":"franchise-training",
+      "labelFor":"franchise-training",
+      "name": "franchise-training",
+      "type": "text",
+      "label": "Franchise Training"
+    },
+    {
+      "id":"website",
+      "labelFor":"website",
+      "name": "website",
+      "type": "text",
+      "label": "Website"
+    },
+    {
+      "id":"full-time-employees",
+      "labelFor":"full-time-employees",
+      "name": "full-time-employees",
+      "type": "text",
+      "label": "Full Time Employees"
+    },
+    {
+      "id":"part-time-employees",
+      "labelFor":"part-time-employees",
+      "name": "part-time-employees",
+      "type": "text",
+      "label": "Part Time Employees"
+    }
+  ]
+}
