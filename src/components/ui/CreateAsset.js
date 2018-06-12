@@ -55,6 +55,16 @@ const CreateAsset = (props) => (
           <Dropzone
           onDrop={(images) => props.setImages(images)}/>
         </li>
+        {props.images.map(image =>
+        <li key={image.preview}>
+          <img src={image.preview} alt="" id={image.preview}/>
+          <button
+          onClick={() => props.removeImage(document.getElementById(image.preview))}>
+            Remove
+          </button>
+        </li>
+        )}
+
       </ul>
     </section>
 

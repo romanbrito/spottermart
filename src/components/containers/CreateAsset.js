@@ -10,7 +10,7 @@ class CreateAsset extends Component {
   render() {
 
     return (
-      <CreateAssetUi setImages={this._setImages}/>
+      <CreateAssetUi setImages={this._setImages} images={this.state.images} removeImage={this._removeImage}/>
     )
 
   }
@@ -20,6 +20,12 @@ class CreateAsset extends Component {
     imagesArray.push(...images)
     this.setState({
       images: imagesArray
+    })
+  }
+
+  _removeImage = (image) => {
+    this.setState({
+      images: this.state.images.filter(pic => pic.preview !== image.src)
     })
   }
 
