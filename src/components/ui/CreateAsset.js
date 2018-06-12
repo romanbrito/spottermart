@@ -35,7 +35,7 @@ const CreateAsset = () => (
     <section>
       <h3>Section 3</h3>
       <ul>
-        {formInput.section2.map(formInput =>
+        {formInput.section3.map(formInput =>
           <li>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
             <input

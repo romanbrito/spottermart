@@ -128,5 +128,119 @@
       "type": "text",
       "label": "Part Time Employees"
     }
+  ],
+  "section3": [
+    {
+      "id":"rentNNN",
+      "labelFor":"rentNNN",
+      "name": "rentNNN",
+      "type": "text",
+      "label": "RentNNN"
+    },
+    {
+      "id":"alcohol-license",
+      "labelFor":"alcohol-license",
+      "name": "alcohol-license",
+      "type": "checkbox",
+      "label": "Alcohol License"
+    },
+    {
+      "id":"owner-finance",
+      "labelFor":"owner-finance",
+      "name": "owner-finance",
+      "type": "text",
+      "label": "Owner Finance"
+    },
+    {
+      "id":"net-income",
+      "labelFor":"net-income",
+      "name": "net-income",
+      "type": "text",
+      "label": "Net Income"
+    },
+    {
+      "id":"gross-income",
+      "labelFor":"gross-income",
+      "name": "gross-income",
+      "type": "text",
+      "label": "Gross Income"
+    },
+    {
+      "id":"status",
+      "labelFor":"status",
+      "name": "status",
+      "type": "text",
+      "label": "Status"
+    },
+    {
+      "id":"owned",
+      "labelFor":"owned",
+      "name": "owned",
+      "type": "checkbox",
+      "label": "Owned"
+    },
+    {
+      "id":"term-lease",
+      "labelFor":"term-lease",
+      "name": "term-lease",
+      "type": "text",
+      "label": "Term of Lease"
+    },
+    {
+      "id":"how-long-operation",
+      "labelFor":"how-long-operation",
+      "name": "how-long-operation",
+      "type": "text",
+      "label": "How Long in Operation"
+    },
+    {
+      "id":"seats",
+      "labelFor":"seats",
+      "name": "seats",
+      "type": "text",
+      "label": "How Many Seats"
+    },
+    {
+      "id":"why-selling",
+      "labelFor":"why-selling",
+      "name": "why-selling",
+      "type": "text",
+      "label": "Reason For Selling"
+    },
+    {
+      "id":"hours-operation",
+      "labelFor":"hours-operation",
+      "name": "hours-operation",
+      "type": "text",
+      "label": "Hours of Operation"
+    },
+    {
+      "id":"qualify",
+      "labelFor":"qualify",
+      "name": "qualify",
+      "type": "text",
+      "label": "Requirements to Qualify"
+    },
+    {
+      "id":"notes",
+      "labelFor":"notes",
+      "name": "notes",
+      "type": "text",
+      "label": "Notes"
+    },
+    {
+      "id":"inside-sq-feet",
+      "labelFor":"inside-sq-feet",
+      "name": "inside-sq-feet",
+      "type": "text",
+      "label": "Inside Square Footage"
+    },
+    {
+      "id":"special-features",
+      "labelFor":"special-features",
+      "name": "special-features",
+      "type": "text",
+      "label": "Special Features"
+    }
   ]
 }
