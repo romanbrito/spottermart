@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
 import formInput from '../../json/form_input.json'
+import DropImage from './DropImage'
 
+// input
 const CreateAsset = () => (
   <div>
     <section>
@@ -44,6 +46,14 @@ const CreateAsset = () => (
               name={formInput.name}/>
           </li>
         )}
+      </ul>
+    </section>
+    <section>
+      <h3>Section 4</h3>
+      <ul>
+        <li>
+          <DropImage/>
+        </li>
       </ul>
     </section>
 
