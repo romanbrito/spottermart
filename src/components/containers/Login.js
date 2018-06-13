@@ -17,10 +17,21 @@ class Login extends Component{
 
   }
 
+  // general function for getting inputs and setting to the state
   _onChange = event => {
     const {name, value} = event.target
-    name === 'email' && this.setState({email: value})
-    name === 'password' && this.setState({password: value})
+
+    const newState = Object.keys(this.state).reduce( (prev, curr) => {
+      if (curr === name) {
+        prev[curr] = value
+      } else {
+        prev[curr] = this.state[curr]
+      }
+      return prev
+    }, {})
+
+    this.setState(newState)
+
   }
 
   _confirm = () => {

@@ -8,23 +8,23 @@ const CreateAsset = (props) => (
   <div>
     <section>
       <h3>Section 1</h3>
-        <ul>
-          {formInput.section1.map(formInput =>
-          <li  key={formInput.id}>
+      <ul>
+        {formInput.section1.map(formInput =>
+          <li key={formInput.id}>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
             <input
               type={formInput.type}
               id={formInput.id}
               name={formInput.name}/>
           </li>
-          )}
-        </ul>
+        )}
+      </ul>
     </section>
     <section>
       <h3>Section 2</h3>
       <ul>
         {formInput.section2.map(formInput =>
-          <li  key={formInput.id}>
+          <li key={formInput.id}>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
             <input
               type={formInput.type}
@@ -38,7 +38,7 @@ const CreateAsset = (props) => (
       <h3>Section 3</h3>
       <ul>
         {formInput.section3.map(formInput =>
-          <li  key={formInput.id}>
+          <li key={formInput.id}>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
             <input
               type={formInput.type}
@@ -53,17 +53,42 @@ const CreateAsset = (props) => (
       <ul>
         <li>
           <Dropzone
-          onDrop={(images) => props.setImages(images)}/>
+            onDrop={(images) => props.setImages(images)}/>
         </li>
         {props.images.map(image =>
-        <li key={image.preview}>
-          <img src={image.preview} alt="" id={image.preview}/>
+          <li key={image.preview}>
+            <img src={image.preview} alt="" id={image.preview}/>
+            <button
+              onClick={() => props.removeImage(document.getElementById(image.preview))}>
+              Remove
+            </button>
+          </li>
+        )}
+      </ul>
+    </section>
+    <section>
+      <h3>Section 5</h3>
+      <ul>
+
+        {props.equipment.map((equipment, idx) => (
+          <li key={idx}>
+            <input
+              placeholder={`Item #${idx + 1}`}
+              value={equipment.name}
+
+              type="text"/>
+            <button
+            onClick={props.removeEquipment(idx)}>
+              -
+            </button>
+          </li>
+        ))}
+        <li>
           <button
-          onClick={() => props.removeImage(document.getElementById(image.preview))}>
-            Remove
+            onClick={() => props.addEquipment()}>
+            +
           </button>
         </li>
-        )}
 
       </ul>
     </section>

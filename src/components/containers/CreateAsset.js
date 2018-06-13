@@ -5,12 +5,21 @@ class CreateAsset extends Component {
 
   state = {
     images: [],
+    equipment:[{name: ''}],
   }
 
   render() {
 
     return (
-      <CreateAssetUi setImages={this._setImages} images={this.state.images} removeImage={this._removeImage}/>
+      <CreateAssetUi
+        onChange={this._onChange}
+        addEquipment={this._addEquipment}
+        removeEquipment={this._removeEquipment}
+        setImages={this._setImages}
+        images={this.state.images}
+        removeImage={this._removeImage}
+        equipment={this.state.equipment}
+      />
     )
 
   }
@@ -27,6 +36,37 @@ class CreateAsset extends Component {
     this.setState({
       images: this.state.images.filter(pic => pic.preview !== image.src)
     })
+  }
+
+  _addEquipment = () => {
+    const newEquipment = [...this.state.equipment, {name: ''} ]
+    this.setState({
+      equipment: newEquipment
+    })
+  }
+
+  _removeEquipment = idx => e => {
+    const newEquipment = this.state.equipment.filter( (equip, equipidx ) => idx !== equipidx)
+    this.setState({
+      equipment: newEquipment
+    })
+  }
+
+  // general function for getting inputs and setting to the state
+  _onChange = event => {
+    const {name, value} = event.target
+
+    const newState = Object.keys(this.state).reduce( (prev, curr) => {
+      if (curr === name) {
+        prev[curr] = value
+      } else {
+        prev[curr] = this.state[curr]
+      }
+      return prev
+    }, {})
+
+    this.setState(newState)
+
   }
 
 }
