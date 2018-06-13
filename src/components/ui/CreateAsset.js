@@ -85,7 +85,7 @@ const CreateAsset = (props) => (
         ))}
         <li>
           <button
-            onClick={() => props.addEquipment()}>
+            onClick={() => props.addElement('equipment')}>
             +
           </button>
         </li>

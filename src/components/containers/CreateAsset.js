@@ -14,7 +14,7 @@ class CreateAsset extends Component {
       <CreateAssetUi
         onChange={this._onChange}
         onChangeEquipment={this._onChangeEquipment}
-        addEquipment={this._addEquipment}
+        addElement={this._addElement}
         removeEquipment={this._removeEquipment}
         setImages={this._setImages}
         images={this.state.images}
@@ -39,11 +39,17 @@ class CreateAsset extends Component {
     })
   }
 
-  _addEquipment = () => {
-    const newEquipment = [...this.state.equipment, {name: ''} ]
-    this.setState({
-      equipment: newEquipment
-    })
+  _addElement = (element) => {
+
+    const newElement = [...this.state[element], {name: ''} ]
+    const newState = Object.keys(this.state).reduce((prev, curr) => {
+      if (curr === element) prev[curr] = newElement
+      else prev[curr] = this.state[curr]
+      return prev
+    },  {})
+
+    this.setState(newState)
+
   }
 
   _removeEquipment = idx => {
