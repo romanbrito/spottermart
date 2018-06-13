@@ -75,7 +75,7 @@ const CreateAsset = (props) => (
             <input
               placeholder={`Item #${idx + 1}`}
               value={equipment.name}
-
+              onChange={props.onChangeEquipment(idx)}
               type="text"/>
             <button
             onClick={() => props.removeEquipment(idx)}>
