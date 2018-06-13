@@ -78,7 +78,7 @@ const CreateAsset = (props) => (
 
               type="text"/>
             <button
-            onClick={props.removeEquipment(idx)}>
+            onClick={() => props.removeEquipment(idx)}>
               -
             </button>
           </li>

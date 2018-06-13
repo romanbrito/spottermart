@@ -45,7 +45,7 @@ class CreateAsset extends Component {
     })
   }
 
-  _removeEquipment = idx => e => {
+  _removeEquipment = idx => {
     const newEquipment = this.state.equipment.filter( (equip, equipidx ) => idx !== equipidx)
     this.setState({
       equipment: newEquipment
