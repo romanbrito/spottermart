@@ -14,7 +14,7 @@ class CreateAsset extends Component {
     return (
       <CreateAssetUi
         onChange={this._onChange}
-        onChangeEquipment={this._onChangeEquipment}
+        onChangeElement={this._onChangeElement}
         addElement={this._addElement}
         removeElement={this._removeElement}
         setImages={this._setImages}
@@ -66,13 +66,19 @@ class CreateAsset extends Component {
     this.setState(newState)
   }
 
-  _onChangeEquipment = idx => e => {
-    const newEquipment = this.state.equipment.map((equipment, sidx) => {
-      if (idx !== sidx) return equipment
-      return { ...equipment, name: e.target.value }
+  _onChangeElement = (element, idx) => e => {
+    const newElement = this.state[element].map((item, sidx) => {
+      if (idx !== sidx) return item
+      return { ...item, name: e.target.value }
     })
 
-    this.setState({ equipment: newEquipment })
+    const newState = Object.keys(this.state).reduce((prev, curr) => {
+      if (curr === element) prev[curr] = newElement
+      else prev[curr] = this.state[curr]
+      return prev
+    },  {})
+
+    this.setState(newState)
   }
 
   // general function for getting inputs and setting to the state

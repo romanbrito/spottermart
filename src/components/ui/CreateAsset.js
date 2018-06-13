@@ -75,7 +75,7 @@ const CreateAsset = (props) => (
             <input
               placeholder={`Item #${idx + 1}`}
               value={equipment.name}
-              onChange={props.onChangeEquipment(idx)}
+              onChange={props.onChangeElement('equipment', idx)}
               type="text"/>
             <button
             onClick={() => props.removeElement('equipment', idx)}>
@@ -102,7 +102,7 @@ const CreateAsset = (props) => (
             <input
               placeholder={`Item #${idx + 1}`}
               value={socialMedia.name}
-              // onChange={props.onChangeEquipment(idx)}
+              onChange={props.onChangeElement('socialMedia', idx)}
               type="text"/>
             <button
               onClick={() => props.removeElement('socialMedia', idx)}
