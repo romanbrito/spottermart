@@ -19,6 +19,8 @@ const Header = withRouter((props) => (
           <li><NavLink dest='/' menuItem="Pricing"/></li>
           <li><NavLink dest='/' menuItem="About"/></li>
           {props.userId &&
+          <li><NavLink dest='/create' menuItem="Create Asset"/></li>}
+          {props.userId &&
           <li><NavLink dest='/' menuItem="Logout"/></li>}
           {!props.userId && props.location.pathname !== '/login' ?
           <li><NavLink dest='/login' menuItem="Login"/></li>:''}
