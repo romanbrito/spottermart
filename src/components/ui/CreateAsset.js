@@ -7,8 +7,12 @@ import Dropzone from 'react-dropzone'
 const CreateAsset = (props) => (
   <div>
     <section>
-      <h3>Section 1</h3>
-      <ul>
+      <h3 className="pointer bg-gray w-100 accordion"
+      onClick={(e) => {showAccordion(e)}}
+      >
+        Section 1
+      </h3>
+      <ul className="dn overflow-hidden ph1 panel">
         {formInput.section1.map(formInput =>
           <li key={formInput.id}>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
@@ -21,8 +25,12 @@ const CreateAsset = (props) => (
       </ul>
     </section>
     <section>
-      <h3>Section 2</h3>
-      <ul>
+      <h3 className="pointer bg-gray w-100 accordion"
+      onClick={(e) => showAccordion(e)}
+      >
+        Section 2
+      </h3>
+      <ul className="dn overflow-hidden ph1 panel">
         {formInput.section2.map(formInput =>
           <li key={formInput.id}>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
@@ -35,8 +43,12 @@ const CreateAsset = (props) => (
       </ul>
     </section>
     <section>
-      <h3>Section 3</h3>
-      <ul>
+      <h3 className="pointer bg-gray w-100 accordion"
+      onClick={(e) => showAccordion(e)}
+      >
+        Section 3
+      </h3>
+      <ul className="dn overflow-hidden ph1 panel">
         {formInput.section3.map(formInput =>
           <li key={formInput.id}>
             <label htmlFor={formInput.labelFor}>{formInput.label}</label>
@@ -49,8 +61,12 @@ const CreateAsset = (props) => (
       </ul>
     </section>
     <section>
-      <h3>Section 4</h3>
-      <ul>
+      <h3 className="pointer bg-gray w-100 accordion"
+      onClick={(e) => showAccordion(e)}
+      >
+        Section 4
+      </h3>
+      <ul className="dn overflow-hidden ph1 panel">
         <li>
           <Dropzone
             onDrop={(images) => props.setImages(images)}/>
@@ -67,8 +83,12 @@ const CreateAsset = (props) => (
       </ul>
     </section>
     <section>
-      <h3>Section 5</h3>
-      <ul>
+      <h3 className="pointer bg-gray w-100 accordion"
+      onClick={(e) => showAccordion(e)}
+      >
+        Section 5
+      </h3>
+      <ul className="dn overflow-hidden ph1 panel">
 
         {props.equipment.map((equipment, idx) => (
           <li key={idx}>
@@ -93,8 +113,12 @@ const CreateAsset = (props) => (
       </ul>
     </section>
     <section>
-      <h3>Section 6</h3>
-      <ul>
+      <h3 className="pointer bg-gray w-100 accordion"
+      onClick={(e) => showAccordion(e)}
+      >
+        Section 6
+      </h3>
+      <ul className="dn overflow-hidden ph1 panel">
 
         {props.socialMedia.map((socialMedia, idx) => (
           <li key={idx}>
@@ -123,4 +147,9 @@ const CreateAsset = (props) => (
   </div>
 )
 
+// toggle accordion
+const showAccordion = (e) => {
+  const panel = e.target.nextElementSibling;
+  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " db": panel.className = "dn overflow-hidden ph1 panel"
+}
 export default CreateAsset
