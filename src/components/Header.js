@@ -14,7 +14,6 @@ const Header = withRouter((props) => (
       <div className="dn db-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
       <nav>
         <Ul>
-          <li><NavLink dest='/' menuItem="Home"/></li>
           <li><NavLink dest='/' menuItem="How it Works"/></li>
           <li><NavLink dest='/' menuItem="Pricing"/></li>
           <li><NavLink dest='/' menuItem="About"/></li>
