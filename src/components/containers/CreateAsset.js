@@ -42,28 +42,13 @@ class CreateAsset extends Component {
   }
 
   _addElement = (element) => {
-
     const newElement = [...this.state[element], {name: ''} ]
-    const newState = Object.keys(this.state).reduce((prev, curr) => {
-      if (curr === element) prev[curr] = newElement
-      else prev[curr] = this.state[curr]
-      return prev
-    },  {})
-
-    this.setState(newState)
-
+    this._newState(element,newElement)
   }
 
   _removeElement = (element,idx) => {
     const newElement = this.state[element].filter( (equip, equipidx ) => idx !== equipidx)
-
-    const newState = Object.keys(this.state).reduce((prev, curr) => {
-      if (curr === element) prev[curr] = newElement
-      else prev[curr] = this.state[curr]
-      return prev
-    },  {})
-
-    this.setState(newState)
+    this._newState(element,newElement)
   }
 
   _onChangeElement = (element, idx) => e => {
@@ -71,31 +56,21 @@ class CreateAsset extends Component {
       if (idx !== sidx) return item
       return { ...item, name: e.target.value }
     })
+    this._newState(element,newElement)
+  }
 
+  _onChange = event => {
+    const {name, value} = event.target
+    this._newState(name,value)
+  }
+
+  _newState = (element, newElement) => {
     const newState = Object.keys(this.state).reduce((prev, curr) => {
       if (curr === element) prev[curr] = newElement
       else prev[curr] = this.state[curr]
       return prev
     },  {})
-
     this.setState(newState)
-  }
-
-  // general function for getting inputs and setting to the state
-  _onChange = event => {
-    const {name, value} = event.target
-
-    const newState = Object.keys(this.state).reduce( (prev, curr) => {
-      if (curr === name) {
-        prev[curr] = value
-      } else {
-        prev[curr] = this.state[curr]
-      }
-      return prev
-    }, {})
-
-    this.setState(newState)
-
   }
 
 }
