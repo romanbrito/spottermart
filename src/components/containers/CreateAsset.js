@@ -6,6 +6,7 @@ class CreateAsset extends Component {
   state = {
     images: [],
     equipment:[{name: ''}],
+    socialMedia:[{name: ''}],
   }
 
   render() {
@@ -15,11 +16,12 @@ class CreateAsset extends Component {
         onChange={this._onChange}
         onChangeEquipment={this._onChangeEquipment}
         addElement={this._addElement}
-        removeEquipment={this._removeEquipment}
+        removeElement={this._removeElement}
         setImages={this._setImages}
         images={this.state.images}
         removeImage={this._removeImage}
         equipment={this.state.equipment}
+        socialMedia={this.state.socialMedia}
       />
     )
 
@@ -52,11 +54,16 @@ class CreateAsset extends Component {
 
   }
 
-  _removeEquipment = idx => {
-    const newEquipment = this.state.equipment.filter( (equip, equipidx ) => idx !== equipidx)
-    this.setState({
-      equipment: newEquipment
-    })
+  _removeElement = (element,idx) => {
+    const newElement = this.state[element].filter( (equip, equipidx ) => idx !== equipidx)
+
+    const newState = Object.keys(this.state).reduce((prev, curr) => {
+      if (curr === element) prev[curr] = newElement
+      else prev[curr] = this.state[curr]
+      return prev
+    },  {})
+
+    this.setState(newState)
   }
 
   _onChangeEquipment = idx => e => {

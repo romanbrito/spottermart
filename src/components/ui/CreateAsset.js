@@ -78,7 +78,7 @@ const CreateAsset = (props) => (
               onChange={props.onChangeEquipment(idx)}
               type="text"/>
             <button
-            onClick={() => props.removeEquipment(idx)}>
+            onClick={() => props.removeElement('equipment', idx)}>
               -
             </button>
           </li>
@@ -86,6 +86,34 @@ const CreateAsset = (props) => (
         <li>
           <button
             onClick={() => props.addElement('equipment')}>
+            +
+          </button>
+        </li>
+
+      </ul>
+    </section>
+
+    <section>
+      <h3>Section 6</h3>
+      <ul>
+
+        {props.socialMedia.map((socialMedia, idx) => (
+          <li key={idx}>
+            <input
+              placeholder={`Item #${idx + 1}`}
+              value={socialMedia.name}
+              // onChange={props.onChangeEquipment(idx)}
+              type="text"/>
+            <button
+              onClick={() => props.removeElement('socialMedia', idx)}
+              >
+              -
+            </button>
+          </li>
+        ))}
+        <li>
+          <button
+            onClick={() => props.addElement('socialMedia')}>
             +
           </button>
         </li>
