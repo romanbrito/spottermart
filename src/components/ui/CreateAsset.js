@@ -92,7 +92,6 @@ const CreateAsset = (props) => (
 
       </ul>
     </section>
-
     <section>
       <h3>Section 6</h3>
       <ul>

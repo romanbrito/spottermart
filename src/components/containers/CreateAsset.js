@@ -27,6 +27,7 @@ class CreateAsset extends Component {
 
   }
 
+  // functions for images
   _setImages = (images) => {
     const imagesArray = [...this.state.images]
     imagesArray.push(...images)
@@ -35,6 +36,7 @@ class CreateAsset extends Component {
     })
   }
 
+  // functions for adding lists of equipment and social media
   _removeImage = (image) => {
     this.setState({
       images: this.state.images.filter(pic => pic.preview !== image.src)
