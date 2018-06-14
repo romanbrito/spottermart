@@ -149,6 +149,13 @@ const CreateAsset = (props) => (
 
       </ul>
     </section>
+    <section>
+      <button
+      onClick={() => props.createAsset()}
+      >
+        Submit
+      </button>
+    </section>
 
   </div>
 )

@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import CreateAssetMutation from '../../mutations/CreateAssetMutation'
+import {GC_USER_ID} from '../../constants'
+import {uploadImage} from '../../utils'
 import CreateAssetUi from '../ui/CreateAsset'
 
 class CreateAsset extends Component {
@@ -9,6 +12,7 @@ class CreateAsset extends Component {
     price: '',
     postedBy: '',
     pictures: [],
+    images: [],
     businessType: '',
     address: '',
     city: '',
@@ -57,7 +61,50 @@ class CreateAsset extends Component {
         removePicture={this._removePicture}
         equipment={this.state.equipment}
         socialMedia={this.state.socialMedia}
+        createAsset={this._createAsset}
       />
+    )
+
+  }
+
+  _createAsset = () => {
+
+    // fetch image data PROMISES!!
+    const allPicData = () => {
+      const imagePromises = this.state.images.map(
+        image => {
+          return uploadImage(image)
+        }
+      )
+      return Promise.all(imagePromises)
+    }
+
+    allPicData().then(
+      pictures => {
+        const postedById = localStorage.getItem(GC_USER_ID)
+        if (!postedById) {
+          console.error('No user logged in')
+          return
+        }
+        const {
+          address,
+          businessName,
+          description,
+          city,
+          state,
+          zipCode
+        } = this.state
+
+        CreateAssetMutation(
+          businessName,
+          description,
+          postedById,
+          address,
+          city,
+          state,
+          zipCode
+          , () => this.props.history.push('/'))
+      }
     )
 
   }
