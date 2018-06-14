@@ -38,8 +38,9 @@ export default (
   address,
   city,
   state,
-  zipCode
-  , callback) => {
+  zipCode,
+  pictures,
+  callback) => {
   //4
   const variables = {
     input: {
@@ -50,6 +51,7 @@ export default (
       city,
       state,
       zipCode,
+      pictures,
       clientMutationId: ""
     },
   }

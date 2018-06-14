@@ -56,9 +56,9 @@ class CreateAsset extends Component {
         onChangeElement={this._onChangeElement}
         addElement={this._addElement}
         removeElement={this._removeElement}
-        setPictures={this._setPictures}
-        pictures={this.state.pictures}
-        removePicture={this._removePicture}
+        setImages={this._setImages}
+        images={this.state.images}
+        removeImage={this._removeImage}
         equipment={this.state.equipment}
         socialMedia={this.state.socialMedia}
         createAsset={this._createAsset}
@@ -102,25 +102,26 @@ class CreateAsset extends Component {
           address,
           city,
           state,
-          zipCode
-          , () => this.props.history.push('/'))
+          zipCode,
+          pictures,
+          () => this.props.history.push('/'))
       }
     )
 
   }
 
   // functions for images
-  _setPictures = (images) => {
-    const imagesArray = [...this.state.pictures]
+  _setImages = (images) => {
+    const imagesArray = [...this.state.images]
     imagesArray.push(...images)
     this.setState({
-      pictures: imagesArray
+      images: imagesArray
     })
   }
 
-  _removePicture = (image) => {
+  _removeImage = (image) => {
     this.setState({
-      pictures: this.state.pictures.filter(pic => pic.preview !== image.src)
+      images: this.state.images.filter(pic => pic.preview !== image.src)
     })
   }
 
