@@ -18,7 +18,7 @@ const CreateAsset = (props) => (
   <div className="list pl0 mt0 measure center">
     <section className="flex lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
-        <Location className=""/>
+        <Location size={30}/>
         <h3 className="pointer w-100 accordion"
             onClick={(e) => {
               showAccordion(e)
@@ -43,7 +43,7 @@ const CreateAsset = (props) => (
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
-        <Store className=""/>
+        <Store size={30}/>
       <h3 className="pointer w-100 accordion"
           onClick={(e) => showAccordion(e)}
       >
@@ -66,7 +66,7 @@ const CreateAsset = (props) => (
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
-        <Money className=""/>
+        <Money size={30}/>
       <h3 className="pointer w-100 accordion"
           onClick={(e) => showAccordion(e)}
       >
@@ -89,7 +89,7 @@ const CreateAsset = (props) => (
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
-        <Images className=""/>
+        <Images size={30}/>
       <h3 className="pointer w-100 accordion"
           onClick={(e) => showAccordion(e)}
       >
@@ -114,7 +114,7 @@ const CreateAsset = (props) => (
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
-        <Tools className=""/>
+        <Tools size={30}/>
       <h3 className="pointer w-100 accordion"
           onClick={(e) => showAccordion(e)}
       >
@@ -147,7 +147,7 @@ const CreateAsset = (props) => (
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
-        <Facebook/><Twitter/><Instagram/><Google/>
+        <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
       <h3 className="pointer w-100 accordion"
           onClick={(e) => showAccordion(e)}
       >
@@ -180,6 +180,7 @@ const CreateAsset = (props) => (
     </section>
     <section>
       <button
+        className="f5 no-underline black bg-animate hover-bg-black hover-white pa3 ba border-box pointer mt2"
         onClick={() => props.createAsset()}
       >
         Submit
