@@ -19,7 +19,9 @@ const CreateAsset = (props) => (
             <input
               type={formInput.type}
               id={formInput.id}
-              name={formInput.name}/>
+              name={formInput.name}
+              onChange={e => props.onChange(e)}
+            />
           </li>
         )}
       </ul>
@@ -37,7 +39,9 @@ const CreateAsset = (props) => (
             <input
               type={formInput.type}
               id={formInput.id}
-              name={formInput.name}/>
+              name={formInput.name}
+              onChange={e => props.onChange(e)}
+            />
           </li>
         )}
       </ul>
@@ -55,7 +59,9 @@ const CreateAsset = (props) => (
             <input
               type={formInput.type}
               id={formInput.id}
-              name={formInput.name}/>
+              name={formInput.name}
+              onChange={e => props.onChange(e)}
+            />
           </li>
         )}
       </ul>

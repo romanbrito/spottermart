@@ -3,7 +3,7 @@
     {
       "id":"business-name",
       "labelFor":"business-name",
-      "name": "business-name",
+      "name": "businessName",
       "type": "text",
       "label":"Business Name"
     },
@@ -24,7 +24,7 @@
     {
       "id":"business-type",
       "labelFor":"business_type",
-      "name": "business_type",
+      "name": "businessType",
       "type": "text",
       "label": "Business Type"
     },
@@ -52,7 +52,7 @@
     {
       "id":"zip-code",
       "labelFor":"zip-code",
-      "name": "zip-code",
+      "name": "zipCode",
       "type": "text",
       "label": "Zip Code"
     }
@@ -68,42 +68,42 @@
     {
       "id":"franchise-bool",
       "labelFor":"franchise-bool",
-      "name": "franchise-bool",
+      "name": "franchiseBool",
       "type": "checkbox",
       "label": "Franchise"
     },
     {
       "id":"franchise-years",
       "labelFor":"franchise-years",
-      "name": "franchise-years",
+      "name": "franchiseYearsRemaining",
       "type": "text",
       "label": "Franchise Years Remaining"
     },
     {
       "id":"franchise-royalties",
       "labelFor":"franchise-royalties",
-      "name": "franchise-royalties",
+      "name": "franchiseRoyalties",
       "type": "text",
       "label": "Franchise Royalties"
     },
     {
       "id":"franchise-marketing-fee",
       "labelFor":"franchise-marketing-fee",
-      "name": "franchise-marketing-fee",
+      "name": "franchiseMarketingFee",
       "type": "text",
       "label": "Franchise Marketing Fee"
     },
     {
       "id":"franchise-transfer-fee",
       "labelFor":"franchise-transfer-fee",
-      "name": "franchise-transfer-fee",
+      "name": "franchiseTransferFee",
       "type": "text",
       "label": "Franchise Transfer Fee"
     },
     {
       "id":"franchise-training",
       "labelFor":"franchise-training",
-      "name": "franchise-training",
+      "name": "franchiseTraining",
       "type": "text",
       "label": "Franchise Training"
     },
@@ -117,14 +117,14 @@
     {
       "id":"full-time-employees",
       "labelFor":"full-time-employees",
-      "name": "full-time-employees",
+      "name": "fullTimeEmployees",
       "type": "text",
       "label": "Full Time Employees"
     },
     {
       "id":"part-time-employees",
       "labelFor":"part-time-employees",
-      "name": "part-time-employees",
+      "name": "partTimeEmployees",
       "type": "text",
       "label": "Part Time Employees"
     }
@@ -140,28 +140,28 @@
     {
       "id":"alcohol-license",
       "labelFor":"alcohol-license",
-      "name": "alcohol-license",
+      "name": "alcoholLicense",
       "type": "checkbox",
       "label": "Alcohol License"
     },
     {
       "id":"owner-finance",
       "labelFor":"owner-finance",
-      "name": "owner-finance",
+      "name": "ownerFinance",
       "type": "text",
       "label": "Owner Finance"
     },
     {
       "id":"net-income",
       "labelFor":"net-income",
-      "name": "net-income",
+      "name": "netIncome",
       "type": "text",
       "label": "Net Income"
     },
     {
       "id":"gross-income",
       "labelFor":"gross-income",
-      "name": "gross-income",
+      "name": "grossIncome",
       "type": "text",
       "label": "Gross Income"
     },
@@ -182,42 +182,42 @@
     {
       "id":"term-lease",
       "labelFor":"term-lease",
-      "name": "term-lease",
+      "name": "termOfLease",
       "type": "text",
       "label": "Term of Lease"
     },
     {
       "id":"how-long-operation",
       "labelFor":"how-long-operation",
-      "name": "how-long-operation",
+      "name": "howLongInOperation",
       "type": "text",
       "label": "How Long in Operation"
     },
     {
       "id":"seats",
       "labelFor":"seats",
-      "name": "seats",
+      "name": "howManySeats",
       "type": "text",
       "label": "How Many Seats"
     },
     {
       "id":"why-selling",
       "labelFor":"why-selling",
-      "name": "why-selling",
+      "name": "whySelling",
       "type": "text",
       "label": "Reason For Selling"
     },
     {
       "id":"hours-operation",
       "labelFor":"hours-operation",
-      "name": "hours-operation",
+      "name": "hoursOfOperation",
       "type": "text",
       "label": "Hours of Operation"
     },
     {
       "id":"qualify",
       "labelFor":"qualify",
-      "name": "qualify",
+      "name": "requirementsToQualify",
       "type": "text",
       "label": "Requirements to Qualify"
     },
@@ -231,14 +231,14 @@
     {
       "id":"inside-sq-feet",
       "labelFor":"inside-sq-feet",
-      "name": "inside-sq-feet",
+      "name": "insideSqFeet",
       "type": "text",
       "label": "Inside Square Footage"
     },
     {
       "id":"special-features",
       "labelFor":"special-features",
-      "name": "special-features",
+      "name": "specialFeatures",
       "type": "text",
       "label": "Special Features"
     }

@@ -4,10 +4,45 @@ import CreateAssetUi from '../ui/CreateAsset'
 class CreateAsset extends Component {
 
   state = {
-    images: [],
-    equipment:[{name: ''}],
-    socialMedia:[{name: ''}],
-  }
+    businessName: '',
+    description: '',
+    price: '',
+    postedBy: '',
+    pictures: [],
+    businessType: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    structure: '',
+    franchiseBool: false,
+    franchiseYearsRemaining: '',
+    franchiseRoyalties: '',
+    franchiseMarketingFee: '',
+    franchiseTransferFee: '',
+    franchiseTraining: '',
+    website: '',
+    fullTimeEmployees: '',
+    partTimeEmployees: '',
+    rentNNN: '',
+    alcoholLicense: false,
+    ownerFinance: '',
+    netIncome: '',
+    grossIncome: '',
+    status: '',
+    equipment: [{name:''}],
+    socialMedia: [{name: ''}],
+    owned: false,
+    termOfLease: '',
+    howLongInOperation: '',
+    howManySeats: '',
+    whySelling: '',
+    hoursOfOperation: '',
+    requirementsToQualify: '',
+    notes: '',
+    insideSqFeet: '',
+    specialFeatures: ''
+}
 
   render() {
 
@@ -18,7 +53,7 @@ class CreateAsset extends Component {
         addElement={this._addElement}
         removeElement={this._removeElement}
         setImages={this._setImages}
-        images={this.state.images}
+        images={this.state.pictures}
         removeImage={this._removeImage}
         equipment={this.state.equipment}
         socialMedia={this.state.socialMedia}
@@ -29,20 +64,20 @@ class CreateAsset extends Component {
 
   // functions for images
   _setImages = (images) => {
-    const imagesArray = [...this.state.images]
+    const imagesArray = [...this.state.pictures]
     imagesArray.push(...images)
     this.setState({
-      images: imagesArray
+      pictures: imagesArray
+    })
+  }
+
+  _removeImage = (image) => {
+    this.setState({
+      pictures: this.state.pictures.filter(pic => pic.preview !== image.src)
     })
   }
 
   // functions for adding lists of equipment and social media
-  _removeImage = (image) => {
-    this.setState({
-      images: this.state.images.filter(pic => pic.preview !== image.src)
-    })
-  }
-
   _addElement = (element) => {
     const newElement = [...this.state[element], {name: ''} ]
     this._newState(element,newElement)
