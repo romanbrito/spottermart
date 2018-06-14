@@ -2,12 +2,14 @@ import React from 'react'
 // import styled from "styled-components"
 import formInput from '../../json/form_input.json'
 import Dropzone from 'react-dropzone'
+import LocationIcon from 'react-icons/lib/md/location-city'
 
 // inputs
 const CreateAsset = (props) => (
-  <div>
-    <section>
-      <h3 className="pointer bg-gray w-100 accordion"
+  <div className="list pl0 mt0 measure center">
+    <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <div className="pq13 flex-auto">
+      <h3 className="pointer w-100 accordion"
       onClick={(e) => {showAccordion(e)}}
       >
         Section 1
@@ -25,9 +27,10 @@ const CreateAsset = (props) => (
           </li>
         )}
       </ul>
+      </div>
     </section>
-    <section>
-      <h3 className="pointer bg-gray w-100 accordion"
+    <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <h3 className="pointer w-100 accordion"
       onClick={(e) => showAccordion(e)}
       >
         Section 2
@@ -46,8 +49,8 @@ const CreateAsset = (props) => (
         )}
       </ul>
     </section>
-    <section>
-      <h3 className="pointer bg-gray w-100 accordion"
+    <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <h3 className="pointer w-100 accordion"
       onClick={(e) => showAccordion(e)}
       >
         Section 3
@@ -66,8 +69,8 @@ const CreateAsset = (props) => (
         )}
       </ul>
     </section>
-    <section>
-      <h3 className="pointer bg-gray w-100 accordion"
+    <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <h3 className="pointer w-100 accordion"
       onClick={(e) => showAccordion(e)}
       >
         Section 4
@@ -88,8 +91,8 @@ const CreateAsset = (props) => (
         )}
       </ul>
     </section>
-    <section>
-      <h3 className="pointer bg-gray w-100 accordion"
+    <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <h3 className="pointer w-100 accordion"
       onClick={(e) => showAccordion(e)}
       >
         Section 5
@@ -118,8 +121,8 @@ const CreateAsset = (props) => (
 
       </ul>
     </section>
-    <section>
-      <h3 className="pointer bg-gray w-100 accordion"
+    <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <h3 className="pointer w-100 accordion"
       onClick={(e) => showAccordion(e)}
       >
         Section 6
