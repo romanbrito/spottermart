@@ -75,13 +75,13 @@ const CreateAsset = (props) => (
       <ul className="dn overflow-hidden ph1 panel">
         <li>
           <Dropzone
-            onDrop={(images) => props.setImages(images)}/>
+            onDrop={(images) => props.setPictures(images)}/>
         </li>
-        {props.images.map(image =>
+        {props.pictures.map(image =>
           <li key={image.preview}>
             <img src={image.preview} alt="" id={image.preview}/>
             <button
-              onClick={() => props.removeImage(document.getElementById(image.preview))}>
+              onClick={() => props.removePicture(document.getElementById(image.preview))}>
               Remove
             </button>
           </li>

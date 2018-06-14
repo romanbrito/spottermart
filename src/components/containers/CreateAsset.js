@@ -52,9 +52,9 @@ class CreateAsset extends Component {
         onChangeElement={this._onChangeElement}
         addElement={this._addElement}
         removeElement={this._removeElement}
-        setImages={this._setImages}
-        images={this.state.pictures}
-        removeImage={this._removeImage}
+        setPictures={this._setPictures}
+        pictures={this.state.pictures}
+        removePicture={this._removePicture}
         equipment={this.state.equipment}
         socialMedia={this.state.socialMedia}
       />
@@ -63,7 +63,7 @@ class CreateAsset extends Component {
   }
 
   // functions for images
-  _setImages = (images) => {
+  _setPictures = (images) => {
     const imagesArray = [...this.state.pictures]
     imagesArray.push(...images)
     this.setState({
@@ -71,7 +71,7 @@ class CreateAsset extends Component {
     })
   }
 
-  _removeImage = (image) => {
+  _removePicture = (image) => {
     this.setState({
       pictures: this.state.pictures.filter(pic => pic.preview !== image.src)
     })
