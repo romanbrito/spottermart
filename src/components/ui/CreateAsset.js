@@ -2,38 +2,52 @@ import React from 'react'
 // import styled from "styled-components"
 import formInput from '../../json/form_input.json'
 import Dropzone from 'react-dropzone'
-import LocationIcon from 'react-icons/lib/md/location-city'
+import Location from 'react-icons/lib/md/location-city'
+import Store from 'react-icons/lib/md/store'
+import Money from 'react-icons/lib/fa/money'
+import Images from 'react-icons/lib/io/images'
+import Tools from 'react-icons/lib/go/tools'
+import Facebook from 'react-icons/lib/fa/facebook-official'
+import Instagram from 'react-icons/lib/fa/instagram'
+import Twitter from 'react-icons/lib/fa/twitter'
+import Google from 'react-icons/lib/fa/google-plus'
+
 
 // inputs
 const CreateAsset = (props) => (
   <div className="list pl0 mt0 measure center">
-    <section className="lh-copy pa3 ph0-l bb b--black-10">
-      <div className="pq13 flex-auto">
-      <h3 className="pointer w-100 accordion"
-      onClick={(e) => {showAccordion(e)}}
-      >
-        Section 1
-      </h3>
-      <ul className="dn overflow-hidden ph1 panel">
-        {formInput.section1.map(formInput =>
-          <li key={formInput.id}>
-            <label htmlFor={formInput.labelFor}>{formInput.label}</label>
-            <input
-              type={formInput.type}
-              id={formInput.id}
-              name={formInput.name}
-              onChange={e => props.onChange(e)}
-            />
-          </li>
-        )}
-      </ul>
+    <section className="flex lh-copy pa3 ph0-l bb b--black-10">
+      <div className="flex-auto">
+        <Location className=""/>
+        <h3 className="pointer w-100 accordion"
+            onClick={(e) => {
+              showAccordion(e)
+            }}
+        >
+          Name and Location
+        </h3>
+        <ul className="dn overflow-hidden ph1 panel">
+          {formInput.section1.map(formInput =>
+            <li key={formInput.id}>
+              <label htmlFor={formInput.labelFor}>{formInput.label}</label>
+              <input
+                type={formInput.type}
+                id={formInput.id}
+                name={formInput.name}
+                onChange={e => props.onChange(e)}
+              />
+            </li>
+          )}
+        </ul>
       </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <div className="flex-auto">
+        <Store className=""/>
       <h3 className="pointer w-100 accordion"
-      onClick={(e) => showAccordion(e)}
+          onClick={(e) => showAccordion(e)}
       >
-        Section 2
+        Company
       </h3>
       <ul className="dn overflow-hidden ph1 panel">
         {formInput.section2.map(formInput =>
@@ -48,12 +62,15 @@ const CreateAsset = (props) => (
           </li>
         )}
       </ul>
+      </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <div className="flex-auto">
+        <Money className=""/>
       <h3 className="pointer w-100 accordion"
-      onClick={(e) => showAccordion(e)}
+          onClick={(e) => showAccordion(e)}
       >
-        Section 3
+        Financial
       </h3>
       <ul className="dn overflow-hidden ph1 panel">
         {formInput.section3.map(formInput =>
@@ -68,12 +85,15 @@ const CreateAsset = (props) => (
           </li>
         )}
       </ul>
+      </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <div className="flex-auto">
+        <Images className=""/>
       <h3 className="pointer w-100 accordion"
-      onClick={(e) => showAccordion(e)}
+          onClick={(e) => showAccordion(e)}
       >
-        Section 4
+        Images
       </h3>
       <ul className="dn overflow-hidden ph1 panel">
         <li>
@@ -90,12 +110,15 @@ const CreateAsset = (props) => (
           </li>
         )}
       </ul>
+      </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <div className="flex-auto">
+        <Tools className=""/>
       <h3 className="pointer w-100 accordion"
-      onClick={(e) => showAccordion(e)}
+          onClick={(e) => showAccordion(e)}
       >
-        Section 5
+        Equipment
       </h3>
       <ul className="dn overflow-hidden ph1 panel">
 
@@ -107,7 +130,7 @@ const CreateAsset = (props) => (
               onChange={props.onChangeElement('equipment', idx)}
               type="text"/>
             <button
-            onClick={() => props.removeElement('equipment', idx)}>
+              onClick={() => props.removeElement('equipment', idx)}>
               -
             </button>
           </li>
@@ -120,12 +143,15 @@ const CreateAsset = (props) => (
         </li>
 
       </ul>
+      </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
+      <div className="flex-auto">
+        <Facebook/><Twitter/><Instagram/><Google/>
       <h3 className="pointer w-100 accordion"
-      onClick={(e) => showAccordion(e)}
+          onClick={(e) => showAccordion(e)}
       >
-        Section 6
+        Social Media
       </h3>
       <ul className="dn overflow-hidden ph1 panel">
 
@@ -138,7 +164,7 @@ const CreateAsset = (props) => (
               type="text"/>
             <button
               onClick={() => props.removeElement('socialMedia', idx)}
-              >
+            >
               -
             </button>
           </li>
@@ -149,12 +175,12 @@ const CreateAsset = (props) => (
             +
           </button>
         </li>
-
       </ul>
+      </div>
     </section>
     <section>
       <button
-      onClick={() => props.createAsset()}
+        onClick={() => props.createAsset()}
       >
         Submit
       </button>
@@ -166,6 +192,6 @@ const CreateAsset = (props) => (
 // toggle accordion
 const showAccordion = (e) => {
   const panel = e.target.nextElementSibling;
-  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " db": panel.className = "dn overflow-hidden ph1 panel"
+  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " db" : panel.className = "dn overflow-hidden ph1 panel"
 }
 export default CreateAsset
