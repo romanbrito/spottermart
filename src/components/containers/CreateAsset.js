@@ -49,6 +49,8 @@ class CreateAsset extends Component {
 }
 
   render() {
+    const validationErrors = this._validate()
+    const isEnabled = !Object.keys(validationErrors).some(x => validationErrors[x])
 
     return (
       <CreateAssetUi
@@ -62,6 +64,8 @@ class CreateAsset extends Component {
         equipment={this.state.equipment}
         socialMedia={this.state.socialMedia}
         createAsset={this._createAsset}
+        isEnabled = {isEnabled}
+        validationErrors = {validationErrors}
       />
     )
 
@@ -172,6 +176,19 @@ class CreateAsset extends Component {
     )
 
   }
+
+  //  form validation
+_validate = () => {
+    // required input fields
+  const {businessName, description, city, state, zipCode} = this.state
+  return {
+    businessName: businessName.length === 0,
+    description: description.length === 0,
+    city: city.length === 0,
+    state: state.length === 0,
+    zipCode: zipCode.length === 0
+  }
+}
 
   // functions for images
   _setImages = (images) => {

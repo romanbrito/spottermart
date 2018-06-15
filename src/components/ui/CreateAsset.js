@@ -31,6 +31,7 @@ const CreateAsset = (props) => (
             <li key={formInput.id}>
               <label htmlFor={formInput.labelFor}>{formInput.label}</label>
               <input
+                className={props.validationErrors[formInput.name] ? "b--red" : ""}
                 type={formInput.type}
                 id={formInput.id}
                 name={formInput.name}
@@ -184,6 +185,7 @@ const CreateAsset = (props) => (
     </section>
     <section>
       <button
+        disabled={!props.isEnabled}
         className="f5 no-underline black bg-animate hover-bg-black hover-white pa3 ba border-box pointer mt2"
         onClick={() => props.createAsset()}
       >
