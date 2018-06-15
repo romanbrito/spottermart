@@ -31,14 +31,15 @@ const CreateAsset = (props) => (
             <li key={formInput.id}>
               <label htmlFor={formInput.labelFor}>{formInput.label}</label>
               <input
-                className={props.validationErrors[formInput.name] ? "b--red" : ""}
                 type={formInput.type}
                 id={formInput.id}
                 name={formInput.name}
                 onChange={e => props.onChange(e)}
               />
+              {props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
             </li>
           )}
+          <p><span className="red">*</span> Required field</p>
         </ul>
       </div>
     </section>
