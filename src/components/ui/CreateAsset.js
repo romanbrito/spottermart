@@ -128,6 +128,8 @@ const CreateAsset = (props) => (
               placeholder={`Item #${idx + 1}`}
               value={equipment.name}
               onChange={props.onChangeElement('equipment', idx)}
+              autoFocus={true}
+              onKeyUp={(e) => e.key === 'Enter'? props.addElement('equipment'):''}
               type="text"/>
             <button
               onClick={() => props.removeElement('equipment', idx)}>
@@ -161,6 +163,8 @@ const CreateAsset = (props) => (
               placeholder={`Item #${idx + 1}`}
               value={socialMedia.name}
               onChange={props.onChangeElement('socialMedia', idx)}
+              autoFocus={true}
+              onKeyUp={(e) => e.key === 'Enter'? props.addElement('socialMedia'):''}
               type="text"/>
             <button
               onClick={() => props.removeElement('socialMedia', idx)}
