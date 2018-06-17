@@ -11,7 +11,7 @@ import Facebook from 'react-icons/lib/fa/facebook-official'
 import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Google from 'react-icons/lib/fa/google-plus'
-
+import DeleteForever from 'react-icons/lib/md/delete-forever'
 
 // inputs
 const CreateAsset = (props) => (
@@ -138,9 +138,10 @@ const CreateAsset = (props) => (
               <div className="flex">
                 <img width="200" height="200" className="" src={image.preview} alt="" id={image.preview}/>
                 <button
-                  className="absolute"
-                  onClick={() => props.removeImage(document.getElementById(image.preview))}>
-                  Remove
+                  className="absolute o-70"
+                  onClick={() => props.removeImage(document.getElementById(image.preview))}
+                >
+                  <DeleteForever size={50} className="pointer"/>
                 </button>
               </div>
             </div>
