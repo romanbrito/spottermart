@@ -49,7 +49,7 @@ const CreateAsset = (props) => (
               {props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
             </li>
           )}
-          <p><span className="red">*</span> Required field</p>
+          <li className="flex flex-wrap w5 mt3 ml-auto mr-auto"><span className="red">*</span> Required field</li>
         </ul>
       </div>
     </section>
@@ -159,14 +159,17 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Tools size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordion(e)}
+            onClick={(e) => showAccordionList(e)}
         >
           Equipment
         </h3>
         <ul className="dn overflow-hidden ph1 panel">
 
           {props.equipment.map((equipment, idx) => (
-            <li key={idx}>
+            <li
+            className="list"
+              key={idx}
+            >
               <input
                 placeholder={`Item #${idx + 1}`}
                 value={equipment.name}
@@ -175,14 +178,19 @@ const CreateAsset = (props) => (
                 onKeyUp={(e) => e.key === 'Enter' ? props.addElement('equipment') : ''}
                 type="text"/>
               <button
+                className="pointer"
                 onClick={() => props.removeElement('equipment', idx)}>
                 -
               </button>
             </li>
           ))}
-          <li>
+          <li
+            className="list"
+          >
             <button
-              onClick={() => props.addElement('equipment')}>
+              className="pointer"
+              onClick={() => props.addElement('equipment')}
+            >
               +
             </button>
           </li>
@@ -194,14 +202,17 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordion(e)}
+            onClick={(e) => showAccordionList(e)}
         >
           Social Media
         </h3>
         <ul className="dn overflow-hidden ph1 panel">
 
           {props.socialMedia.map((socialMedia, idx) => (
-            <li key={idx}>
+            <li
+            className="list"
+              key={idx}
+            >
               <input
                 placeholder={`Item #${idx + 1}`}
                 value={socialMedia.name}
@@ -216,7 +227,9 @@ const CreateAsset = (props) => (
               </button>
             </li>
           ))}
-          <li>
+          <li
+          className="list"
+          >
             <button
               onClick={() => props.addElement('socialMedia')}>
               +
@@ -243,4 +256,9 @@ const showAccordion = (e) => {
   const panel = e.target.nextElementSibling;
   (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " flex flex-wrap justify-center" : panel.className = "dn overflow-hidden ph1 panel"
 }
+const showAccordionList = (e) => {
+  const panel = e.target.nextElementSibling;
+  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " db" : panel.className = "dn overflow-hidden ph1 panel"
+}
+
 export default CreateAsset
