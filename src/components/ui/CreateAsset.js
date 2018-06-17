@@ -30,15 +30,15 @@ const CreateAsset = (props) => (
         <ul className="dn overflow-hidden ph1 panel">
           {formInput.section1.map(formInput =>
             <li
-            className="flex flex-wrap w5 ml-auto mr-auto"
+              className="flex flex-wrap w5 ml-auto mr-auto"
               key={formInput.id}
             >
               <label
-              className="flex-grow-1 flex-shrink-0 w4"
+                className="flex-grow-1 flex-shrink-0 w4"
                 htmlFor={formInput.labelFor}
               >
                 {formInput.label}
-                </label>
+              </label>
               <input
                 className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
                 type={formInput.type}
@@ -56,92 +56,91 @@ const CreateAsset = (props) => (
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Store size={30}/>
-      <h3 className="pointer w-100 accordion"
-          onClick={(e) => showAccordion(e)}
-      >
-        Company
-      </h3>
-      <ul className="dn overflow-hidden ph1 panel">
-        {formInput.section2.map(formInput =>
-          <li
-            className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 ml-auto mr-auto" : "flex flex-wrap w5 ml-auto mr-auto"}
-            key={formInput.id}
-          >
-            <label
-              className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
-              htmlFor={formInput.labelFor}
+        <h3 className="pointer w-100 accordion"
+            onClick={(e) => showAccordion(e)}
+        >
+          Company
+        </h3>
+        <ul className="dn overflow-hidden ph1 panel">
+          {formInput.section2.map(formInput =>
+            <li
+              className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 ml-auto mr-auto" : "flex flex-wrap w5 ml-auto mr-auto"}
+              key={formInput.id}
             >
-              {formInput.label}
+              <label
+                className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
+                htmlFor={formInput.labelFor}
+              >
+                {formInput.label}
               </label>
-            <input
-              className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
-              type={formInput.type}
-              id={formInput.id}
-              name={formInput.name}
-              onChange={e => props.onChange(e)}
-            />
-          </li>
-        )}
-      </ul>
+              <input
+                className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
+                type={formInput.type}
+                id={formInput.id}
+                name={formInput.name}
+                onChange={e => props.onChange(e)}
+              />
+            </li>
+          )}
+        </ul>
       </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Money size={30}/>
-      <h3 className="pointer w-100 accordion"
-          onClick={(e) => showAccordion(e)}
-      >
-        Financial
-      </h3>
-      <ul className="dn overflow-hidden ph1 panel">
-        {formInput.section3.map(formInput =>
-          <li
-            className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 ml-auto mr-auto" : "flex flex-wrap w5 ml-auto mr-auto"}
-            key={formInput.id}
-          >
-            <label
-              className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
-              htmlFor={formInput.labelFor}
+        <h3 className="pointer w-100 accordion"
+            onClick={(e) => showAccordion(e)}
+        >
+          Financial
+        </h3>
+        <ul className="dn overflow-hidden ph1 panel">
+          {formInput.section3.map(formInput =>
+            <li
+              className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 ml-auto mr-auto" : "flex flex-wrap w5 ml-auto mr-auto"}
+              key={formInput.id}
             >
-              {formInput.label}
+              <label
+                className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
+                htmlFor={formInput.labelFor}
+              >
+                {formInput.label}
               </label>
-            <input
-              className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
-              type={formInput.type}
-              id={formInput.id}
-              name={formInput.name}
-              onChange={e => props.onChange(e)}
-            />
-          </li>
-        )}
-      </ul>
+              <input
+                className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
+                type={formInput.type}
+                id={formInput.id}
+                name={formInput.name}
+                onChange={e => props.onChange(e)}
+              />
+            </li>
+          )}
+        </ul>
       </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Images size={30}/>
-      <h3 className="pointer w-100 accordion"
-          onClick={(e) => showAccordion(e)}
-      >
-        Images
-      </h3>
-      <ul className="dn overflow-hidden ph1 panel flex flex-wrap">
-        <li className="list pointer">
-          <Dropzone
-            style={{width: 150, height: 150, borderStyle: 'outset', borderWidth: 1}}
-            accept="image/jpeg, image/png"
-            onDrop={(images) => props.setImages(images)}
-          >
-            <AddPhoto size={70}/>
-            <p className="tc">*.jpeg and *.png only</p>
-          </Dropzone>
-        </li>
-        {props.images.map(image =>
-          <li
-          className="list"
-            key={image.preview}
-          >
-            <div className="">
+        <h3 className="pointer w-100 accordion"
+            onClick={(e) => showAccordion(e)}
+        >
+          Images
+        </h3>
+        <ul className="dn overflow-hidden ph1 panel">
+          <li className="list pointer">
+            <Dropzone
+              style={{width: 150, height: 150, borderStyle: 'outset', borderWidth: 1}}
+              accept="image/jpeg, image/png"
+              onDrop={(images) => props.setImages(images)}
+            >
+              <AddPhoto size={70}/>
+              <p className="tc">*.jpeg and *.png only</p>
+            </Dropzone>
+          </li>
+          {props.images.map(image =>
+            <li
+              className="list"
+              key={image.preview}
+            >
               <div className="flex">
                 <img width="150" height="150" className="" src={image.preview} alt="" id={image.preview}/>
                 <button
@@ -151,80 +150,79 @@ const CreateAsset = (props) => (
                   <DeleteForever size={50} className="pointer"/>
                 </button>
               </div>
-            </div>
-          </li>
-        )}
-      </ul>
+            </li>
+          )}
+        </ul>
       </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Tools size={30}/>
-      <h3 className="pointer w-100 accordion"
-          onClick={(e) => showAccordion(e)}
-      >
-        Equipment
-      </h3>
-      <ul className="dn overflow-hidden ph1 panel">
+        <h3 className="pointer w-100 accordion"
+            onClick={(e) => showAccordion(e)}
+        >
+          Equipment
+        </h3>
+        <ul className="dn overflow-hidden ph1 panel">
 
-        {props.equipment.map((equipment, idx) => (
-          <li key={idx}>
-            <input
-              placeholder={`Item #${idx + 1}`}
-              value={equipment.name}
-              onChange={props.onChangeElement('equipment', idx)}
-              autoFocus={true}
-              onKeyUp={(e) => e.key === 'Enter'? props.addElement('equipment'):''}
-              type="text"/>
+          {props.equipment.map((equipment, idx) => (
+            <li key={idx}>
+              <input
+                placeholder={`Item #${idx + 1}`}
+                value={equipment.name}
+                onChange={props.onChangeElement('equipment', idx)}
+                autoFocus={true}
+                onKeyUp={(e) => e.key === 'Enter' ? props.addElement('equipment') : ''}
+                type="text"/>
+              <button
+                onClick={() => props.removeElement('equipment', idx)}>
+                -
+              </button>
+            </li>
+          ))}
+          <li>
             <button
-              onClick={() => props.removeElement('equipment', idx)}>
-              -
+              onClick={() => props.addElement('equipment')}>
+              +
             </button>
           </li>
-        ))}
-        <li>
-          <button
-            onClick={() => props.addElement('equipment')}>
-            +
-          </button>
-        </li>
 
-      </ul>
+        </ul>
       </div>
     </section>
     <section className="lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
-      <h3 className="pointer w-100 accordion"
-          onClick={(e) => showAccordion(e)}
-      >
-        Social Media
-      </h3>
-      <ul className="dn overflow-hidden ph1 panel">
+        <h3 className="pointer w-100 accordion"
+            onClick={(e) => showAccordion(e)}
+        >
+          Social Media
+        </h3>
+        <ul className="dn overflow-hidden ph1 panel">
 
-        {props.socialMedia.map((socialMedia, idx) => (
-          <li key={idx}>
-            <input
-              placeholder={`Item #${idx + 1}`}
-              value={socialMedia.name}
-              onChange={props.onChangeElement('socialMedia', idx)}
-              autoFocus={true}
-              onKeyUp={(e) => e.key === 'Enter'? props.addElement('socialMedia'):''}
-              type="text"/>
+          {props.socialMedia.map((socialMedia, idx) => (
+            <li key={idx}>
+              <input
+                placeholder={`Item #${idx + 1}`}
+                value={socialMedia.name}
+                onChange={props.onChangeElement('socialMedia', idx)}
+                autoFocus={true}
+                onKeyUp={(e) => e.key === 'Enter' ? props.addElement('socialMedia') : ''}
+                type="text"/>
+              <button
+                onClick={() => props.removeElement('socialMedia', idx)}
+              >
+                -
+              </button>
+            </li>
+          ))}
+          <li>
             <button
-              onClick={() => props.removeElement('socialMedia', idx)}
-            >
-              -
+              onClick={() => props.addElement('socialMedia')}>
+              +
             </button>
           </li>
-        ))}
-        <li>
-          <button
-            onClick={() => props.addElement('socialMedia')}>
-            +
-          </button>
-        </li>
-      </ul>
+        </ul>
       </div>
     </section>
     <section>
@@ -243,6 +241,6 @@ const CreateAsset = (props) => (
 // toggle accordion
 const showAccordion = (e) => {
   const panel = e.target.nextElementSibling;
-  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " db" : panel.className = "dn overflow-hidden ph1 panel"
+  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " flex flex-wrap justify-center" : panel.className = "dn overflow-hidden ph1 panel"
 }
 export default CreateAsset
