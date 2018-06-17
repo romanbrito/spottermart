@@ -125,17 +125,20 @@ const CreateAsset = (props) => (
         Images
       </h3>
       <ul className="dn overflow-hidden ph1 panel flex flex-wrap">
-        <li>
+        <li className="list">
           <Dropzone
             onDrop={(images) => props.setImages(images)}/>
         </li>
         {props.images.map(image =>
-          <li key={image.preview}>
-            <div className="m">
-              <div className="">
+          <li
+          className="list"
+            key={image.preview}
+          >
+            <div className="">
+              <div className="flex">
                 <img width="200" height="200" className="" src={image.preview} alt="" id={image.preview}/>
                 <button
-                  className="db"
+                  className="absolute"
                   onClick={() => props.removeImage(document.getElementById(image.preview))}>
                   Remove
                 </button>
