@@ -172,13 +172,14 @@ const CreateAsset = (props) => (
             >
               <input
                 placeholder={`Item #${idx + 1}`}
+                className="input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
                 value={equipment.name}
                 onChange={props.onChangeElement('equipment', idx)}
                 autoFocus={true}
                 onKeyUp={(e) => e.key === 'Enter' ? props.addElement('equipment') : ''}
                 type="text"/>
               <button
-                className="pointer"
+                className="pointer br3 bg-white"
                 onClick={() => props.removeElement('equipment', idx)}>
                 -
               </button>
@@ -188,7 +189,7 @@ const CreateAsset = (props) => (
             className="list"
           >
             <button
-              className="pointer"
+              className="pointer br3 bg-white"
               onClick={() => props.addElement('equipment')}
             >
               +
@@ -214,6 +215,7 @@ const CreateAsset = (props) => (
               key={idx}
             >
               <input
+                className="input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
                 placeholder={`Item #${idx + 1}`}
                 value={socialMedia.name}
                 onChange={props.onChangeElement('socialMedia', idx)}
@@ -221,6 +223,7 @@ const CreateAsset = (props) => (
                 onKeyUp={(e) => e.key === 'Enter' ? props.addElement('socialMedia') : ''}
                 type="text"/>
               <button
+                className="pointer br3 bg-white"
                 onClick={() => props.removeElement('socialMedia', idx)}
               >
                 -
@@ -231,7 +234,9 @@ const CreateAsset = (props) => (
           className="list"
           >
             <button
-              onClick={() => props.addElement('socialMedia')}>
+              className="pointer br3 bg-white"
+              onClick={() => props.addElement('socialMedia')}
+            >
               +
             </button>
           </li>
