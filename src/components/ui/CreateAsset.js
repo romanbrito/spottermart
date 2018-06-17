@@ -12,6 +12,7 @@ import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Google from 'react-icons/lib/fa/google-plus'
 import DeleteForever from 'react-icons/lib/md/delete-forever'
+import AddPhoto from 'react-icons/lib/md/add-a-photo'
 
 // inputs
 const CreateAsset = (props) => (
@@ -125,9 +126,12 @@ const CreateAsset = (props) => (
         Images
       </h3>
       <ul className="dn overflow-hidden ph1 panel flex flex-wrap">
-        <li className="list">
+        <li className="list pointer">
           <Dropzone
-            onDrop={(images) => props.setImages(images)}/>
+            onDrop={(images) => props.setImages(images)}
+          >
+            <AddPhoto size={70}/>
+          </Dropzone>
         </li>
         {props.images.map(image =>
           <li
