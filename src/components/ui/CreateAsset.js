@@ -128,9 +128,12 @@ const CreateAsset = (props) => (
       <ul className="dn overflow-hidden ph1 panel flex flex-wrap">
         <li className="list pointer">
           <Dropzone
+            style={{width: 150, height: 150, borderStyle: 'outset', borderWidth: 1}}
+            accept="image/jpeg, image/png"
             onDrop={(images) => props.setImages(images)}
           >
             <AddPhoto size={70}/>
+            <p className="tc">*.jpeg and *.png only</p>
           </Dropzone>
         </li>
         {props.images.map(image =>
@@ -140,7 +143,7 @@ const CreateAsset = (props) => (
           >
             <div className="">
               <div className="flex">
-                <img width="200" height="200" className="" src={image.preview} alt="" id={image.preview}/>
+                <img width="150" height="150" className="" src={image.preview} alt="" id={image.preview}/>
                 <button
                   className="absolute o-70"
                   onClick={() => props.removeImage(document.getElementById(image.preview))}
