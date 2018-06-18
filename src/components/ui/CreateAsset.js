@@ -30,7 +30,7 @@ const CreateAsset = (props) => (
         <ul className="dn overflow-hidden ph1 panel">
           {formInput.section1.map(formInput =>
             <li
-              className="flex flex-wrap w5 ml-auto mr-auto"
+              className="flex flex-wrap w5 center"
               key={formInput.id}
             >
               <label
@@ -49,7 +49,7 @@ const CreateAsset = (props) => (
               {props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
             </li>
           )}
-          <li className="flex flex-wrap w5 mt3 ml-auto mr-auto"><span className="red">*</span> Required field</li>
+          <li className="flex flex-wrap w5 mt3 center"><span className="red">*</span> Required field</li>
         </ul>
       </div>
     </section>
@@ -64,7 +64,7 @@ const CreateAsset = (props) => (
         <ul className="dn overflow-hidden ph1 panel">
           {formInput.section2.map(formInput =>
             <li
-              className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 ml-auto mr-auto" : "flex flex-wrap w5 ml-auto mr-auto"}
+              className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 center" : "flex flex-wrap w5 center"}
               key={formInput.id}
             >
               <label
@@ -96,7 +96,7 @@ const CreateAsset = (props) => (
         <ul className="dn overflow-hidden ph1 panel">
           {formInput.section3.map(formInput =>
             <li
-              className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 ml-auto mr-auto" : "flex flex-wrap w5 ml-auto mr-auto"}
+              className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 center" : "flex flex-wrap w5 center"}
               key={formInput.id}
             >
               <label
