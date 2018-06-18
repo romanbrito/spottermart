@@ -47,6 +47,7 @@ const NavLink = (props) => (
         onClick={() => {
           // toggle menu
           showMenu()
+          hideDropDown()
           // logout
           if (props.menuItem === 'Logout') {
             localStorage.removeItem(GC_USER_ID)
@@ -94,6 +95,13 @@ const dropdownToggle = (e) => {
     const element = e.target.parentElement.parentElement.parentElement.nextElementSibling;
     (element.className === "dn-l absolute-l dropdown-bg") ? element.className += " db-l" : element.className="dn-l absolute-l dropdown-bg";
   }
+};
+
+const hideDropDown = () => {
+  console.log('hide');
+  const dropDown = document.getElementsByClassName('dropdown-bg');
+  // there is only one dropdown if there were more, use map
+  (dropDown[0].className === "dn-l absolute-l dropdown-bg db-l") ? dropDown[0].className="dn-l absolute-l dropdown-bg" : dropDown[0].className="dn-l absolute-l dropdown-bg db-l";
 };
 
 export default Header
