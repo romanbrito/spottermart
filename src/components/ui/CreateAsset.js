@@ -21,8 +21,8 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Location size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => {
-              showAccordion(e)
+            onClick={() => {
+              showAccordion(0)
             }}
         >
           Name and Location
@@ -57,7 +57,7 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Store size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordion(e)}
+            onClick={() => showAccordion(1)}
         >
           Company
         </h3>
@@ -89,7 +89,7 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Money size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordion(e)}
+            onClick={() => showAccordion(2)}
         >
           Financial
         </h3>
@@ -121,7 +121,7 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Images size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordion(e)}
+            onClick={() => showAccordion(3)}
         >
           Images
         </h3>
@@ -159,7 +159,7 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Tools size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordionList(e)}
+            onClick={() => showAccordion(4)}
         >
           Equipment
         </h3>
@@ -203,7 +203,7 @@ const CreateAsset = (props) => (
       <div className="flex-auto">
         <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
         <h3 className="pointer w-100 accordion"
-            onClick={(e) => showAccordionList(e)}
+            onClick={() => showAccordion(5)}
         >
           Social Media
         </h3>
@@ -257,14 +257,23 @@ const CreateAsset = (props) => (
 )
 
 // toggle accordion
-const showAccordion = (e) => {
-  const panel = e.target.nextElementSibling;
-  // in large screens absolute position
-  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center" : panel.className = "dn overflow-hidden ph1 panel"
-}
-const showAccordionList = (e) => {
-  const panel = e.target.nextElementSibling;
-  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l db" : panel.className = "dn overflow-hidden ph1 panel"
+const showAccordion = (pos) => {
+  const panel = document.getElementsByClassName('panel');
+
+  for (let i = 0; i < panel.length; i++) {
+    if (i === pos) {
+      // in large screens absolute position
+      // equipment and social media lists have a different class > 3
+      if (pos < 4) {
+        (panel[i].className === "dn overflow-hidden ph1 panel") ? panel[i].className += " absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center" : panel[i].className = "dn overflow-hidden ph1 panel";
+      } else {
+        (panel[i].className === "dn overflow-hidden ph1 panel") ? panel[i].className += " absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l db" : panel[i].className = "dn overflow-hidden ph1 panel";
+      }
+    } else {
+      // on click hide the other elements
+        panel[i].className = "dn overflow-hidden ph1 panel";
+    }
+  }
 }
 
 export default CreateAsset
