@@ -27,7 +27,7 @@ const CreateAsset = (props) => (
         >
           Name and Location
         </h3>
-        <ul className="dn overflow-hidden ph1 panel">
+        <ul className="dn overflow-hidden ph1 panel absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center">
           {formInput.section1.map(formInput =>
             <li
               className="flex flex-wrap w5 center"
@@ -265,9 +265,9 @@ const showAccordion = (pos) => {
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       if (pos < 4) {
-        (panel[i].className === "dn overflow-hidden ph1 panel") ? panel[i].className += " absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center" : panel[i].className = "dn overflow-hidden ph1 panel";
+        panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center";
       } else {
-        (panel[i].className === "dn overflow-hidden ph1 panel") ? panel[i].className += " absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l db" : panel[i].className = "dn overflow-hidden ph1 panel";
+        panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l db";
       }
     } else {
       // on click hide the other elements
