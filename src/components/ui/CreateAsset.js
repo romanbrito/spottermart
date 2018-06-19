@@ -20,7 +20,7 @@ const CreateAsset = (props) => (
     <section className="flex lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Location size={30}/>
-        <h3 className="pointer w-100 accordion"
+        <h3 className="pointer w-100 accordion green"
             onClick={() => {
               showAccordion(0)
             }}
@@ -258,10 +258,14 @@ const CreateAsset = (props) => (
 
 // toggle accordion
 const showAccordion = (pos) => {
+
+  const title = document.getElementsByClassName('accordion');
   const panel = document.getElementsByClassName('panel');
 
   for (let i = 0; i < panel.length; i++) {
     if (i === pos) {
+      // change tile color if active
+      title[i].className += " green";
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       if (pos < 4) {
@@ -272,6 +276,7 @@ const showAccordion = (pos) => {
     } else {
       // on click hide the other elements
         panel[i].className = "dn overflow-hidden ph1 panel";
+        title[i].className = "pointer w-100 accordion";
     }
   }
 }
