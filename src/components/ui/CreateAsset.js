@@ -16,7 +16,7 @@ import AddPhoto from 'react-icons/lib/md/add-a-photo'
 
 // inputs
 const CreateAsset = (props) => (
-  <div className="list pl0 mt0 measure center">
+  <div className="list pl0 mt0 measure center ml5-l measure-narrow-l">
     <section className="flex lh-copy pa3 ph0-l bb b--black-10">
       <div className="flex-auto">
         <Location size={30}/>
@@ -259,11 +259,12 @@ const CreateAsset = (props) => (
 // toggle accordion
 const showAccordion = (e) => {
   const panel = e.target.nextElementSibling;
-  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " flex flex-wrap justify-center" : panel.className = "dn overflow-hidden ph1 panel"
+  // in large screens absolute position
+  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " absolute-l w-50-l left-0-l right-0-l center-l flex flex-wrap justify-center" : panel.className = "dn overflow-hidden ph1 panel"
 }
 const showAccordionList = (e) => {
   const panel = e.target.nextElementSibling;
-  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " db" : panel.className = "dn overflow-hidden ph1 panel"
+  (panel.className === "dn overflow-hidden ph1 panel") ? panel.className += " absolute-l w-50-l left-0-l right-0-l center-l db" : panel.className = "dn overflow-hidden ph1 panel"
 }
 
 export default CreateAsset
