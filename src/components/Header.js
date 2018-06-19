@@ -24,7 +24,7 @@ const Header = withRouter((props) => (
             <a className="db pv3 ph3 f3 white link pointer">
               Account
                 <AngleDown
-                  onClick={(e) => dropdownToggle(e)}
+                  onClick={() => dropdownToggle()}
                 />
             </a>
             <ul className="dn-l absolute-l dropdown-bg">
@@ -47,7 +47,7 @@ const NavLink = (props) => (
         onClick={() => {
           // toggle menu
           showMenu()
-          hideDropDown()
+          dropdownToggle()
           // logout
           if (props.menuItem === 'Logout') {
             localStorage.removeItem(GC_USER_ID)
@@ -86,22 +86,9 @@ const showMenu = () => {
 }
 
 // drop down toggle menu for large screens
-const dropdownToggle = (e) => {
-  if (e.target.parentElement.nodeName === 'A') {
-    const element = e.target.parentElement.nextElementSibling;
-    (element.className === "dn-l absolute-l dropdown-bg") ? element.className += " db-l" : element.className="dn-l absolute-l dropdown-bg";
-    // in case you clicked directly into the svg object since parent would be g and svg
-  } else {
-    const element = e.target.parentElement.parentElement.parentElement.nextElementSibling;
-    (element.className === "dn-l absolute-l dropdown-bg") ? element.className += " db-l" : element.className="dn-l absolute-l dropdown-bg";
-  }
-};
-
-const hideDropDown = () => {
-  console.log('hide');
+const dropdownToggle = () => {
   const dropDown = document.getElementsByClassName('dropdown-bg');
-  // there is only one dropdown if there were more, use map
-  (dropDown[0].className === "dn-l absolute-l dropdown-bg db-l") ? dropDown[0].className="dn-l absolute-l dropdown-bg" : dropDown[0].className="dn-l absolute-l dropdown-bg db-l";
+  (dropDown[0].className === "dn-l absolute-l dropdown-bg") ? dropDown[0].className += " db-l z-max pa0-l" : dropDown[0].className="dn-l absolute-l dropdown-bg";
 };
 
 export default Header
