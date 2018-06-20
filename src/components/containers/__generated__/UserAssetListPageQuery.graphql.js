@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3d2d6c5591a6b0b588c0e8212a57bb35
+ * @relayHash 4bf87531a973958abbe7a070d81ebacc
  */
 
 /* eslint-disable */
@@ -9,6 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+type UserAssetList_viewer$ref = any;
 export type AssetFilter = {
   AND?: ?$ReadOnlyArray<AssetFilter>,
   OR?: ?$ReadOnlyArray<AssetFilter>,
@@ -547,52 +548,45 @@ export type UserFilter = {
   assets_some?: ?AssetFilter,
   assets_none?: ?AssetFilter,
 };
-export type UserAssetListQueryVariables = {|
+export type UserAssetListPageQueryVariables = {|
   filter: AssetFilter
 |};
-export type UserAssetListQueryResponse = {|
+export type UserAssetListPageQueryResponse = {|
   +viewer: {|
-    +allAssets: {|
-      +edges: ?$ReadOnlyArray<?{|
-        +node: {|
-          +id: string,
-          +businessName: string,
-          +city: string,
-          +state: string,
-          +zipCode: string,
-          +pictures: ?$ReadOnlyArray<any>,
-        |}
-      |}>
-    |}
+    +$fragmentRefs: UserAssetList_viewer$ref
   |}
 |};
 */
 
 
 /*
-query UserAssetListQuery(
+query UserAssetListPageQuery(
   $filter: AssetFilter!
 ) {
   viewer {
-    allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {
-      edges {
-        node {
-          id
-          businessName
-          city
-          state
-          zipCode
-          pictures
-          __typename
-        }
-        cursor
-      }
-      pageInfo {
-        hasPreviousPage
-        startCursor
-      }
-    }
+    ...UserAssetList_viewer
     id
+  }
+}
+
+fragment UserAssetList_viewer on Viewer {
+  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {
+    edges {
+      node {
+        id
+        businessName
+        city
+        state
+        zipCode
+        pictures
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      hasPreviousPage
+      startCursor
+    }
   }
 }
 */
@@ -607,145 +601,22 @@ var v0 = [
   }
 ],
 v1 = {
-  "kind": "Variable",
-  "name": "filter",
-  "variableName": "filter",
-  "type": "AssetFilter"
-},
-v2 = {
-  "kind": "Literal",
-  "name": "orderBy",
-  "value": "createdAt_DESC",
-  "type": "AssetOrderBy"
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v4 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "edges",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "AssetEdge",
-    "plural": true,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "node",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "Asset",
-        "plural": false,
-        "selections": [
-          v3,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "businessName",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "city",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "state",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "zipCode",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "pictures",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__typename",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "cursor",
-        "args": null,
-        "storageKey": null
-      }
-    ]
-  },
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "pageInfo",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "PageInfo",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "hasPreviousPage",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "startCursor",
-        "args": null,
-        "storageKey": null
-      }
-    ]
-  }
-];
+};
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "UserAssetListQuery",
+  "name": "UserAssetListPageQuery",
   "id": null,
-  "text": "query UserAssetListQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n      edges {\n        node {\n          id\n          businessName\n          city\n          state\n          zipCode\n          pictures\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n    id\n  }\n}\n",
-  "metadata": {
-    "connection": [
-      {
-        "count": null,
-        "cursor": null,
-        "direction": "backward",
-        "path": [
-          "viewer",
-          "allAssets"
-        ]
-      }
-    ]
-  },
+  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "UserAssetListQuery",
+    "name": "UserAssetListPageQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -760,17 +631,9 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
-            "alias": "allAssets",
-            "name": "__UserAssetList_allAssets_connection",
-            "storageKey": null,
-            "args": [
-              v1,
-              v2
-            ],
-            "concreteType": "AssetConnection",
-            "plural": false,
-            "selections": v4
+            "kind": "FragmentSpread",
+            "name": "UserAssetList_viewer",
+            "args": null
           }
         ]
       }
@@ -778,7 +641,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UserAssetListQuery",
+    "name": "UserAssetListPageQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -796,32 +659,150 @@ return {
             "name": "allAssets",
             "storageKey": null,
             "args": [
-              v1,
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "AssetFilter"
+              },
               {
                 "kind": "Literal",
                 "name": "last",
                 "value": 100,
                 "type": "Int"
               },
-              v2
+              {
+                "kind": "Literal",
+                "name": "orderBy",
+                "value": "createdAt_DESC",
+                "type": "AssetOrderBy"
+              }
             ],
             "concreteType": "AssetConnection",
             "plural": false,
-            "selections": v4
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "AssetEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Asset",
+                    "plural": false,
+                    "selections": [
+                      v1,
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "businessName",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "city",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "state",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "zipCode",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "pictures",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__typename",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "cursor",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "pageInfo",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "hasPreviousPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startCursor",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
+            ]
           },
           {
             "kind": "LinkedHandle",
             "alias": null,
             "name": "allAssets",
             "args": [
-              v1,
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "AssetFilter"
+              },
               {
                 "kind": "Literal",
                 "name": "last",
                 "value": 100,
                 "type": "Int"
               },
-              v2
+              {
+                "kind": "Literal",
+                "name": "orderBy",
+                "value": "createdAt_DESC",
+                "type": "AssetOrderBy"
+              }
             ],
             "handle": "connection",
             "key": "UserAssetList_allAssets",
@@ -830,7 +811,7 @@ return {
               "orderBy"
             ]
           },
-          v3
+          v1
         ]
       }
     ]
@@ -838,5 +819,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'a30c693b84a3380a93785258dd1162df';
+(node/*: any*/).hash = '7205ea83505a34b721350cca5fa89cfc';
 module.exports = node;
