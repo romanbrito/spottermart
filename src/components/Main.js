@@ -4,6 +4,7 @@ import FrontPage from './FrontPage'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
 import CreateAsset from './containers/CreateAsset'
+import UserAssetList from './containers/UserAssetList'
 
 const Main = (props) => {
   const extraProps = props
@@ -16,6 +17,7 @@ const Main = (props) => {
       }/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/create' component={CreateAsset}/>
+      <Route exact path='/list' component={UserAssetList}/>
     </Switch>
   )
 }

@@ -5,7 +5,7 @@ import '../sass/Header.css'
 import styled from 'styled-components'
 import {Image} from 'cloudinary-react'
 import AngleDown from 'react-icons/lib/fa/angle-down'
-import AngleUp from 'react-icons/lib/fa/angle-up'
+// import AngleUp from 'react-icons/lib/fa/angle-up'
 
 // withRouter to get access to history
 const Header = withRouter((props) => (
