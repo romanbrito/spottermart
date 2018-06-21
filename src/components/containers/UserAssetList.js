@@ -31,7 +31,6 @@ export default createPaginationContainer(UserAssetList,
                 first: $count,
                 after: $after,
                 filter: $filter,
-#                last: 100,
                 orderBy: createdAt_DESC
             ) @connection(key: "UserAssetList_allAssets",filters:[]) {
                 edges {
