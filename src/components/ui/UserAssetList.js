@@ -15,7 +15,7 @@ const UserAssetList = (props) => (
                   <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.city}</h2>
                   <dl className="mt2 f6">
                     <dt className="clip">Price</dt>
-                    <dd className="ml0">$75.00</dd>
+                    <dd className="ml0">{list.node.id}</dd>
                   </dl>
                 </div>
               </a>
