@@ -7,15 +7,10 @@ class UserAssetList extends Component {
   render() {
 
     return (
-      <div>
-        <UserAssetListUi list={this.props.viewer.allAssets.edges}/>
-        <div className="flex ml4 mv3 gray">
-          <div className="pointer" onClick={() => this._loadMore()}>More</div>
-        </div>
-      </div>
+        <UserAssetListUi list={this.props.viewer.allAssets.edges} loadMore={this._loadMore}/>
     )
   }
-  _loadMore() {
+  _loadMore = () => {
     if (!this.props.relay.hasMore()) {
       console.log(`Nothing more to load`)
       return
