@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash fb4459f4a23b2426bac564b58e9ad680
+ * @relayHash 67c5ced300d0d3794ef0b70454ba4562
  */
 
 /* eslint-disable */
@@ -548,12 +548,12 @@ export type UserFilter = {
   assets_some?: ?AssetFilter,
   assets_none?: ?AssetFilter,
 };
-export type UserAssetListPageQueryVariables = {|
-  filter: AssetFilter,
+export type UserAssetListForwardQueryVariables = {|
   count: number,
   after?: ?string,
+  filter: AssetFilter,
 |};
-export type UserAssetListPageQueryResponse = {|
+export type UserAssetListForwardQueryResponse = {|
   +viewer: {|
     +$fragmentRefs: UserAssetList_viewer$ref
   |}
@@ -562,10 +562,10 @@ export type UserAssetListPageQueryResponse = {|
 
 
 /*
-query UserAssetListPageQuery(
-  $filter: AssetFilter!
+query UserAssetListForwardQuery(
   $count: Int!
   $after: String
+  $filter: AssetFilter!
 ) {
   viewer {
     ...UserAssetList_viewer
@@ -599,12 +599,6 @@ const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "filter",
-    "type": "AssetFilter!",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "count",
     "type": "Int!",
     "defaultValue": null
@@ -613,6 +607,12 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "after",
     "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "filter",
+    "type": "AssetFilter!",
     "defaultValue": null
   }
 ],
@@ -626,13 +626,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "UserAssetListPageQuery",
+  "name": "UserAssetListForwardQuery",
   "id": null,
-  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, filter: $filter, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
+  "text": "query UserAssetListForwardQuery(\n  $count: Int!\n  $after: String\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, filter: $filter, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "UserAssetListPageQuery",
+    "name": "UserAssetListForwardQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -657,7 +657,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UserAssetListPageQuery",
+    "name": "UserAssetListForwardQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -844,5 +844,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '83362f40a40a3b0d378c3027fa1e76ec';
+(node/*: any*/).hash = '70011d8745449d31606111fce079b97e';
 module.exports = node;

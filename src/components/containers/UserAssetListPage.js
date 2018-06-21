@@ -5,7 +5,7 @@ import {GC_USER_ID} from "../../constants"
 import UserAssetList from '../containers/UserAssetList'
 
 const UserAssetListPageQuery = graphql`
-query UserAssetListPageQuery($filter: AssetFilter!) {
+query UserAssetListPageQuery($filter: AssetFilter!, $count: Int!, $after: String) {
         viewer {
             ...UserAssetList_viewer
         }
@@ -22,7 +22,8 @@ class UserAssetListPage extends Component{
       environment = {environment}
       query = {UserAssetListPageQuery}
       variables = {{
-        filter: {postedBy: {id: userId}}
+        filter: {postedBy: {id: userId}},
+        count: 1,
       }}
       render={({error, props}) => {
         if (error) {

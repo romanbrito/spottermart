@@ -21,7 +21,11 @@ export type UserAssetList_viewer = {|
         +zipCode: string,
         +pictures: ?$ReadOnlyArray<any>,
       |}
-    |}>
+    |}>,
+    +pageInfo: {|
+      +hasNextPage: boolean,
+      +endCursor: ?string,
+    |},
   |},
   +$refType: UserAssetList_viewer$ref,
 |};
@@ -35,9 +39,9 @@ const node/*: ConcreteFragment*/ = {
   "metadata": {
     "connection": [
       {
-        "count": null,
-        "cursor": null,
-        "direction": "backward",
+        "count": "count",
+        "cursor": "after",
+        "direction": "forward",
         "path": [
           "allAssets"
         ]
@@ -45,6 +49,16 @@ const node/*: ConcreteFragment*/ = {
     ]
   },
   "argumentDefinitions": [
+    {
+      "kind": "RootArgument",
+      "name": "count",
+      "type": "Int"
+    },
+    {
+      "kind": "RootArgument",
+      "name": "after",
+      "type": "String"
+    },
     {
       "kind": "RootArgument",
       "name": "filter",
@@ -57,20 +71,7 @@ const node/*: ConcreteFragment*/ = {
       "alias": "allAssets",
       "name": "__UserAssetList_allAssets_connection",
       "storageKey": null,
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "filter",
-          "variableName": "filter",
-          "type": "AssetFilter"
-        },
-        {
-          "kind": "Literal",
-          "name": "orderBy",
-          "value": "createdAt_DESC",
-          "type": "AssetOrderBy"
-        }
-      ],
+      "args": null,
       "concreteType": "AssetConnection",
       "plural": false,
       "selections": [
@@ -164,14 +165,14 @@ const node/*: ConcreteFragment*/ = {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "hasPreviousPage",
+              "name": "hasNextPage",
               "args": null,
               "storageKey": null
             },
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "startCursor",
+              "name": "endCursor",
               "args": null,
               "storageKey": null
             }
@@ -182,5 +183,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'dbbfab84708ef2a4b303b233d6d5d902';
+(node/*: any*/).hash = '3faa176b1a11833b1565064d92abe850';
 module.exports = node;
