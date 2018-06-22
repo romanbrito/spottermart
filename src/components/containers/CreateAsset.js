@@ -63,15 +63,17 @@ class CreateAsset extends Component {
         removeImage={this._removeImage}
         equipment={this.state.equipment}
         socialMedia={this.state.socialMedia}
-        createAsset={this._createAsset}
+        submit={this._submit}
         isEnabled = {isEnabled}
         validationErrors = {validationErrors}
+        state={this.state}
       />
     )
 
   }
 
-  _createAsset = () => {
+  // Submit createAsset
+  _submit = () => {
 
     // fetch image data PROMISES!!
     const allPicData = () => {

@@ -46,7 +46,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
-                  value={props.state && props.state[formInput.name] ? props.state[formInput.name]: ''}
+                  value={props.state[formInput.name]}
                   onChange={e => props.onChange(e)}
                 />
                 {props.validationErrors && props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
@@ -81,7 +81,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
-                  value={props.state && props.state[formInput.name] ? props.state[formInput.name]: ''}
+                  value={props.state[formInput.name]}
                   onChange={e => props.onChange(e)}
                 />
               </li>
@@ -114,7 +114,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
-                  value={props.state && props.state[formInput.name] ? props.state[formInput.name]: ''}
+                  value={props.state[formInput.name]}
                   onChange={e => props.onChange(e)}
                 />
               </li>
@@ -252,7 +252,7 @@ const CreateAsset = (props) => {
         <button
           disabled={!props.isEnabled}
           className="f5 no-underline black bg-animate hover-bg-black hover-white pa3 ba border-box pointer mt2"
-          onClick={() => props.createAsset()}
+          onClick={() => props.submit()}
         >
           Submit
         </button>

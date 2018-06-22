@@ -2,10 +2,13 @@ import React, {Component} from 'react'
 import {graphql, createFragmentContainer} from 'react-relay'
 import UpdateAssetMutation from '../../mutations/UpdateAssetMutation'
 import CreateAssetUi from '../ui/CreateAsset'
+import {GC_USER_ID} from "../../constants";
+import {uploadImage} from "../../utils";
 
 class UpdateAsset extends Component {
 
   state = {
+    id:'',
     businessName: '',
     description: '',
     price: '',
@@ -60,6 +63,8 @@ class UpdateAsset extends Component {
   }
 
   render() {
+    const validationErrors = this._validate()
+    const isEnabled = !Object.keys(validationErrors).some(x => validationErrors[x])
 
     return (
       <div>
@@ -75,9 +80,143 @@ class UpdateAsset extends Component {
           setImages={this._setImages}
           equipment={this.props.asset.equipment}
           socialMedia={this.props.asset.socialMedia}
+          isEnabled = {isEnabled}
+          validationErrors = {validationErrors}
+          submit={this._submit}
         />
       </div>
     )
+  }
+
+  // Submit updateAsset
+  _submit = () => {
+
+    console.log('submit update')
+
+    // fetch image data PROMISES!!
+    const allPicData = () => {
+      const imagePromises = this.state.images.map(
+        image => {
+          // only uploading images coming from dropzone (new)
+
+            return image.size && uploadImage(image)
+
+        }
+      )
+      return Promise.all(imagePromises)
+    }
+
+    allPicData().then(
+      pics => {
+        // merging old and new pictures
+        const pictures = [...this.state.pictures, ...pics]
+        const postedById = localStorage.getItem(GC_USER_ID)
+        if (!postedById) {
+          console.error('No user logged in')
+          return
+        }
+        const {
+          id,
+          businessName,
+          description,
+          price,
+          businessType,
+          address,
+          city,
+          state,
+          zipCode,
+          structure,
+          franchiseBool,
+          franchiseYearsRemaining,
+          franchiseRoyalties,
+          franchiseMarketingFee,
+          franchiseTransferFee,
+          franchiseTraining,
+          website,
+          fullTimeEmployees,
+          partTimeEmployees,
+          rentNNN,
+          alcoholLicense,
+          ownerFinance,
+          netIncome,
+          grossIncome,
+          status,
+          equipment,
+          socialMedia,
+          owned,
+          termOfLease,
+          howLongInOperation,
+          howManySeats,
+          whySelling,
+          hoursOfOperation,
+          requirementsToQualify,
+          notes,
+          insideSqFeet,
+          specialFeatures,
+        } = this.state
+
+        console.log(businessName)
+
+        UpdateAssetMutation(
+          id,
+          businessName,
+          description,
+          price,
+          businessType,
+          address,
+          city,
+          state,
+          zipCode,
+          structure,
+          // to handle checkbox
+          franchiseBool === 'on',
+          franchiseYearsRemaining,
+          franchiseRoyalties,
+          franchiseMarketingFee,
+          franchiseTransferFee,
+          franchiseTraining,
+          website,
+          fullTimeEmployees,
+          partTimeEmployees,
+          rentNNN,
+          // to handle checkbox
+          alcoholLicense === 'on',
+          ownerFinance,
+          netIncome,
+          grossIncome,
+          status,
+          equipment,
+          socialMedia,
+          // to handle checkbox
+          owned === 'on',
+          termOfLease,
+          howLongInOperation,
+          howManySeats,
+          whySelling,
+          hoursOfOperation,
+          requirementsToQualify,
+          notes,
+          insideSqFeet,
+          specialFeatures,
+          postedById,
+          pictures,
+          () => this.props.history.push('/'))
+      }
+    )
+
+  }
+
+  //  form validation
+  _validate = () => {
+    // required input fields
+    const {businessName, description, city, state, zipCode} = this.state
+    return {
+      businessName: businessName.length === 0,
+      description: description.length === 0,
+      city: city.length === 0,
+      state: state.length === 0,
+      zipCode: zipCode.length === 0
+    }
   }
 
   // functions for images
