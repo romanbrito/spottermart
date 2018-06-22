@@ -46,7 +46,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
-                  value={props.state[formInput.name] ? props.state[formInput.name]: ''}
+                  value={props.state && props.state[formInput.name] ? props.state[formInput.name]: ''}
                   onChange={e => props.onChange(e)}
                 />
                 {props.validationErrors && props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
@@ -81,7 +81,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
-                  value={props.state[formInput.name] ? props.state[formInput.name]: ''}
+                  value={props.state && props.state[formInput.name] ? props.state[formInput.name]: ''}
                   onChange={e => props.onChange(e)}
                 />
               </li>
@@ -114,7 +114,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
-                  value={props.state[formInput.name] ? props.state[formInput.name]: ''}
+                  value={props.state && props.state[formInput.name] ? props.state[formInput.name]: ''}
                   onChange={e => props.onChange(e)}
                 />
               </li>

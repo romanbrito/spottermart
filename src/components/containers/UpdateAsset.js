@@ -48,7 +48,15 @@ class UpdateAsset extends Component {
   }
 
   componentWillMount () {
+    // setting the state to the info received from the UpdateAsset_asset query
     this.setState(this.props.asset)
+    // setting images preview from pictures received from query
+    const images = this.props.asset.pictures.map(pic => {
+      const image = {preview: pic.url}
+      return image
+    })
+
+    this._setImages(images)
   }
 
   render() {
@@ -56,9 +64,18 @@ class UpdateAsset extends Component {
     return (
       <div>
         {/*{console.log(this.props)}*/}
-        <CreateAssetUi asset={this.props.asset} onChange={this._onChange} state={this.state}/>
+        <CreateAssetUi asset={this.props.asset} onChange={this._onChange} state={this.state} images={this.state.images}/>
       </div>
     )
+  }
+
+  // functions for images
+  _setImages = (images) => {
+    const imagesArray = [...this.state.images]
+    imagesArray.push(...images)
+    this.setState({
+      images: imagesArray
+    })
   }
 
   _onChange = event => {
