@@ -16,10 +16,6 @@ import AddPhoto from 'react-icons/lib/md/add-a-photo'
 // inputs
 const CreateAsset = (props) => {
 
-  // if (props.asset) {
-  //   const formInput =
-  // }
-
   return (
     <div className="list pl0 mt0 measure center ml5-l measure-narrow-l">
       <section className="flex lh-copy pa3 ph0-l bb b--black-10">
@@ -50,9 +46,10 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
+                  value={props.state[formInput.name] ? props.state[formInput.name]: ''}
                   onChange={e => props.onChange(e)}
                 />
-                {props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
+                {props.validationErrors && props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
               </li>
             )}
             <li className="flex flex-wrap w5 mt3 center"><span className="red">*</span> Required field</li>
@@ -84,6 +81,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
+                  value={props.state[formInput.name] ? props.state[formInput.name]: ''}
                   onChange={e => props.onChange(e)}
                 />
               </li>
@@ -116,6 +114,7 @@ const CreateAsset = (props) => {
                   type={formInput.type}
                   id={formInput.id}
                   name={formInput.name}
+                  value={props.state[formInput.name] ? props.state[formInput.name]: ''}
                   onChange={e => props.onChange(e)}
                 />
               </li>
@@ -142,7 +141,7 @@ const CreateAsset = (props) => {
                 <p className="tc">*.jpeg and *.png only</p>
               </Dropzone>
             </li>
-            {props.images.map(image =>
+            {props.images && props.images.map(image =>
               <li
                 className="list"
                 key={image.preview}
@@ -171,7 +170,7 @@ const CreateAsset = (props) => {
           </h3>
           <ul className="dn overflow-hidden ph1 panel">
 
-            {props.equipment.map((equipment, idx) => (
+            {props.equipment && props.equipment.map((equipment, idx) => (
               <li
                 className="list"
                 key={idx}
@@ -215,7 +214,7 @@ const CreateAsset = (props) => {
           </h3>
           <ul className="dn overflow-hidden ph1 panel">
 
-            {props.socialMedia.map((socialMedia, idx) => (
+            {props.socialMedia && props.socialMedia.map((socialMedia, idx) => (
               <li
                 className="list"
                 key={idx}
