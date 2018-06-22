@@ -66,9 +66,13 @@ class UpdateAsset extends Component {
         <CreateAssetUi
           asset={this.props.asset}
           onChange={this._onChange}
+          onChangeElement={this._onChangeElement}
+          addElement={this._addElement}
+          removeElement={this._removeElement}
           state={this.state}
           images={this.state.images}
-          removeImage={this._removeImage}/>
+          removeImage={this._removeImage}
+          setImages={this._setImages}/>
       </div>
     )
   }
@@ -87,7 +91,8 @@ class UpdateAsset extends Component {
     })
   }
 
-  // input functions
+  // functions for adding lists of equipment and social media
+
   _onChange = event => {
     const {name, value} = event.target
     this._newState(name,value)
