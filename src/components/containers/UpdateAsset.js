@@ -63,8 +63,12 @@ class UpdateAsset extends Component {
 
     return (
       <div>
-        {/*{console.log(this.props)}*/}
-        <CreateAssetUi asset={this.props.asset} onChange={this._onChange} state={this.state} images={this.state.images}/>
+        <CreateAssetUi
+          asset={this.props.asset}
+          onChange={this._onChange}
+          state={this.state}
+          images={this.state.images}
+          removeImage={this._removeImage}/>
       </div>
     )
   }
@@ -77,7 +81,13 @@ class UpdateAsset extends Component {
       images: imagesArray
     })
   }
+  _removeImage = (image) => {
+    this.setState({
+      images: this.state.images.filter(pic => pic.preview !== image.src)
+    })
+  }
 
+  // input functions
   _onChange = event => {
     const {name, value} = event.target
     this._newState(name,value)
