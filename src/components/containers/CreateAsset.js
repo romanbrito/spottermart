@@ -224,6 +224,7 @@ _validate = () => {
     this._newState(element,newElement)
   }
 
+  // functions for change of input
   _onChange = event => {
     const {name, value} = event.target
     this._newState(name,value)

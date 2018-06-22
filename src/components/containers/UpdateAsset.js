@@ -72,7 +72,10 @@ class UpdateAsset extends Component {
           state={this.state}
           images={this.state.images}
           removeImage={this._removeImage}
-          setImages={this._setImages}/>
+          setImages={this._setImages}
+          equipment={this.props.asset.equipment}
+          socialMedia={this.props.asset.socialMedia}
+        />
       </div>
     )
   }
@@ -92,7 +95,25 @@ class UpdateAsset extends Component {
   }
 
   // functions for adding lists of equipment and social media
+  _addElement = (element) => {
+    const newElement = [...this.state[element], {name: ''} ]
+    this._newState(element,newElement)
+  }
 
+  _removeElement = (element,idx) => {
+    const newElement = this.state[element].filter( (equip, equipidx ) => idx !== equipidx)
+    this._newState(element,newElement)
+  }
+
+  _onChangeElement = (element, idx) => e => {
+    const newElement = this.state[element].map((item, sidx) => {
+      if (idx !== sidx) return item
+      return { ...item, name: e.target.value }
+    })
+    this._newState(element,newElement)
+  }
+
+  // functions for change of input
   _onChange = event => {
     const {name, value} = event.target
     this._newState(name,value)
