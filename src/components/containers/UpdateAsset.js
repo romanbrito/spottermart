@@ -8,7 +8,7 @@ import {uploadImage} from "../../utils";
 class UpdateAsset extends Component {
 
   state = {
-    id:'',
+    id: '',
     businessName: '',
     description: '',
     price: '',
@@ -36,7 +36,7 @@ class UpdateAsset extends Component {
     netIncome: '',
     grossIncome: '',
     status: '',
-    equipment: [{name:''}],
+    equipment: [{name: ''}],
     socialMedia: [{name: ''}],
     owned: false,
     termOfLease: '',
@@ -50,7 +50,7 @@ class UpdateAsset extends Component {
     specialFeatures: ''
   }
 
-  componentWillMount () {
+  componentWillMount() {
     // setting the state to the info received from the UpdateAsset_asset query
     this.setState(this.props.asset)
     // setting images preview from pictures received from query
@@ -80,8 +80,8 @@ class UpdateAsset extends Component {
           setImages={this._setImages}
           equipment={this.props.asset.equipment}
           socialMedia={this.props.asset.socialMedia}
-          isEnabled = {isEnabled}
-          validationErrors = {validationErrors}
+          isEnabled={isEnabled}
+          validationErrors={validationErrors}
           submit={this._submit}
         />
       </div>
@@ -91,92 +91,115 @@ class UpdateAsset extends Component {
   // Submit updateAsset
   _submit = () => {
 
-    const postedById = localStorage.getItem(GC_USER_ID)
-    if (!postedById) {
-      console.error('No user logged in')
-      return
+    // fetch image data PROMISES!!
+    const allPicData = () => {
+      // remove existing images to avoid duplicates
+      const images = this.state.images.filter(image => image.size > 0)
+
+      const imagePromises = images.map(
+        image => {
+          return uploadImage(image)
+        }
+      )
+      return Promise.all(imagePromises)
     }
 
-    const {
-      id,
-      businessName,
-      description,
-      price,
-      businessType,
-      address,
-      city,
-      state,
-      zipCode,
-      structure,
-      franchiseBool,
-      franchiseYearsRemaining,
-      franchiseRoyalties,
-      franchiseMarketingFee,
-      franchiseTransferFee,
-      franchiseTraining,
-      website,
-      fullTimeEmployees,
-      partTimeEmployees,
-      rentNNN,
-      alcoholLicense,
-      ownerFinance,
-      netIncome,
-      grossIncome,
-      status,
-      equipment,
-      socialMedia,
-      owned,
-      termOfLease,
-      howLongInOperation,
-      howManySeats,
-      whySelling,
-      hoursOfOperation,
-      requirementsToQualify,
-      notes,
-      insideSqFeet,
-      specialFeatures,
-    } = this.state
+    allPicData().then(
+      pics => {
 
-    UpdateAssetMutation(
-      id,
-      businessName,
-      description,
-      price,
-      businessType,
-      address,
-      city,
-      state,
-      zipCode,
-      structure,
-      franchiseBool,
-      franchiseYearsRemaining,
-      franchiseRoyalties,
-      franchiseMarketingFee,
-      franchiseTransferFee,
-      franchiseTraining,
-      website,
-      fullTimeEmployees,
-      partTimeEmployees,
-      rentNNN,
-      alcoholLicense,
-      ownerFinance,
-      netIncome,
-      grossIncome,
-      status,
-      equipment,
-      socialMedia,
-      owned,
-      termOfLease,
-      howLongInOperation,
-      howManySeats,
-      whySelling,
-      hoursOfOperation,
-      requirementsToQualify,
-      notes,
-      insideSqFeet,
-      specialFeatures,
-      postedById,
-      ()=>console.log('end'))
+        const postedById = localStorage.getItem(GC_USER_ID)
+        if (!postedById) {
+          console.error('No user logged in')
+          return
+        }
+
+        const pictures = [...this.state.pictures, ...pics]
+
+        const {
+          id,
+          businessName,
+          description,
+          price,
+          businessType,
+          address,
+          city,
+          state,
+          zipCode,
+          structure,
+          franchiseBool,
+          franchiseYearsRemaining,
+          franchiseRoyalties,
+          franchiseMarketingFee,
+          franchiseTransferFee,
+          franchiseTraining,
+          website,
+          fullTimeEmployees,
+          partTimeEmployees,
+          rentNNN,
+          alcoholLicense,
+          ownerFinance,
+          netIncome,
+          grossIncome,
+          status,
+          equipment,
+          socialMedia,
+          owned,
+          termOfLease,
+          howLongInOperation,
+          howManySeats,
+          whySelling,
+          hoursOfOperation,
+          requirementsToQualify,
+          notes,
+          insideSqFeet,
+          specialFeatures,
+        } = this.state
+
+        UpdateAssetMutation(
+          id,
+          businessName,
+          description,
+          price,
+          businessType,
+          address,
+          city,
+          state,
+          zipCode,
+          structure,
+          franchiseBool,
+          franchiseYearsRemaining,
+          franchiseRoyalties,
+          franchiseMarketingFee,
+          franchiseTransferFee,
+          franchiseTraining,
+          website,
+          fullTimeEmployees,
+          partTimeEmployees,
+          rentNNN,
+          alcoholLicense,
+          ownerFinance,
+          netIncome,
+          grossIncome,
+          status,
+          equipment,
+          socialMedia,
+          owned,
+          termOfLease,
+          howLongInOperation,
+          howManySeats,
+          whySelling,
+          hoursOfOperation,
+          requirementsToQualify,
+          notes,
+          insideSqFeet,
+          specialFeatures,
+          postedById,
+          pictures,
+          () => console.log('end'))
+
+      }
+    )
+
   }
 
   //  form validation
@@ -208,34 +231,34 @@ class UpdateAsset extends Component {
 
   // functions for adding lists of equipment and social media
   _addElement = (element) => {
-    const newElement = [...this.state[element], {name: ''} ]
-    this._newState(element,newElement)
+    const newElement = [...this.state[element], {name: ''}]
+    this._newState(element, newElement)
   }
 
-  _removeElement = (element,idx) => {
-    const newElement = this.state[element].filter( (equip, equipidx ) => idx !== equipidx)
-    this._newState(element,newElement)
+  _removeElement = (element, idx) => {
+    const newElement = this.state[element].filter((equip, equipidx) => idx !== equipidx)
+    this._newState(element, newElement)
   }
 
   _onChangeElement = (element, idx) => e => {
     const newElement = this.state[element].map((item, sidx) => {
       if (idx !== sidx) return item
-      return { ...item, name: e.target.value }
+      return {...item, name: e.target.value}
     })
-    this._newState(element,newElement)
+    this._newState(element, newElement)
   }
 
   // functions for change of input
   _onChange = event => {
     const {name, value} = event.target
-    this._newState(name,value)
+    this._newState(name, value)
   }
   _newState = (element, newElement) => {
     const newState = Object.keys(this.state).reduce((prev, curr) => {
       if (curr === element) prev[curr] = newElement
       else prev[curr] = this.state[curr]
       return prev
-    },  {})
+    }, {})
     this.setState(newState)
   }
 
