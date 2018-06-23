@@ -224,8 +224,10 @@ class UpdateAsset extends Component {
     })
   }
   _removeImage = (image) => {
+    // remove image from images and pictures
     this.setState({
-      images: this.state.images.filter(pic => pic.preview !== image.src)
+      images: this.state.images.filter(pic => pic.preview !== image.src),
+      pictures: this.state.pictures.filter(pic => pic.url !== image.src)
     })
   }
 
