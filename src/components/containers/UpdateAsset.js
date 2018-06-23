@@ -91,119 +91,92 @@ class UpdateAsset extends Component {
   // Submit updateAsset
   _submit = () => {
 
-    console.log('submit update')
-
-    // fetch image data PROMISES!!
-    const allPicData = () => {
-      const imagePromises = this.state.images.map(
-        image => {
-          // only uploading images coming from dropzone (new)
-
-            return image.size && uploadImage(image)
-
-        }
-      )
-      return Promise.all(imagePromises)
+    const postedById = localStorage.getItem(GC_USER_ID)
+    if (!postedById) {
+      console.error('No user logged in')
+      return
     }
 
-    allPicData().then(
-      pics => {
-        // merging old and new pictures
-        const pictures = [...this.state.pictures, ...pics]
-        const postedById = localStorage.getItem(GC_USER_ID)
-        if (!postedById) {
-          console.error('No user logged in')
-          return
-        }
-        const {
-          id,
-          businessName,
-          description,
-          price,
-          businessType,
-          address,
-          city,
-          state,
-          zipCode,
-          structure,
-          franchiseBool,
-          franchiseYearsRemaining,
-          franchiseRoyalties,
-          franchiseMarketingFee,
-          franchiseTransferFee,
-          franchiseTraining,
-          website,
-          fullTimeEmployees,
-          partTimeEmployees,
-          rentNNN,
-          alcoholLicense,
-          ownerFinance,
-          netIncome,
-          grossIncome,
-          status,
-          equipment,
-          socialMedia,
-          owned,
-          termOfLease,
-          howLongInOperation,
-          howManySeats,
-          whySelling,
-          hoursOfOperation,
-          requirementsToQualify,
-          notes,
-          insideSqFeet,
-          specialFeatures,
-        } = this.state
+    const {
+      id,
+      businessName,
+      description,
+      price,
+      businessType,
+      address,
+      city,
+      state,
+      zipCode,
+      structure,
+      franchiseBool,
+      franchiseYearsRemaining,
+      franchiseRoyalties,
+      franchiseMarketingFee,
+      franchiseTransferFee,
+      franchiseTraining,
+      website,
+      fullTimeEmployees,
+      partTimeEmployees,
+      rentNNN,
+      alcoholLicense,
+      ownerFinance,
+      netIncome,
+      grossIncome,
+      status,
+      equipment,
+      socialMedia,
+      owned,
+      termOfLease,
+      howLongInOperation,
+      howManySeats,
+      whySelling,
+      hoursOfOperation,
+      requirementsToQualify,
+      notes,
+      insideSqFeet,
+      specialFeatures,
+    } = this.state
 
-        console.log(businessName)
-
-        UpdateAssetMutation(
-          id,
-          businessName,
-          description,
-          price,
-          businessType,
-          address,
-          city,
-          state,
-          zipCode,
-          structure,
-          // to handle checkbox
-          franchiseBool === 'on',
-          franchiseYearsRemaining,
-          franchiseRoyalties,
-          franchiseMarketingFee,
-          franchiseTransferFee,
-          franchiseTraining,
-          website,
-          fullTimeEmployees,
-          partTimeEmployees,
-          rentNNN,
-          // to handle checkbox
-          alcoholLicense === 'on',
-          ownerFinance,
-          netIncome,
-          grossIncome,
-          status,
-          equipment,
-          socialMedia,
-          // to handle checkbox
-          owned === 'on',
-          termOfLease,
-          howLongInOperation,
-          howManySeats,
-          whySelling,
-          hoursOfOperation,
-          requirementsToQualify,
-          notes,
-          insideSqFeet,
-          specialFeatures,
-          postedById,
-          pictures,
-          () => this.props.history.push('/'))
-      }
-    )
-
+    UpdateAssetMutation(
+      id,
+      businessName,
+      description,
+      price,
+      businessType,
+      address,
+      city,
+      state,
+      zipCode,
+      structure,
+      franchiseBool,
+      franchiseYearsRemaining,
+      franchiseRoyalties,
+      franchiseMarketingFee,
+      franchiseTransferFee,
+      franchiseTraining,
+      website,
+      fullTimeEmployees,
+      partTimeEmployees,
+      rentNNN,
+      alcoholLicense,
+      ownerFinance,
+      netIncome,
+      grossIncome,
+      status,
+      equipment,
+      socialMedia,
+      owned,
+      termOfLease,
+      howLongInOperation,
+      howManySeats,
+      whySelling,
+      hoursOfOperation,
+      requirementsToQualify,
+      notes,
+      insideSqFeet,
+      specialFeatures,
+      postedById,
+      ()=>console.log('end'))
   }
 
   //  form validation
