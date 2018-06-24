@@ -277,7 +277,7 @@ const showAccordion = (pos) => {
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       if (pos < 4) {
-        panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center";
+        panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center";
       } else {
         panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l db";
       }

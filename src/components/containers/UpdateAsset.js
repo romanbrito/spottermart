@@ -78,8 +78,8 @@ class UpdateAsset extends Component {
           images={this.state.images}
           removeImage={this._removeImage}
           setImages={this._setImages}
-          equipment={this.props.asset.equipment}
-          socialMedia={this.props.asset.socialMedia}
+          equipment={this.state.equipment}
+          socialMedia={this.state.socialMedia}
           isEnabled={isEnabled}
           validationErrors={validationErrors}
           submit={this._submit}
