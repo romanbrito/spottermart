@@ -29,26 +29,28 @@ const CreateAsset = (props) => {
             Name and Location
           </h3>
           <ul
-            className="dn overflow-hidden ph1 panel absolute-l w-50-l h-25-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center">
+            className="dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center">
             {formInput.section1.map(formInput =>
               <li
                 className="flex flex-wrap w5 center"
                 key={formInput.id}
               >
-                <label
-                  className="flex-grow-1 flex-shrink-0 w4"
-                  htmlFor={formInput.labelFor}
-                >
-                  {formInput.label}
-                </label>
-                <input
-                  className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
-                  type={formInput.type}
-                  id={formInput.id}
-                  name={formInput.name}
-                  value={props.state[formInput.name]}
-                  onChange={e => props.onChange(e)}
-                />
+                <div>
+                  <label
+                    className="flex-grow-1 flex-shrink-0 w4"
+                    htmlFor={formInput.labelFor}
+                  >
+                    {formInput.label}
+                  </label>
+                  <input
+                    className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+                    type={formInput.type}
+                    id={formInput.id}
+                    name={formInput.name}
+                    value={props.state[formInput.name]}
+                    onChange={e => props.onChange(e)}
+                  />
+                </div>
                 {props.validationErrors && props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
               </li>
             )}
@@ -70,20 +72,22 @@ const CreateAsset = (props) => {
                 className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 center" : "flex flex-wrap w5 center"}
                 key={formInput.id}
               >
-                <label
-                  className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
-                  htmlFor={formInput.labelFor}
-                >
-                  {formInput.label}
-                </label>
-                <input
-                  className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
-                  type={formInput.type}
-                  id={formInput.id}
-                  name={formInput.name}
-                  value={props.state[formInput.name]}
-                  onChange={e => props.onChange(e)}
-                />
+                <div>
+                  <label
+                    className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
+                    htmlFor={formInput.labelFor}
+                  >
+                    {formInput.label}
+                  </label>
+                  <input
+                    className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
+                    type={formInput.type}
+                    id={formInput.id}
+                    name={formInput.name}
+                    value={props.state[formInput.name]}
+                    onChange={e => props.onChange(e)}
+                  />
+                </div>
               </li>
             )}
           </ul>
@@ -103,20 +107,22 @@ const CreateAsset = (props) => {
                 className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 center" : "flex flex-wrap w5 center"}
                 key={formInput.id}
               >
-                <label
-                  className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
-                  htmlFor={formInput.labelFor}
-                >
-                  {formInput.label}
-                </label>
-                <input
-                  className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
-                  type={formInput.type}
-                  id={formInput.id}
-                  name={formInput.name}
-                  value={props.state[formInput.name]}
-                  onChange={e => props.onChange(e)}
-                />
+                <div>
+                  <label
+                    className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
+                    htmlFor={formInput.labelFor}
+                  >
+                    {formInput.label}
+                  </label>
+                  <input
+                    className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
+                    type={formInput.type}
+                    id={formInput.id}
+                    name={formInput.name}
+                    value={props.state[formInput.name]}
+                    onChange={e => props.onChange(e)}
+                  />
+                </div>
               </li>
             )}
           </ul>
