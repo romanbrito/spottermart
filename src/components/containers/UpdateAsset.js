@@ -195,7 +195,7 @@ class UpdateAsset extends Component {
           specialFeatures,
           postedById,
           pictures,
-          () => console.log('end'))
+          () => this.props.history.push('/'))
 
       }
     )
