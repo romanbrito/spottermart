@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const UserAssetList = (props) => (
   <div>
@@ -6,7 +7,7 @@ const UserAssetList = (props) => (
       props.list.map(list => (
           <main key={list.cursor} className="mw6 center">
             <article>
-              <a className="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
+              <p className="link dt w-100 bb b--black-10 pb2 mt2 blue" href="#0">
                 <div className="dtc w3">
                   <img src={list.node.pictures && list.node.pictures.length > 0 ? list.node.pictures[0].url:''} alt={list.node.businessName}/>
                 </div>
@@ -18,7 +19,8 @@ const UserAssetList = (props) => (
                     <dd className="ml0">{list.node.id}</dd>
                   </dl>
                 </div>
-              </a>
+                <Link to={'/update/' + list.node.id}><button className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer">Update</button></Link>
+              </p>
             </article>
           </main>
         )
