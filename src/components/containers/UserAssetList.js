@@ -1,15 +1,21 @@
 import React, {Component} from 'react'
 import {graphql, createPaginationContainer} from 'react-relay'
 import UserAssetListUi from '../ui/UserAssetList'
+import DeleteAssetMutation from '../../mutations/DeleteAssetMutation'
 
 class UserAssetList extends Component {
 
   render() {
 
     return (
-        <UserAssetListUi list={this.props.viewer.allAssets.edges} loadMore={this._loadMore}/>
+      <UserAssetListUi
+        list={this.props.viewer.allAssets.edges}
+        loadMore={this._loadMore}
+        delete={this._deleteAsset}
+      />
     )
   }
+
   _loadMore = () => {
     if (!this.props.relay.hasMore()) {
       console.log(`Nothing more to load`)
@@ -20,6 +26,13 @@ class UserAssetList extends Component {
     }
 
     this.props.relay.loadMore(1)
+  }
+
+  _deleteAsset = (assetId) => {
+    DeleteAssetMutation(
+      assetId,
+      () => this.props.history.push('/')
+    )
   }
 }
 

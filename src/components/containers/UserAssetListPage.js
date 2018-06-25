@@ -29,7 +29,7 @@ class UserAssetListPage extends Component{
         if (error) {
           return <div>{error.message}</div>
         } else if (props) {
-          return <UserAssetList viewer={props.viewer}/>
+          return <UserAssetList viewer={props.viewer} history={this.props.history}/>
         }
         return <div>Loading</div>
       }}
