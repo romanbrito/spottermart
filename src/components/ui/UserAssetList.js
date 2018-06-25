@@ -20,6 +20,7 @@ const UserAssetList = (props) => (
                   </dl>
                 </div>
                 <Link to={'/update/' + list.node.id}><button className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer">Update</button></Link>
+                <Link to={'/update/' + list.node.id}><button className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-red pointer">Delete</button></Link>
               </p>
             </article>
           </main>
