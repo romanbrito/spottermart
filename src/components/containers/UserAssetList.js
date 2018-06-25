@@ -31,7 +31,10 @@ class UserAssetList extends Component {
   _deleteAsset = (assetId) => {
     DeleteAssetMutation(
       assetId,
-      () => this.props.history.push('/')
+      () => {
+        // after delete keep showing list of assets
+        this.props.relay.refetchConnection(this.props.viewer.allAssets.edges.length-1)
+      }
     )
   }
 }
