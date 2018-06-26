@@ -89,7 +89,9 @@ const showMenu = () => {
 // drop down toggle menu for large screens
 const dropdownToggle = () => {
   const dropDown = document.getElementsByClassName('dropdown-bg');
-  (dropDown[0].className === "dn-l absolute-l dropdown-bg") ? dropDown[0].className += " db-l z-max pa0-l" : dropDown[0].className="dn-l absolute-l dropdown-bg";
+  if (dropDown.length > 0) {
+    (dropDown[0].className === "dn-l absolute-l dropdown-bg") ? dropDown[0].className += " db-l z-max pa0-l" : dropDown[0].className = "dn-l absolute-l dropdown-bg";
+  }
 };
 
 export default Header
