@@ -6,6 +6,7 @@ import Signup from './containers/Signup'
 import CreateAsset from './containers/CreateAsset'
 import UserAssetListPage from './containers/UserAssetListPage'
 import UpdateAssetPage from './containers/UpdateAssetPage'
+import SearchPage from './containers/SearchPage'
 
 const Main = (props) => {
   const extraProps = props
@@ -20,6 +21,7 @@ const Main = (props) => {
       <Route exact path='/create' component={CreateAsset}/>
       <Route exact path='/list' component={UserAssetListPage}/>
       <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
+      <Route exact path='/search/:filter' component={SearchPage}/>
     </Switch>
   )
 }
