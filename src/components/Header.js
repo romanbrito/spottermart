@@ -23,14 +23,14 @@ const Header = withRouter((props) => (
           <li>
             <a className="db pv3 ph3 f3 white link pointer">
               Account
-                <AngleDown
-                  onClick={() => dropdownToggle()}
-                />
+              <AngleDown
+                onClick={() => dropdownToggle()}
+              />
             </a>
             <ul className="dn-l absolute-l dropdown-bg">
               <li className="list"><NavLink dest='/list' menuItem="My Assets"/></li>
               <li className="list"><NavLink dest='/create' menuItem="Create Asset"/></li>
-              <li className="list"><NavLink dest='/' menuItem="Logout"/></li>
+              <li className="list"><NavLink dest='/' menuItem="Logout" history={props.history}/></li>
             </ul>
           </li>}
           {!props.userId && props.location.pathname !== '/login' ?
@@ -44,20 +44,21 @@ const Header = withRouter((props) => (
 ))
 
 const NavLink = (props) => (
-  <Link className="db pv3 ph3 f3 white link" to={props.dest}
-        onClick={() => {
-          // toggle menu
-          showMenu()
-          dropdownToggle()
-          // logout
-          if (props.menuItem === 'Logout') {
-            localStorage.removeItem(GC_USER_ID)
-            localStorage.removeItem(GC_AUTH_TOKEN)
-            props.removeId()
-            props.history.push('/')
-          }
-        }
-        }>
+  <Link
+    className="db pv3 ph3 f3 white link" to={props.dest}
+    onClick={() => {
+      // toggle menu
+      showMenu()
+      dropdownToggle()
+      // logout
+      if (props.menuItem === 'Logout') {
+        localStorage.removeItem(GC_USER_ID)
+        localStorage.removeItem(GC_AUTH_TOKEN)
+        // props.removeId()
+        props.history.push('/')
+      }
+    }
+    }>
     {props.menuItem}
   </Link>
 )
