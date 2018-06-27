@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {QueryRenderer, graphql} from 'react-relay'
 import environment from '../../Environment'
-import {GC_USER_ID} from "../../constants"
 
 const SearchPageQuery = graphql`
   query SearchPageQuery($filter: AssetFilter!) {
@@ -20,7 +19,7 @@ const SearchPageQuery = graphql`
 class SearchPage extends Component {
 
   state = {
-    filter: ''
+    filter: this.props.match.params.filter
   }
 
   render() {
@@ -30,13 +29,13 @@ class SearchPage extends Component {
       environment = {environment}
       query = {SearchPageQuery}
       variables = {{
-        filter: { OR: [{city_contains:this.props.match.params.filter},{businessName_contains:this.props.match.params.filter}]},
+        filter: { OR: [{city_contains:this.state.filter},{businessName_contains:this.state.filter}]},
       }}
       render = {({error, props}) => {
         if (error) {
           return <div>{error.message}</div>
           } else if (props) {
-            return <div>props {console.log(props)} </div>
+            return <ul>{props.viewer.allAssets.edges.map(edge => <li key={edge.node.id}>{edge.node.businessName}</li>)}</ul>
           }
           return <div>Loading</div>
       }}
