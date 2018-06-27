@@ -25,14 +25,12 @@ class SearchPage extends Component {
 
   render() {
 
-    console.log(this.props)
-
     return (
       <QueryRenderer
       environment = {environment}
       query = {SearchPageQuery}
       variables = {{
-        filter: {address_contains:this.props.match.params.filter},
+        filter: { OR: [{city_contains:this.props.match.params.filter},{businessName_contains:this.props.match.params.filter}]},
       }}
       render = {({error, props}) => {
         if (error) {
