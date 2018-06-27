@@ -13,10 +13,15 @@ const Search = (props) => (
         type="search"
         name="filter"
         id="search"
+        onKeyPress={e => {
+          if (e.key === 'Enter') {
+            props.submit(e)
+          }
+        }}
       />
       <button
         className="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
-        onClick={(e) => props.submit(e)}
+        onClick={e => props.submit(e)}
       >
         Search
       </button>

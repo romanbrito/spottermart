@@ -44,9 +44,9 @@ class SearchPage extends Component {
   }
 
   _submit = (e) => {
-    // getting input value
+    // getting input value from keypress enter or button click
     this.setState({
-      filter:e.target.previousElementSibling.value
+      filter: e.target.tagName === 'INPUT' ? e.target.value: e.target.previousElementSibling.value
     })
     this.props.history.push('/search/')
   }
