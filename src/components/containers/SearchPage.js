@@ -43,9 +43,10 @@ class SearchPage extends Component {
     )
   }
 
-  _submit = (filter) => {
+  _submit = (e) => {
+    // getting input value
     this.setState({
-      filter
+      filter:e.target.previousElementSibling.value
     })
     this.props.history.push('/search/')
   }
