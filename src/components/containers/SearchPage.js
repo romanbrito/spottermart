@@ -35,27 +35,12 @@ class SearchPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <Search viewer={props.viewer} onChange={this._onChange}/>
+            return <Search viewer={props.viewer}/>
           }
           return <div>Loading</div>
         }}
       />
     )
-  }
-
-  // functions for change of input
-  _onChange = event => {
-    const {name, value} = event.target
-    this._newState(name,value)
-  }
-
-  _newState = (element, newElement) => {
-    const newState = Object.keys(this.state).reduce((prev, curr) => {
-      if (curr === element) prev[curr] = newElement
-      else prev[curr] = this.state[curr]
-      return prev
-    },  {})
-    this.setState(newState)
   }
 }
 
