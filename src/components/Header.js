@@ -84,7 +84,7 @@ const Heading = styled.header.attrs({
 // toggle menu on small screens
 const showMenu = () => {
   const element = document.getElementById("main-nav");
-  (element.className === "dn flex-l items-center justify-between-l") ? element.className += " db" : element.className = "dn flex-l items-center justify-between-l"
+  (element.className === "dn flex-l items-center justify-between-l") ? element.className += " db absolute w-100 left-0 relative-l" : element.className = "dn flex-l items-center justify-between-l"
 }
 
 // drop down toggle menu for large screens
