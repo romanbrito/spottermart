@@ -23,7 +23,7 @@ class Search extends Component {
                 id="search"
                 onChange={(e) => this.setState({search:e.target.value})}
               />
-              <Link to={this.state.search ? '/search/' + this.state.search: '/search/all'}>
+              <Link to={'/search/' + this.state.search}>
                 <button
                   className="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
                 >

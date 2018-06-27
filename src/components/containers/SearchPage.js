@@ -35,13 +35,21 @@ class SearchPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <Search viewer={props.viewer}/>
+            return <Search viewer={props.viewer} submit={this._submit}/>
           }
           return <div>Loading</div>
         }}
       />
     )
   }
+
+  _submit = (filter) => {
+    this.setState({
+      filter
+    })
+    this.props.history.push('/search/')
+  }
+
 }
 
 export default SearchPage

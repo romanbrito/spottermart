@@ -8,7 +8,7 @@ class Search extends Component {
     return (
       <SearchUi
         list={this.props.viewer.allAssets.edges}
-        onChange={this.props.onChange}
+        submit={this.props.submit}
       />
     )
   }
