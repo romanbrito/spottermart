@@ -27,6 +27,7 @@ export default createFragmentContainer(Search,
                     node {
                         id
                         businessName
+                        pictures
                     }
                 }
             }
