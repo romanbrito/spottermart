@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {QueryRenderer, graphql} from 'react-relay'
 import environment from '../../Environment'
 import {GC_USER_ID} from "../../constants"
-import UserAssetList from '../containers/UserAssetList'
+import UserAssetList from './UserAssetList'
 
 const UserAssetListPageQuery = graphql`
 query UserAssetListPageQuery($filter: AssetFilter!, $count: Int!, $after: String) {

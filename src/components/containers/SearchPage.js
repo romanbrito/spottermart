@@ -1,18 +1,12 @@
 import React, {Component} from 'react'
 import {QueryRenderer, graphql} from 'react-relay'
 import environment from '../../Environment'
+import Search from './Search'
 
 const SearchPageQuery = graphql`
     query SearchPageQuery($filter: AssetFilter!) {
         viewer {
-            allAssets(filter: $filter){
-                edges {
-                    node {
-                        id
-                        businessName
-                    }
-                }
-            }
+            ...Search_viewer
         }
     }
 `
@@ -41,13 +35,27 @@ class SearchPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <ul>{props.viewer.allAssets.edges.map(edge => <li
-              key={edge.node.id}>{edge.node.businessName}</li>)}</ul>
+            return <Search viewer={props.viewer} onChange={this._onChange}/>
           }
           return <div>Loading</div>
         }}
       />
     )
+  }
+
+  // functions for change of input
+  _onChange = event => {
+    const {name, value} = event.target
+    this._newState(name,value)
+  }
+
+  _newState = (element, newElement) => {
+    const newState = Object.keys(this.state).reduce((prev, curr) => {
+      if (curr === element) prev[curr] = newElement
+      else prev[curr] = this.state[curr]
+      return prev
+    },  {})
+    this.setState(newState)
   }
 }
 

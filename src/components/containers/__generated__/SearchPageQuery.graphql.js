@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b578c5a1d4b1d191c3506cccf530a36e
+ * @relayHash 9199a448e38b2e0eb6ad9713b34d361f
  */
 
 /* eslint-disable */
@@ -9,6 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+type Search_viewer$ref = any;
 export type AssetFilter = {
   AND?: ?$ReadOnlyArray<AssetFilter>,
   OR?: ?$ReadOnlyArray<AssetFilter>,
@@ -552,14 +553,7 @@ export type SearchPageQueryVariables = {|
 |};
 export type SearchPageQueryResponse = {|
   +viewer: {|
-    +allAssets: {|
-      +edges: ?$ReadOnlyArray<?{|
-        +node: {|
-          +id: string,
-          +businessName: string,
-        |}
-      |}>
-    |}
+    +$fragmentRefs: Search_viewer$ref
   |}
 |};
 */
@@ -570,15 +564,25 @@ query SearchPageQuery(
   $filter: AssetFilter!
 ) {
   viewer {
-    allAssets(filter: $filter) {
-      edges {
-        node {
-          id
-          businessName
-        }
-      }
-    }
+    ...Search_viewer
     id
+  }
+}
+
+fragment Search_viewer on Viewer {
+  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {
+    edges {
+      node {
+        id
+        businessName
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      hasPreviousPage
+      startCursor
+    }
   }
 }
 */
@@ -598,61 +602,13 @@ v1 = {
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v2 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "allAssets",
-  "storageKey": null,
-  "args": [
-    {
-      "kind": "Variable",
-      "name": "filter",
-      "variableName": "filter",
-      "type": "AssetFilter"
-    }
-  ],
-  "concreteType": "AssetConnection",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "edges",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "AssetEdge",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "node",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Asset",
-          "plural": false,
-          "selections": [
-            v1,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "businessName",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        }
-      ]
-    }
-  ]
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "SearchPageQuery",
   "id": null,
-  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    allAssets(filter: $filter) {\n      edges {\n        node {\n          id\n          businessName\n        }\n      }\n    }\n    id\n  }\n}\n",
+  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -670,7 +626,11 @@ return {
         "concreteType": "Viewer",
         "plural": false,
         "selections": [
-          v2
+          {
+            "kind": "FragmentSpread",
+            "name": "Search_viewer",
+            "args": null
+          }
         ]
       }
     ]
@@ -689,7 +649,133 @@ return {
         "concreteType": "Viewer",
         "plural": false,
         "selections": [
-          v2,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "allAssets",
+            "storageKey": null,
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "AssetFilter"
+              },
+              {
+                "kind": "Literal",
+                "name": "last",
+                "value": 100,
+                "type": "Int"
+              },
+              {
+                "kind": "Literal",
+                "name": "orderBy",
+                "value": "createdAt_DESC",
+                "type": "AssetOrderBy"
+              }
+            ],
+            "concreteType": "AssetConnection",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "AssetEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Asset",
+                    "plural": false,
+                    "selections": [
+                      v1,
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "businessName",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__typename",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "cursor",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "pageInfo",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "hasPreviousPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startCursor",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "LinkedHandle",
+            "alias": null,
+            "name": "allAssets",
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "AssetFilter"
+              },
+              {
+                "kind": "Literal",
+                "name": "last",
+                "value": 100,
+                "type": "Int"
+              },
+              {
+                "kind": "Literal",
+                "name": "orderBy",
+                "value": "createdAt_DESC",
+                "type": "AssetOrderBy"
+              }
+            ],
+            "handle": "connection",
+            "key": "Search_allAssets",
+            "filters": []
+          },
           v1
         ]
       }
@@ -698,5 +784,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '8779ad2f4b30c60e17be18a97774cc95';
+(node/*: any*/).hash = 'a495d8a5c79ab9944ae8b1134bf90aa4';
 module.exports = node;
