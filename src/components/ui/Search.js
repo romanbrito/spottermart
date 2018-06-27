@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Footer from '../Footer'
 
 const Search = (props) => (
-  <div>
+  <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height: '90vh'}}>
     <div className="cf">
       <label className="clip" htmlFor="search">Search</label>
       {/*this input and button need to be in this exact order*/}
@@ -58,7 +58,9 @@ const Search = (props) => (
         )
       }
     </div>
+    <div>
       <Footer/>
+    </div>
   </div>
 )
 
