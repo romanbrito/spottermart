@@ -1,6 +1,5 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
-import {GC_USER_ID, GC_AUTH_TOKEN} from '../constants'
 import '../sass/Header.css'
 import styled from 'styled-components'
 import {Image} from 'cloudinary-react'
@@ -10,6 +9,7 @@ import AngleDown from 'react-icons/lib/fa/angle-down'
 // withRouter to get access to history
 const Header = withRouter((props) => (
   <Heading>
+    {console.log(props)}
     <MenuIcon/>
     <div className="dib fr dn-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
     <div id="main-nav" className="dn flex-l items-center justify-between-l">
@@ -30,7 +30,7 @@ const Header = withRouter((props) => (
             <ul className="dn-l absolute-l dropdown-bg">
               <li className="list"><NavLink dest='/list' menuItem="My Assets"/></li>
               <li className="list"><NavLink dest='/create' menuItem="Create Asset"/></li>
-              <li className="list"><NavLink dest='/' menuItem="Logout" history={props.history}/></li>
+              <li className="list"><NavLink dest='/' menuItem="Logout" history={props.history} removeId={props.removeId}/></li>
             </ul>
           </li>}
           {!props.userId && props.location.pathname !== '/login' ?
@@ -52,9 +52,7 @@ const NavLink = (props) => (
       dropdownToggle()
       // logout
       if (props.menuItem === 'Logout') {
-        localStorage.removeItem(GC_USER_ID)
-        localStorage.removeItem(GC_AUTH_TOKEN)
-        // props.removeId()
+        props.removeId()
         props.history.push('/')
       }
     }

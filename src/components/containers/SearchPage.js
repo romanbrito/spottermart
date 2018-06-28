@@ -26,8 +26,19 @@ class SearchPage extends Component {
         variables={{
           filter: {
             OR: [
+              {address_contains: this.state.filter},
+              {businessName_contains: this.state.filter},
+              {businessType_contains: this.state.filter},
               {city_contains: this.state.filter},
-              {businessName_contains: this.state.filter}
+              {description_contains: this.state.filter},
+              {franchiseMarketingFee_contains: this.state.filter},
+              {franchiseRoyalties_contains: this.state.filter},
+              {franchiseTraining_contains: this.state.filter},
+              {franchiseTransferFee_contains: this.state.filter},
+              {franchiseYearsRemaining_contains: this.state.filter},
+              {fullTimeEmployees_contains: this.state.filter},
+              {whySelling_contains: this.state.filter},
+              {zipCode_contains: this.state.filter}
             ]
           },
         }}
