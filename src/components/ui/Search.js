@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Footer from '../Footer'
 
 const Search = (props) => (
-  <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height: '90vh'}}>
+  <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '90vh'}}>
     <div className="cf">
       <label className="clip" htmlFor="search">Search</label>
       {/*this input and button need to be in this exact order*/}
@@ -32,12 +32,12 @@ const Search = (props) => (
         props.list.map(list => (
             <main key={list.cursor} className="mw6 center">
               <article>
-                <div className="link dt w-100 bb b--black-10 pb2 mt2 blue" href="#0">
-                  <div className="dtc w3">
+                <div className="">
+                  <div className="">
                     <img src={list.node.pictures && list.node.pictures.length > 0 ? list.node.pictures[0].url : ''}
                          alt={list.node.businessName}/>
                   </div>
-                  <div className="dtc v-top pl2">
+                  <div className="">
                     <h1 className="f6 f5-ns fw6 lh-title black mv0">{list.node.businessName}</h1>
                     <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.city}</h2>
                     <dl className="mt2 f6">
@@ -45,12 +45,14 @@ const Search = (props) => (
                       <dd className="ml0">{list.node.id}</dd>
                     </dl>
                   </div>
-                  <Link to={'/update/' + list.node.id}>
-                    <button
-                      className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
-                    >Details
-                    </button>
-                  </Link>
+                  <div>
+                    <Link to={'/update/' + list.node.id}>
+                      <button
+                        className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
+                      >Details
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </article>
             </main>
