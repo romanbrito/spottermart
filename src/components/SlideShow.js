@@ -11,29 +11,31 @@ class SlideShow extends Component {
 
   render () {
     return (
-      <div className="slideshow-container" style={{maxWidth: 1000, position: 'relative', margin: 'auto'}}>
+      <figure className="slideshow-container" style={{maxWidth: 1000, display: 'grid'}}>
 
         {/*Full-width images with number and caption text*/}
-        <div className="mySlides fade">
-          <div className="numbertext">{this.state.n+1 + '/' + imgSrc.length}</div>
+        <div className="" style={{gridColumn:1,gridRow:1}}>
           <img src={imgSrc[this.state.n]} style={{width: '100%'}} alt=""/>
-          <div className="text">Caption Text</div>
         </div>
 
+        <div className="white-90 f5 pa3" style={{gridColumn:1,gridRow:1}}>{this.state.n+1 + '/' + imgSrc.length}</div>
+
         {/*Next and previous buttons*/}
-        <a
-          className="prev"
-          onClick={() => this._slideControl(-1)}
-        >
-          &#10094;
-        </a>
-        <a
-          className="next"
-          onClick={() => this._slideControl(1)}
-        >
-          &#10095;
-        </a>
-      </div>
+        <div style={{gridColumn:1,gridRow:1, display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+          <a
+            className="pointer pl3 white-90 f1"
+            onClick={() => this._slideControl(-1)}
+          >
+            &#10094;
+          </a>
+          <a
+            className="pointer pr3 white-90 f1"
+            onClick={() => this._slideControl(1)}
+          >
+            &#10095;
+          </a>
+        </div>
+      </figure>
     )
   }
 
