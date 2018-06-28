@@ -4,7 +4,7 @@ import Footer from '../Footer'
 
 const Search = (props) => (
   <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '90vh'}}>
-    <div className="cf">
+    <div className="cf mv3 ml-auto mr-auto w-90">
       <label className="clip" htmlFor="search">Search</label>
       {/*this input and button need to be in this exact order*/}
       <input
