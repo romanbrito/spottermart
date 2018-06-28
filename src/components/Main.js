@@ -7,7 +7,6 @@ import CreateAsset from './containers/CreateAsset'
 import UserAssetListPage from './containers/UserAssetListPage'
 import UpdateAssetPage from './containers/UpdateAssetPage'
 import SearchPage from './containers/SearchPage'
-import SlideShow from './SlideShow'
 
 const Main = (props) => {
   const extraProps = props
@@ -24,8 +23,6 @@ const Main = (props) => {
       <Route exact path='/search' component={SearchPage}/>
       <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
       <Route exact path='/search/:filter' component={SearchPage}/>
-
-      <Route exact path='/slide' component={SlideShow}/>
     </Switch>
   )
 }

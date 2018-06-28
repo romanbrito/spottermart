@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Footer from '../Footer'
+import SlideShow from '../SlideShow'
 
 const Search = (props) => (
   <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '90vh'}}>
@@ -34,8 +35,9 @@ const Search = (props) => (
               <article>
                 <div className="">
                   <div className="">
-                    <img src={list.node.pictures && list.node.pictures.length > 0 ? list.node.pictures[0].url : ''}
-                         alt={list.node.businessName}/>
+                    {/*<img src={list.node.pictures && list.node.pictures.length > 0 ? list.node.pictures[0].url : ''}*/}
+                         {/*alt={list.node.businessName}/>*/}
+                         <SlideShow images={list.node.pictures}/>
                   </div>
                   <div className="">
                     <h1 className="f6 f5-ns fw6 lh-title black mv0">{list.node.businessName}</h1>

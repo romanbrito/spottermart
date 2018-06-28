@@ -10,15 +10,16 @@ class SlideShow extends Component {
   }
 
   render () {
+
     return (
-      <figure className="slideshow-container" style={{maxWidth: 1000, display: 'grid'}}>
+      <figure className="slideshow-container" style={{display: 'grid'}}>
 
         {/*Full-width images with number and caption text*/}
         <div className="" style={{gridColumn:1,gridRow:1}}>
-          <img src={imgSrc[this.state.n]} style={{width: '100%'}} alt=""/>
+          <img src={this.props.images[this.state.n].url} style={{width: '100%'}} alt=""/>
         </div>
 
-        <div className="white-90 f5 pa3" style={{gridColumn:1,gridRow:1}}>{this.state.n+1 + '/' + imgSrc.length}</div>
+        <div className="white-90 f5 pa3" style={{gridColumn:1,gridRow:1}}>{this.state.n+1 + '/' + this.props.images.length}</div>
 
         {/*Next and previous buttons*/}
         <div style={{gridColumn:1,gridRow:1, display:'flex', alignItems:'center', justifyContent:'space-between'}}>
@@ -41,8 +42,8 @@ class SlideShow extends Component {
 
   _slideControl = (i) => {
     const n = this.state.n + i
-    if (n > imgSrc.length-1) this.setState({n:0})
-    else if (n < 0) this.setState({n:imgSrc.length-1})
+    if (n > this.props.images.length-1) this.setState({n:0})
+    else if (n < 0) this.setState({n:this.props.images.length-1})
     else this.setState({n})
   }
 }
