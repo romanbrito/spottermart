@@ -42,14 +42,23 @@ const CreateAsset = (props) => {
                   >
                     {formInput.label}
                   </label>
-                  <input
+                  {/*Description as text area*/}
+                  { formInput.id !== 'description' ? <input
                     className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
                     type={formInput.type}
                     id={formInput.id}
                     name={formInput.name}
                     value={props.state[formInput.name]}
                     onChange={e => props.onChange(e)}
-                  />
+                  />:
+                  <textarea
+                    className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+                    id={formInput.id}
+                    name={formInput.name}
+                    value={props.state[formInput.name]}
+                    onChange={e => props.onChange(e)}/>
+                  }
+
                 </div>
                 {props.validationErrors && props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
               </li>
