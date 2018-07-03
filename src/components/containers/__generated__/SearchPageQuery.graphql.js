@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash dc60e48252abc3330b046807957a9c29
+ * @relayHash 157157583cad5877fdc79b6a9d0bddcc
  */
 
 /* eslint-disable */
@@ -576,6 +576,7 @@ fragment Search_viewer on Viewer {
         id
         businessName
         pictures
+        city
         __typename
       }
       cursor
@@ -609,7 +610,7 @@ return {
   "operationKind": "query",
   "name": "SearchPageQuery",
   "id": null,
-  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        city\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -708,6 +709,13 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "pictures",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "city",
                         "args": null,
                         "storageKey": null
                       },

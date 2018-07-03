@@ -32,30 +32,38 @@ const Search = (props) => (
       {
         props.list.map(list => (
             <main key={list.cursor} className="mw6 center">
+
               <article>
                 <div className="">
-                  <div className="">
-                    {/*<img src={list.node.pictures && list.node.pictures.length > 0 ? list.node.pictures[0].url : ''}*/}
-                         {/*alt={list.node.businessName}/>*/}
-                         <SlideShow images={list.node.pictures}/>
-                  </div>
-                  <div className="">
-                    <h1 className="f6 f5-ns fw6 lh-title black mv0">{list.node.businessName}</h1>
-                    <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.city}</h2>
-                    <dl className="mt2 f6">
-                      <dt className="clip">Price</dt>
-                      <dd className="ml0">{list.node.id}</dd>
-                    </dl>
-                  </div>
-                  <div>
-                    <Link to={'/update/' + list.node.id}>
-                      <button
-                        className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
-                      >Details
-                      </button>
-                    </Link>
-                  </div>
+                  <SlideShow images={list.node.pictures}/>
                 </div>
+
+                <div>
+                  <h1 className="f6 f5-ns fw6 lh-title black mv0">{list.node.businessName}</h1>
+                  <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.city}</h2>
+                  <h2 className="f6 fw4 mt2 mb0 black-60">Price</h2>
+                  <h2 className="f6 fw4 mt2 mb0 black-60">Description</h2>
+                  {/*<dl className="mt2 f6">*/}
+                    {/*<dt className="clip">Price</dt>*/}
+                    {/*<dd className="ml0">{list.node.id}</dd>*/}
+                  {/*</dl>*/}
+                </div>
+
+                <div>
+                  <Link to={'/update/' + list.node.id}>
+                    <button
+                      className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
+                    >Details
+                    </button>
+                  </Link>
+                  <Link to={'/update/' + list.node.id}>
+                    <button
+                      className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
+                    >Send Message
+                    </button>
+                  </Link>
+                </div>
+
               </article>
             </main>
           )

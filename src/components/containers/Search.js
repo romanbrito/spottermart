@@ -28,6 +28,7 @@ export default createFragmentContainer(Search,
                         id
                         businessName
                         pictures
+                        city
                     }
                 }
             }
