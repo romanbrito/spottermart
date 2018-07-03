@@ -9,7 +9,7 @@ class SlideShow extends Component {
   render () {
 
     return (
-      <figure className="slideshow-container" style={{display: 'grid'}}>
+      <figure className="slideshow-container ma0" style={{display: 'grid'}}>
 
         {/*Full-width images with number and caption text*/}
         <div className="" style={{gridColumn:1,gridRow:1}}>
