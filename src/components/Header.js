@@ -9,7 +9,6 @@ import AngleDown from 'react-icons/lib/fa/angle-down'
 // withRouter to get access to history
 const Header = withRouter((props) => (
   <Heading>
-    {console.log(props)}
     <MenuIcon/>
     <div className="dib fr dn-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
     <div id="main-nav" className="dn flex-l items-center justify-between-l">

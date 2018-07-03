@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
 
-const imgSrc = ['https://www.w3schools.com/howto/img_snow_wide.jpg',
-  'https://www.w3schools.com/howto/img_lights_wide.jpg',
-  'https://www.w3schools.com/howto/img_mountains_wide.jpg']
 class SlideShow extends Component {
 
   state = {
