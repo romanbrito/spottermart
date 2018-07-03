@@ -17,7 +17,9 @@ export type Search_viewer = {|
         +id: string,
         +businessName: string,
         +pictures: ?$ReadOnlyArray<any>,
+        +price: ?string,
         +city: string,
+        +description: string,
       |}
     |}>
   |},
@@ -101,7 +103,21 @@ const node/*: ConcreteFragment*/ = {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "price",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "city",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "description",
                   "args": null,
                   "storageKey": null
                 },
@@ -153,5 +169,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'bd5fc3a4b2b48071c8440fc33c4ce981';
+(node/*: any*/).hash = 'd2755c49ae0093414734ffa73d11541e';
 module.exports = node;

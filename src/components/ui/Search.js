@@ -41,15 +41,15 @@ const Search = (props) => (
                 <div>
                   <h1 className="f6 f5-ns fw6 lh-title black mv0">{list.node.businessName}</h1>
                   <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.city}</h2>
-                  <h2 className="f6 fw4 mt2 mb0 black-60">Price</h2>
-                  <h2 className="f6 fw4 mt2 mb0 black-60">Description</h2>
+                  <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.price}</h2>
+                  <p className="f6 fw4 mt2 mb0 black-60">{list.node.description}</p>
                   {/*<dl className="mt2 f6">*/}
                     {/*<dt className="clip">Price</dt>*/}
                     {/*<dd className="ml0">{list.node.id}</dd>*/}
                   {/*</dl>*/}
                 </div>
 
-                <div>
+                <div className="flex justify-between">
                   <Link to={'/update/' + list.node.id}>
                     <button
                       className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
@@ -58,7 +58,7 @@ const Search = (props) => (
                   </Link>
                   <Link to={'/update/' + list.node.id}>
                     <button
-                      className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-blue pointer"
+                      className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-green pointer"
                     >Send Message
                     </button>
                   </Link>
