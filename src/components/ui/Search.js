@@ -38,11 +38,11 @@ const Search = (props) => (
                   <SlideShow images={list.node.pictures}/>
                 </div>
 
-                <div>
-                  <h1 className="f6 f5-ns fw6 lh-title black mv0">{list.node.businessName}</h1>
-                  <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.city}</h2>
-                  <h2 className="f6 fw4 mt2 mb0 black-60">{list.node.price}</h2>
-                  <p className="f6 fw4 mt2 mb0 black-60">{list.node.description}</p>
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', gridTemplateRows: '1fr 1fr 1fr'}}>
+                  <h1 className="f6 f5-ns fw6 lh-title black mv0" style={{gridColumn: '1 / span 1', gridRow: '1 / 1'}}>{list.node.businessName}</h1>
+                  <h2 className="f6 fw4 mt2 mb0 black-60" style={{gridColumn: '1 / span 1'}}>City: {list.node.city}</h2>
+                  <h2 className="f6 fw4 mt2 mb0 black-60" style={{gridColumn: '1 / span 1'}}>Price: {list.node.price}</h2>
+                  <p className="f6 fw4 mt2 mb0 black-60" style={{gridColumn: '2 / span 1', gridRow: '2 / span 2'}}>{list.node.description}</p>
                   {/*<dl className="mt2 f6">*/}
                     {/*<dt className="clip">Price</dt>*/}
                     {/*<dd className="ml0">{list.node.id}</dd>*/}
