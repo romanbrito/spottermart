@@ -5,7 +5,7 @@ export const Main = styled.main.attrs({
 })``
 
 export const Section = styled.section.attrs({
-  className: "flex lh-copy pa3 ph0-l bb b--black-10"
+  className: "flex lh-copy"
 })``
 
 export const Article = styled.article.attrs({
@@ -41,7 +41,7 @@ export const Input = styled.input.attrs({
 })``
 
 export const ImageSection = styled.section.attrs({
-  className: "lh-copy pa3 ph0-l bb b--black-10"
+  className: "lh-copy"
 })``
 
 export const Figure = styled.figure.attrs({
@@ -53,7 +53,7 @@ export const DelImgBtn = styled.button.attrs({
 })``
 
 export const ListSection = styled.section.attrs({
-  className: "lh-copy pa3 ph0-l bb b--black-10"
+  className: "lh-copy"
 })``
 
 export const List = styled.li.attrs({
