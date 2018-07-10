@@ -12,8 +12,8 @@ export const Article = styled.article.attrs({
   className: "flex-auto"
 })``
 
-export const SubTitle = styled.h2.attrs({
-  className: "pointer w-100 tc accordion"
+export const SubTitle = styled.a.attrs({
+  className: "pointer w-100 tc db mv3 black no-underline f3 dim accordion"
 })``
 
 export const Ul = styled.ul.attrs({

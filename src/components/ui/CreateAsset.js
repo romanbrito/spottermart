@@ -57,6 +57,8 @@ const CreateAsset = (props) => {
           <Article>
 
             <SubTitle
+              id={title}
+              href={'#' + title}
               onClick={() => {
                 showAccordion(idx)
               }}
@@ -111,6 +113,8 @@ const CreateAsset = (props) => {
         <Article>
 
           <SubTitle
+            id="add-img"
+            href="#add-img"
             onClick={() => showAccordion(3)}
           >
             <Images size={30}/> Images
@@ -147,6 +151,8 @@ const CreateAsset = (props) => {
         <Article>
 
           <SubTitle
+            id="add-equipment"
+            href="#add-equipment"
               onClick={() => showAccordion(4)}
           >
             <Tools size={30}/> Equipment
@@ -185,6 +191,8 @@ const CreateAsset = (props) => {
         <Article>
 
           <SubTitle
+            id="add-social"
+            href="#add-social"
               onClick={() => showAccordion(5)}
           >
             <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
@@ -257,7 +265,7 @@ const showAccordion = (pos) => {
       // on click hide the other elements
       panel[i].className = "o-0 overflow-hidden ph1 panel";
       panel[i].style.cssText = "height: 0;";
-      title[i].className = "pointer w-100 tc accordion";
+      title[i].className = "pointer w-100 tc db mv3 black no-underline f3 dim accordion";
     }
   }
 }
