@@ -185,7 +185,7 @@ const CreateAsset = (props) => {
           <SubTitle
               onClick={() => showAccordion(5)}
           >
-            <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/> Social Media
+            <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
           </SubTitle>
           <Ul>
 

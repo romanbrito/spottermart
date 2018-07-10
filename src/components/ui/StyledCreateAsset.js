@@ -57,11 +57,11 @@ export const ListSection = styled.section.attrs({
 })``
 
 export const List = styled.li.attrs({
-  className: "list"
+  className: "list tc"
 })``
 
 export const InputList = styled.input.attrs({
-  className: "input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+  className: "input-reset center bl-0 bt-0 br-0 bb b--black-20 outline-0"
 })``
 
 export const MinusPlusBtn = styled.button.attrs({
