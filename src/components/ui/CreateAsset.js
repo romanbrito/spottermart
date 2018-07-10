@@ -29,7 +29,8 @@ import {
   ListSection,
   List,
   InputList,
-  MinusPlusBtn
+  MinusPlusBtn,
+  SubmitBtn
 } from './StyledCreateAsset'
 
 const Icons = ({title}) =>
@@ -219,13 +220,12 @@ const CreateAsset = (props) => {
         </Article>
       </ListSection>
       <section>
-        <button
+        <SubmitBtn
           disabled={!props.isEnabled}
-          className="f5 no-underline black bg-animate hover-bg-black hover-white pa3 ba border-box pointer mt2"
           onClick={() => props.submit()}
         >
           Submit
-        </button>
+        </SubmitBtn>
       </section>
 
     </Main>

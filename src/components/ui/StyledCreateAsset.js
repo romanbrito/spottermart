@@ -67,3 +67,7 @@ export const InputList = styled.input.attrs({
 export const MinusPlusBtn = styled.button.attrs({
   className: "pointer br3 bg-white"
 })``
+
+export const SubmitBtn = styled.button.attrs({
+  className: "f5 no-underline black bg-animate hover-bg-black hover-white pa3 ba border-box pointer mt2 w-100"
+})``
