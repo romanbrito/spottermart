@@ -33,7 +33,7 @@ export const TextArea = styled.textarea.attrs({
 })``
 
 export const Checkbox = styled.input.attrs({
-  className: "mv3 flex flex-wrap w5 center"
+  className: ""
 })``
 
 export const Input = styled.input.attrs({
