@@ -53,13 +53,13 @@ const CreateAsset = (props) => {
       {Object.keys(formInput).map((title, idx) =>
         <Section key={title}>
           <Article>
-            <Icons title={title}/>
+
             <SubTitle
               onClick={() => {
                 showAccordion(idx)
               }}
             >
-              {title}
+              <Icons title={title}/> {title}
             </SubTitle>
             <Ul>
               {formInput[title].map(formInput =>
@@ -107,11 +107,11 @@ const CreateAsset = (props) => {
 
       <ImageSection>
         <Article>
-          <Images size={30}/>
+
           <SubTitle
             onClick={() => showAccordion(3)}
           >
-            Images
+            <Images size={30}/> Images
           </SubTitle>
           <Ul>
             <Li>
@@ -143,11 +143,11 @@ const CreateAsset = (props) => {
       </ImageSection>
       <ListSection>
         <Article>
-          <Tools size={30}/>
+
           <SubTitle
               onClick={() => showAccordion(4)}
           >
-            Equipment
+            <Tools size={30}/> Equipment
           </SubTitle>
           <Ul>
 
@@ -181,11 +181,11 @@ const CreateAsset = (props) => {
       </ListSection>
       <ListSection>
         <Article>
-          <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
+
           <SubTitle
               onClick={() => showAccordion(5)}
           >
-            Social Media
+            <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/> Social Media
           </SubTitle>
           <Ul>
 
@@ -246,7 +246,7 @@ const showAccordion = (pos) => {
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       if (pos < 4) {
-        panel[i].className = "flex flex-wrap justify-center panel";
+        panel[i].className = "flex flex-wrap justify-center pl0 panel";
         panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
       } else {
         panel[i].className = "overflow-hidden ph1 db panel";
@@ -256,7 +256,7 @@ const showAccordion = (pos) => {
       // on click hide the other elements
       panel[i].className = "o-0 overflow-hidden ph1 panel";
       panel[i].style.cssText = "height: 0;";
-      title[i].className = "pointer w-100 accordion";
+      title[i].className = "pointer w-100 tc accordion";
     }
   }
 }

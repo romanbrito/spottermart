@@ -13,7 +13,7 @@ export const Article = styled.article.attrs({
 })``
 
 export const SubTitle = styled.h2.attrs({
-  className: "pointer w-100 accordion"
+  className: "pointer w-100 tc accordion"
 })``
 
 export const Ul = styled.ul.attrs({
