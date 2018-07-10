@@ -69,7 +69,7 @@ const MenuIcon = () => (
 
 const MobileMenu = styled.div.attrs({
   className: "ml1 pointer dib dn-l",
-})``
+})`margin: 6px 0`
 
 const Ul = styled.ul.attrs({
   className: "list pa0 ma0 flex-l",
