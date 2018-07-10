@@ -28,7 +28,8 @@ import {
   DelImgBtn,
   ListSection,
   List,
-  InputList
+  InputList,
+  MinusPlusBtn
 } from './StyledCreateAsset'
 
 const Icons = ({title}) =>
@@ -161,69 +162,61 @@ const CreateAsset = (props) => {
                   autoFocus={true}
                   onKeyUp={(e) => e.key === 'Enter' ? props.addElement('equipment') : ''}
                   type="text"/>
-                <button
-                  className="pointer br3 bg-white"
+                <MinusPlusBtn
                   onClick={() => props.removeElement('equipment', idx)}>
                   -
-                </button>
+                </MinusPlusBtn>
               </List>
             ))}
             <List>
-              <button
-                className="pointer br3 bg-white"
+              <MinusPlusBtn
                 onClick={() => props.addElement('equipment')}
               >
                 +
-              </button>
+              </MinusPlusBtn>
             </List>
 
           </Ul>
         </Article>
       </ListSection>
-      <section className="lh-copy pa3 ph0-l bb b--black-10">
-        <div className="flex-auto">
+      <ListSection>
+        <Article>
           <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
-          <h3 className="pointer w-100 accordion"
+          <SubTitle
               onClick={() => showAccordion(5)}
           >
             Social Media
-          </h3>
-          <ul className="dn overflow-hidden ph1 panel">
+          </SubTitle>
+          <Ul>
 
             {props.socialMedia && props.socialMedia.map((socialMedia, idx) => (
-              <li
-                className="list"
+              <List
                 key={idx}
               >
-                <input
-                  className="input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+                <InputList
                   placeholder={`Item #${idx + 1}`}
                   value={socialMedia.name}
                   onChange={props.onChangeElement('socialMedia', idx)}
                   autoFocus={true}
                   onKeyUp={(e) => e.key === 'Enter' ? props.addElement('socialMedia') : ''}
                   type="text"/>
-                <button
-                  className="pointer br3 bg-white"
+                <MinusPlusBtn
                   onClick={() => props.removeElement('socialMedia', idx)}
                 >
                   -
-                </button>
-              </li>
+                </MinusPlusBtn>
+              </List>
             ))}
-            <li
-              className="list"
-            >
-              <button
-                className="pointer br3 bg-white"
+            <List>
+              <MinusPlusBtn
                 onClick={() => props.addElement('socialMedia')}
               >
                 +
-              </button>
-            </li>
-          </ul>
-        </div>
-      </section>
+              </MinusPlusBtn>
+            </List>
+          </Ul>
+        </Article>
+      </ListSection>
       <section>
         <button
           disabled={!props.isEnabled}

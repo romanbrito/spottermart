@@ -63,3 +63,7 @@ export const List = styled.li.attrs({
 export const InputList = styled.input.attrs({
   className: "input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
 })``
+
+export const MinusPlusBtn = styled.button.attrs({
+  className: "pointer br3 bg-white"
+})``
