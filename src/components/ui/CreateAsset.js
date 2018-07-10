@@ -41,7 +41,8 @@ const styleDrop = {
   width: 150, height: 150,
   borderStyle: 'outset',
   borderWidth: 1,
-  cursor: 'pointer'
+  cursor: 'pointer',
+  margin: '0 auto'
 }
 
 
