@@ -21,7 +21,7 @@ export const Ul = styled.ul.attrs({
 })``
 
 export const Li = styled.li.attrs({
-  className: "flex flex-wrap w5 center"
+  className: "flex flex-wrap w5 center list"
 })``
 
 export const Label = styled.label.attrs({
@@ -38,4 +38,16 @@ export const Checkbox = styled.input.attrs({
 
 export const Input = styled.input.attrs({
   className: "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+})``
+
+export const ImageSection = styled.section.attrs({
+  className: "lh-copy pa3 ph0-l bb b--black-10"
+})``
+
+export const Figure = styled.figure.attrs({
+  className: "flex"
+})``
+
+export const DelImgBtn = styled.button.attrs({
+  className: "absolute o-70 pointer"
 })``

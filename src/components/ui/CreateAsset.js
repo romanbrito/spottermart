@@ -12,12 +12,33 @@ import Twitter from 'react-icons/lib/fa/twitter'
 import Google from 'react-icons/lib/fa/google-plus'
 import DeleteForever from 'react-icons/lib/md/delete-forever'
 import AddPhoto from 'react-icons/lib/md/add-a-photo'
-import {Main, Section, Article, SubTitle, Ul, Li, Label, TextArea, Checkbox, Input} from './StyledCreateAsset'
+import {
+  Main,
+  Section,
+  Article,
+  SubTitle,
+  Ul,
+  Li,
+  Label,
+  TextArea,
+  Checkbox,
+  Input,
+  ImageSection,
+  Figure,
+  DelImgBtn
+} from './StyledCreateAsset'
 
 const Icons = ({title}) =>
   title === "Name and Location" ? <Location size={30}/> :
     title === "Company" ? <Store size={30}/> :
       <Money size={30}/>;
+
+const styleDrop = {
+  width: 150, height: 150,
+  borderStyle: 'outset',
+  borderWidth: 1,
+  cursor: 'pointer'
+}
 
 
 // inputs
@@ -25,7 +46,7 @@ const CreateAsset = (props) => {
 
   return (
     <Main>
-      {Object.keys(formInput).map((title,idx) =>
+      {Object.keys(formInput).map((title, idx) =>
         <Section key={title}>
           <Article>
             <Icons title={title}/>
@@ -41,34 +62,34 @@ const CreateAsset = (props) => {
                 <Li
                   key={formInput.id}
                 >
-                    <Label
-                      htmlFor={formInput.labelFor}
-                    >
-                      {formInput.label}
-                    </Label>
-                    {/*Description as text area*/}
-                    {formInput.type === 'textarea' ?
-                      <TextArea
+                  <Label
+                    htmlFor={formInput.labelFor}
+                  >
+                    {formInput.label}
+                  </Label>
+                  {/*Description as text area*/}
+                  {formInput.type === 'textarea' ?
+                    <TextArea
+                      id={formInput.id}
+                      name={formInput.name}
+                      value={props.state[formInput.name]}
+                      onChange={e => props.onChange(e)}/>
+                    : formInput.type === 'checkbox' ?
+                      <Checkbox
+                        type={formInput.type}
                         id={formInput.id}
                         name={formInput.name}
                         value={props.state[formInput.name]}
-                        onChange={e => props.onChange(e)}/>
-                      : formInput.type === 'checkbox' ?
-                        <Checkbox
-                          type={formInput.type}
-                          id={formInput.id}
-                          name={formInput.name}
-                          value={props.state[formInput.name]}
-                          onChange={e => props.onChange(e)}
-                        /> :
-                        <Input
-                          type={formInput.type}
-                          id={formInput.id}
-                          name={formInput.name}
-                          value={props.state[formInput.name]}
-                          onChange={e => props.onChange(e)}
-                        />
-                    }
+                        onChange={e => props.onChange(e)}
+                      /> :
+                      <Input
+                        type={formInput.type}
+                        id={formInput.id}
+                        name={formInput.name}
+                        value={props.state[formInput.name]}
+                        onChange={e => props.onChange(e)}
+                      />
+                  }
 
                   {props.validationErrors && props.validationErrors[formInput.name] ?
                     <span className="red">*</span> : ""}
@@ -80,44 +101,43 @@ const CreateAsset = (props) => {
       )
       }
 
-      <section className="lh-copy pa3 ph0-l bb b--black-10">
-        <div className="flex-auto">
+      <ImageSection>
+        <Article>
           <Images size={30}/>
-          <h3 className="pointer w-100 accordion"
-              onClick={() => showAccordion(3)}
+          <SubTitle
+            onClick={() => showAccordion(3)}
           >
             Images
-          </h3>
-          <ul className="dn overflow-hidden ph1 panel">
-            <li className="list pointer">
+          </SubTitle>
+          <Ul>
+            <Li>
               <Dropzone
-                style={{width: 150, height: 150, borderStyle: 'outset', borderWidth: 1}}
+                style={styleDrop}
                 accept="image/jpeg, image/png"
                 onDrop={(images) => props.setImages(images)}
               >
                 <AddPhoto size={70}/>
                 <p className="tc">*.jpeg and *.png only</p>
               </Dropzone>
-            </li>
+            </Li>
             {props.images && props.images.map(image =>
               <li
                 className="list"
                 key={image.preview}
               >
-                <div className="flex">
+                <Figure>
                   <img width="150" height="150" className="" src={image.preview} alt="" id={image.preview}/>
-                  <button
-                    className="absolute o-70"
+                  <DelImgBtn
                     onClick={() => props.removeImage(document.getElementById(image.preview))}
                   >
                     <DeleteForever size={50} className="pointer"/>
-                  </button>
-                </div>
+                  </DelImgBtn>
+                </Figure>
               </li>
             )}
-          </ul>
-        </div>
-      </section>
+          </Ul>
+        </Article>
+      </ImageSection>
       <section className="lh-copy pa3 ph0-l bb b--black-10">
         <div className="flex-auto">
           <Tools size={30}/>
