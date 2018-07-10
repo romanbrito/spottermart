@@ -4,7 +4,7 @@ import '../sass/Header.css'
 import styled from 'styled-components'
 import {Image} from 'cloudinary-react'
 import AngleDown from 'react-icons/lib/fa/angle-down'
-// import AngleUp from 'react-icons/lib/fa/angle-up'
+import MdMenu from 'react-icons/lib/md/menu'
 
 // withRouter to get access to history
 const Header = withRouter((props) => (
@@ -61,14 +61,15 @@ const NavLink = (props) => (
 )
 
 const MenuIcon = () => (
-  <div
-    className="menu-icon ml1 pointer dib dn-l"
+  <MobileMenu
     onClick={showMenu}>
-    <div/>
-    <div/>
-    <div/>
-  </div>
+    <MdMenu size={27} color="white"/>
+  </MobileMenu>
 )
+
+const MobileMenu = styled.div.attrs({
+  className: "ml1 pointer dib dn-l",
+})``
 
 const Ul = styled.ul.attrs({
   className: "list pa0 ma0 flex-l",

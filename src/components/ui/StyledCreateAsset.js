@@ -5,7 +5,7 @@ export const Main = styled.main.attrs({
 })``
 
 export const Section = styled.section.attrs({
-  className: "flex lh-copy"
+  className: "lh-copy"
 })``
 
 export const Article = styled.article.attrs({
