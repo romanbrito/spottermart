@@ -247,10 +247,10 @@ const showAccordion = (pos) => {
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       if (pos < 4) {
-        panel[i].className = "flex flex-wrap justify-center pl0 panel";
+        panel[i].className = "flex flex-wrap justify-center pl0 bg-silver pv5 white panel";
         panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
       } else {
-        panel[i].className = "overflow-hidden ph1 db panel";
+        panel[i].className = "overflow-hidden ph1 db bg-silver pv3 panel";
         panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
       }
     } else {

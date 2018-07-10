@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Main = styled.main.attrs({
-  className: "mv5 pl0 measure center",
+  className: "mv2 pl0 measure center",
 })``
 
 export const Section = styled.section.attrs({
