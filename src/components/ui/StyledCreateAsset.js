@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Main = styled.main.attrs({
-  className: "list pl0 mt0 measure center ml5-l measure-narrow-l",
+  className: "mv5 pl0 measure center measure-narrow-l",
 })``
 
 export const Section = styled.section.attrs({
@@ -17,8 +17,8 @@ export const SubTitle = styled.h2.attrs({
 })``
 
 export const Ul = styled.ul.attrs({
-  className: "dn overflow-hidden ph1 panel"
-})``
+  className: "o-0 absolute overflow-hidden ph1 panel"
+})`height: 0;`
 
 export const Li = styled.li.attrs({
   className: "flex flex-wrap w5 center list"

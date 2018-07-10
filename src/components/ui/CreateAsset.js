@@ -246,13 +246,16 @@ const showAccordion = (pos) => {
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       if (pos < 4) {
-        panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center";
+        panel[i].className = "flex flex-wrap justify-center panel";
+        panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
       } else {
-        panel[i].className = "dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l db";
+        panel[i].className = "overflow-hidden ph1 db panel";
+        panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
       }
     } else {
       // on click hide the other elements
-      panel[i].className = "dn overflow-hidden ph1 panel";
+      panel[i].className = "o-0 overflow-hidden ph1 panel";
+      panel[i].style.cssText = "height: 0;";
       title[i].className = "pointer w-100 accordion";
     }
   }
