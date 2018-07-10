@@ -1,5 +1,5 @@
 {
-  "section1": [
+  "Name and Location": [
     {
       "id":"business-name",
       "labelFor":"business-name",
@@ -11,7 +11,7 @@
       "id":"description",
       "labelFor":"description",
       "name": "description",
-      "type": "text",
+      "type": "textarea",
       "label": "Description"
     },
     {
@@ -57,7 +57,7 @@
       "label": "Zip Code"
     }
   ],
-  "section2": [
+  "Company": [
     {
       "id":"structure",
       "labelFor":"structure",
@@ -129,7 +129,7 @@
       "label": "Part Time Employees"
     }
   ],
-  "section3": [
+  "Financial": [
     {
       "id":"rentNNN",
       "labelFor":"rentNNN",

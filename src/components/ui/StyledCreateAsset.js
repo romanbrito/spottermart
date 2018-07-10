@@ -13,5 +13,29 @@ export const Article = styled.article.attrs({
 })``
 
 export const SubTitle = styled.h2.attrs({
-  className: "pointer w-100 accordion green"
+  className: "pointer w-100 accordion"
+})``
+
+export const Ul = styled.ul.attrs({
+  className: "dn overflow-hidden ph1 panel"
+})``
+
+export const Li = styled.li.attrs({
+  className: "flex flex-wrap w5 center"
+})``
+
+export const Label = styled.label.attrs({
+  className: "flex-grow-1 flex-shrink-0 w4"
+})``
+
+export const TextArea = styled.textarea.attrs({
+  className: "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+})``
+
+export const Checkbox = styled.input.attrs({
+  className: "mv3 flex flex-wrap w5 center"
+})``
+
+export const Input = styled.input.attrs({
+  className: "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
 })``

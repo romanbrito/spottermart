@@ -12,131 +12,74 @@ import Twitter from 'react-icons/lib/fa/twitter'
 import Google from 'react-icons/lib/fa/google-plus'
 import DeleteForever from 'react-icons/lib/md/delete-forever'
 import AddPhoto from 'react-icons/lib/md/add-a-photo'
+import {Main, Section, Article, SubTitle, Ul, Li, Label, TextArea, Checkbox, Input} from './StyledCreateAsset'
+
+const Icons = ({title}) =>
+  title === "Name and Location" ? <Location size={30}/> :
+    title === "Company" ? <Store size={30}/> :
+      <Money size={30}/>;
+
 
 // inputs
 const CreateAsset = (props) => {
 
   return (
-    <div className="list pl0 mt0 measure center ml5-l measure-narrow-l">
-      <section className="flex lh-copy pa3 ph0-l bb b--black-10">
-        <div className="flex-auto">
-          <Location size={30}/>
-          <h3 className="pointer w-100 accordion green"
+    <Main>
+      {Object.keys(formInput).map((title,idx) =>
+        <Section key={title}>
+          <Article>
+            <Icons title={title}/>
+            <SubTitle
               onClick={() => {
-                showAccordion(0)
+                showAccordion(idx)
               }}
-          >
-            Name and Location
-          </h3>
-          <ul
-            className="dn overflow-hidden ph1 panel absolute-l w-50-l h-90-l top-0-l bottom-0-l left-0-l right-0-l center-l mt6-l flex flex-wrap justify-center">
-            {formInput.section1.map(formInput =>
-              <li
-                className="flex flex-wrap w5 center"
-                key={formInput.id}
-              >
-                <div>
-                  <label
-                    className="flex-grow-1 flex-shrink-0 w4"
-                    htmlFor={formInput.labelFor}
-                  >
-                    {formInput.label}
-                  </label>
-                  {/*Description as text area*/}
-                  { formInput.id !== 'description' ? <input
-                    className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
-                    type={formInput.type}
-                    id={formInput.id}
-                    name={formInput.name}
-                    value={props.state[formInput.name]}
-                    onChange={e => props.onChange(e)}
-                  />:
-                  <textarea
-                    className="flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
-                    id={formInput.id}
-                    name={formInput.name}
-                    value={props.state[formInput.name]}
-                    onChange={e => props.onChange(e)}/>
-                  }
+            >
+              {title}
+            </SubTitle>
+            <Ul>
+              {formInput[title].map(formInput =>
+                <Li
+                  key={formInput.id}
+                >
+                    <Label
+                      htmlFor={formInput.labelFor}
+                    >
+                      {formInput.label}
+                    </Label>
+                    {/*Description as text area*/}
+                    {formInput.type === 'textarea' ?
+                      <TextArea
+                        id={formInput.id}
+                        name={formInput.name}
+                        value={props.state[formInput.name]}
+                        onChange={e => props.onChange(e)}/>
+                      : formInput.type === 'checkbox' ?
+                        <Checkbox
+                          type={formInput.type}
+                          id={formInput.id}
+                          name={formInput.name}
+                          value={props.state[formInput.name]}
+                          onChange={e => props.onChange(e)}
+                        /> :
+                        <Input
+                          type={formInput.type}
+                          id={formInput.id}
+                          name={formInput.name}
+                          value={props.state[formInput.name]}
+                          onChange={e => props.onChange(e)}
+                        />
+                    }
 
-                </div>
-                {props.validationErrors && props.validationErrors[formInput.name] ? <span className="red">*</span> : ""}
-              </li>
-            )}
-            <li className="flex flex-wrap w5 mt3 center"><span className="red">*</span> Required field</li>
-          </ul>
-        </div>
-      </section>
-      <section className="lh-copy pa3 ph0-l bb b--black-10">
-        <div className="flex-auto">
-          <Store size={30}/>
-          <h3 className="pointer w-100 accordion"
-              onClick={() => showAccordion(1)}
-          >
-            Company
-          </h3>
-          <ul className="dn overflow-hidden ph1 panel">
-            {formInput.section2.map(formInput =>
-              <li
-                className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 center" : "flex flex-wrap w5 center"}
-                key={formInput.id}
-              >
-                <div>
-                  <label
-                    className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
-                    htmlFor={formInput.labelFor}
-                  >
-                    {formInput.label}
-                  </label>
-                  <input
-                    className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
-                    type={formInput.type}
-                    id={formInput.id}
-                    name={formInput.name}
-                    value={props.state[formInput.name]}
-                    onChange={e => props.onChange(e)}
-                  />
-                </div>
-              </li>
-            )}
-          </ul>
-        </div>
-      </section>
-      <section className="lh-copy pa3 ph0-l bb b--black-10">
-        <div className="flex-auto">
-          <Money size={30}/>
-          <h3 className="pointer w-100 accordion"
-              onClick={() => showAccordion(2)}
-          >
-            Financial
-          </h3>
-          <ul className="dn overflow-hidden ph1 panel">
-            {formInput.section3.map(formInput =>
-              <li
-                className={formInput.type === 'checkbox' ? "mv3 flex flex-wrap w5 center" : "flex flex-wrap w5 center"}
-                key={formInput.id}
-              >
-                <div>
-                  <label
-                    className={formInput.type === 'checkbox' ? "mr2" : "flex-grow-1 flex-shrink-0 w4"}
-                    htmlFor={formInput.labelFor}
-                  >
-                    {formInput.label}
-                  </label>
-                  <input
-                    className={formInput.type === 'checkbox' ? "" : "flex flex-grow-1 flex-shrink-0 input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"}
-                    type={formInput.type}
-                    id={formInput.id}
-                    name={formInput.name}
-                    value={props.state[formInput.name]}
-                    onChange={e => props.onChange(e)}
-                  />
-                </div>
-              </li>
-            )}
-          </ul>
-        </div>
-      </section>
+                  {props.validationErrors && props.validationErrors[formInput.name] ?
+                    <span className="red">*</span> : ""}
+                </Li>
+              )}
+            </Ul>
+          </Article>
+        </Section>
+      )
+      }
+
       <section className="lh-copy pa3 ph0-l bb b--black-10">
         <div className="flex-auto">
           <Images size={30}/>
@@ -273,7 +216,7 @@ const CreateAsset = (props) => {
         </button>
       </section>
 
-    </div>
+    </Main>
   )
 
 }
