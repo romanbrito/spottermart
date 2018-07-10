@@ -25,7 +25,10 @@ import {
   Input,
   ImageSection,
   Figure,
-  DelImgBtn
+  DelImgBtn,
+  ListSection,
+  List,
+  InputList
 } from './StyledCreateAsset'
 
 const Icons = ({title}) =>
@@ -121,8 +124,7 @@ const CreateAsset = (props) => {
               </Dropzone>
             </Li>
             {props.images && props.images.map(image =>
-              <li
-                className="list"
+              <List
                 key={image.preview}
               >
                 <Figure>
@@ -133,29 +135,27 @@ const CreateAsset = (props) => {
                     <DeleteForever size={50} className="pointer"/>
                   </DelImgBtn>
                 </Figure>
-              </li>
+              </List>
             )}
           </Ul>
         </Article>
       </ImageSection>
-      <section className="lh-copy pa3 ph0-l bb b--black-10">
-        <div className="flex-auto">
+      <ListSection>
+        <Article>
           <Tools size={30}/>
-          <h3 className="pointer w-100 accordion"
+          <SubTitle
               onClick={() => showAccordion(4)}
           >
             Equipment
-          </h3>
-          <ul className="dn overflow-hidden ph1 panel">
+          </SubTitle>
+          <Ul>
 
             {props.equipment && props.equipment.map((equipment, idx) => (
-              <li
-                className="list"
+              <List
                 key={idx}
               >
-                <input
+                <InputList
                   placeholder={`Item #${idx + 1}`}
-                  className="input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
                   value={equipment.name}
                   onChange={props.onChangeElement('equipment', idx)}
                   autoFocus={true}
@@ -166,22 +166,20 @@ const CreateAsset = (props) => {
                   onClick={() => props.removeElement('equipment', idx)}>
                   -
                 </button>
-              </li>
+              </List>
             ))}
-            <li
-              className="list"
-            >
+            <List>
               <button
                 className="pointer br3 bg-white"
                 onClick={() => props.addElement('equipment')}
               >
                 +
               </button>
-            </li>
+            </List>
 
-          </ul>
-        </div>
-      </section>
+          </Ul>
+        </Article>
+      </ListSection>
       <section className="lh-copy pa3 ph0-l bb b--black-10">
         <div className="flex-auto">
           <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>

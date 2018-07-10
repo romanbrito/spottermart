@@ -51,3 +51,15 @@ export const Figure = styled.figure.attrs({
 export const DelImgBtn = styled.button.attrs({
   className: "absolute o-70 pointer"
 })``
+
+export const ListSection = styled.section.attrs({
+  className: "lh-copy pa3 ph0-l bb b--black-10"
+})``
+
+export const List = styled.li.attrs({
+  className: "list"
+})``
+
+export const InputList = styled.input.attrs({
+  className: "input-reset bl-0 bt-0 br-0 bb b--black-20 outline-0"
+})``
