@@ -269,7 +269,14 @@ const showAccordion = (pos) => {
         `
       } else {
         // panel[i].className = "overflow-hidden ph1 db bg-silver pv3 panel";
-        // panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
+        panel[i].style.cssText = `
+        display: block;
+        opacity: 1; 
+        position: relative;
+        transition: opacity .5s ease-in;
+        background-color: #999;
+        height: auto;
+        `
       }
     } else {
       // on click hide the other elements
