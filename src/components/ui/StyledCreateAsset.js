@@ -5,7 +5,7 @@ export const Main = styled.main.attrs({
 })`
   @supports (grid-area: auto) {
 
-    @media screen and (min-width: 960px) {
+    @media screen and (min-width: 60em) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       max-width: none;
