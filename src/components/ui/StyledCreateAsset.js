@@ -1,9 +1,18 @@
-import '../../sass/StyledCreateAsset.css'
 import styled from "styled-components"
 
 export const Main = styled.main.attrs({
   className: "mv2 pl0 measure-wide gridAsset-l center",
-})``
+})`
+  @supports (grid-area: auto) {
+
+    @media screen and (min-width: 960px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: none;
+    }
+
+  }
+`
 
 export const Section = styled.section.attrs({
   className: "lh-copy"

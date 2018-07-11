@@ -1,5 +1,0 @@
-@supports (grid-area: auto) {
-  @media screen and (min-width: 960px) {
-    .gridAsset-l {
-      display: grid;
-      grid-template-columns: 1fr 1fr; } } }
