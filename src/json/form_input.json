@@ -204,7 +204,7 @@
       "id":"why-selling",
       "labelFor":"why-selling",
       "name": "whySelling",
-      "type": "text",
+      "type": "textarea",
       "label": "Reason For Selling"
     },
     {
@@ -225,7 +225,7 @@
       "id":"notes",
       "labelFor":"notes",
       "name": "notes",
-      "type": "text",
+      "type": "textarea",
       "label": "Notes"
     },
     {

@@ -17,7 +17,8 @@ import {
   Section,
   Article,
   SubTitle,
-  Ul,
+  Panel,
+  PanelList,
   Li,
   Label,
   TextArea,
@@ -65,7 +66,7 @@ const CreateAsset = (props) => {
             >
               <Icons title={title}/> {title}
             </SubTitle>
-            <Ul>
+            <Panel>
               {formInput[title].map(formInput =>
                 <Li
                   key={formInput.id}
@@ -103,7 +104,7 @@ const CreateAsset = (props) => {
                     <span className="red">*</span> : ""}
                 </Li>
               )}
-            </Ul>
+            </Panel>
           </Article>
         </Section>
       )
@@ -119,7 +120,7 @@ const CreateAsset = (props) => {
           >
             <Images size={30}/> Images
           </SubTitle>
-          <Ul>
+          <Panel>
             <Li>
               <Dropzone
                 style={styleDrop}
@@ -144,7 +145,7 @@ const CreateAsset = (props) => {
                 </Figure>
               </List>
             )}
-          </Ul>
+          </Panel>
         </Article>
       </ImageSection>
       <ListSection>
@@ -157,7 +158,7 @@ const CreateAsset = (props) => {
           >
             <Tools size={30}/> Equipment
           </SubTitle>
-          <Ul>
+          <PanelList>
 
             {props.equipment && props.equipment.map((equipment, idx) => (
               <List
@@ -184,7 +185,7 @@ const CreateAsset = (props) => {
               </MinusPlusBtn>
             </List>
 
-          </Ul>
+          </PanelList>
         </Article>
       </ListSection>
       <ListSection>
@@ -197,7 +198,7 @@ const CreateAsset = (props) => {
           >
             <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
           </SubTitle>
-          <Ul>
+          <PanelList>
 
             {props.socialMedia && props.socialMedia.map((socialMedia, idx) => (
               <List
@@ -224,7 +225,7 @@ const CreateAsset = (props) => {
                 +
               </MinusPlusBtn>
             </List>
-          </Ul>
+          </PanelList>
         </Article>
       </ListSection>
       <section>
@@ -251,7 +252,10 @@ const showAccordion = (pos) => {
   for (let i = 0; i < panel.length; i++) {
     if (i === pos) {
       // change tile color if active
-      title[i].className += " green";
+      // title[i].className += " green";
+      title[i].style.cssText = `
+      color: #19a974;
+      `
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       // pl0 pv5 panel
@@ -282,7 +286,10 @@ const showAccordion = (pos) => {
       // on click hide the other elements
       // panel[i].className = "o-0 absolute overflow-hidden ph1 panel";
       panel[i].style.cssText = "";
-      title[i].className = "pointer w-100 tc db mv3 black no-underline f3 dim bg-white accordion";
+      // title[i].className = "pointer w-100 tc db mv3 black no-underline f3 dim bg-white accordion";
+      title[i].style.cssText = `
+      // color: #000;
+      `
     }
   }
 }

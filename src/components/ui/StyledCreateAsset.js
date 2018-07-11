@@ -25,10 +25,14 @@ export const Article = styled.article.attrs({
 
 export const SubTitle = styled.a.attrs({
   className: "pointer w-100 tc db mv3 black no-underline f3 dim bg-white accordion"
-})``
+})`
+@media screen and (min-width: 60em) {
+  pointer-events: none;
+}
+`
 
-export const Ul = styled.ul.attrs({
-  className: "o-0 absolute overflow-hidden ph1 panel"
+export const Panel = styled.ul.attrs({
+  className: "o-0 pv3 absolute overflow-hidden ph1 panel"
 })`
 height: 0;
 @media screen and (min-width: 60em) {
@@ -43,9 +47,19 @@ height: 0;
 }
 `
 
-// export const Ul = styled.ul.attrs({
-//   className: "overflow-hidden ph1 panel"
-// })``
+export const PanelList = styled.ul.attrs({
+  className: "o-0 absolute overflow-hidden ph1 panel"
+})`
+height: 0;
+@media screen and (min-width: 60em) {
+  display: block;
+  height: auto;
+  opacity: 1;
+  color: #fff;
+  background-color: #999;
+  position: relative;
+}
+`
 
 export const Li = styled.li.attrs({
   className: "flex flex-wrap w5 center list"
