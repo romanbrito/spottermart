@@ -1,7 +1,8 @@
+import '../../sass/StyledCreateAsset.css'
 import styled from "styled-components"
 
 export const Main = styled.main.attrs({
-  className: "mv2 pl0 measure-wide center",
+  className: "mv2 pl0 measure-wide gridAsset-l center",
 })``
 
 export const Section = styled.section.attrs({
@@ -16,9 +17,12 @@ export const SubTitle = styled.a.attrs({
   className: "pointer w-100 tc db mv3 black no-underline f3 dim accordion"
 })``
 
+// export const Ul = styled.ul.attrs({
+//   className: "o-0 absolute overflow-hidden ph1 panel"
+// })`height: 0;`
 export const Ul = styled.ul.attrs({
-  className: "o-0 absolute overflow-hidden ph1 panel"
-})`height: 0;`
+  className: "overflow-hidden ph1 panel"
+})``
 
 export const Li = styled.li.attrs({
   className: "flex flex-wrap w5 center list"
