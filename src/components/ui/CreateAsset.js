@@ -263,9 +263,9 @@ const showAccordion = (pos) => {
       }
     } else {
       // on click hide the other elements
-      panel[i].className = "o-0 overflow-hidden ph1 panel";
+      panel[i].className = "o-0 absolute overflow-hidden ph1 panel";
       panel[i].style.cssText = "height: 0;";
-      title[i].className = "pointer w-100 tc db mv3 black no-underline f3 dim accordion";
+      title[i].className = "pointer w-100 tc db mv3 black no-underline f3 dim bg-white accordion";
     }
   }
 }

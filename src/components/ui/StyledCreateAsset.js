@@ -16,15 +16,15 @@ export const Main = styled.main.attrs({
 `
 
 export const Section = styled.section.attrs({
-  className: "lh-copy"
+  className: "lh-copy bg-silver"
 })``
 
 export const Article = styled.article.attrs({
-  className: "flex-auto"
+  className: "flex-auto measure-wide-l center-l"
 })``
 
 export const SubTitle = styled.a.attrs({
-  className: "pointer w-100 tc db mv3 black no-underline f3 dim accordion"
+  className: "pointer w-100 tc db mv3 black no-underline f3 dim bg-white accordion"
 })``
 
 export const Ul = styled.ul.attrs({
