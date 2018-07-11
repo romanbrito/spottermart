@@ -280,7 +280,6 @@ const showAccordion = (pos) => {
         opacity: 1; 
         position: relative;
         transition: opacity .5s ease-in;
-        background-color: #999;
         height: auto;
         `
       }

@@ -56,7 +56,6 @@ height: 0;
   height: auto;
   opacity: 1;
   color: #fff;
-  background-color: #999;
   position: relative;
 }
 `
