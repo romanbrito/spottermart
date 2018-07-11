@@ -254,17 +254,27 @@ const showAccordion = (pos) => {
       title[i].className += " green";
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
+      // pl0 pv5 panel
       if (pos < 4) {
-        panel[i].className = "flex flex-wrap justify-center pl0 bg-silver pv5 white panel";
-        panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
+        panel[i].style.cssText = `
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        position: relative;
+        color: #fff;
+        background-color: #999;
+        opacity: 1; 
+        transition: opacity .5s ease-in;
+        `
       } else {
-        panel[i].className = "overflow-hidden ph1 db bg-silver pv3 panel";
-        panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
+        // panel[i].className = "overflow-hidden ph1 db bg-silver pv3 panel";
+        // panel[i].style.cssText = "opacity: 1; transition: opacity .5s ease-in;"
       }
     } else {
       // on click hide the other elements
-      panel[i].className = "o-0 absolute overflow-hidden ph1 panel";
-      panel[i].style.cssText = "height: 0;";
+      // panel[i].className = "o-0 absolute overflow-hidden ph1 panel";
+      panel[i].style.cssText = "";
       title[i].className = "pointer w-100 tc db mv3 black no-underline f3 dim bg-white accordion";
     }
   }
