@@ -110,91 +110,13 @@ const CreateAsset = (props) => {
       )
       }
 
-      <ImageSection>
-        <Article>
-
-          <SubTitle
-            id="add-img"
-            href="#add-img"
-            onClick={() => showAccordion(3)}
-          >
-            <Images size={30}/> Images
-          </SubTitle>
-          <Panel>
-            <Li>
-              <Dropzone
-                style={styleDrop}
-                accept="image/jpeg, image/png"
-                onDrop={(images) => props.setImages(images)}
-              >
-                <AddPhoto size={70}/>
-                <p className="tc">*.jpeg and *.png only</p>
-              </Dropzone>
-            </Li>
-            {props.images && props.images.map(image =>
-              <List
-                key={image.preview}
-              >
-                <Figure>
-                  <img width="150" height="150" className="" src={image.preview} alt="" id={image.preview}/>
-                  <DelImgBtn
-                    onClick={() => props.removeImage(document.getElementById(image.preview))}
-                  >
-                    <DeleteForever size={50} className="pointer"/>
-                  </DelImgBtn>
-                </Figure>
-              </List>
-            )}
-          </Panel>
-        </Article>
-      </ImageSection>
-      <ListSection>
-        <Article>
-
-          <SubTitle
-            id="add-equipment"
-            href="#add-equipment"
-              onClick={() => showAccordion(4)}
-          >
-            <Tools size={30}/> Equipment
-          </SubTitle>
-          <PanelList>
-
-            {props.equipment && props.equipment.map((equipment, idx) => (
-              <List
-                key={idx}
-              >
-                <InputList
-                  placeholder={`Item #${idx + 1}`}
-                  value={equipment.name}
-                  onChange={props.onChangeElement('equipment', idx)}
-                  autoFocus={true}
-                  onKeyUp={(e) => e.key === 'Enter' ? props.addElement('equipment') : ''}
-                  type="text"/>
-                <MinusPlusBtn
-                  onClick={() => props.removeElement('equipment', idx)}>
-                  -
-                </MinusPlusBtn>
-              </List>
-            ))}
-            <List>
-              <MinusPlusBtn
-                onClick={() => props.addElement('equipment')}
-              >
-                +
-              </MinusPlusBtn>
-            </List>
-
-          </PanelList>
-        </Article>
-      </ListSection>
       <ListSection>
         <Article>
 
           <SubTitle
             id="add-social"
             href="#add-social"
-              onClick={() => showAccordion(5)}
+            onClick={() => showAccordion(3)}
           >
             <Facebook size={30}/><Twitter size={30}/><Instagram size={30}/><Google size={30}/>
           </SubTitle>
@@ -228,6 +150,86 @@ const CreateAsset = (props) => {
           </PanelList>
         </Article>
       </ListSection>
+
+      <ListSection>
+        <Article>
+
+          <SubTitle
+            id="add-equipment"
+            href="#add-equipment"
+            onClick={() => showAccordion(4)}
+          >
+            <Tools size={30}/> Equipment
+          </SubTitle>
+          <PanelList>
+
+            {props.equipment && props.equipment.map((equipment, idx) => (
+              <List
+                key={idx}
+              >
+                <InputList
+                  placeholder={`Item #${idx + 1}`}
+                  value={equipment.name}
+                  onChange={props.onChangeElement('equipment', idx)}
+                  autoFocus={true}
+                  onKeyUp={(e) => e.key === 'Enter' ? props.addElement('equipment') : ''}
+                  type="text"/>
+                <MinusPlusBtn
+                  onClick={() => props.removeElement('equipment', idx)}>
+                  -
+                </MinusPlusBtn>
+              </List>
+            ))}
+            <List>
+              <MinusPlusBtn
+                onClick={() => props.addElement('equipment')}
+              >
+                +
+              </MinusPlusBtn>
+            </List>
+
+          </PanelList>
+        </Article>
+      </ListSection>
+
+      <ImageSection>
+        <Article>
+
+          <SubTitle
+            id="add-img"
+            href="#add-img"
+            onClick={() => showAccordion(5)}
+          >
+            <Images size={30}/> Images
+          </SubTitle>
+          <Panel>
+            <Li>
+              <Dropzone
+                style={styleDrop}
+                accept="image/jpeg, image/png"
+                onDrop={(images) => props.setImages(images)}
+              >
+                <AddPhoto size={70}/>
+                <p className="tc">*.jpeg and *.png only</p>
+              </Dropzone>
+            </Li>
+            {props.images && props.images.map(image =>
+              <List
+                key={image.preview}
+              >
+                <Figure>
+                  <img width="150" height="150" className="" src={image.preview} alt="" id={image.preview}/>
+                  <DelImgBtn
+                    onClick={() => props.removeImage(document.getElementById(image.preview))}
+                  >
+                    <DeleteForever size={50} className="pointer"/>
+                  </DelImgBtn>
+                </Figure>
+              </List>
+            )}
+          </Panel>
+        </Article>
+      </ImageSection>
       <section>
         <SubmitBtn
           disabled={!props.isEnabled}
@@ -259,7 +261,7 @@ const showAccordion = (pos) => {
       // in large screens absolute position
       // equipment and social media lists have a different class > 3
       // pl0 pv5 panel
-      if (pos < 4) {
+      if (pos !== 3 && pos !== 4) {
         panel[i].style.cssText = `
         display: flex;
         flex-wrap: wrap;
