@@ -8,6 +8,7 @@ export const Main = styled.main.attrs({
     @media screen and (min-width: 60em) {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-gap: 1em;
       max-width: none;
     }
 
@@ -26,12 +27,25 @@ export const SubTitle = styled.a.attrs({
   className: "pointer w-100 tc db mv3 black no-underline f3 dim accordion"
 })``
 
-// export const Ul = styled.ul.attrs({
-//   className: "o-0 absolute overflow-hidden ph1 panel"
-// })`height: 0;`
 export const Ul = styled.ul.attrs({
-  className: "overflow-hidden ph1 panel"
-})``
+  className: "o-0 absolute overflow-hidden ph1 panel"
+})`
+height: 0;
+@media screen and (min-width: 60em) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: auto;
+  opacity: 1;
+  color: #fff;
+  background-color: #999;
+  position: relative;
+}
+`
+
+// export const Ul = styled.ul.attrs({
+//   className: "overflow-hidden ph1 panel"
+// })``
 
 export const Li = styled.li.attrs({
   className: "flex flex-wrap w5 center list"
