@@ -109,5 +109,14 @@ export const MinusPlusBtn = styled.button.attrs({
 })``
 
 export const SubmitBtn = styled.button.attrs({
-  className: "f5 no-underline black bg-animate hover-bg-black hover-white pa3 ba border-box pointer mt2 w-100"
-})``
+  className: "f5 no-underline green bg-animate hover-bg-green hover-white pa3 ba border-box pointer mt2 w-100 w4-l"
+})`
+@media screen and (min-width: 60em) {
+  transform: rotate(90deg);
+  cursor: pointer;
+  position: fixed;
+  display: block;
+  top: 7.5em;
+  left: -2em;
+}
+`
