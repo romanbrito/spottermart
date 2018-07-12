@@ -14,7 +14,8 @@ const SearchPageQuery = graphql`
 class SearchPage extends Component {
 
   state = {
-    filter: this.props.match.params.filter
+    filter: this.props.match.params.filter,
+    messageState: false
   }
 
   render() {
@@ -46,7 +47,7 @@ class SearchPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <Search viewer={props.viewer} submit={this._submit}/>
+            return <Search viewer={props.viewer} submit={this._submit} messageState={this.state.messageState} showMessage={this._showMessage}/>
           }
           return <div>Loading</div>
         }}
@@ -60,6 +61,12 @@ class SearchPage extends Component {
       filter: e.target.tagName === 'INPUT' ? e.target.value: e.target.previousElementSibling.value
     })
     this.props.history.push('/search/')
+  }
+
+  _showMessage = () => {
+    this.setState({
+      messageState: true
+    })
   }
 
 }

@@ -1,3 +1,33 @@
+type AddToMessagesReceivedPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  messageFromUser: User
+  messagesReceivedMessage: Message
+  messageFromUserEdge: UserEdge
+  messagesReceivedMessageEdge: MessageEdge
+}
+
+input AddToMessagesReceivedUserInput {
+  messagesReceivedMessageId: ID!
+  messageFromUserId: ID!
+  clientMutationId: String!
+}
+
+type AddToMessagesSentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  messageToUser: User
+  messagesSentMessage: Message
+  messageToUserEdge: UserEdge
+  messagesSentMessageEdge: MessageEdge
+}
+
+input AddToMessagesSentUserInput {
+  messagesSentMessageId: ID!
+  messageToUserId: ID!
+  clientMutationId: String!
+}
+
 type AddToUsersAssetsPayload {
   viewer: Viewer!
   clientMutationId: String!
@@ -1507,6 +1537,10 @@ input AssetpostedByUser {
   password: String!
   assetsIds: [ID!]
   assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
 }
 
 # AuthenticateUserPayload
@@ -1610,12 +1644,42 @@ type CreateAssetPayload {
   postedBy: User
 }
 
+input CreateMessage {
+  text: String
+  messageFromId: ID
+  messageFrom: MessagemessageFromUser
+  messageToId: ID
+  messageTo: MessagemessageToUser
+}
+
+input CreateMessageInput {
+  text: String
+  messageFromId: ID
+  messageFrom: MessagemessageFromUser
+  messageToId: ID
+  messageTo: MessagemessageToUser
+  clientMutationId: String!
+}
+
+type CreateMessagePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  message: Message
+  edge: MessageEdge
+  messageFrom: User
+  messageTo: User
+}
+
 input CreateUser {
   email: String!
   name: String
   password: String!
   assetsIds: [ID!]
   assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
 }
 
 # If authentication was successful the payload contains the user and a token. If unsuccessful this payload is null.
@@ -1641,6 +1705,21 @@ type DeleteAssetPayload {
   deletedId: ID
 }
 
+input DeleteMessageInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteMessagePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  message: Message
+  edge: MessageEdge
+  messageFrom: User
+  messageTo: User
+  deletedId: ID
+}
+
 input DeleteUserInput {
   id: ID!
   clientMutationId: String!
@@ -1662,15 +1741,172 @@ type LoggedInUserPayload {
   id: ID!
 }
 
+type Message implements Node {
+  id: ID!
+  messageFrom(filter: UserFilter): User
+  messageTo(filter: UserFilter): User
+  text: String
+}
+
+# A connection to a list of items.
+type MessageConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [MessageEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type MessageEdge {
+  # The item at the end of the edge.
+  node: Message!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input MessageFilter {
+  # Logical AND on all given filters.
+  AND: [MessageFilter!]
+
+  # Logical OR on all given filters.
+  OR: [MessageFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  text: String
+
+  # All values that are not equal to given value.
+  text_not: String
+
+  # All values that are contained in given list.
+  text_in: [String!]
+
+  # All values that are not contained in given list.
+  text_not_in: [String!]
+
+  # All values less than the given value.
+  text_lt: String
+
+  # All values less than or equal the given value.
+  text_lte: String
+
+  # All values greater than the given value.
+  text_gt: String
+
+  # All values greater than or equal the given value.
+  text_gte: String
+
+  # All values containing the given string.
+  text_contains: String
+
+  # All values not containing the given string.
+  text_not_contains: String
+
+  # All values starting with the given string.
+  text_starts_with: String
+
+  # All values not starting with the given string.
+  text_not_starts_with: String
+
+  # All values ending with the given string.
+  text_ends_with: String
+
+  # All values not ending with the given string.
+  text_not_ends_with: String
+  messageFrom: UserFilter
+  messageTo: UserFilter
+}
+
+input MessagemessageFromUser {
+  email: String!
+  name: String
+  password: String!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
+}
+
+input MessagemessageToUser {
+  email: String!
+  name: String
+  password: String!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
+}
+
+enum MessageOrderBy {
+  id_ASC
+  id_DESC
+  text_ASC
+  text_DESC
+}
+
 type Mutation {
   createAsset(input: CreateAssetInput!): CreateAssetPayload
+  createMessage(input: CreateMessageInput!): CreateMessagePayload
   updateAsset(input: UpdateAssetInput!): UpdateAssetPayload
+  updateMessage(input: UpdateMessageInput!): UpdateMessagePayload
   updateUser(input: UpdateUserInput!): UpdateUserPayload
   updateOrCreateAsset(input: UpdateOrCreateAssetInput!): UpdateOrCreateAssetPayload
+  updateOrCreateMessage(input: UpdateOrCreateMessageInput!): UpdateOrCreateMessagePayload
   updateOrCreateUser(input: UpdateOrCreateUserInput!): UpdateOrCreateUserPayload
   deleteAsset(input: DeleteAssetInput!): DeleteAssetPayload
+  deleteMessage(input: DeleteMessageInput!): DeleteMessagePayload
   deleteUser(input: DeleteUserInput!): DeleteUserPayload
+  addToMessagesReceived(input: AddToMessagesReceivedUserInput!): AddToMessagesReceivedPayload
+  addToMessagesSent(input: AddToMessagesSentUserInput!): AddToMessagesSentPayload
   addToUsersAssets(input: AddToUsersAssetsUserInput!): AddToUsersAssetsPayload
+  removeFromMessagesReceived(input: RemoveFromMessagesReceivedUserInput!): RemoveFromMessagesReceivedPayload
+  removeFromMessagesSent(input: RemoveFromMessagesSentUserInput!): RemoveFromMessagesSentPayload
   removeFromUsersAssets(input: RemoveFromUsersAssetsUserInput!): RemoveFromUsersAssetsPayload
   createUser(input: SignupUserInput!): CreateUserPayload!
 
@@ -1712,6 +1948,36 @@ type Query {
   ): Node
 }
 
+type RemoveFromMessagesReceivedPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  messageFromUser: User
+  messagesReceivedMessage: Message
+  messageFromUserEdge: UserEdge
+  messagesReceivedMessageEdge: MessageEdge
+}
+
+input RemoveFromMessagesReceivedUserInput {
+  messagesReceivedMessageId: ID!
+  messageFromUserId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromMessagesSentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  messageToUser: User
+  messagesSentMessage: Message
+  messageToUserEdge: UserEdge
+  messagesSentMessageEdge: MessageEdge
+}
+
+input RemoveFromMessagesSentUserInput {
+  messagesSentMessageId: ID!
+  messageToUserId: ID!
+  clientMutationId: String!
+}
+
 type RemoveFromUsersAssetsPayload {
   viewer: Viewer!
   clientMutationId: String!
@@ -1733,6 +1999,10 @@ input SignupUserInput {
   password: String!
   assetsIds: [ID!]
   assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
   clientMutationId: String!
 }
 
@@ -1839,6 +2109,34 @@ type UpdateAssetPayload {
   postedBy: User
 }
 
+input UpdateMessage {
+  id: ID!
+  text: String
+  messageFromId: ID
+  messageFrom: MessagemessageFromUser
+  messageToId: ID
+  messageTo: MessagemessageToUser
+}
+
+input UpdateMessageInput {
+  id: ID!
+  text: String
+  messageFromId: ID
+  messageFrom: MessagemessageFromUser
+  messageToId: ID
+  messageTo: MessagemessageToUser
+  clientMutationId: String!
+}
+
+type UpdateMessagePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  message: Message
+  edge: MessageEdge
+  messageFrom: User
+  messageTo: User
+}
+
 input UpdateOrCreateAssetInput {
   update: UpdateAsset!
   create: CreateAsset!
@@ -1851,6 +2149,21 @@ type UpdateOrCreateAssetPayload {
   asset: Asset
   edge: AssetEdge
   postedBy: User
+}
+
+input UpdateOrCreateMessageInput {
+  update: UpdateMessage!
+  create: CreateMessage!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateMessagePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  message: Message
+  edge: MessageEdge
+  messageFrom: User
+  messageTo: User
 }
 
 input UpdateOrCreateUserInput {
@@ -1873,6 +2186,10 @@ input UpdateUser {
   password: String
   assetsIds: [ID!]
   assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
 }
 
 input UpdateUserInput {
@@ -1882,6 +2199,10 @@ input UpdateUserInput {
   password: String
   assetsIds: [ID!]
   assets: [UserassetsAsset!]
+  messagesReceivedIds: [ID!]
+  messagesReceived: [UsermessagesReceivedMessage!]
+  messagesSentIds: [ID!]
+  messagesSent: [UsermessagesSentMessage!]
   clientMutationId: String!
 }
 
@@ -1896,6 +2217,8 @@ type User implements Node {
   assets(filter: AssetFilter, orderBy: AssetOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): AssetConnection
   email: String!
   id: ID!
+  messagesReceived(filter: MessageFilter, orderBy: MessageOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): MessageConnection
+  messagesSent(filter: MessageFilter, orderBy: MessageOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): MessageConnection
   name: String
   password: String!
 }
@@ -2131,6 +2454,24 @@ input UserFilter {
   assets_every: AssetFilter
   assets_some: AssetFilter
   assets_none: AssetFilter
+  messagesReceived_every: MessageFilter
+  messagesReceived_some: MessageFilter
+  messagesReceived_none: MessageFilter
+  messagesSent_every: MessageFilter
+  messagesSent_some: MessageFilter
+  messagesSent_none: MessageFilter
+}
+
+input UsermessagesReceivedMessage {
+  text: String
+  messageToId: ID
+  messageTo: MessagemessageToUser
+}
+
+input UsermessagesSentMessage {
+  text: String
+  messageFromId: ID
+  messageFrom: MessagemessageFromUser
 }
 
 enum UserOrderBy {
@@ -2147,9 +2488,11 @@ enum UserOrderBy {
 # This is the famous Relay viewer object
 type Viewer {
   allAssets(filter: AssetFilter, orderBy: AssetOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): AssetConnection!
+  allMessages(filter: MessageFilter, orderBy: MessageOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): MessageConnection!
   allUsers(filter: UserFilter, orderBy: UserOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   user: User
   Asset(businessName: String, id: ID): Asset
+  Message(id: ID): Message
   User(email: String, id: ID): User
 
   # loggedInUser

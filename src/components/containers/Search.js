@@ -9,6 +9,8 @@ class Search extends Component {
       <SearchUi
         list={this.props.viewer.allAssets.edges}
         submit={this.props.submit}
+        showMessage={this.props.showMessage}
+        messageState={this.props.messageState}
       />
     )
   }

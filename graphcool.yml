@@ -55,3 +55,6 @@ permissions:
 # rootTokens:
 #   - mytoken
 
+# Note:  When compiling with relay-compiler make sure to remove or "hide" email-password graphql since
+# compiler will throw error of duplicated types
+
