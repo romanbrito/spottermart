@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import formInput from '../../json/form_input.json'
 import Dropzone from 'react-dropzone'
 import Location from 'react-icons/lib/md/location-city'
@@ -31,7 +32,8 @@ import {
   List,
   InputList,
   MinusPlusBtn,
-  SubmitBtn
+  SubmitBtn,
+  CancelBtn
 } from './StyledCreateAsset'
 
 const Icons = ({title}) =>
@@ -49,7 +51,7 @@ const styleDrop = {
 
 
 // inputs
-const CreateAsset = (props) => {
+const CreateAsset = withRouter((props) => {
 
   return (
     <Main>
@@ -237,12 +239,17 @@ const CreateAsset = (props) => {
         >
           Submit
         </SubmitBtn>
+        <CancelBtn
+          onClick={() => props.history.push('/')}
+        >
+          Cancel
+        </CancelBtn>
       </section>
 
     </Main>
   )
 
-}
+})
 
 
 // toggle accordion

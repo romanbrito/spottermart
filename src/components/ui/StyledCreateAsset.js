@@ -120,3 +120,16 @@ export const SubmitBtn = styled.button.attrs({
   left: -2em;
 }
 `
+
+export const CancelBtn = styled.button.attrs({
+  className: "f5 no-underline red bg-animate hover-bg-red hover-white pa3 ba border-box pointer mt2 w-100 w4-l"
+})`
+@media screen and (min-width: 60em) {
+  transform: rotate(90deg);
+  cursor: pointer;
+  position: fixed;
+  display: block;
+  top: 16em;
+  left: -2em;
+}
+`
