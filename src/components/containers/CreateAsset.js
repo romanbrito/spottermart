@@ -48,6 +48,11 @@ class CreateAsset extends Component {
     specialFeatures: ''
 }
 
+  componentDidMount() {
+    // scroll to top of page
+    window.scrollTo(0, 0)
+  }
+
   render() {
     const validationErrors = this._validate()
     const isEnabled = !Object.keys(validationErrors).some(x => validationErrors[x])

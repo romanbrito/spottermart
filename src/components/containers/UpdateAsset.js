@@ -50,6 +50,11 @@ class UpdateAsset extends Component {
     specialFeatures: ''
   }
 
+  componentDidMount() {
+    // scroll to top of page
+    window.scrollTo(0, 0)
+  }
+
   componentWillMount() {
     // setting the state to the info received from the UpdateAsset_asset query
     this.setState(this.props.asset)
