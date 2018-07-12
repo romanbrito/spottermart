@@ -10,7 +10,7 @@ class CreateMessage extends Component {
   render () {
 
     return (
-      <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText}/>
+      <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit}/>
     )
   }
 
@@ -27,6 +27,10 @@ class CreateMessage extends Component {
       return prev
     },  {})
     this.setState(newState)
+  }
+
+  _submit = () => {
+    console.log(this.state.messageText)
   }
 
 

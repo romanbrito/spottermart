@@ -13,12 +13,12 @@ const CreateMessage = withRouter((props) =>
     </div>
     <section>
       <button
-        onClick={(e) => props.history.push('/')}
+        onClick={(e) => props.submit()}
       >
         Submit
       </button>
       <button
-        onClick={(e) => console.log(e)}
+        onClick={(e) => console.log('cancel')}
       >
         Cancel
       </button>
