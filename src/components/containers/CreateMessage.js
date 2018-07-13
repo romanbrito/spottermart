@@ -40,7 +40,12 @@ class CreateMessage extends Component {
     const postedBy = this.props.postedBy
     const {messageText} = this.state
     CreateMessageMutation(messageText,fromId,postedBy,
-      () => console.log('message submitted'))
+      () => {
+      this.props.closeMessage()
+        this.setState({
+          messageText: ''
+        })
+    })
   }
 
 
