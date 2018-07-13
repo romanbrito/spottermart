@@ -10,6 +10,7 @@ class Search extends Component {
         list={this.props.viewer.allAssets.edges}
         submit={this.props.submit}
         showMessage={this.props.showMessage}
+        closeMessage={this.props.closeMessage}
         messageState={this.props.messageState}
         postedBy={this.props.postedBy}
       />

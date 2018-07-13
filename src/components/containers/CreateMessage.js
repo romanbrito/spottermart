@@ -14,7 +14,7 @@ class CreateMessage extends Component {
     return (
       <section>
         {this.props.messageState &&
-        <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit}/>
+        <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit} closeMessage={this.props.closeMessage}/>
         }
       </section>
     )

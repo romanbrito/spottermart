@@ -28,7 +28,7 @@ const Search = (props) => (
         Search
       </button>
 
-      <CreateMessage messageState={props.messageState} postedBy={props.postedBy}/>
+      <CreateMessage messageState={props.messageState} postedBy={props.postedBy} closeMessage={props.closeMessage}/>
 
     </div>
     {/*Display list of assets*/}
