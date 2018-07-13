@@ -20,6 +20,9 @@ export type Search_viewer = {|
         +price: ?string,
         +city: string,
         +description: string,
+        +postedBy: ?{|
+          +id: string
+        |},
       |}
     |}>
   |},
@@ -28,7 +31,15 @@ export type Search_viewer = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "Search_viewer",
   "type": "Viewer",
@@ -79,13 +90,7 @@ const node/*: ConcreteFragment*/ = {
               "concreteType": "Asset",
               "plural": false,
               "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
+                v0,
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -120,6 +125,18 @@ const node/*: ConcreteFragment*/ = {
                   "name": "description",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "postedBy",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "User",
+                  "plural": false,
+                  "selections": [
+                    v0
+                  ]
                 },
                 {
                   "kind": "ScalarField",
@@ -168,6 +185,7 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = 'd2755c49ae0093414734ffa73d11541e';
+(node/*: any*/).hash = 'c19d305a739cd84c3d5ed3118f718ac2';
 module.exports = node;

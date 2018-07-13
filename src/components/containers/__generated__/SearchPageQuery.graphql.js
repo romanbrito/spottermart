@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2ba7e279ce9b1de221ddae0a2596e1ec
+ * @relayHash 109451d98b6e63b5b3bd2d69572f7442
  */
 
 /* eslint-disable */
@@ -547,6 +547,46 @@ export type UserFilter = {
   assets_every?: ?AssetFilter,
   assets_some?: ?AssetFilter,
   assets_none?: ?AssetFilter,
+  messagesReceived_every?: ?MessageFilter,
+  messagesReceived_some?: ?MessageFilter,
+  messagesReceived_none?: ?MessageFilter,
+  messagesSent_every?: ?MessageFilter,
+  messagesSent_some?: ?MessageFilter,
+  messagesSent_none?: ?MessageFilter,
+};
+export type MessageFilter = {
+  AND?: ?$ReadOnlyArray<MessageFilter>,
+  OR?: ?$ReadOnlyArray<MessageFilter>,
+  id?: ?string,
+  id_not?: ?string,
+  id_in?: ?$ReadOnlyArray<string>,
+  id_not_in?: ?$ReadOnlyArray<string>,
+  id_lt?: ?string,
+  id_lte?: ?string,
+  id_gt?: ?string,
+  id_gte?: ?string,
+  id_contains?: ?string,
+  id_not_contains?: ?string,
+  id_starts_with?: ?string,
+  id_not_starts_with?: ?string,
+  id_ends_with?: ?string,
+  id_not_ends_with?: ?string,
+  text?: ?string,
+  text_not?: ?string,
+  text_in?: ?$ReadOnlyArray<string>,
+  text_not_in?: ?$ReadOnlyArray<string>,
+  text_lt?: ?string,
+  text_lte?: ?string,
+  text_gt?: ?string,
+  text_gte?: ?string,
+  text_contains?: ?string,
+  text_not_contains?: ?string,
+  text_starts_with?: ?string,
+  text_not_starts_with?: ?string,
+  text_ends_with?: ?string,
+  text_not_ends_with?: ?string,
+  messageFrom?: ?UserFilter,
+  messageTo?: ?UserFilter,
 };
 export type SearchPageQueryVariables = {|
   filter: AssetFilter
@@ -579,6 +619,9 @@ fragment Search_viewer on Viewer {
         price
         city
         description
+        postedBy {
+          id
+        }
         __typename
       }
       cursor
@@ -612,7 +655,7 @@ return {
   "operationKind": "query",
   "name": "SearchPageQuery",
   "id": null,
-  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        price\n        city\n        description\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        price\n        city\n        description\n        postedBy {\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -734,6 +777,18 @@ return {
                         "name": "description",
                         "args": null,
                         "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "postedBy",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "User",
+                        "plural": false,
+                        "selections": [
+                          v1
+                        ]
                       },
                       {
                         "kind": "ScalarField",

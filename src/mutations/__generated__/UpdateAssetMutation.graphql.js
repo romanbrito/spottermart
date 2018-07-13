@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 1ae6034a2662229f2169df9c941ab16b
+ * @relayHash c0ba18585da81915247aa70f4cf2c423
  */
 
 /* eslint-disable */
@@ -59,6 +59,10 @@ export type AssetpostedByUser = {
   password: string,
   assetsIds?: ?$ReadOnlyArray<string>,
   assets?: ?$ReadOnlyArray<UserassetsAsset>,
+  messagesReceivedIds?: ?$ReadOnlyArray<string>,
+  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
+  messagesSentIds?: ?$ReadOnlyArray<string>,
+  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
 };
 export type UserassetsAsset = {
   address?: ?string,
@@ -99,6 +103,38 @@ export type UserassetsAsset = {
   website?: ?string,
   whySelling?: ?string,
   zipCode: string,
+};
+export type UsermessagesReceivedMessage = {
+  text?: ?string,
+  messageToId?: ?string,
+  messageTo?: ?MessagemessageToUser,
+};
+export type MessagemessageToUser = {
+  email: string,
+  name?: ?string,
+  password: string,
+  assetsIds?: ?$ReadOnlyArray<string>,
+  assets?: ?$ReadOnlyArray<UserassetsAsset>,
+  messagesReceivedIds?: ?$ReadOnlyArray<string>,
+  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
+  messagesSentIds?: ?$ReadOnlyArray<string>,
+  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
+};
+export type UsermessagesSentMessage = {
+  text?: ?string,
+  messageFromId?: ?string,
+  messageFrom?: ?MessagemessageFromUser,
+};
+export type MessagemessageFromUser = {
+  email: string,
+  name?: ?string,
+  password: string,
+  assetsIds?: ?$ReadOnlyArray<string>,
+  assets?: ?$ReadOnlyArray<UserassetsAsset>,
+  messagesReceivedIds?: ?$ReadOnlyArray<string>,
+  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
+  messagesSentIds?: ?$ReadOnlyArray<string>,
+  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
 };
 export type UpdateAssetMutationVariables = {|
   input: UpdateAssetInput

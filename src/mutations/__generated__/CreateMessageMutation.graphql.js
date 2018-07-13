@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 819cbd1e8b5d29ff99abb5bb723b3c45
+ * @relayHash c3581310417fded9e23ac5ce250cc1d6
  */
 
 /* eslint-disable */
@@ -9,18 +9,24 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type UpdateUserInput = {
-  email?: ?string,
-  id: string,
+export type CreateMessageInput = {
+  text?: ?string,
+  messageFromId?: ?string,
+  messageFrom?: ?MessagemessageFromUser,
+  messageToId?: ?string,
+  messageTo?: ?MessagemessageToUser,
+  clientMutationId: string,
+};
+export type MessagemessageFromUser = {
+  email: string,
   name?: ?string,
-  password?: ?string,
+  password: string,
   assetsIds?: ?$ReadOnlyArray<string>,
   assets?: ?$ReadOnlyArray<UserassetsAsset>,
   messagesReceivedIds?: ?$ReadOnlyArray<string>,
   messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
   messagesSentIds?: ?$ReadOnlyArray<string>,
   messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
-  clientMutationId: string,
 };
 export type UserassetsAsset = {
   address?: ?string,
@@ -83,23 +89,12 @@ export type UsermessagesSentMessage = {
   messageFromId?: ?string,
   messageFrom?: ?MessagemessageFromUser,
 };
-export type MessagemessageFromUser = {
-  email: string,
-  name?: ?string,
-  password: string,
-  assetsIds?: ?$ReadOnlyArray<string>,
-  assets?: ?$ReadOnlyArray<UserassetsAsset>,
-  messagesReceivedIds?: ?$ReadOnlyArray<string>,
-  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
-  messagesSentIds?: ?$ReadOnlyArray<string>,
-  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
-};
-export type UpdateUserMutationVariables = {|
-  input: UpdateUserInput
+export type CreateMessageMutationVariables = {|
+  input: CreateMessageInput
 |};
-export type UpdateUserMutationResponse = {|
-  +updateUser: ?{|
-    +user: ?{|
+export type CreateMessageMutationResponse = {|
+  +createMessage: ?{|
+    +message: ?{|
       +id: string
     |}
   |}
@@ -108,11 +103,11 @@ export type UpdateUserMutationResponse = {|
 
 
 /*
-mutation UpdateUserMutation(
-  $input: UpdateUserInput!
+mutation CreateMessageMutation(
+  $input: CreateMessageInput!
 ) {
-  updateUser(input: $input) {
-    user {
+  createMessage(input: $input) {
+    message {
       id
     }
   }
@@ -124,7 +119,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "UpdateUserInput!",
+    "type": "CreateMessageInput!",
     "defaultValue": null
   }
 ],
@@ -132,26 +127,26 @@ v1 = [
   {
     "kind": "LinkedField",
     "alias": null,
-    "name": "updateUser",
+    "name": "createMessage",
     "storageKey": null,
     "args": [
       {
         "kind": "Variable",
         "name": "input",
         "variableName": "input",
-        "type": "UpdateUserInput!"
+        "type": "CreateMessageInput!"
       }
     ],
-    "concreteType": "UpdateUserPayload",
+    "concreteType": "CreateMessagePayload",
     "plural": false,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "user",
+        "name": "message",
         "storageKey": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "Message",
         "plural": false,
         "selections": [
           {
@@ -169,13 +164,13 @@ v1 = [
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "UpdateUserMutation",
+  "name": "CreateMessageMutation",
   "id": null,
-  "text": "mutation UpdateUserMutation(\n  $input: UpdateUserInput!\n) {\n  updateUser(input: $input) {\n    user {\n      id\n    }\n  }\n}\n",
+  "text": "mutation CreateMessageMutation(\n  $input: CreateMessageInput!\n) {\n  createMessage(input: $input) {\n    message {\n      id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "UpdateUserMutation",
+    "name": "CreateMessageMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -183,12 +178,12 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UpdateUserMutation",
+    "name": "CreateMessageMutation",
     "argumentDefinitions": v0,
     "selections": v1
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '789b952b256f24e1cb61e5faecd8fd31';
+(node/*: any*/).hash = '6e83d3eb51f0f19cac79715ac35c6d0e';
 module.exports = node;

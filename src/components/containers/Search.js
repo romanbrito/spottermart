@@ -11,6 +11,7 @@ class Search extends Component {
         submit={this.props.submit}
         showMessage={this.props.showMessage}
         messageState={this.props.messageState}
+        postedBy={this.props.postedBy}
       />
     )
   }
@@ -33,6 +34,9 @@ export default createFragmentContainer(Search,
                         price
                         city
                         description
+                        postedBy {
+                            id
+                        }
                     }
                 }
             }

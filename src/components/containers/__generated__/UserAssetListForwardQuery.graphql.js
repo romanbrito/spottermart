@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 67c5ced300d0d3794ef0b70454ba4562
+ * @relayHash 69144fe77443e6a5efe87540c2860e0e
  */
 
 /* eslint-disable */
@@ -547,6 +547,46 @@ export type UserFilter = {
   assets_every?: ?AssetFilter,
   assets_some?: ?AssetFilter,
   assets_none?: ?AssetFilter,
+  messagesReceived_every?: ?MessageFilter,
+  messagesReceived_some?: ?MessageFilter,
+  messagesReceived_none?: ?MessageFilter,
+  messagesSent_every?: ?MessageFilter,
+  messagesSent_some?: ?MessageFilter,
+  messagesSent_none?: ?MessageFilter,
+};
+export type MessageFilter = {
+  AND?: ?$ReadOnlyArray<MessageFilter>,
+  OR?: ?$ReadOnlyArray<MessageFilter>,
+  id?: ?string,
+  id_not?: ?string,
+  id_in?: ?$ReadOnlyArray<string>,
+  id_not_in?: ?$ReadOnlyArray<string>,
+  id_lt?: ?string,
+  id_lte?: ?string,
+  id_gt?: ?string,
+  id_gte?: ?string,
+  id_contains?: ?string,
+  id_not_contains?: ?string,
+  id_starts_with?: ?string,
+  id_not_starts_with?: ?string,
+  id_ends_with?: ?string,
+  id_not_ends_with?: ?string,
+  text?: ?string,
+  text_not?: ?string,
+  text_in?: ?$ReadOnlyArray<string>,
+  text_not_in?: ?$ReadOnlyArray<string>,
+  text_lt?: ?string,
+  text_lte?: ?string,
+  text_gt?: ?string,
+  text_gte?: ?string,
+  text_contains?: ?string,
+  text_not_contains?: ?string,
+  text_starts_with?: ?string,
+  text_not_starts_with?: ?string,
+  text_ends_with?: ?string,
+  text_not_ends_with?: ?string,
+  messageFrom?: ?UserFilter,
+  messageTo?: ?UserFilter,
 };
 export type UserAssetListForwardQueryVariables = {|
   count: number,

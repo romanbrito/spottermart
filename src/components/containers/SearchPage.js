@@ -15,7 +15,8 @@ class SearchPage extends Component {
 
   state = {
     filter: this.props.match.params.filter,
-    messageState: false
+    messageState: false,
+    postedBy:''
   }
 
   render() {
@@ -47,7 +48,7 @@ class SearchPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <Search viewer={props.viewer} submit={this._submit} messageState={this.state.messageState} showMessage={this._showMessage}/>
+            return <Search viewer={props.viewer} submit={this._submit} messageState={this.state.messageState} postedBy={this.state.postedBy} showMessage={this._showMessage}/>
           }
           return <div>Loading</div>
         }}
@@ -63,9 +64,10 @@ class SearchPage extends Component {
     this.props.history.push('/search/')
   }
 
-  _showMessage = () => {
+  _showMessage = (postedBy) => {
     this.setState({
-      messageState: true
+      messageState: true,
+      postedBy: postedBy
     })
   }
 

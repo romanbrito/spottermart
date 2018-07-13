@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import CreateMessageUi from '../ui/CreateMessage'
+import {GC_USER_ID} from '../../constants'
 
 class CreateMessage extends Component {
 
@@ -10,7 +11,11 @@ class CreateMessage extends Component {
   render () {
 
     return (
-      <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit}/>
+      <section>
+        {this.props.messageState &&
+        <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit}/>
+        }
+      </section>
     )
   }
 
@@ -30,7 +35,9 @@ class CreateMessage extends Component {
   }
 
   _submit = () => {
+    const fromId = localStorage.getItem(GC_USER_ID)
     console.log(this.state.messageText)
+    console.log(this.props.postedBy)
   }
 
 
