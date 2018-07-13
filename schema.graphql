@@ -1,30 +1,30 @@
 type AddToMessagesReceivedPayload {
   viewer: Viewer!
   clientMutationId: String!
-  messageFromUser: User
+  messageToUser: User
   messagesReceivedMessage: Message
-  messageFromUserEdge: UserEdge
+  messageToUserEdge: UserEdge
   messagesReceivedMessageEdge: MessageEdge
 }
 
 input AddToMessagesReceivedUserInput {
   messagesReceivedMessageId: ID!
-  messageFromUserId: ID!
+  messageToUserId: ID!
   clientMutationId: String!
 }
 
 type AddToMessagesSentPayload {
   viewer: Viewer!
   clientMutationId: String!
-  messageToUser: User
+  messageFromUser: User
   messagesSentMessage: Message
-  messageToUserEdge: UserEdge
+  messageFromUserEdge: UserEdge
   messagesSentMessageEdge: MessageEdge
 }
 
 input AddToMessagesSentUserInput {
   messagesSentMessageId: ID!
-  messageToUserId: ID!
+  messageFromUserId: ID!
   clientMutationId: String!
 }
 
@@ -1733,6 +1733,17 @@ type DeleteUserPayload {
   deletedId: ID
 }
 
+input InvokeFunctionInput {
+  name: String!
+  input: String!
+  clientMutationId: String
+}
+
+type InvokeFunctionPayload {
+  result: String!
+  clientMutationId: String
+}
+
 # Raw JSON value
 scalar Json
 
@@ -1915,6 +1926,7 @@ type Mutation {
 
   # signup
   signupUser(email: String!, password: String!): SignupUserPayload
+  invokeFunction(input: InvokeFunctionInput!): InvokeFunctionPayload
 }
 
 # An object with an ID
@@ -1951,30 +1963,30 @@ type Query {
 type RemoveFromMessagesReceivedPayload {
   viewer: Viewer!
   clientMutationId: String!
-  messageFromUser: User
+  messageToUser: User
   messagesReceivedMessage: Message
-  messageFromUserEdge: UserEdge
+  messageToUserEdge: UserEdge
   messagesReceivedMessageEdge: MessageEdge
 }
 
 input RemoveFromMessagesReceivedUserInput {
   messagesReceivedMessageId: ID!
-  messageFromUserId: ID!
+  messageToUserId: ID!
   clientMutationId: String!
 }
 
 type RemoveFromMessagesSentPayload {
   viewer: Viewer!
   clientMutationId: String!
-  messageToUser: User
+  messageFromUser: User
   messagesSentMessage: Message
-  messageToUserEdge: UserEdge
+  messageFromUserEdge: UserEdge
   messagesSentMessageEdge: MessageEdge
 }
 
 input RemoveFromMessagesSentUserInput {
   messagesSentMessageId: ID!
-  messageToUserId: ID!
+  messageFromUserId: ID!
   clientMutationId: String!
 }
 
@@ -2464,14 +2476,14 @@ input UserFilter {
 
 input UsermessagesReceivedMessage {
   text: String
-  messageToId: ID
-  messageTo: MessagemessageToUser
+  messageFromId: ID
+  messageFrom: MessagemessageFromUser
 }
 
 input UsermessagesSentMessage {
   text: String
-  messageFromId: ID
-  messageFrom: MessagemessageFromUser
+  messageToId: ID
+  messageTo: MessagemessageToUser
 }
 
 enum UserOrderBy {

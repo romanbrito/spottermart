@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c0ba18585da81915247aa70f4cf2c423
+ * @relayHash bd6178b7a151b669f71ef20a8d679196
  */
 
 /* eslint-disable */
@@ -106,10 +106,10 @@ export type UserassetsAsset = {
 };
 export type UsermessagesReceivedMessage = {
   text?: ?string,
-  messageToId?: ?string,
-  messageTo?: ?MessagemessageToUser,
+  messageFromId?: ?string,
+  messageFrom?: ?MessagemessageFromUser,
 };
-export type MessagemessageToUser = {
+export type MessagemessageFromUser = {
   email: string,
   name?: ?string,
   password: string,
@@ -122,10 +122,10 @@ export type MessagemessageToUser = {
 };
 export type UsermessagesSentMessage = {
   text?: ?string,
-  messageFromId?: ?string,
-  messageFrom?: ?MessagemessageFromUser,
+  messageToId?: ?string,
+  messageTo?: ?MessagemessageToUser,
 };
-export type MessagemessageFromUser = {
+export type MessagemessageToUser = {
   email: string,
   name?: ?string,
   password: string,

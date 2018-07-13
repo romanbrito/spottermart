@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c3581310417fded9e23ac5ce250cc1d6
+ * @relayHash 260737dbae06270e45d697d5c89352c5
  */
 
 /* eslint-disable */
@@ -70,6 +70,11 @@ export type UserassetsAsset = {
 };
 export type UsermessagesReceivedMessage = {
   text?: ?string,
+  messageFromId?: ?string,
+  messageFrom?: ?MessagemessageFromUser,
+};
+export type UsermessagesSentMessage = {
+  text?: ?string,
   messageToId?: ?string,
   messageTo?: ?MessagemessageToUser,
 };
@@ -83,11 +88,6 @@ export type MessagemessageToUser = {
   messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
   messagesSentIds?: ?$ReadOnlyArray<string>,
   messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
-};
-export type UsermessagesSentMessage = {
-  text?: ?string,
-  messageFromId?: ?string,
-  messageFrom?: ?MessagemessageFromUser,
 };
 export type CreateMessageMutationVariables = {|
   input: CreateMessageInput
