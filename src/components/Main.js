@@ -7,7 +7,7 @@ import CreateAsset from './containers/CreateAsset'
 import UserAssetListPage from './containers/UserAssetListPage'
 import UpdateAssetPage from './containers/UpdateAssetPage'
 import SearchPage from './containers/SearchPage'
-import MessagesList from './ui/MessagesList'
+import MessagesList from './containers/MessagesListPage'
 
 const Main = (props) => {
   const extraProps = props
