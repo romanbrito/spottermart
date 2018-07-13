@@ -7,7 +7,7 @@ const UserAssetList = (props) => (
       props.list.map(list => (
           <main key={list.cursor} className="mw6 center">
             <article>
-              <div className="link dt w-100 bb b--black-10 pb2 mt2 blue" href="#0">
+              <div className="link dt w-100 bb b--black-10 pb2 mt2 blue">
                 <div className="dtc w3">
                   <img src={list.node.pictures && list.node.pictures.length > 0 ? list.node.pictures[0].url : ''}
                        alt={list.node.businessName}/>
