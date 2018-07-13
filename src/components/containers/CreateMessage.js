@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import CreateMessageUi from '../ui/CreateMessage'
 import {GC_USER_ID} from '../../constants'
+import CreateMessageMutation from '../../mutations/CreateMessageMutation'
 
 class CreateMessage extends Component {
 
@@ -36,8 +37,10 @@ class CreateMessage extends Component {
 
   _submit = () => {
     const fromId = localStorage.getItem(GC_USER_ID)
-    console.log(this.state.messageText)
-    console.log(this.props.postedBy)
+    const postedBy = this.props.postedBy
+    const {messageText} = this.state
+    CreateMessageMutation(messageText,fromId,postedBy,
+      () => console.log('message submitted'))
   }
 
 

@@ -13,7 +13,6 @@ class Signup extends Component {
   }
 
   render () {
-    console.log(this.props)
     return (
       <div>
         <SignupUi onChange={this._onChange} confirm={this._confirm}/>
