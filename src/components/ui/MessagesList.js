@@ -16,7 +16,9 @@ const MessagesList = (props) => {
 
           <CreateMessage  title="Reply" postedBy={list.node.messageFrom.id}/>
 
-          <DeleteBtn>
+          <DeleteBtn
+            onClick={() => props.deleteMessage(list.node.id)}
+          >
             Delete
           </DeleteBtn>
         </Section>

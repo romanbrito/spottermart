@@ -28,7 +28,7 @@ class MessagesListPage extends Component {
         if (error) {
           return <div>{error.message}</div>
         } else if (props) {
-          return <MessagesList User={props.viewer.User}/>
+          return <MessagesList User={props.viewer.User} history={this.props.history}/>
         }
         return <div>Loading</div>
       }}

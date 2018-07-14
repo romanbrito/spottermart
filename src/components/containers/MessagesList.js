@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import MessagesListUi from '../ui/MessagesList'
+import DeleteMessageMutation from '../../mutations/DeleteMessageMutation'
 import {createFragmentContainer, graphql} from 'react-relay'
 
 class MessagesList extends  Component {
@@ -8,10 +9,21 @@ class MessagesList extends  Component {
 
     return (
       <div>
-        <MessagesListUi list={this.props.User.messagesReceived.edges}/>
+        <MessagesListUi
+          list={this.props.User.messagesReceived.edges}
+          deleteMessage={this._deleteMessage}
+        />
       </div>
 
     )
+  }
+
+  _deleteMessage = (messageId) => {
+    DeleteMessageMutation(
+      messageId,
+      () => this.props.history.push('/')
+    )
+
   }
 
 }

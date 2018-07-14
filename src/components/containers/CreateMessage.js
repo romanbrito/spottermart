@@ -70,7 +70,6 @@ class CreateMessage extends Component {
     })
   }
 
-
 }
 
 export default CreateMessage
