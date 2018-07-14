@@ -2,25 +2,13 @@ import React, {Component} from 'react'
 import {QueryRenderer, graphql} from 'react-relay'
 import environment from '../../Environment'
 import {GC_USER_ID} from '../../constants'
+import MessagesList from './MessagesList'
 
 const MessagesListPageQuery = graphql`
   query MessagesListPageQuery($userId: ID!){
       viewer {
           User (id: $userId){
-              messagesReceived(
-                  last: 100,
-                  orderBy: id_ASC
-              )@connection(key: "MessagesList_messagesReceived") {
-                  edges {
-                      node {
-                          id
-                          text
-                          messageTo {
-                              name
-                          }
-                      }
-                  }
-              }
+              ...MessagesList_User
           }
       }
   }
@@ -40,7 +28,7 @@ class MessagesListPage extends Component {
         if (error) {
           return <div>{error.message}</div>
         } else if (props) {
-          return <div>messgesList {console.log(props)}</div>
+          return <MessagesList User={props.viewer.User}/>
         }
         return <div>Loading</div>
       }}
