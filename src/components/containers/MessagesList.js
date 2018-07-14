@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import MessagesListUi from '../ui/MessagesList'
 import {createFragmentContainer, graphql} from 'react-relay'
-import {GC_USER_ID} from '../../constants'
 
 class MessagesList extends  Component {
 
@@ -9,7 +8,6 @@ class MessagesList extends  Component {
 
     return (
       <div>
-        {console.log(this.props)}
         <MessagesListUi list={this.props.User.messagesReceived.edges}/>
       </div>
 
@@ -32,6 +30,11 @@ export default createFragmentContainer(MessagesList,
                       text
                       messageTo {
                           name
+                          id
+                      }
+                      messageFrom{
+                          name
+                          id
                       }
                   }
               }

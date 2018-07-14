@@ -6,18 +6,40 @@ import CreateMessageMutation from '../../mutations/CreateMessageMutation'
 class CreateMessage extends Component {
 
   state = {
-    messageText: ''
+    messageText: '',
+    messageState: false
   }
 
   render () {
 
     return (
       <section>
-        {this.props.messageState &&
-        <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit} closeMessage={this.props.closeMessage}/>
+
+        <button
+          onClick={() => this._showMessage()}
+          className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-green pointer"
+        >{this.props.title}
+        </button>
+
+        {this.state.messageState &&
+        <CreateMessageUi onChange={this._onChange} messageText={this.state.messageText} submit={this._submit} closeMessage={this._closeMessage}/>
         }
       </section>
     )
+  }
+
+  // functions to show and close create message
+
+  _showMessage = () => {
+    this.setState({
+      messageState: true
+    })
+  }
+
+  _closeMessage = () => {
+    this.setState({
+      messageState: false
+    })
   }
 
   // functions for change of input
@@ -41,7 +63,7 @@ class CreateMessage extends Component {
     const {messageText} = this.state
     CreateMessageMutation(messageText,fromId,postedBy,
       () => {
-      this.props.closeMessage()
+      this._closeMessage()
         this.setState({
           messageText: ''
         })

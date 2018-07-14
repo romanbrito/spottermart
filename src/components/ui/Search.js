@@ -28,8 +28,6 @@ const Search = (props) => (
         Search
       </button>
 
-      <CreateMessage messageState={props.messageState} postedBy={props.postedBy} closeMessage={props.closeMessage}/>
-
     </div>
     {/*Display list of assets*/}
     <div>
@@ -57,11 +55,7 @@ const Search = (props) => (
                     </button>
                   </Link>
 
-                    <button
-                      onClick={() => props.showMessage(list.node.postedBy.id)}
-                      className="f6 link br1 ph3 pv2 mb2 dib white bg-dark-green pointer"
-                    >Send Message
-                    </button>
+                  <CreateMessage postedBy={list.node.postedBy.id} title="Send Message"/>
 
                 </div>
 

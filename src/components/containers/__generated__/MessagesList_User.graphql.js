@@ -17,7 +17,12 @@ export type MessagesList_User = {|
         +id: string,
         +text: ?string,
         +messageTo: ?{|
-          +name: ?string
+          +name: ?string,
+          +id: string,
+        |},
+        +messageFrom: ?{|
+          +name: ?string,
+          +id: string,
         |},
       |}
     |}>
@@ -27,7 +32,25 @@ export type MessagesList_User = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "name",
+    "args": null,
+    "storageKey": null
+  },
+  v0
+];
+return {
   "kind": "Fragment",
   "name": "MessagesList_User",
   "type": "User",
@@ -79,13 +102,7 @@ const node/*: ConcreteFragment*/ = {
               "concreteType": "Message",
               "plural": false,
               "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
+                v0,
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -101,15 +118,17 @@ const node/*: ConcreteFragment*/ = {
                   "args": null,
                   "concreteType": "User",
                   "plural": false,
-                  "selections": [
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "name",
-                      "args": null,
-                      "storageKey": null
-                    }
-                  ]
+                  "selections": v1
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "messageFrom",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "User",
+                  "plural": false,
+                  "selections": v1
                 },
                 {
                   "kind": "ScalarField",
@@ -158,6 +177,7 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = '36a8f30282df2883b0af9a70816abfa7';
+(node/*: any*/).hash = '370668dc25d9e187452f88ace6c91785';
 module.exports = node;

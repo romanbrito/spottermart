@@ -1,5 +1,6 @@
 import React from 'react'
-import {Main, Section, Figure, Article, ReplyBtn, DeleteBtn} from './StyledMessagesList'
+import CreateMessage from '../containers/CreateMessage'
+import {Main, Section, Article, DeleteBtn} from './StyledMessagesList'
 
 const MessagesList = (props) => {
 
@@ -12,9 +13,9 @@ const MessagesList = (props) => {
               {list.node.text}
             </p>
           </Article>
-          <ReplyBtn>
-            Reply
-          </ReplyBtn>
+
+          <CreateMessage  title="Reply" postedBy={list.node.messageFrom.id}/>
+
           <DeleteBtn>
             Delete
           </DeleteBtn>

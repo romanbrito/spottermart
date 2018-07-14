@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 70f8de27e021a4de98e1562062733443
+ * @relayHash b24adb25bd693e95cfb568ce5de90366
  */
 
 /* eslint-disable */
@@ -46,6 +46,10 @@ fragment MessagesList_User on User {
           name
           id
         }
+        messageFrom {
+          name
+          id
+        }
         __typename
       }
       cursor
@@ -81,13 +85,23 @@ v2 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v3 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "name",
+    "args": null,
+    "storageKey": null
+  },
+  v2
+];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "MessagesListPageQuery",
   "id": null,
-  "text": "query MessagesListPageQuery(\n  $userId: ID!\n) {\n  viewer {\n    User(id: $userId) {\n      ...MessagesList_User\n      id\n    }\n    id\n  }\n}\n\nfragment MessagesList_User on User {\n  messagesReceived(last: 100, orderBy: id_ASC) {\n    edges {\n      node {\n        id\n        text\n        messageTo {\n          name\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query MessagesListPageQuery(\n  $userId: ID!\n) {\n  viewer {\n    User(id: $userId) {\n      ...MessagesList_User\n      id\n    }\n    id\n  }\n}\n\nfragment MessagesList_User on User {\n  messagesReceived(last: 100, orderBy: id_ASC) {\n    edges {\n      node {\n        id\n        text\n        messageTo {\n          name\n          id\n        }\n        messageFrom {\n          name\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -204,16 +218,17 @@ return {
                             "args": null,
                             "concreteType": "User",
                             "plural": false,
-                            "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "name",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              v2
-                            ]
+                            "selections": v3
+                          },
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "messageFrom",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "User",
+                            "plural": false,
+                            "selections": v3
                           },
                           {
                             "kind": "ScalarField",
