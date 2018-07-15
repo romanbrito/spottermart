@@ -21,13 +21,13 @@ const Header = withRouter((props) => (
           {props.userId &&
           <li>
             <a className="db pv3 ph3 f3 white link pointer">
-              Account
+              Hi {props.userName}
               <AngleDown
                 onClick={() => dropdownToggle()}
               />
             </a>
             <ul className="dn-l absolute-l dropdown-bg">
-              <li className="list">{props.userName}</li>
+              <li className="list"><NavLink dest='/messages' menuItem="Account"/></li>
               <li className="list"><NavLink dest='/messages' menuItem="My Messages"/></li>
               <li className="list"><NavLink dest='/list' menuItem="My Assets"/></li>
               <li className="list"><NavLink dest='/create' menuItem="Create Asset"/></li>

@@ -16,10 +16,12 @@ class App extends Component {
 
   render() {
 
-    const userId = localStorage.getItem(GC_USER_ID)
+    // get UserName
+    if ( !this.state.userName ) {
+      const userId = localStorage.getItem(GC_USER_ID)
 
-    if (userId) {
-      this._getUserName(userId)
+      if (userId) this._getUserName(userId)
+
     }
 
     return (
@@ -48,7 +50,7 @@ class App extends Component {
   _removeId = () => {
     localStorage.removeItem(GC_USER_ID)
     localStorage.removeItem(GC_AUTH_TOKEN)
-    this.setState({userId: ''})
+    this.setState({userId: '', userName: ''})
   }
 }
 
