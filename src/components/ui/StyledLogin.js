@@ -4,7 +4,7 @@ export const Main = styled.main.attrs({
   className: "pa4 black-80"
 })``
 
-export const Form = styled.form.attrs({
+export const Form = styled.div.attrs({
   className: "measure center"
 })``
 

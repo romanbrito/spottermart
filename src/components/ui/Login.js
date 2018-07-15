@@ -29,6 +29,7 @@ const Login = (props) =>
             type="email"
             name="email" id="email"
             onChange={e => props.onChange(e)}
+            value={props.state["email"]}
           />
         </Email>
         <Password>
@@ -38,6 +39,7 @@ const Login = (props) =>
             name="password"
             id="password"
             onChange={e => props.onChange(e)}
+            value={props.state["password"]}
           />
         </Password>
         <RememberMeLabel>
