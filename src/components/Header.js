@@ -27,7 +27,7 @@ const Header = withRouter((props) => (
               />
             </a>
             <ul className="dn-l absolute-l dropdown-bg">
-              <li className="list"><NavLink dest='/messages' menuItem="Account"/></li>
+              <li className="list"><NavLink dest='/account' menuItem="Account"/></li>
               <li className="list"><NavLink dest='/messages' menuItem="My Messages"/></li>
               <li className="list"><NavLink dest='/list' menuItem="My Assets"/></li>
               <li className="list"><NavLink dest='/create' menuItem="Create Asset"/></li>
