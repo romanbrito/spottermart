@@ -11,17 +11,17 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const userId = localStorage.getItem(GC_USER_ID)
-
     this._getId()
+  }
+
+  render() {
+
+    const userId = localStorage.getItem(GC_USER_ID)
 
     if (userId) {
       this._getUserName(userId)
     }
 
-  }
-
-  render() {
     return (
       <div className="App">
         <Header userId={this.state.userId} removeId={this._removeId} userName={this.state.userName}/>
