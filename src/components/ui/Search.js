@@ -55,8 +55,8 @@ const Search = (props) => (
                     >Details
                     </button>
                   </Link>
-                  {console.log(list.node.postedBy.id)}
-                  {console.log(localStorage.getItem(GC_USER_ID))}
+
+                  {/*only show send message to not owner*/}
                   {
                     list.node.postedBy.id !== localStorage.getItem(GC_USER_ID) ?
                     <CreateMessage postedBy={list.node.postedBy.id} title="Send Message"/>
