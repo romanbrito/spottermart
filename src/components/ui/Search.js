@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {GC_USER_ID} from './../../constants'
 import Footer from '../Footer'
 import SlideShow from '../SlideShow'
 import CreateMessage from '../containers/CreateMessage'
@@ -54,8 +55,13 @@ const Search = (props) => (
                     >Details
                     </button>
                   </Link>
-
-                  <CreateMessage postedBy={list.node.postedBy.id} title="Send Message"/>
+                  {console.log(list.node.postedBy.id)}
+                  {console.log(localStorage.getItem(GC_USER_ID))}
+                  {
+                    list.node.postedBy.id !== localStorage.getItem(GC_USER_ID) ?
+                    <CreateMessage postedBy={list.node.postedBy.id} title="Send Message"/>
+                    :''
+                  }
 
                 </div>
 
