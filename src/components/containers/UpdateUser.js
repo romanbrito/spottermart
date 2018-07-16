@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import {graphql, createFragmentContainer} from 'react-relay'
 import UpdateUserMutation from '../../mutations/UpdateUserMutation'
-import LoginUi from '../ui/Login'
+import SignupUi from '../ui/Signup'
+// import SignupUserMutation from '../../mutations/SignupUserMutation'
 
 class UpdateUser extends Component {
 
   state = {
+    id: '',
     name: '',
-    email:'',
+    email: '',
     password: ''
   }
 
@@ -19,10 +21,10 @@ class UpdateUser extends Component {
 
     return (
       <div>
-        {console.log(this.props)}
-        <LoginUi
+        <SignupUi
           state={this.state}
           onChange={this._onChange}
+          confirm={this._confirm}
         />
       </div>
     )
@@ -42,12 +44,22 @@ class UpdateUser extends Component {
     this.setState(newState)
   }
 
+  _confirm = () => {
+    const {id, email, password, name} = this.state
+
+    UpdateUserMutation(id, name, email, password, () => {
+      this.props.clearName()
+      this.props.history.push(`/`)
+    })
+  }
+
 }
 
 export default createFragmentContainer(UpdateUser, graphql`
-  fragment UpdateUser_user on User {
-      name
-      email
-      password
-  }
+    fragment UpdateUser_user on User {
+        id
+        name
+        email
+        password
+    }
 `)

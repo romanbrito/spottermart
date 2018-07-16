@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import SignupUi from '../ui/Signup'
 import {GC_AUTH_TOKEN, GC_USER_ID} from "../../constants"
 import SignupUserMutation from '../../mutations/SignupUserMutation'
-import UpdateUserMutation from '../../mutations/UpdateUserMutation'
+import SignupUpdateMutation from '../../mutations/SignupUpdateMutation'
 
 class Signup extends Component {
 
@@ -15,7 +15,10 @@ class Signup extends Component {
   render () {
     return (
       <div>
-        <SignupUi onChange={this._onChange} confirm={this._confirm}/>
+        <SignupUi
+          onChange={this._onChange}
+          confirm={this._confirm}
+          state={this.state}/>
       </div>
     )
 
@@ -33,7 +36,7 @@ class Signup extends Component {
 
     SignupUserMutation(email, password, (id, token) => {
 
-      UpdateUserMutation(id, name, (id) => {
+      SignupUpdateMutation(id, name, (id) => {
         this._saveUserData(id, token)
         this.props.history.push(`/`)
       })

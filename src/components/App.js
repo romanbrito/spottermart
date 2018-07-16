@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header userId={this.state.userId} removeId={this._removeId} userName={this.state.userName}/>
-        <Main getId={this._getId}/>
+        <Main getId={this._getId} clearName={this._clearName}/>
       </div>
     );
   }
@@ -51,6 +51,10 @@ class App extends Component {
     localStorage.removeItem(GC_USER_ID)
     localStorage.removeItem(GC_AUTH_TOKEN)
     this.setState({userId: '', userName: ''})
+  }
+
+  _clearName = () => {
+    this.setState({userName: ''})
   }
 }
 

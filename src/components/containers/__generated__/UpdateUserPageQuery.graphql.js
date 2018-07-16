@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 13893d74dc4553f62440dc533d09fc59
+ * @relayHash 168de455fce2b0f3c3d8122bfca90bff
  */
 
 /* eslint-disable */
@@ -37,6 +37,7 @@ query UpdateUserPageQuery(
 }
 
 fragment UpdateUser_user on User {
+  id
   name
   email
   password
@@ -72,7 +73,7 @@ return {
   "operationKind": "query",
   "name": "UpdateUserPageQuery",
   "id": null,
-  "text": "query UpdateUserPageQuery(\n  $userId: ID!\n) {\n  viewer {\n    User(id: $userId) {\n      ...UpdateUser_user\n      id\n    }\n    id\n  }\n}\n\nfragment UpdateUser_user on User {\n  name\n  email\n  password\n}\n",
+  "text": "query UpdateUserPageQuery(\n  $userId: ID!\n) {\n  viewer {\n    User(id: $userId) {\n      ...UpdateUser_user\n      id\n    }\n    id\n  }\n}\n\nfragment UpdateUser_user on User {\n  id\n  name\n  email\n  password\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -133,6 +134,7 @@ return {
             "concreteType": "User",
             "plural": false,
             "selections": [
+              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -153,8 +155,7 @@ return {
                 "name": "password",
                 "args": null,
                 "storageKey": null
-              },
-              v2
+              }
             ]
           },
           v2

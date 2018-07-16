@@ -29,6 +29,7 @@ const Signup = (props) =>
             name="name"
             id="name"
             onChange={e => props.onChange(e)}
+            value={props.state["name"]}
           />
         </Name>
         <Email>
@@ -38,6 +39,7 @@ const Signup = (props) =>
             name="email"
             id="email"
             onChange={e => props.onChange(e)}
+            value={props.state["email"]}
           />
         </Email>
         <Password>
@@ -47,6 +49,7 @@ const Signup = (props) =>
             name="password"
             id="password"
             onChange={e => props.onChange(e)}
+            value={props.state["password"]}
           />
         </Password>
       </SignUpFieldset>

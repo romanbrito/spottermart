@@ -27,7 +27,7 @@ class UpdateUserPage extends Component {
         if (error) {
           return <div>{error.message}</div>
         } else if (props) {
-          return <UpdateUser user={props.viewer.User}/>
+          return <UpdateUser user={props.viewer.User} clearName={this.props.clearName} history={this.props.history}/>
         }
         return <div>Loading</div>
       }}

@@ -11,6 +11,7 @@ import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type UpdateUser_user$ref: FragmentReference;
 export type UpdateUser_user = {|
+  +id: string,
   +name: ?string,
   +email: string,
   +password: string,
@@ -26,6 +27,13 @@ const node/*: ConcreteFragment*/ = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -50,5 +58,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'b9e4733de52f4c479db54bbd41f8f9c7';
+(node/*: any*/).hash = 'a0bceb5a4480ecab5c5a722f1433ec61';
 module.exports = node;
