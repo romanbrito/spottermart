@@ -22,10 +22,26 @@ class UpdateUser extends Component {
         {console.log(this.props)}
         <LoginUi
           state={this.state}
+          onChange={this._onChange}
         />
       </div>
     )
   }
+
+  // functions for change of input
+  _onChange = event => {
+    const {name, value} = event.target
+    this._newState(name, value)
+  }
+  _newState = (element, newElement) => {
+    const newState = Object.keys(this.state).reduce((prev, curr) => {
+      if (curr === element) prev[curr] = newElement
+      else prev[curr] = this.state[curr]
+      return prev
+    }, {})
+    this.setState(newState)
+  }
+
 }
 
 export default createFragmentContainer(UpdateUser, graphql`

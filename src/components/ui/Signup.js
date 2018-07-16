@@ -1,50 +1,63 @@
 import React from 'react'
+import {
+  Article,
+  Form,
+  SignUpFieldset,
+  SignUpLegend,
+  Name,
+  NameLabel,
+  NameInput,
+  Email,
+  EmailLabel,
+  EmailInput,
+  Password,
+  PasswordLabel,
+  PasswordInput,
+  Submit,
+  SubmitBtn
+} from './StyledSignup'
 
 const Signup = (props) =>
-  <article className="pa4 black-80">
-    <form action="sign-up_submit" method="get" acceptCharset="utf-8">
-      <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-        <legend className="ph0 mh0 fw6 clip">Sign Up</legend>
-        <div className="mt3">
-          <label className="db fw4 lh-copy f6" htmlFor="email">Name</label>
-          <input
-            className="pa2 input-reset ba bg-transparent w-100 measure"
+  <Article>
+    <Form>
+      <SignUpFieldset id="sign_up">
+        <SignUpLegend>Sign Up</SignUpLegend>
+        <Name>
+          <NameLabel htmlFor="email">Name</NameLabel>
+          <NameInput
             type="text"
             name="name"
             id="name"
             onChange={e => props.onChange(e)}
           />
-        </div>
-        <div className="mt3">
-          <label className="db fw4 lh-copy f6" htmlFor="email">Email address</label>
-          <input
-            className="pa2 input-reset ba bg-transparent w-100 measure"
+        </Name>
+        <Email>
+          <EmailLabel htmlFor="email">Email address</EmailLabel>
+          <EmailInput
             type="email"
             name="email"
             id="email"
             onChange={e => props.onChange(e)}
           />
-        </div>
-        <div className="mt3">
-          <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-          <input
-            className="b pa2 input-reset ba bg-transparent"
+        </Email>
+        <Password>
+          <PasswordLabel htmlFor="password">Password</PasswordLabel>
+          <PasswordInput
             type="password"
             name="password"
             id="password"
             onChange={e => props.onChange(e)}
           />
-        </div>
-      </fieldset>
-      <div className="mt3">
-        <p
-          className="f6 link dim ph3 pv2 mb2 dib white bg-black pointer"
+        </Password>
+      </SignUpFieldset>
+      <Submit>
+        <SubmitBtn
           onClick={() => props.confirm()}
         >
-          Sign Up
-        </p>
-      </div>
-    </form>
-  </article>
+          Submit
+        </SubmitBtn>
+      </Submit>
+    </Form>
+  </Article>
 
 export default Signup
