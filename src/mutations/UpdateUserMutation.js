@@ -6,24 +6,20 @@ import {
 import environment from '../Environment'
 
 const mutation = graphql`
-  mutation UpdateUserMutation($input: UpdateUserInput!){
-      updateUser(input: $input){
-          user {
-              id
-          }
+  mutation UpdateUserMutation($id: ID!, $email: String!, $password: String!, $name: String!){
+      upgradeUser(id: $id, email: $email, password: $password, name: $name){
+          id          
       }
   }
 `
 
-export default (id, name, email, password, callback) => {
+export default (id, email, password, name, callback) => {
   const variables = {
-    input: {
       id,
-      name,
       email,
       password,
+      name,
       clientMutationId: ""
-    }
   }
   commitMutation(
     environment,
@@ -31,7 +27,7 @@ export default (id, name, email, password, callback) => {
       mutation,
       variables,
       onCompleted: response => {
-        const id = response.updateUser.user.id
+        const id = response.upgradeUser.id
         callback(id)
       },
       onError: err => console.error(err)

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8a51a54b63913f10d3534a33bdee6ab5
+ * @relayHash b102fbd37c349ed37600158084a880d1
  */
 
 /* eslint-disable */
@@ -9,99 +9,15 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type UpdateUserInput = {
-  email?: ?string,
-  id: string,
-  name?: ?string,
-  password?: ?string,
-  assetsIds?: ?$ReadOnlyArray<string>,
-  assets?: ?$ReadOnlyArray<UserassetsAsset>,
-  messagesReceivedIds?: ?$ReadOnlyArray<string>,
-  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
-  messagesSentIds?: ?$ReadOnlyArray<string>,
-  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
-  clientMutationId: string,
-};
-export type UserassetsAsset = {
-  address?: ?string,
-  alcoholLicense?: ?boolean,
-  businessName: string,
-  businessType?: ?string,
-  city: string,
-  description: string,
-  equipment?: ?$ReadOnlyArray<any>,
-  franchiseBool?: ?boolean,
-  franchiseMarketingFee?: ?string,
-  franchiseRoyalties?: ?string,
-  franchiseTraining?: ?string,
-  franchiseTransferFee?: ?string,
-  franchiseYearsRemaining?: ?string,
-  fullTimeEmployees?: ?string,
-  grossIncome?: ?string,
-  hoursOfOperation?: ?string,
-  howLongInOperation?: ?string,
-  howManySeats?: ?string,
-  insideSqFeet?: ?string,
-  netIncome?: ?string,
-  notes?: ?string,
-  owned?: ?boolean,
-  ownerFinance?: ?string,
-  partTimeEmployees?: ?string,
-  pictures?: ?$ReadOnlyArray<any>,
-  price?: ?string,
-  rentNNN?: ?string,
-  requirementsToQualify?: ?string,
-  socialMedia?: ?$ReadOnlyArray<any>,
-  socialMediaRating?: ?$ReadOnlyArray<any>,
-  specialFeatures?: ?string,
-  state: string,
-  status?: ?string,
-  structure?: ?string,
-  termOfLease?: ?string,
-  website?: ?string,
-  whySelling?: ?string,
-  zipCode: string,
-};
-export type UsermessagesReceivedMessage = {
-  text?: ?string,
-  messageFromId?: ?string,
-  messageFrom?: ?MessagemessageFromUser,
-};
-export type MessagemessageFromUser = {
-  email: string,
-  name?: ?string,
-  password: string,
-  assetsIds?: ?$ReadOnlyArray<string>,
-  assets?: ?$ReadOnlyArray<UserassetsAsset>,
-  messagesReceivedIds?: ?$ReadOnlyArray<string>,
-  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
-  messagesSentIds?: ?$ReadOnlyArray<string>,
-  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
-};
-export type UsermessagesSentMessage = {
-  text?: ?string,
-  messageToId?: ?string,
-  messageTo?: ?MessagemessageToUser,
-};
-export type MessagemessageToUser = {
-  email: string,
-  name?: ?string,
-  password: string,
-  assetsIds?: ?$ReadOnlyArray<string>,
-  assets?: ?$ReadOnlyArray<UserassetsAsset>,
-  messagesReceivedIds?: ?$ReadOnlyArray<string>,
-  messagesReceived?: ?$ReadOnlyArray<UsermessagesReceivedMessage>,
-  messagesSentIds?: ?$ReadOnlyArray<string>,
-  messagesSent?: ?$ReadOnlyArray<UsermessagesSentMessage>,
-};
 export type UpdateUserMutationVariables = {|
-  input: UpdateUserInput
+  id: string,
+  email: string,
+  password: string,
+  name: string,
 |};
 export type UpdateUserMutationResponse = {|
-  +updateUser: ?{|
-    +user: ?{|
-      +id: string
-    |}
+  +upgradeUser: ?{|
+    +id: string
   |}
 |};
 */
@@ -109,12 +25,13 @@ export type UpdateUserMutationResponse = {|
 
 /*
 mutation UpdateUserMutation(
-  $input: UpdateUserInput!
+  $id: ID!
+  $email: String!
+  $password: String!
+  $name: String!
 ) {
-  updateUser(input: $input) {
-    user {
-      id
-    }
+  upgradeUser(id: $id, email: $email, password: $password, name: $name) {
+    id
   }
 }
 */
@@ -123,8 +40,26 @@ const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "UpdateUserInput!",
+    "name": "id",
+    "type": "ID!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "email",
+    "type": "String!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "password",
+    "type": "String!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "name",
+    "type": "String!",
     "defaultValue": null
   }
 ],
@@ -132,36 +67,43 @@ v1 = [
   {
     "kind": "LinkedField",
     "alias": null,
-    "name": "updateUser",
+    "name": "upgradeUser",
     "storageKey": null,
     "args": [
       {
         "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "UpdateUserInput!"
+        "name": "email",
+        "variableName": "email",
+        "type": "String!"
+      },
+      {
+        "kind": "Variable",
+        "name": "id",
+        "variableName": "id",
+        "type": "ID!"
+      },
+      {
+        "kind": "Variable",
+        "name": "name",
+        "variableName": "name",
+        "type": "String!"
+      },
+      {
+        "kind": "Variable",
+        "name": "password",
+        "variableName": "password",
+        "type": "String!"
       }
     ],
-    "concreteType": "UpdateUserPayload",
+    "concreteType": "UpgradeUserPayload",
     "plural": false,
     "selections": [
       {
-        "kind": "LinkedField",
+        "kind": "ScalarField",
         "alias": null,
-        "name": "user",
-        "storageKey": null,
+        "name": "id",
         "args": null,
-        "concreteType": "User",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          }
-        ]
+        "storageKey": null
       }
     ]
   }
@@ -171,7 +113,7 @@ return {
   "operationKind": "mutation",
   "name": "UpdateUserMutation",
   "id": null,
-  "text": "mutation UpdateUserMutation(\n  $input: UpdateUserInput!\n) {\n  updateUser(input: $input) {\n    user {\n      id\n    }\n  }\n}\n",
+  "text": "mutation UpdateUserMutation(\n  $id: ID!\n  $email: String!\n  $password: String!\n  $name: String!\n) {\n  upgradeUser(id: $id, email: $email, password: $password, name: $name) {\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -190,5 +132,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '789b952b256f24e1cb61e5faecd8fd31';
+(node/*: any*/).hash = '80024ce7ceb1838d2133d0ed3a3298f4';
 module.exports = node;

@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import SignupUi from '../ui/Signup'
 import {GC_AUTH_TOKEN, GC_USER_ID} from "../../constants"
 import SignupUserMutation from '../../mutations/SignupUserMutation'
-import SignupUpdateMutation from '../../mutations/SignupUpdateMutation'
 
 class Signup extends Component {
 

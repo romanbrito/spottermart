@@ -8,9 +8,9 @@ class UpdateUser extends Component {
 
   state = {
     id: '',
-    name: '',
     email: '',
-    password: ''
+    password: '',
+    name: ''
   }
 
   componentWillMount() {
@@ -47,7 +47,7 @@ class UpdateUser extends Component {
   _confirm = () => {
     const {id, email, password, name} = this.state
 
-    UpdateUserMutation(id, name, email, password, () => {
+    UpdateUserMutation(id, email, password, name,  () => {
       this.props.clearName()
       this.props.history.push(`/`)
     })
