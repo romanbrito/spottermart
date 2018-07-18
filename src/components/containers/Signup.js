@@ -36,6 +36,7 @@ class Signup extends Component {
     SignupUserMutation(email, password, name, (id, token) => {
 
         this._saveUserData(id, token)
+        this.props.getId()
         this.props.history.push(`/`)
 
     })

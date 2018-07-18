@@ -19,7 +19,9 @@ const Main = (props) => {
       <Route exact path='/login' render={(props) =>
         <Login {...props} getId={extraProps.getId}/>
       }/>
-      <Route exact path='/signup' component={Signup}/>
+      <Route exact path='/signup' render={(props) =>
+        <Signup {...props} getId={extraProps.getId}/>
+      }/>
       <Route exact path='/account' render={(props) =>
         <UpdateUserPage {...props} clearName={extraProps.clearName}/>
       }/>
