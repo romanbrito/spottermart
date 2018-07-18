@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7ff3ffc9270e4667aabd8d97f3ef2718
+ * @relayHash ffc657d6e96291891775c8d1e8277c73
  */
 
 /* eslint-disable */
@@ -12,6 +12,7 @@ import type { ConcreteRequest } from 'relay-runtime';
 export type SignupUserMutationVariables = {|
   email: string,
   password: string,
+  name: string,
 |};
 export type SignupUserMutationResponse = {|
   +signupUser: ?{|
@@ -26,8 +27,9 @@ export type SignupUserMutationResponse = {|
 mutation SignupUserMutation(
   $email: String!
   $password: String!
+  $name: String!
 ) {
-  signupUser(email: $email, password: $password) {
+  signupUser(email: $email, password: $password, name: $name) {
     id
     token
   }
@@ -47,6 +49,12 @@ var v0 = [
     "name": "password",
     "type": "String!",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "name",
+    "type": "String!",
+    "defaultValue": null
   }
 ],
 v1 = [
@@ -60,6 +68,12 @@ v1 = [
         "kind": "Variable",
         "name": "email",
         "variableName": "email",
+        "type": "String!"
+      },
+      {
+        "kind": "Variable",
+        "name": "name",
+        "variableName": "name",
         "type": "String!"
       },
       {
@@ -94,7 +108,7 @@ return {
   "operationKind": "mutation",
   "name": "SignupUserMutation",
   "id": null,
-  "text": "mutation SignupUserMutation(\n  $email: String!\n  $password: String!\n) {\n  signupUser(email: $email, password: $password) {\n    id\n    token\n  }\n}\n",
+  "text": "mutation SignupUserMutation(\n  $email: String!\n  $password: String!\n  $name: String!\n) {\n  signupUser(email: $email, password: $password, name: $name) {\n    id\n    token\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -113,5 +127,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '0788272e6ef1df8aa44a6f72553ac3ab';
+(node/*: any*/).hash = '7b9e20364704d4dea29215f6b643b89a';
 module.exports = node;

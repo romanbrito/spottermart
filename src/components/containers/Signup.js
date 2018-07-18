@@ -34,12 +34,10 @@ class Signup extends Component {
   _confirm = () => {
     const {email, password, name} = this.state
 
-    SignupUserMutation(email, password, (id, token) => {
+    SignupUserMutation(email, password, name, (id, token) => {
 
-      SignupUpdateMutation(id, name, (id) => {
         this._saveUserData(id, token)
         this.props.history.push(`/`)
-      })
 
     })
   }
