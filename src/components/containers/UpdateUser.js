@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {graphql, createFragmentContainer} from 'react-relay'
 import UpdateUserMutation from '../../mutations/UpdateUserMutation'
 import SignupUi from '../ui/Signup'
-// import SignupUserMutation from '../../mutations/SignupUserMutation'
 
 class UpdateUser extends Component {
 
@@ -10,6 +9,7 @@ class UpdateUser extends Component {
     id: '',
     email: '',
     password: '',
+    confirmPassword: '',
     name: ''
   }
 

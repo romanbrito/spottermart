@@ -52,6 +52,16 @@ const Signup = (props) =>
             value={props.state["password"]}
           />
         </Password>
+        <Password>
+          <PasswordLabel htmlFor="confirm-password">Confirm Password</PasswordLabel>
+          <PasswordInput
+            type="password"
+            name="confirmPassword"
+            id="confirm-password"
+            onChange={e => props.onChange(e)}
+            value={props.state["confirmPassword"]}
+          />
+        </Password>
       </SignUpFieldset>
       <Submit>
         <SubmitBtn

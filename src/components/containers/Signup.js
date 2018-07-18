@@ -6,12 +6,13 @@ import SignupUserMutation from '../../mutations/SignupUserMutation'
 class Signup extends Component {
 
   state = {
-    name: '',
     email: '',
     password: '',
+    confirmPassword: '',
+    name: ''
   }
 
-  render () {
+  render() {
     return (
       <div>
         <SignupUi
@@ -23,23 +24,34 @@ class Signup extends Component {
 
   }
 
+// functions for change of input
   _onChange = event => {
     const {name, value} = event.target
-    name === 'email' && this.setState({email: value})
-    name === 'password' && this.setState({password: value})
-    name === 'name' && this.setState({name: value})
+    this._newState(name, value)
+  }
+  _newState = (element, newElement) => {
+    const newState = Object.keys(this.state).reduce((prev, curr) => {
+      if (curr === element) prev[curr] = newElement
+      else prev[curr] = this.state[curr]
+      return prev
+    }, {})
+    this.setState(newState)
   }
 
   _confirm = () => {
-    const {email, password, name} = this.state
+    const {email, password, confirmPassword, name} = this.state
 
-    SignupUserMutation(email, password, name, (id, token) => {
+    if (password === confirmPassword) {
+      SignupUserMutation(email, password, name, (id, token) => {
 
         this._saveUserData(id, token)
         this.props.getId()
         this.props.history.push(`/`)
 
-    })
+      })
+    } else {
+      console.log('passwords are not equal')
+    }
   }
 
   _saveUserData = (id, token) => {
