@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {graphql, createFragmentContainer} from 'react-relay'
 import UpdateUserMutation from '../../mutations/UpdateUserMutation'
-import SignupUi from '../ui/Signup'
+import UpdatePasswordMutation from '../../mutations/UpdatePasswordMutation'
+import UpdateUserUi from '../ui/UpdateUser'
 
 class UpdateUser extends Component {
 
@@ -10,24 +11,39 @@ class UpdateUser extends Component {
     email: '',
     password: '',
     confirmPassword: '',
-    name: ''
+    oldPassword: '',
+    name: '',
+    showPassword: false
   }
 
   componentWillMount() {
-    this.setState(this.props.user)
+    const {id, name, email} = this.props.user
+    this.setState({
+      id,
+      name,
+      email
+    })
   }
 
   render() {
 
     return (
       <div>
-        <SignupUi
+        <UpdateUserUi
           state={this.state}
           onChange={this._onChange}
           confirm={this._confirm}
+          showPassword={this._showPassword}
+          updatePassword={this._updatePassword}
         />
       </div>
     )
+  }
+
+  _showPassword = () => {
+    this.setState({
+      showPassword: !this.state.showPassword
+    })
   }
 
   // functions for change of input
@@ -45,11 +61,20 @@ class UpdateUser extends Component {
   }
 
   _confirm = () => {
-    const {id, email, password, name} = this.state
+    const {id, email, name} = this.state
 
-    UpdateUserMutation(id, email, password, name,  () => {
+    UpdateUserMutation(id, email, name,  () => {
       this.props.clearName()
       this.props.history.push(`/`)
+    })
+  }
+
+  _updatePassword = () => {
+    const {id, password} = this.state
+    UpdatePasswordMutation(id, password, () => {
+      this.setState({
+        showPassword: false
+      })
     })
   }
 

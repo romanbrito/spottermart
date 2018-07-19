@@ -1927,8 +1927,8 @@ type Mutation {
   # signup
   signupUser(email: String!, password: String!, name: String!): SignupUserPayload
 
-  # upgradeUser
-  upgradeUser(id: ID!, email: String!, password: String!, name: String!): UpgradeUserPayload
+  # updatePassword
+  updatePassword(id: ID!, password: String!): UpdatePasswordPayload
   invokeFunction(input: InvokeFunctionInput!): InvokeFunctionPayload
 }
 
@@ -2194,6 +2194,11 @@ type UpdateOrCreateUserPayload {
   edge: UserEdge
 }
 
+# UpdatePasswordPayload
+type UpdatePasswordPayload {
+  id: ID!
+}
+
 input UpdateUser {
   email: String
   id: ID!
@@ -2226,11 +2231,6 @@ type UpdateUserPayload {
   clientMutationId: String!
   user: User
   edge: UserEdge
-}
-
-# UpgradeUserPayload
-type UpgradeUserPayload {
-  id: ID!
 }
 
 type User implements Node {
