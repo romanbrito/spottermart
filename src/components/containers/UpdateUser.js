@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {graphql, createFragmentContainer} from 'react-relay'
+import isEmail from 'validator/lib/isEmail'
 import UpdateUserMutation from '../../mutations/UpdateUserMutation'
 import UpdatePasswordMutation from '../../mutations/UpdatePasswordMutation'
 import UpdateUserUi from '../ui/UpdateUser'
@@ -63,10 +64,15 @@ class UpdateUser extends Component {
   _confirm = () => {
     const {id, email, name} = this.state
 
-    UpdateUserMutation(id, email, name,  () => {
-      this.props.clearName()
-      this.props.history.push(`/`)
-    })
+    if (isEmail(email)) {
+      UpdateUserMutation(id, email, name, () => {
+        this.props.clearName()
+        this.props.history.push(`/`)
+      })
+    } else {
+      console.log('invalid email')
+    }
+
   }
 
   _updatePassword = () => {
