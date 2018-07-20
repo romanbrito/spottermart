@@ -60,6 +60,11 @@ const Signup = (props) =>
             id="confirm-password"
             onChange={e => props.onChange(e)}
             value={props.state["confirmPassword"]}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                props.confirm()
+              }
+            }}
           />
         </Password>
       </SignUpFieldset>

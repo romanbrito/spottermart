@@ -33,9 +33,11 @@ class App extends Component {
   }
 
   _getId = () => {
-    this.setState({
-      userId: localStorage.getItem(GC_USER_ID)
-    })
+    if (localStorage.getItem(GC_USER_ID)) {
+      this.setState({
+        userId: localStorage.getItem(GC_USER_ID)
+      })
+    }
   }
 
   _getUserName = (userId) => {

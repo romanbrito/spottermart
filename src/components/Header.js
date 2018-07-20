@@ -15,7 +15,7 @@ const Header = withRouter((props) => (
       <div className="dn db-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
       <nav>
         <Ul>
-          <li><NavLink dest='/' menuItem="How it Works"/></li>
+          <li><ANav href="#how-works">How it Works</ANav></li>
           <li><NavLink dest='/' menuItem="Pricing"/></li>
           <li><NavLink dest='/' menuItem="About"/></li>
           {props.userId &&
@@ -80,6 +80,10 @@ const Ul = styled.ul.attrs({
 const Heading = styled.header.attrs({
   className: "w-100 ph2 pv2",
 })`background-color: #f09859`
+
+const ANav = styled.a.attrs({
+  className: "db pv3 ph3 f3 white link"
+})``
 
 // toggle menu on small screens
 const showMenu = () => {

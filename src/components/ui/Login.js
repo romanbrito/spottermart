@@ -40,6 +40,11 @@ const Login = (props) =>
             id="password"
             onChange={e => props.onChange(e)}
             value={props.state["password"]}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                props.confirm()
+              }
+            }}
           />
         </Password>
         <RememberMeLabel>

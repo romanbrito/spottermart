@@ -26,9 +26,13 @@ export default (email, password, callback) => {
       mutation,
       variables,
       onCompleted: response => {
-        const id = response.authenticateUser.id
-        const token = response.authenticateUser.token
-        callback(id, token)
+        if (response.authenticateUser) {
+          const id = response.authenticateUser.id
+          const token = response.authenticateUser.token
+          callback(id, token)
+        } else {
+          console.log("Invalid credentials")
+        }
       },
       onError: err => console.error(err),
     },
