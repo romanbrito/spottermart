@@ -4,6 +4,7 @@ import {GC_USER_ID} from './../../constants'
 import Footer from '../Footer'
 import SlideShow from '../SlideShow'
 import CreateMessage from '../containers/CreateMessage'
+import Map from './Map'
 
 const Search = (props) => (
   <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '90vh'}}>
@@ -74,6 +75,9 @@ const Search = (props) => (
     <div>
       <Footer/>
     </div>
+
+    <Map/>
+
   </div>
 )
 

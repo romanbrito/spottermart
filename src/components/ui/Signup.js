@@ -41,6 +41,7 @@ const Signup = (props) =>
             onChange={e => props.onChange(e)}
             value={props.state["email"]}
           />
+
         </Email>
         <Password>
           <PasswordLabel htmlFor="password">Password</PasswordLabel>
