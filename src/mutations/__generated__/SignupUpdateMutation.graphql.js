@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a3c5647bc122164144324f94280afbff
+ * @relayHash e5cf7e0c5784341264de08d12f2485f6
  */
 
 /* eslint-disable */
@@ -28,6 +28,7 @@ export type UserassetsAsset = {
   businessName: string,
   businessType?: ?string,
   city: string,
+  coordinates?: ?any,
   description: string,
   equipment?: ?$ReadOnlyArray<any>,
   franchiseBool?: ?boolean,

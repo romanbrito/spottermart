@@ -19,6 +19,7 @@ export type Search_viewer = {|
         +pictures: ?$ReadOnlyArray<any>,
         +price: ?string,
         +city: string,
+        +coordinates: ?any,
         +description: string,
         +postedBy: ?{|
           +id: string
@@ -122,6 +123,13 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "coordinates",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "description",
                   "args": null,
                   "storageKey": null
@@ -187,5 +195,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c19d305a739cd84c3d5ed3118f718ac2';
+(node/*: any*/).hash = '663e1ef02b4200990ae09cc7f1937d12';
 module.exports = node;

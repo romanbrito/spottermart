@@ -20,6 +20,7 @@ export type UpdateAsset_asset = {|
   +city: string,
   +state: string,
   +zipCode: string,
+  +coordinates: ?any,
   +structure: ?string,
   +franchiseBool: ?boolean,
   +franchiseYearsRemaining: ?string,
@@ -64,7 +65,7 @@ const node/*: ConcreteFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "rentNNN",
+      "name": "partTimeEmployees",
       "args": null,
       "storageKey": null
     },
@@ -121,6 +122,13 @@ const node/*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "name": "zipCode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "coordinates",
       "args": null,
       "storageKey": null
     },
@@ -190,14 +198,14 @@ const node/*: ConcreteFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "partTimeEmployees",
+      "name": "businessName",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "businessName",
+      "name": "rentNNN",
       "args": null,
       "storageKey": null
     },
@@ -330,5 +338,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '100be29a24efa8246f0b1b038f772947';
+(node/*: any*/).hash = 'cf61f9b0435b6e2ba08efa13d566ae74';
 module.exports = node;

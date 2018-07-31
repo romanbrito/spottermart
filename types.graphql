@@ -25,6 +25,7 @@ type Asset @model {
     city: String!
     state: String!
     zipCode: String!
+    coordinates: Json
     structure: String
     franchiseBool: Boolean
     franchiseYearsRemaining: String

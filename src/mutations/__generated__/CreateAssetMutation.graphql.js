@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 78e8faab914a80eca67b9e89d6a9dfef
+ * @relayHash ea7b71a81b28bda59baf010a17ab53e2
  */
 
 /* eslint-disable */
@@ -15,6 +15,7 @@ export type CreateAssetInput = {
   businessName: string,
   businessType?: ?string,
   city: string,
+  coordinates?: ?any,
   description: string,
   equipment?: ?$ReadOnlyArray<any>,
   franchiseBool?: ?boolean,
@@ -69,6 +70,7 @@ export type UserassetsAsset = {
   businessName: string,
   businessType?: ?string,
   city: string,
+  coordinates?: ?any,
   description: string,
   equipment?: ?$ReadOnlyArray<any>,
   franchiseBool?: ?boolean,

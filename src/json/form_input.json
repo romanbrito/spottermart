@@ -55,6 +55,13 @@
       "name": "zipCode",
       "type": "text",
       "label": "Zip Code"
+    },
+    {
+      "id":"coordinates",
+      "labelFor":"coordinates",
+      "name": "coordinates",
+      "type": "text",
+      "label": "Coordinates"
     }
   ],
   "Company": [

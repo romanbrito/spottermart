@@ -26,10 +26,13 @@ const MapComponent = compose(
           const bounds = new window.google.maps.LatLngBounds()
 
           for (let i = 0; i < data.length; i++) {
-            const loc = new window.google.maps.LatLng(data[i].coordinates)
-            bounds.extend(loc)
+            console.log(data[i].node.coordinates)
+            if (data[i].node.coordinates) {
+              const loc = new window.google.maps.LatLng(data[i].node.coordinates)
+              bounds.extend(loc)
+            }
           }
-          map.fitBounds(bounds)
+          map && map.fitBounds(bounds)
         },
       })
     }
@@ -53,12 +56,19 @@ const MapComponent = compose(
           >
             {
               props.data.map(marker => (
-                <Marker
-                  key={marker.label}
-                  position={marker.coordinates}
-                  label={marker.label}
-                  onClick={e => window.open('https://www.google.com/maps/dir/?api=1&destination=' + marker.coordinates.lat + ',' + marker.coordinates.lng, '_blank')}
-                />
+
+                <div key={marker.node.id}>
+                  {marker.node.coordinates &&
+                  <Marker
+                    // key={marker.label}
+                    position={marker.node.coordinates}
+                    // label={marker.label}
+                    onClick={e => window.open('https://www.google.com/maps/dir/?api=1&destination=' + marker.node.coordinates.lat + ',' + marker.node.coordinates.lng, '_blank')}
+                  />
+                  }
+                </div>
+
+
               ))
             }
           </MarkerClusterer>

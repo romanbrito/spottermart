@@ -49,6 +49,7 @@ type Asset implements Node {
   businessName: String!
   businessType: String
   city: String!
+  coordinates: Json
   createdAt: DateTime!
   description: String!
   equipment: [Json!]
@@ -1465,6 +1466,8 @@ enum AssetOrderBy {
   businessType_DESC
   city_ASC
   city_DESC
+  coordinates_ASC
+  coordinates_DESC
   createdAt_ASC
   createdAt_DESC
   description_ASC
@@ -1555,6 +1558,7 @@ input CreateAsset {
   businessName: String!
   businessType: String
   city: String!
+  coordinates: Json
   description: String!
   equipment: [Json!]
   franchiseBool: Boolean
@@ -1598,6 +1602,7 @@ input CreateAssetInput {
   businessName: String!
   businessType: String
   city: String!
+  coordinates: Json
   description: String!
   equipment: [Json!]
   franchiseBool: Boolean
@@ -2033,6 +2038,7 @@ input UpdateAsset {
   businessName: String
   businessType: String
   city: String
+  coordinates: Json
   description: String
   equipment: [Json!]
   franchiseBool: Boolean
@@ -2077,6 +2083,7 @@ input UpdateAssetInput {
   businessName: String
   businessType: String
   city: String
+  coordinates: Json
   description: String
   equipment: [Json!]
   franchiseBool: Boolean
@@ -2249,6 +2256,7 @@ input UserassetsAsset {
   businessName: String!
   businessType: String
   city: String!
+  coordinates: Json
   description: String!
   equipment: [Json!]
   franchiseBool: Boolean

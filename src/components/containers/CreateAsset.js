@@ -18,6 +18,7 @@ class CreateAsset extends Component {
     city: '',
     state: '',
     zipCode: '',
+    coordinates:'',
     structure: '',
     franchiseBool: false,
     franchiseYearsRemaining: '',
@@ -106,6 +107,7 @@ class CreateAsset extends Component {
           city,
           state,
           zipCode,
+          coordinates,
           structure,
           franchiseBool,
           franchiseYearsRemaining,
@@ -145,6 +147,7 @@ class CreateAsset extends Component {
           city,
           state,
           zipCode,
+          coordinates,
           structure,
           // to handle checkbox
           franchiseBool === 'on',

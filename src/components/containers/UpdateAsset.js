@@ -20,6 +20,7 @@ class UpdateAsset extends Component {
     city: '',
     state: '',
     zipCode: '',
+    coordinates: '',
     structure: '',
     franchiseBool: false,
     franchiseYearsRemaining: '',
@@ -119,6 +120,7 @@ class UpdateAsset extends Component {
         }
 
         const pictures = [...this.state.pictures, ...pics]
+        // const coordinates = JSON.stringify(this.state.coordinates)
 
         const {
           id,
@@ -130,6 +132,7 @@ class UpdateAsset extends Component {
           city,
           state,
           zipCode,
+          coordinates,
           structure,
           franchiseBool,
           franchiseYearsRemaining,
@@ -170,6 +173,7 @@ class UpdateAsset extends Component {
           city,
           state,
           zipCode,
+          coordinates,
           structure,
           franchiseBool,
           franchiseYearsRemaining,
@@ -282,6 +286,7 @@ export default createFragmentContainer(UpdateAsset, graphql`
         city
         state
         zipCode
+        coordinates
         structure
         franchiseBool
         franchiseYearsRemaining

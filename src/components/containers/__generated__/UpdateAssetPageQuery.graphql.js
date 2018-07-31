@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a151ef7497dd36e69df84b2196c14c57
+ * @relayHash 7542610ecce12d474f06e6af830a06d2
  */
 
 /* eslint-disable */
@@ -46,6 +46,7 @@ fragment UpdateAsset_asset on Asset {
   city
   state
   zipCode
+  coordinates
   structure
   franchiseBool
   franchiseYearsRemaining
@@ -107,7 +108,7 @@ return {
   "operationKind": "query",
   "name": "UpdateAssetPageQuery",
   "id": null,
-  "text": "query UpdateAssetPageQuery(\n  $assetId: ID!\n) {\n  viewer {\n    Asset(id: $assetId) {\n      ...UpdateAsset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment UpdateAsset_asset on Asset {\n  id\n  businessName\n  description\n  price\n  businessType\n  address\n  city\n  state\n  zipCode\n  structure\n  franchiseBool\n  franchiseYearsRemaining\n  franchiseRoyalties\n  franchiseMarketingFee\n  franchiseTransferFee\n  franchiseTraining\n  website\n  fullTimeEmployees\n  partTimeEmployees\n  rentNNN\n  alcoholLicense\n  ownerFinance\n  netIncome\n  grossIncome\n  status\n  equipment\n  socialMedia\n  owned\n  termOfLease\n  howLongInOperation\n  howManySeats\n  whySelling\n  hoursOfOperation\n  requirementsToQualify\n  notes\n  insideSqFeet\n  specialFeatures\n  pictures\n}\n",
+  "text": "query UpdateAssetPageQuery(\n  $assetId: ID!\n) {\n  viewer {\n    Asset(id: $assetId) {\n      ...UpdateAsset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment UpdateAsset_asset on Asset {\n  id\n  businessName\n  description\n  price\n  businessType\n  address\n  city\n  state\n  zipCode\n  coordinates\n  structure\n  franchiseBool\n  franchiseYearsRemaining\n  franchiseRoyalties\n  franchiseMarketingFee\n  franchiseTransferFee\n  franchiseTraining\n  website\n  fullTimeEmployees\n  partTimeEmployees\n  rentNNN\n  alcoholLicense\n  ownerFinance\n  netIncome\n  grossIncome\n  status\n  equipment\n  socialMedia\n  owned\n  termOfLease\n  howLongInOperation\n  howManySeats\n  whySelling\n  hoursOfOperation\n  requirementsToQualify\n  notes\n  insideSqFeet\n  specialFeatures\n  pictures\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -171,7 +172,7 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "rentNNN",
+                "name": "partTimeEmployees",
                 "args": null,
                 "storageKey": null
               },
@@ -222,6 +223,13 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "zipCode",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "coordinates",
                 "args": null,
                 "storageKey": null
               },
@@ -291,14 +299,14 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "partTimeEmployees",
+                "name": "businessName",
                 "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "businessName",
+                "name": "rentNNN",
                 "args": null,
                 "storageKey": null
               },

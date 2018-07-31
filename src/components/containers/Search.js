@@ -30,6 +30,7 @@ export default createFragmentContainer(Search,
                         pictures
                         price
                         city
+                        coordinates
                         description
                         postedBy {
                             id

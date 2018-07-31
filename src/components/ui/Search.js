@@ -76,7 +76,7 @@ const Search = (props) => (
       <Footer/>
     </div>
 
-    <Map/>
+    <Map data={props.list}/>
 
   </div>
 )

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 109451d98b6e63b5b3bd2d69572f7442
+ * @relayHash 003554631877105fd27ea93a060ebf64
  */
 
 /* eslint-disable */
@@ -618,6 +618,7 @@ fragment Search_viewer on Viewer {
         pictures
         price
         city
+        coordinates
         description
         postedBy {
           id
@@ -655,7 +656,7 @@ return {
   "operationKind": "query",
   "name": "SearchPageQuery",
   "id": null,
-  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        price\n        city\n        description\n        postedBy {\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        price\n        city\n        coordinates\n        description\n        postedBy {\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -768,6 +769,13 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "city",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "coordinates",
                         "args": null,
                         "storageKey": null
                       },
