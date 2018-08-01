@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import {compose, withProps, withHandlers} from 'recompose'
+import {compose, withProps, lifecycle} from 'recompose'
 import {withScriptjs} from 'react-google-maps'
 import {GOOGLE_MAPS_API_URL} from '../../constants'
 import formInput from '../../json/form_input.json'
@@ -60,24 +60,20 @@ const CreateAssetComponent = compose(
     containerElement: <div style={{height: 250}}/>,
     mapElement: <div id="map" style={{height: '100%'}}/>
   }),
-  withHandlers({
-    onChangeAutocomplete: () => () => {
-      // fill in address
+  withRouter,
+  withScriptjs,
+  lifecycle({
+    componentDidMount() {
+      // address autocomplete
 
       const autocomplete = new window.google.maps.places.Autocomplete(/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')), {types: ['geocode']})
-
-      // When the user selects an address from the dropdown, populate the address
-      // fields in the form.
 
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace()
         console.log(place)
       })
-
     }
-  }),
-  withRouter,
-  withScriptjs
+  })
 )(props => {
 
   return (
@@ -96,6 +92,9 @@ const CreateAssetComponent = compose(
               <Icons title={title}/> {title}
             </SubTitle>
             <Panel>
+
+              <h1>{props.place}</h1>
+
               {formInput[title].map(formInput =>
                 <Li
                   key={formInput.id}
@@ -126,7 +125,6 @@ const CreateAssetComponent = compose(
                           id={formInput.id}
                           name={formInput.name}
                           value={props.state[formInput.name]}
-                          onChange={() => props.onChangeAutocomplete()}
                         /> :
                         <Input
                           type={formInput.type}
