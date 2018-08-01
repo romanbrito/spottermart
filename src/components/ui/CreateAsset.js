@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import {compose, withProps} from 'recompose'
+import {compose, withProps, withHandlers} from 'recompose'
 import {withScriptjs} from 'react-google-maps'
 import {GOOGLE_MAPS_API_URL} from '../../constants'
 import formInput from '../../json/form_input.json'
@@ -60,11 +60,25 @@ const CreateAssetComponent = compose(
     containerElement: <div style={{height: 250}}/>,
     mapElement: <div id="map" style={{height: '100%'}}/>
   }),
+  withHandlers({
+    onChangeAutocomplete: () => () => {
+      // fill in address
+
+      const autocomplete = new window.google.maps.places.Autocomplete(/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')), {types: ['geocode']})
+
+      // When the user selects an address from the dropdown, populate the address
+      // fields in the form.
+
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace()
+        console.log(place)
+      })
+
+    }
+  }),
   withRouter,
   withScriptjs
 )(props => {
-
-  console.log(window.google)
 
   return (
     <Main>
@@ -105,14 +119,22 @@ const CreateAssetComponent = compose(
                         name={formInput.name}
                         value={props.state[formInput.name]}
                         onChange={e => props.onChange(e)}
-                      /> :
-                      <Input
-                        type={formInput.type}
-                        id={formInput.id}
-                        name={formInput.name}
-                        value={props.state[formInput.name]}
-                        onChange={e => props.onChange(e)}
                       />
+                      : formInput.id === 'autocomplete' ?
+                        <Input
+                          type={formInput.type}
+                          id={formInput.id}
+                          name={formInput.name}
+                          value={props.state[formInput.name]}
+                          onChange={() => props.onChangeAutocomplete()}
+                        /> :
+                        <Input
+                          type={formInput.type}
+                          id={formInput.id}
+                          name={formInput.name}
+                          value={props.state[formInput.name]}
+                          onChange={e => props.onChange(e)}
+                        />
                   }
 
                   {props.validationErrors && props.validationErrors[formInput.name] ?

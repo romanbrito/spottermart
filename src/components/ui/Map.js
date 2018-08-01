@@ -13,7 +13,7 @@ const MapComponent = compose(
   }),
   withHandlers({
     onMarkerClustererClick: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getmarkers()
+      const clickedMarkers = markerClusterer.getMarkers()
       console.log('Current clicked markers length: ' + clickedMarkers.length)
     },
   }),
@@ -56,16 +56,14 @@ const MapComponent = compose(
             {
               props.data.map(marker => (
 
-                <div key={marker.node.id}>
-                  {marker.node.coordinates &&
+
                   <Marker
-                    // key={marker.label}
+                    key={marker.node.id}
                     position={marker.node.coordinates}
                     // label={marker.label}
                     onClick={e => window.open('https://www.google.com/maps/dir/?api=1&destination=' + marker.node.coordinates.lat + ',' + marker.node.coordinates.lng, '_blank')}
                   />
-                  }
-                </div>
+
 
 
               ))

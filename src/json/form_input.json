@@ -29,6 +29,13 @@
       "label": "Business Type"
     },
     {
+      "id":"autocomplete",
+      "labelFor":"autocomplete",
+      "name": "autocomplete",
+      "type": "text",
+      "label": "autocomplete"
+    },
+    {
       "id":"address",
       "labelFor":"address",
       "name": "address",
