@@ -1,5 +1,8 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import {compose, withProps} from 'recompose'
+import {withScriptjs} from 'react-google-maps'
+import {GOOGLE_MAPS_API_URL} from '../../constants'
 import formInput from '../../json/form_input.json'
 import Dropzone from 'react-dropzone'
 import Location from 'react-icons/lib/md/location-city'
@@ -50,8 +53,18 @@ const styleDrop = {
 }
 
 
-// inputs
-const CreateAsset = withRouter((props) => {
+const CreateAssetComponent = compose(
+  withProps({
+    googleMapURL: GOOGLE_MAPS_API_URL,
+    loadingElement: <div style={{height: '100%', width: '50%'}}/>,
+    containerElement: <div style={{height: 250}}/>,
+    mapElement: <div id="map" style={{height: '100%'}}/>
+  }),
+  withRouter,
+  withScriptjs
+)(props => {
+
+  console.log(window.google)
 
   return (
     <Main>
@@ -248,8 +261,16 @@ const CreateAsset = withRouter((props) => {
 
     </Main>
   )
-
 })
+
+// inputs
+const CreateAsset = (props) => {
+
+  return (
+    <CreateAssetComponent {...props}/>
+  )
+
+}
 
 
 // toggle accordion

@@ -26,7 +26,6 @@ const MapComponent = compose(
           const bounds = new window.google.maps.LatLngBounds()
 
           for (let i = 0; i < data.length; i++) {
-            console.log(data[i].node.coordinates)
             if (data[i].node.coordinates) {
               const loc = new window.google.maps.LatLng(data[i].node.coordinates)
               bounds.extend(loc)

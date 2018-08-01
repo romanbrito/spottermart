@@ -43,10 +43,12 @@ const Search = (props) => (
                 </div>
 
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', gridTemplateRows: '1fr 1fr 1fr'}}>
-                  <h1 className="f6 f5-ns fw6 lh-title black mv0" style={{gridColumn: '1 / span 1', gridRow: '1 / 1'}}>{list.node.businessName}</h1>
+                  <h1 className="f6 f5-ns fw6 lh-title black mv0"
+                      style={{gridColumn: '1 / span 1', gridRow: '1 / 1'}}>{list.node.businessName}</h1>
                   <h2 className="f6 fw4 mt2 mb0 black-60" style={{gridColumn: '1 / span 1'}}>City: {list.node.city}</h2>
                   <h2 className="f6 fw4 mt2 mb0 black-60" style={{gridColumn: '1 / span 1'}}>Price: {list.node.price}</h2>
-                  <p className="f6 fw4 mt2 mb0 black-60" style={{gridColumn: '2 / span 1', gridRow: '2 / span 2'}}>{list.node.description}</p>
+                  <p className="f6 fw4 mt2 mb0 black-60"
+                     style={{gridColumn: '2 / span 1', gridRow: '2 / span 2'}}>{list.node.description}</p>
                 </div>
 
                 <div className="flex justify-between">
@@ -60,8 +62,8 @@ const Search = (props) => (
                   {/*only show send message to not owner*/}
                   {
                     list.node.postedBy.id !== localStorage.getItem(GC_USER_ID) ?
-                    <CreateMessage postedBy={list.node.postedBy.id} title="Send Message"/>
-                    :''
+                      <CreateMessage postedBy={list.node.postedBy.id} title="Send Message"/>
+                      : ''
                   }
 
                 </div>
@@ -72,11 +74,10 @@ const Search = (props) => (
         )
       }
     </div>
-    <div>
-      <Footer/>
-    </div>
 
     <Map data={props.list}/>
+
+    <Footer/>
 
   </div>
 )
