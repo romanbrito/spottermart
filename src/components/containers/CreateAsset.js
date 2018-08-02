@@ -62,6 +62,7 @@ class CreateAsset extends Component {
       <CreateAssetUi
         onChange={this._onChange}
         onChangeElement={this._onChangeElement}
+        autocompleteAddress={this._autocompleteAddress}
         addElement={this._addElement}
         removeElement={this._removeElement}
         setImages={this._setImages}
@@ -198,6 +199,17 @@ _validate = () => {
     state: state.length === 0,
     zipCode: zipCode.length === 0
   }
+}
+
+_autocompleteAddress = (addressObj) => {
+    console.log('autocomplete address')
+  const {address, city, state, zipCode} = addressObj
+    this.setState({
+      address,
+      city,
+      state,
+      zipCode
+    })
 }
 
   // functions for images

@@ -64,25 +64,25 @@ const CreateAssetComponent = compose(
   lifecycle({
     componentDidMount() {
       // address autocomplete
-
-      const autocomplete = new window.google.maps.places.Autocomplete(/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')), {types: ['geocode']})
+      const autocomplete = new window.google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        {types: ['geocode']})
 
       autocomplete.addListener('place_changed', () => {
         // Get the place details from the autocomplete object.
         const place = autocomplete.getPlace()
 
-        // for (let i = 5; i < 9; i++) {
-        //   document.getElementById(formInput['Name and Location'][i].id).value = '';
-        //   document.getElementById(formInput['Name and Location'][i].id).disabled = false;
-        // }
-
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
         const formattedArr = place.formatted_address.split(",")
-        document.getElementById('address').value = formattedArr[0].trim()
-        document.getElementById('city').value = formattedArr[1].trim()
-        document.getElementById('state').value = formattedArr[2].split(" ")[1].trim()
-        document.getElementById('zip-code').value = formattedArr[2].split(" ")[2].trim()
+        const addressObj = {
+          address: formattedArr[0].trim(),
+          city: formattedArr[1].trim(),
+          state: formattedArr[2].split(" ")[1].trim(),
+          zipCode: formattedArr[2].split(" ")[2].trim()
+        }
+        // update state with new address
+        this.props.autocompleteAddress(addressObj)
       })
     }
   })
@@ -136,7 +136,8 @@ const CreateAssetComponent = compose(
                           type={formInput.type}
                           id={formInput.id}
                           name={formInput.name}
-                          value={props.state[formInput.name]}
+
+
                         /> :
                         <Input
                           type={formInput.type}
