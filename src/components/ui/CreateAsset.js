@@ -71,17 +71,18 @@ const CreateAssetComponent = compose(
         // Get the place details from the autocomplete object.
         const place = autocomplete.getPlace()
 
-        for (let i = 5; i < 9; i++) {
-          document.getElementById(formInput['Name and Location'][i].id).value = '';
-          document.getElementById(formInput['Name and Location'][i].id).disabled = false;
-        }
+        // for (let i = 5; i < 9; i++) {
+        //   document.getElementById(formInput['Name and Location'][i].id).value = '';
+        //   document.getElementById(formInput['Name and Location'][i].id).disabled = false;
+        // }
 
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
-
-        console.log(place.formatted_address)
-
-
+        const formattedArr = place.formatted_address.split(",")
+        document.getElementById('address').value = formattedArr[0].trim()
+        document.getElementById('city').value = formattedArr[1].trim()
+        document.getElementById('state').value = formattedArr[2].split(" ")[1].trim()
+        document.getElementById('zip-code').value = formattedArr[2].split(" ")[2].trim()
       })
     }
   })
