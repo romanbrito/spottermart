@@ -72,6 +72,7 @@ const CreateAssetComponent = compose(
         // Get the place details from the autocomplete object.
         const place = autocomplete.getPlace()
 
+        console.log(place.geometry.location.lat())
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
         const formattedArr = place.formatted_address.split(",")
@@ -79,7 +80,11 @@ const CreateAssetComponent = compose(
           address: formattedArr[0].trim(),
           city: formattedArr[1].trim(),
           state: formattedArr[2].split(" ")[1].trim(),
-          zipCode: formattedArr[2].split(" ")[2].trim()
+          zipCode: formattedArr[2].split(" ")[2].trim(),
+          coordinates: {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+          }
         }
         // update state with new address
         this.props.autocompleteAddress(addressObj)

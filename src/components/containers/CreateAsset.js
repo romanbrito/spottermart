@@ -203,12 +203,13 @@ _validate = () => {
 
 _autocompleteAddress = (addressObj) => {
     console.log('autocomplete address')
-  const {address, city, state, zipCode} = addressObj
+  const {address, city, state, zipCode, coordinates} = addressObj
     this.setState({
       address,
       city,
       state,
-      zipCode
+      zipCode,
+      coordinates
     })
 }
 
