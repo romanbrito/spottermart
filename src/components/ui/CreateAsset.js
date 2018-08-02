@@ -52,7 +52,6 @@ const styleDrop = {
   margin: '0 auto'
 }
 
-
 const CreateAssetComponent = compose(
   withProps({
     googleMapURL: GOOGLE_MAPS_API_URL,
@@ -69,8 +68,20 @@ const CreateAssetComponent = compose(
       const autocomplete = new window.google.maps.places.Autocomplete(/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')), {types: ['geocode']})
 
       autocomplete.addListener('place_changed', () => {
+        // Get the place details from the autocomplete object.
         const place = autocomplete.getPlace()
-        console.log(place)
+
+        for (let i = 5; i < 9; i++) {
+          document.getElementById(formInput['Name and Location'][i].id).value = '';
+          document.getElementById(formInput['Name and Location'][i].id).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+
+        console.log(place.formatted_address)
+
+
       })
     }
   })
