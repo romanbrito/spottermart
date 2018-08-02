@@ -78,6 +78,7 @@ class UpdateAsset extends Component {
           asset={this.props.asset}
           onChange={this._onChange}
           onChangeElement={this._onChangeElement}
+          autocompleteAddress={this._autocompleteAddress}
           addElement={this._addElement}
           removeElement={this._removeElement}
           state={this.state}
@@ -222,6 +223,17 @@ class UpdateAsset extends Component {
       state: state.length === 0,
       zipCode: zipCode.length === 0
     }
+  }
+
+  _autocompleteAddress = (addressObj) => {
+    const {address, city, state, zipCode, coordinates} = addressObj
+    this.setState({
+      address,
+      city,
+      state,
+      zipCode,
+      coordinates
+    })
   }
 
   // functions for images
