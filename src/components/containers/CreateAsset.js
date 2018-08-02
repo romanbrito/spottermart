@@ -202,7 +202,6 @@ _validate = () => {
 }
 
 _autocompleteAddress = (addressObj) => {
-    console.log('autocomplete address')
   const {address, city, state, zipCode, coordinates} = addressObj
     this.setState({
       address,
