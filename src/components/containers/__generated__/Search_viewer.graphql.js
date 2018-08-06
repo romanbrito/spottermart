@@ -47,9 +47,9 @@ return {
   "metadata": {
     "connection": [
       {
-        "count": null,
-        "cursor": null,
-        "direction": "backward",
+        "count": "count",
+        "cursor": "after",
+        "direction": "forward",
         "path": [
           "allAssets"
         ]
@@ -57,6 +57,16 @@ return {
     ]
   },
   "argumentDefinitions": [
+    {
+      "kind": "RootArgument",
+      "name": "count",
+      "type": "Int"
+    },
+    {
+      "kind": "RootArgument",
+      "name": "after",
+      "type": "String"
+    },
     {
       "kind": "RootArgument",
       "name": "filter",
@@ -176,14 +186,14 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "hasPreviousPage",
+              "name": "endCursor",
               "args": null,
               "storageKey": null
             },
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "startCursor",
+              "name": "hasNextPage",
               "args": null,
               "storageKey": null
             }
@@ -195,5 +205,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '663e1ef02b4200990ae09cc7f1937d12';
+(node/*: any*/).hash = '7f6f8e7be4ad461270be8357d9192b96';
 module.exports = node;

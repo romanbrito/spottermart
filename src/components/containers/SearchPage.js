@@ -4,7 +4,7 @@ import environment from '../../Environment'
 import Search from './Search'
 
 const SearchPageQuery = graphql`
-    query SearchPageQuery($filter: AssetFilter!) {
+    query SearchPageQuery($filter: AssetFilter!, $count: Int!, $after: String) {
         viewer {
             ...Search_viewer
         }
@@ -41,6 +41,8 @@ class SearchPage extends Component {
               {zipCode_contains: this.state.filter}
             ]
           },
+          // how many to load initially
+          count: 2
         }}
         render={({error, props}) => {
           if (error) {

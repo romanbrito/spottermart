@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 35f8c9ca366c1d1259c0dca9a0394460
+ * @relayHash e99bcd145c31cfbd11118400a1e5ed53
  */
 
 /* eslint-disable */
@@ -588,12 +588,12 @@ export type MessageFilter = {
   messageFrom?: ?UserFilter,
   messageTo?: ?UserFilter,
 };
-export type SearchPageQueryVariables = {|
-  filter: AssetFilter,
+export type SearchForwardQueryVariables = {|
   count: number,
   after?: ?string,
+  filter: AssetFilter,
 |};
-export type SearchPageQueryResponse = {|
+export type SearchForwardQueryResponse = {|
   +viewer: {|
     +$fragmentRefs: Search_viewer$ref
   |}
@@ -602,10 +602,10 @@ export type SearchPageQueryResponse = {|
 
 
 /*
-query SearchPageQuery(
-  $filter: AssetFilter!
+query SearchForwardQuery(
   $count: Int!
   $after: String
+  $filter: AssetFilter!
 ) {
   viewer {
     ...Search_viewer
@@ -643,12 +643,6 @@ const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "filter",
-    "type": "AssetFilter!",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "count",
     "type": "Int!",
     "defaultValue": null
@@ -657,6 +651,12 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "after",
     "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "filter",
+    "type": "AssetFilter!",
     "defaultValue": null
   }
 ],
@@ -670,13 +670,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "SearchPageQuery",
+  "name": "SearchForwardQuery",
   "id": null,
-  "text": "query SearchPageQuery(\n  $filter: AssetFilter!\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(first: $count, after: $after, filter: $filter, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        price\n        city\n        coordinates\n        description\n        postedBy {\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+  "text": "query SearchForwardQuery(\n  $count: Int!\n  $after: String\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...Search_viewer\n    id\n  }\n}\n\nfragment Search_viewer on Viewer {\n  allAssets(first: $count, after: $after, filter: $filter, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        pictures\n        price\n        city\n        coordinates\n        description\n        postedBy {\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "SearchPageQuery",
+    "name": "SearchForwardQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -701,7 +701,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "SearchPageQuery",
+    "name": "SearchForwardQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -907,5 +907,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '656f3d2c30853286de356e325768f723';
+(node/*: any*/).hash = '576bbe4b34ed077f6811cabcfc6527c0';
 module.exports = node;
