@@ -72,9 +72,7 @@ const UserAssetList = (props) => (
         )
       )
     }
-    <div className="flex ml4 mv3 gray">
-      <div className="pointer" onClick={() => props.loadMore()}>More</div>
-    </div>
+
   </div>
 )
 

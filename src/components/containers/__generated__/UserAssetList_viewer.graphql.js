@@ -39,9 +39,9 @@ const node/*: ConcreteFragment*/ = {
   "metadata": {
     "connection": [
       {
-        "count": "count",
-        "cursor": "after",
-        "direction": "forward",
+        "count": null,
+        "cursor": null,
+        "direction": "backward",
         "path": [
           "allAssets"
         ]
@@ -49,16 +49,6 @@ const node/*: ConcreteFragment*/ = {
     ]
   },
   "argumentDefinitions": [
-    {
-      "kind": "RootArgument",
-      "name": "count",
-      "type": "Int"
-    },
-    {
-      "kind": "RootArgument",
-      "name": "after",
-      "type": "String"
-    },
     {
       "kind": "RootArgument",
       "name": "filter",
@@ -175,6 +165,20 @@ const node/*: ConcreteFragment*/ = {
               "name": "endCursor",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasPreviousPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "startCursor",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -183,5 +187,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '3faa176b1a11833b1565064d92abe850';
+(node/*: any*/).hash = 'aef6c499eb4e361a0affc70200b4e7f3';
 module.exports = node;

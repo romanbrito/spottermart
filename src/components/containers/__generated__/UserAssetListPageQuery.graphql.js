@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 33edd454ebed280f651c73a49a79f995
+ * @relayHash bd67036b4547f2b6b22dfe0b7cdf8c98
  */
 
 /* eslint-disable */
@@ -589,9 +589,7 @@ export type MessageFilter = {
   messageTo?: ?UserFilter,
 };
 export type UserAssetListPageQueryVariables = {|
-  filter: AssetFilter,
-  count: number,
-  after?: ?string,
+  filter: AssetFilter
 |};
 export type UserAssetListPageQueryResponse = {|
   +viewer: {|
@@ -604,8 +602,6 @@ export type UserAssetListPageQueryResponse = {|
 /*
 query UserAssetListPageQuery(
   $filter: AssetFilter!
-  $count: Int!
-  $after: String
 ) {
   viewer {
     ...UserAssetList_viewer
@@ -614,7 +610,7 @@ query UserAssetListPageQuery(
 }
 
 fragment UserAssetList_viewer on Viewer {
-  allAssets(first: $count, after: $after, filter: $filter, orderBy: createdAt_DESC) {
+  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {
     edges {
       node {
         id
@@ -630,6 +626,8 @@ fragment UserAssetList_viewer on Viewer {
     pageInfo {
       hasNextPage
       endCursor
+      hasPreviousPage
+      startCursor
     }
   }
 }
@@ -641,18 +639,6 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "filter",
     "type": "AssetFilter!",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "count",
-    "type": "Int!",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "after",
-    "type": "String",
     "defaultValue": null
   }
 ],
@@ -668,7 +654,7 @@ return {
   "operationKind": "query",
   "name": "UserAssetListPageQuery",
   "id": null,
-  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, filter: $filter, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
+  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -717,20 +703,14 @@ return {
             "args": [
               {
                 "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
                 "name": "filter",
                 "variableName": "filter",
                 "type": "AssetFilter"
               },
               {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
+                "kind": "Literal",
+                "name": "last",
+                "value": 100,
                 "type": "Int"
               },
               {
@@ -837,6 +817,20 @@ return {
                     "name": "endCursor",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "hasPreviousPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startCursor",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               }
@@ -849,20 +843,14 @@ return {
             "args": [
               {
                 "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
                 "name": "filter",
                 "variableName": "filter",
                 "type": "AssetFilter"
               },
               {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
+                "kind": "Literal",
+                "name": "last",
+                "value": 100,
                 "type": "Int"
               },
               {
@@ -884,5 +872,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '83362f40a40a3b0d378c3027fa1e76ec';
+(node/*: any*/).hash = '7205ea83505a34b721350cca5fa89cfc';
 module.exports = node;
