@@ -50,9 +50,10 @@ const node/*: ConcreteFragment*/ = {
   },
   "argumentDefinitions": [
     {
-      "kind": "RootArgument",
+      "kind": "LocalArgument",
       "name": "filter",
-      "type": "AssetFilter"
+      "type": "AssetFilter",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -187,5 +188,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'aef6c499eb4e361a0affc70200b4e7f3';
+(node/*: any*/).hash = 'ad46c4899746521437d6b6fda3f66d93';
 module.exports = node;

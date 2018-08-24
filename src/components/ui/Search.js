@@ -5,14 +5,18 @@ import Footer from '../Footer'
 import SlideShow from '../SlideShow'
 import CreateMessage from '../containers/CreateMessage'
 import Map from './Map'
+import {
+  Main,
+  Figure,
+  SearchInput,
+  SearchButton,
+} from './StyledSearch'
 
 const Search = (props) => (
-  <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '90vh'}}>
-    <div className="cf mv3 ml-auto mr-auto w-90">
-      <label className="clip" htmlFor="search">Search</label>
+  <Main>
+    <Figure>
       {/*this input and button need to be in this exact order*/}
-      <input
-        className="f6 f5-l input-reset fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns ba b--black-10"
+      <SearchInput
         placeholder="What are you looking for..."
         type="search"
         name="filter"
@@ -23,14 +27,13 @@ const Search = (props) => (
           }
         }}
       />
-      <button
-        className="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
+      <SearchButton
         onClick={e => props.submit(e)}
       >
         Search
-      </button>
+      </SearchButton>
 
-    </div>
+    </Figure>
     {/*Display list of assets*/}
     <div>
       {
@@ -83,7 +86,7 @@ const Search = (props) => (
 
     <Footer/>
 
-  </div>
+  </Main>
 )
 
 export default Search

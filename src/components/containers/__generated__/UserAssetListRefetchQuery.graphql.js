@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6145a177284567c38b35ca0614e952e8
+ * @relayHash 92e894cf5a709e79c678ed1f7b04fcff
  */
 
 /* eslint-disable */
@@ -588,10 +588,10 @@ export type MessageFilter = {
   messageFrom?: ?UserFilter,
   messageTo?: ?UserFilter,
 };
-export type UserAssetListPageQueryVariables = {|
-  filter: AssetFilter
+export type UserAssetListRefetchQueryVariables = {|
+  filter?: ?AssetFilter
 |};
-export type UserAssetListPageQueryResponse = {|
+export type UserAssetListRefetchQueryResponse = {|
   +viewer: {|
     +$fragmentRefs: UserAssetList_viewer$ref
   |}
@@ -600,15 +600,17 @@ export type UserAssetListPageQueryResponse = {|
 
 
 /*
-query UserAssetListPageQuery {
+query UserAssetListRefetchQuery(
+  $filter: AssetFilter
+) {
   viewer {
-    ...UserAssetList_viewer
+    ...UserAssetList_viewer_Vt7Yj
     id
   }
 }
 
-fragment UserAssetList_viewer on Viewer {
-  allAssets(last: 100, orderBy: createdAt_DESC) {
+fragment UserAssetList_viewer_Vt7Yj on Viewer {
+  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {
     edges {
       node {
         id
@@ -636,7 +638,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "filter",
-    "type": "AssetFilter!",
+    "type": "AssetFilter",
     "defaultValue": null
   }
 ],
@@ -650,13 +652,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "UserAssetListPageQuery",
+  "name": "UserAssetListRefetchQuery",
   "id": null,
-  "text": "query UserAssetListPageQuery {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query UserAssetListRefetchQuery(\n  $filter: AssetFilter\n) {\n  viewer {\n    ...UserAssetList_viewer_Vt7Yj\n    id\n  }\n}\n\nfragment UserAssetList_viewer_Vt7Yj on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "UserAssetListPageQuery",
+    "name": "UserAssetListRefetchQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -673,7 +675,14 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "UserAssetList_viewer",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": null
+              }
+            ]
           }
         ]
       }
@@ -681,7 +690,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UserAssetListPageQuery",
+    "name": "UserAssetListRefetchQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -697,8 +706,14 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "allAssets",
-            "storageKey": "allAssets(last:100,orderBy:\"createdAt_DESC\")",
+            "storageKey": null,
             "args": [
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "AssetFilter"
+              },
               {
                 "kind": "Literal",
                 "name": "last",
@@ -834,6 +849,12 @@ return {
             "name": "allAssets",
             "args": [
               {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "AssetFilter"
+              },
+              {
                 "kind": "Literal",
                 "name": "last",
                 "value": 100,
@@ -858,5 +879,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '7205ea83505a34b721350cca5fa89cfc';
+(node/*: any*/).hash = '236786eeddce3490c129108027be2b09';
 module.exports = node;

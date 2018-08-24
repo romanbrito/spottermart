@@ -6,13 +6,13 @@ const ArticleList = () =>
     <article className="pv4 bt bb b--black-10 ph3 ph0-l">
       <div className="flex flex-column flex-row-ns">
         <div className="w-100 w-60-ns pr3-ns order-2 order-1-ns">
-          <h1 className="f3 athelas mt0 lh-title">Add add the assets you want to list</h1>
+          <h1 className="f3 athelas mt0 lh-title">Add the assets you want to list</h1>
           <p className="f5 f4-l lh-copy athelas">
             Buyers will be able to send you private messages
           </p>
         </div>
         <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
-          <img src="http://mrmrs.github.io/photos/cpu.jpg" className="db"
+          <img src="http://res.cloudinary.com/spottermart/image/upload/v1535121974/DogTexadelphia_w6vphc.jpg" className="db"
                alt="dimly lit room with a computer interface terminal."/>
         </div>
       </div>

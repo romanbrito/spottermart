@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Main = styled.main.attrs({
   className: "mv2 pl0 measure-wide gridAsset-l center",
