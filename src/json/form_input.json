@@ -68,7 +68,7 @@
       "labelFor":"coordinates",
       "name": "coordinates",
       "type": "text",
-      "label": "Coordinates"
+      "label": ""
     }
   ],
   "Company": [

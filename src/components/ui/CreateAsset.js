@@ -143,7 +143,16 @@ const CreateAssetComponent = compose(
                           name={formInput.name}
 
 
-                        /> :
+                        />
+                        : formInput.id === 'coordinates' ?
+                          <Input
+                            type={formInput.type}
+                            id={formInput.id}
+                            name={formInput.name}
+                            value={props.state[formInput.name]}
+                            onChange={e => props.onChange(e)}
+                            style={{display:'none'}}
+                          />:
                         <Input
                           type={formInput.type}
                           id={formInput.id}
