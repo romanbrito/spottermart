@@ -33,14 +33,14 @@
       "labelFor":"autocomplete",
       "name": "autocomplete",
       "type": "text",
-      "label": "autocomplete"
+      "label": "Address"
     },
     {
       "id":"address",
       "labelFor":"address",
       "name": "address",
       "type": "text",
-      "label": "Address"
+      "label": "Street"
     },
     {
       "id":"city",

@@ -141,8 +141,6 @@ const CreateAssetComponent = compose(
                           type={formInput.type}
                           id={formInput.id}
                           name={formInput.name}
-
-
                         />
                         : formInput.id === 'coordinates' ?
                           <Input

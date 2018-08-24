@@ -23,7 +23,7 @@ const Signup = (props) =>
       <SignUpFieldset id="sign_up">
         <SignUpLegend>Sign Up</SignUpLegend>
         <Name>
-          <NameLabel htmlFor="email">Name</NameLabel>
+          <NameLabel htmlFor="name">Username</NameLabel>
           <NameInput
             type="text"
             name="name"
