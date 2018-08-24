@@ -39,7 +39,7 @@ const node/*: ConcreteFragment*/ = {
   "metadata": {
     "connection": [
       {
-        "count": null,
+        "count": "last",
         "cursor": null,
         "direction": "backward",
         "path": [
@@ -53,6 +53,18 @@ const node/*: ConcreteFragment*/ = {
       "kind": "LocalArgument",
       "name": "filter",
       "type": "AssetFilter",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "last",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "orderBy",
+      "type": "AssetOrderBy",
       "defaultValue": null
     }
   ],
@@ -188,5 +200,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'ad46c4899746521437d6b6fda3f66d93';
+(node/*: any*/).hash = '701065fc38239815c0f0304a64cb93d1';
 module.exports = node;

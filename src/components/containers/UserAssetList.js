@@ -36,13 +36,15 @@ export default createRefetchContainer(UserAssetList,
     viewer: graphql`
         fragment UserAssetList_viewer on Viewer
             @argumentDefinitions(
-            filter:{type: AssetFilter}
+            filter:{type: AssetFilter},
+            last: {type: "Int"},
+            orderBy: {type: AssetOrderBy}
         )
         {
             allAssets(
                 filter: $filter,
-                last: 100,
-                orderBy: createdAt_DESC
+                last: $last,
+                orderBy: $orderBy
             ) @connection(key: "UserAssetList_allAssets",filters:[]) {
                 edges {
                     node {
@@ -65,9 +67,9 @@ export default createRefetchContainer(UserAssetList,
   graphql`
       # Refetch query to be fetched upon calling \`refetch\`.
       # Notice that we re-use our fragment and the shape of this query matches our fragment spec.
-    query UserAssetListRefetchQuery($filter: AssetFilter){
+    query UserAssetListRefetchQuery($filter: AssetFilter,$last: Int, $orderBy: AssetOrderBy){
         viewer {
-            ...UserAssetList_viewer @arguments(filter: $filter)
+            ...UserAssetList_viewer @arguments(filter: $filter, last: $last, orderBy: $orderBy)
         }
     }
   `

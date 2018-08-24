@@ -23,6 +23,8 @@ class UserAssetListPage extends Component{
       query = {UserAssetListPageQuery}
       variables = {{
         filter: {postedBy: {id: userId}},
+        last: 100,
+        orderBy: "createdAt_DESC"
       }}
       render={({error, props}) => {
         if (error) {

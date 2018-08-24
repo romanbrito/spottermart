@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 92e894cf5a709e79c678ed1f7b04fcff
+ * @relayHash 0779a77a19ce1907d4fcda245b21bd28
  */
 
 /* eslint-disable */
@@ -10,6 +10,7 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type UserAssetList_viewer$ref = any;
+export type AssetOrderBy = "address_ASC" | "address_DESC" | "alcoholLicense_ASC" | "alcoholLicense_DESC" | "businessName_ASC" | "businessName_DESC" | "businessType_ASC" | "businessType_DESC" | "city_ASC" | "city_DESC" | "coordinates_ASC" | "coordinates_DESC" | "createdAt_ASC" | "createdAt_DESC" | "description_ASC" | "description_DESC" | "franchiseBool_ASC" | "franchiseBool_DESC" | "franchiseMarketingFee_ASC" | "franchiseMarketingFee_DESC" | "franchiseRoyalties_ASC" | "franchiseRoyalties_DESC" | "franchiseTraining_ASC" | "franchiseTraining_DESC" | "franchiseTransferFee_ASC" | "franchiseTransferFee_DESC" | "franchiseYearsRemaining_ASC" | "franchiseYearsRemaining_DESC" | "fullTimeEmployees_ASC" | "fullTimeEmployees_DESC" | "grossIncome_ASC" | "grossIncome_DESC" | "hoursOfOperation_ASC" | "hoursOfOperation_DESC" | "howLongInOperation_ASC" | "howLongInOperation_DESC" | "howManySeats_ASC" | "howManySeats_DESC" | "id_ASC" | "id_DESC" | "insideSqFeet_ASC" | "insideSqFeet_DESC" | "netIncome_ASC" | "netIncome_DESC" | "notes_ASC" | "notes_DESC" | "owned_ASC" | "owned_DESC" | "ownerFinance_ASC" | "ownerFinance_DESC" | "partTimeEmployees_ASC" | "partTimeEmployees_DESC" | "price_ASC" | "price_DESC" | "rentNNN_ASC" | "rentNNN_DESC" | "requirementsToQualify_ASC" | "requirementsToQualify_DESC" | "specialFeatures_ASC" | "specialFeatures_DESC" | "state_ASC" | "state_DESC" | "status_ASC" | "status_DESC" | "structure_ASC" | "structure_DESC" | "termOfLease_ASC" | "termOfLease_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "website_ASC" | "website_DESC" | "whySelling_ASC" | "whySelling_DESC" | "zipCode_ASC" | "zipCode_DESC" | "%future added value";
 export type AssetFilter = {
   AND?: ?$ReadOnlyArray<AssetFilter>,
   OR?: ?$ReadOnlyArray<AssetFilter>,
@@ -589,7 +590,9 @@ export type MessageFilter = {
   messageTo?: ?UserFilter,
 };
 export type UserAssetListRefetchQueryVariables = {|
-  filter?: ?AssetFilter
+  filter?: ?AssetFilter,
+  last?: ?number,
+  orderBy?: ?AssetOrderBy,
 |};
 export type UserAssetListRefetchQueryResponse = {|
   +viewer: {|
@@ -602,15 +605,17 @@ export type UserAssetListRefetchQueryResponse = {|
 /*
 query UserAssetListRefetchQuery(
   $filter: AssetFilter
+  $last: Int
+  $orderBy: AssetOrderBy
 ) {
   viewer {
-    ...UserAssetList_viewer_Vt7Yj
+    ...UserAssetList_viewer_3sBnaw
     id
   }
 }
 
-fragment UserAssetList_viewer_Vt7Yj on Viewer {
-  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {
+fragment UserAssetList_viewer_3sBnaw on Viewer {
+  allAssets(filter: $filter, last: $last, orderBy: $orderBy) {
     edges {
       node {
         id
@@ -640,6 +645,18 @@ var v0 = [
     "name": "filter",
     "type": "AssetFilter",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "last",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "orderBy",
+    "type": "AssetOrderBy",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -654,7 +671,7 @@ return {
   "operationKind": "query",
   "name": "UserAssetListRefetchQuery",
   "id": null,
-  "text": "query UserAssetListRefetchQuery(\n  $filter: AssetFilter\n) {\n  viewer {\n    ...UserAssetList_viewer_Vt7Yj\n    id\n  }\n}\n\nfragment UserAssetList_viewer_Vt7Yj on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query UserAssetListRefetchQuery(\n  $filter: AssetFilter\n  $last: Int\n  $orderBy: AssetOrderBy\n) {\n  viewer {\n    ...UserAssetList_viewer_3sBnaw\n    id\n  }\n}\n\nfragment UserAssetList_viewer_3sBnaw on Viewer {\n  allAssets(filter: $filter, last: $last, orderBy: $orderBy) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -680,6 +697,18 @@ return {
                 "kind": "Variable",
                 "name": "filter",
                 "variableName": "filter",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "last",
+                "variableName": "last",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "orderBy",
+                "variableName": "orderBy",
                 "type": null
               }
             ]
@@ -715,15 +744,15 @@ return {
                 "type": "AssetFilter"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "last",
-                "value": 100,
+                "variableName": "last",
                 "type": "Int"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "orderBy",
-                "value": "createdAt_DESC",
+                "variableName": "orderBy",
                 "type": "AssetOrderBy"
               }
             ],
@@ -855,15 +884,15 @@ return {
                 "type": "AssetFilter"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "last",
-                "value": 100,
+                "variableName": "last",
                 "type": "Int"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "orderBy",
-                "value": "createdAt_DESC",
+                "variableName": "orderBy",
                 "type": "AssetOrderBy"
               }
             ],
@@ -879,5 +908,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '236786eeddce3490c129108027be2b09';
+(node/*: any*/).hash = '7b6a2a354ec53c5944e27c8cf9ea31c9';
 module.exports = node;

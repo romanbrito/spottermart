@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6145a177284567c38b35ca0614e952e8
+ * @relayHash 74392c3920308162f8070143e6a2ed2e
  */
 
 /* eslint-disable */
@@ -608,7 +608,7 @@ query UserAssetListPageQuery {
 }
 
 fragment UserAssetList_viewer on Viewer {
-  allAssets(last: 100, orderBy: createdAt_DESC) {
+  allAssets {
     edges {
       node {
         id
@@ -652,7 +652,7 @@ return {
   "operationKind": "query",
   "name": "UserAssetListPageQuery",
   "id": null,
-  "text": "query UserAssetListPageQuery {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+  "text": "query UserAssetListPageQuery {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets {\n    edges {\n      node {\n        id\n        businessName\n        city\n        state\n        zipCode\n        pictures\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -697,21 +697,8 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "allAssets",
-            "storageKey": "allAssets(last:100,orderBy:\"createdAt_DESC\")",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "last",
-                "value": 100,
-                "type": "Int"
-              },
-              {
-                "kind": "Literal",
-                "name": "orderBy",
-                "value": "createdAt_DESC",
-                "type": "AssetOrderBy"
-              }
-            ],
+            "storageKey": null,
+            "args": null,
             "concreteType": "AssetConnection",
             "plural": false,
             "selections": [
@@ -832,20 +819,7 @@ return {
             "kind": "LinkedHandle",
             "alias": null,
             "name": "allAssets",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "last",
-                "value": 100,
-                "type": "Int"
-              },
-              {
-                "kind": "Literal",
-                "name": "orderBy",
-                "value": "createdAt_DESC",
-                "type": "AssetOrderBy"
-              }
-            ],
+            "args": null,
             "handle": "connection",
             "key": "UserAssetList_allAssets",
             "filters": []
