@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {graphql, createRefetchContainer, createFragmentContainer} from 'react-relay'
+import {graphql, createRefetchContainer} from 'react-relay'
 import UserAssetListUi from '../ui/UserAssetList'
 import DeleteAssetMutation from '../../mutations/DeleteAssetMutation'
 import {GC_USER_ID} from '../../constants'
@@ -22,7 +22,6 @@ class UserAssetList extends Component {
       assetId,
       () => {
         // after delete keep showing list of assets
-        //this.props.viewer.allAssets.edges.length-1
         this.props.relay.refetch(
           {filter: {postedBy: {id: userId}}}
         )
