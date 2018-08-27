@@ -1,102 +1,184 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
-import '../sass/Header.css'
-import styled from 'styled-components'
 import {Image} from 'cloudinary-react'
 import AngleDown from 'react-icons/lib/fa/angle-down'
 import MdMenu from 'react-icons/lib/md/menu'
+import {
+  MainHeader,
+  MainNav,
+  NavUl,
+  List,
+  ANav,
+  AccUl
+} from './StyledHeader'
 
-// withRouter to get access to history
+// withRouter to access history
 const Header = withRouter((props) => (
-  <Heading>
-    <MenuIcon/>
-    <div className="dib fr dn-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
-    <div id="main-nav" className="dn flex-l items-center justify-between-l">
-      <div className="dn db-l"><Link to='/'><Image cloudName="spottermart" publicId="Logo_zk4at5"/></Link></div>
+  <MainHeader>
+    <Logo/>
+    <Trigger/>
+    <MainNav>
+      <LogoBig/>
       <nav>
-        <Ul>
-          <li><ANav href="#how-works">How it Works</ANav></li>
-          <li><NavLink dest='/' menuItem="Pricing"/></li>
-          <li><NavLink dest='/' menuItem="About"/></li>
+        <NavUl>
+          <List><NavLink dest='/' menuItem='Hot it Works'/></List>
+          <List><NavLink dest='/' menuItem='Pricing'/></List>
+          <List><NavLink dest='/' menuItem='About'/></List>
           {props.userId &&
-          <li>
-            <a className="db pv3 ph3 f3 white link pointer">
+          <List>
+            <ANav>
               Hi {props.userName}
-              <AngleDown
-                onClick={() => dropdownToggle()}
-              />
-            </a>
-            <ul className="dn-l absolute-l dropdown-bg">
-              <li className="list"><NavLink dest='/account' menuItem="Account"/></li>
-              <li className="list"><NavLink dest='/messages' menuItem="My Messages"/></li>
-              <li className="list"><NavLink dest='/list' menuItem="My Assets"/></li>
-              <li className="list"><NavLink dest='/create' menuItem="Create Asset"/></li>
-              <li className="list"><NavLink dest='/' menuItem="Logout" history={props.history} removeId={props.removeId}/></li>
-            </ul>
-          </li>}
+              <Dropdown/>
+            </ANav>
+            <AccUl>
+              <List><NavLink dest='/account' menuItem='Account'/></List>
+              <List><NavLink dest='/messages' menuItem='My Messages'/></List>
+              <List><NavLink dest='/list' menuItem='My Assets'/></List>
+              <List><NavLink dest='/create' menuItem='Create Asset'/></List>
+              <List>
+                <LogLink menuItem='Logout' history={props.history} removeId={props.removeId}>Logout</LogLink>
+              </List>
+            </AccUl>
+          </List>}
           {!props.userId && props.location.pathname !== '/login' ?
-            <li><NavLink dest='/login' menuItem="Login"/></li> : ''}
-
-        </Ul>
+            <List><NavLink dest='/login' menuItem='Login'/></List>: ''}
+        </NavUl>
       </nav>
-      <div className="dn db-l"><Image cloudName="spottermart" publicId="Logo2_qpq49e"/></div>
-    </div>
-  </Heading>
+      <Logo2/>
+    </MainNav>
+  </MainHeader>
 ))
+
+export default Header
+
+const Trigger = () => (
+  <MdMenu
+    size={27}
+    color="#ffffff"
+    aria-expanded={false}
+    className="trigger pointer db dn-l"
+    onClick={revealMenu}
+  />
+)
 
 const NavLink = (props) => (
   <Link
-    className="db pv3 ph3 f3 white link" to={props.dest}
+    className="db pv3 ph3 f3 white link"
+    to={props.dest}
+  >
+    {props.menuItem}
+  </Link>
+)
+
+const LogLink = (props) => (
+  <a
+    className="db pv3 ph3 f3 white link pointer"
     onClick={() => {
-      // toggle menu
-      showMenu()
-      dropdownToggle()
       // logout
       if (props.menuItem === 'Logout') {
         props.removeId()
         props.history.push('/')
       }
-    }
-    }>
+    }}
+  >
     {props.menuItem}
+  </a>
+)
+
+const Logo = () => (
+  <Link to="/">
+    <Image
+      cloudName="spottermart"
+      publicId="Logo_zk4at5"
+      className="dib fr dn-l"
+    />
   </Link>
 )
 
-const MenuIcon = () => (
-  <MobileMenu
-    onClick={showMenu}>
-    <MdMenu size={27} color="white"/>
-  </MobileMenu>
+const LogoBig = () => (
+  <Link to="/">
+    <div className="dn db-l">
+      <Image
+        cloudName="spottermart"
+        publicId="Logo_zk4at5"
+      />
+    </div>
+  </Link>
 )
 
-const MobileMenu = styled.div.attrs({
-  className: "ml1 pointer dib dn-l",
-})`margin: 6px 0`
+const Logo2 = () => (
+  <div className="dn db-l">
+    <Image cloudName="spottermart" publicId="Logo2_qpq49e"/>
+  </div>
+)
 
-const Ul = styled.ul.attrs({
-  className: "list pa0 ma0 flex-l",
-})`background-color: #f09859`
+const Dropdown = () => (
+  <AngleDown
+    aria-expanded={false}
+    className="dropdown-toggle pointer"
+    onClick={() => dropdownToggle()}
+  />
+)
 
-const Heading = styled.header.attrs({
-  className: "w-100 ph2 pv2",
-})`background-color: #f09859`
+// Toggle reveal navigation
+const revealMenu = () => {
+  const REVEAL = document.querySelector('.main-nav')
+  const TRIGGER = document.querySelector('.trigger')
+  const MAIN = document.querySelector('.Main')
+  const MENUITEMS = REVEAL.querySelectorAll('nav a')
+  const MENUARRAY = Array.apply(null, MENUITEMS)
 
-const ANav = styled.a.attrs({
-  className: "db pv3 ph3 f3 white link"
-})``
+  if (TRIGGER.getAttribute('aria-expanded') === 'false') {
+    REVEAL.classList.add('flex')
+    TRIGGER.setAttribute('aria-expanded', true)
+  } else {
+    REVEAL.classList.remove('flex')
+    TRIGGER.setAttribute('aria-expanded', false)
+  }
 
-// toggle menu on small screens
-const showMenu = () => {
-  const element = document.getElementById("main-nav");
-  (element.className === "dn flex-l items-center justify-between-l") ? element.className += " db absolute w-100 left-0 relative-l" : element.className = "dn flex-l items-center justify-between-l"
+  MAIN.addEventListener('click', function (e) {
+    if (TRIGGER.getAttribute('aria-expanded') === 'true') {
+      REVEAL.classList.remove('flex')
+      TRIGGER.setAttribute('aria-expanded', false)
+    }
+  })
+
+  REVEAL.addEventListener('click', function (e) {
+    if (MENUARRAY.includes(e.target)) {
+      REVEAL.classList.remove('flex')
+      TRIGGER.setAttribute('aria-expanded', false)
+    }
+
+  })
+
 }
 
-// drop down toggle menu for large screens
 const dropdownToggle = () => {
-  const dropDown = document.getElementsByClassName('dropdown-bg');
-  if (dropDown.length > 0) {
-    (dropDown[0].className === "dn-l absolute-l dropdown-bg") ? dropDown[0].className += " db-l z-max pa0-l" : dropDown[0].className = "dn-l absolute-l dropdown-bg";
+  const DROPDOWN = document.querySelector('.dropdown-toggle')
+  const DROP = document.querySelector('.account-nav')
+  const MAIN = document.querySelector('.Main')
+  const DROPITEMS = DROP.querySelectorAll('a')
+  const DROPARRAY = Array.apply(null, DROPITEMS)
+  if (DROPDOWN.getAttribute('aria-expanded') === 'false') {
+    DROP.classList.add('flex-l')
+    DROPDOWN.setAttribute('aria-expanded', true)
+  } else {
+    DROP.classList.remove('flex-l')
+    DROPDOWN.setAttribute('aria-expanded', false)
   }
-};
 
-export default Header
+  MAIN.addEventListener('click', function (e) {
+    if (DROPDOWN.getAttribute('aria-expanded') === 'true') {
+      DROP.classList.remove('flex-l')
+      DROPDOWN.setAttribute('aria-expanded', false)
+    }
+  })
+
+  DROP.addEventListener('click', function (e) {
+    if (DROPARRAY.includes(e.target)) {
+      DROP.classList.remove('flex-l')
+      DROPDOWN.setAttribute('aria-expanded', false)
+    }
+
+  })
+}

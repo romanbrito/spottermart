@@ -63,6 +63,8 @@ const CreateAssetComponent = compose(
   withScriptjs,
   lifecycle({
     componentDidMount() {
+      // Scroll to top of the page
+      window.scrollTo(0, 0)
       // address autocomplete
       const autocomplete = new window.google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
